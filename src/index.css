@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-ink: #060d17;
+  --color-ink-2: #0b1b2e;
+  --color-blue-light: #4fa4e0;
+  --color-mist: #f5f7fa;
+  --color-paper: #ffffff;
+  --color-coral: #ff6b35;
+  --color-text-dark: #1b1b1b;
+  --color-teal: #1baa9c;
+  --color-blue: #0a5d9b;
+
+  --color-primary-900: #0f172a;
+  --color-primary-800: #1e293b;
+  --color-primary-700: #334155;
+  --color-primary-600: #475569;
+  
+  --color-medical-600: #0284c7;
+  --color-medical-700: #0369a1;
+  --color-medical-500: #0ea5e9;
+  --color-medical-100: #e0f2fe;
+  --color-medical-50: #f0f9ff;
+  
+  --color-accent-600: #0d9488;
+  --color-accent-700: #0f766e;
+  --color-accent-500: #14b8a6;
+  --color-accent-100: #ccfbf1;
+  --color-accent-50: #f0fdfa;
+  
+  --color-cta-600: #ea580c;
+  --color-cta-700: #c2410c;
+  --color-cta-500: #f97316;
+  --color-cta-100: #ffedd5;
+  
+  --color-bg-slate: #f8fafc;
+  
+  --shadow-premium: 0 10px 30px rgba(15, 23, 42, 0.03);
+  --shadow-premium-hover: 0 20px 40px rgba(15, 23, 42, 0.06);
+}
+
+/* Custom Core Resets */
+html,
+body {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0;
+  background-color: var(--color-bg-slate);
+  color: var(--color-primary-700);
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus Ring Customization for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-medical-600);
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Lenis Smooth Scroll Configuration */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Glassmorphism & High-end Card Overlays */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glassmorphism-dark {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glow-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-hover:hover {
+  box-shadow: 0 0 30px rgba(2, 132, 199, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Endless Horizontal Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-horizontal {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee-horizontal:hover {
+  animation-play-state: paused;
+}
+
+/* Micro-animations and reveals */
+.reveal-transition {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  filter: blur(10px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-transition.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+

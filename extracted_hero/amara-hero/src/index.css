@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #060d17;
+  --color-ink-2: #0b1b2e;
+  --color-blue: #0a5d9b;
+  --color-blue-light: #4fa4e0;
+  --color-teal: #1baa9c;
+  --color-mist: #f5f7fa;
+  --color-paper: #ffffff;
+  --color-coral: #ff6b35;
+  --color-text-dark: #1b1b1b;
+
+  --font-display: 'Fraunces', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  background: var(--color-ink);
+  color: var(--color-mist);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+* { box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
