@@ -27,22 +27,20 @@ export default function AIAssistant() {
   const visible = useTypedScript(active);
 
   return (
-    <section className="bg-mist px-6 py-28 md:px-16" id="faq-assistant">
+    <section className="bg-stone-50 px-6 py-20 md:px-16" id="faq-assistant">
       <div className="mx-auto grid max-w-[1400px] gap-14 md:grid-cols-2 md:items-center">
         <div className="text-left">
-          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em]" style={{ color: 'var(--color-blue)' }}>
+          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-emerald-800 font-bold">
             Interactive FAQ System
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-text-dark leading-tight">
-            Answers before your first appointment.
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
+            Answers Before Your First Appointment
           </h2>
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-text-dark/70 font-light">
-            Our interactive FAQ system helps you understand what might be
-            going on, checks insurance coverage, and points you toward the
-            right specialist — available any time, day or night.
+          <p className="mt-5 max-w-md text-[18px] leading-relaxed text-stone-600 font-normal">
+            Our interactive FAQ system helps you understand symptoms, check insurance coverage, and points you toward the right specialist details — available any time.
           </p>
 
-          <ul className="mt-6 space-y-2 text-sm text-text-dark/60">
+          <ul className="mt-6 space-y-2.5 text-sm text-stone-500 font-medium">
             <li>· Educational symptom matching guidelines</li>
             <li>· Insurance, clinic, and treatment FAQs</li>
             <li>· Appointment suggestions matched to your case</li>
@@ -50,28 +48,25 @@ export default function AIAssistant() {
 
           <button
             onClick={() => setActive(true)}
-            className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white cursor-pointer hover:shadow-lg transition-shadow border-none"
-            style={{ background: 'var(--color-blue)' }}
+            className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white cursor-pointer hover:bg-emerald-700 transition-all border-none bg-emerald-600 shadow-sm"
           >
             <HelpCircle size={16} />
-            {active ? 'Replay demo' : 'See it in action'}
+            {active ? 'Replay Demo' : 'See It in Action'}
           </button>
         </div>
 
         <div
-          className="rounded-2xl border p-5 shadow-xl text-left"
-          style={{ borderColor: 'rgba(10,93,155,0.12)', background: 'white' }}
+          className="rounded-2xl border border-stone-200 p-5 shadow-premium text-left bg-white"
         >
-          <div className="mb-4 flex items-center gap-2 border-b pb-4" style={{ borderColor: 'rgba(10,93,155,0.08)' }}>
+          <div className="mb-4 flex items-center gap-2 border-b border-stone-100 pb-4">
             <span
-              className="flex h-8 w-8 items-center justify-center rounded-full"
-              style={{ background: 'linear-gradient(135deg, var(--color-blue), var(--color-teal))' }}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-emerald-600 to-emerald-400"
             >
               <HelpCircle size={15} color="white" />
             </span>
             <div>
-              <p className="text-sm font-semibold text-text-dark">Amara FAQ Guide</p>
-              <p className="text-[11px] text-emerald-600 font-semibold">Online</p>
+              <p className="text-sm font-bold text-stone-950">Amara FAQ Assistant</p>
+              <p className="text-[11px] text-emerald-600 font-bold">Online &amp; Active</p>
             </div>
           </div>
 
@@ -85,8 +80,8 @@ export default function AIAssistant() {
                   transition={{ duration: 0.3 }}
                   className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${m.from === 'user' ? 'self-end text-white' : 'self-start'}`}
                   style={{
-                    background: m.from === 'user' ? 'var(--color-blue)' : 'var(--color-mist)',
-                    color: m.from === 'user' ? 'white' : 'var(--color-text-dark)',
+                    background: m.from === 'user' ? 'var(--color-medical-600)' : '#f4f6f5',
+                    color: m.from === 'user' ? 'white' : '#1c2e24',
                   }}
                 >
                   {m.text}
@@ -94,8 +89,8 @@ export default function AIAssistant() {
               ))}
             </AnimatePresence>
             {!active && (
-              <div className="flex flex-1 items-center justify-center text-sm" style={{ color: 'rgba(27,27,27,0.35)' }}>
-                Click "See it in action" to preview a conversation
+              <div className="flex flex-1 items-center justify-center text-sm text-stone-400 font-medium">
+                Click "See It in Action" to preview a conversation
               </div>
             )}
           </div>

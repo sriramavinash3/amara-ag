@@ -12,22 +12,22 @@ const writtenReviews = [
   { 
     name: 'Faithful Watson', 
     rating: 5, 
-    text: "Dr. Amara is very knowledgeable and informative! From the new patient standpoint to now a regular patient, he's been nothing short of amazing. He takes the time to LISTEN to his patients." 
+    text: "Amara is very knowledgeable and informative! From the new patient standpoint to now a regular patient, he's been nothing short of amazing. He takes the time to LISTEN to his patients." 
   },
   { 
     name: 'Patricia Robinson', 
     rating: 5, 
-    text: "Dr. Amara has made my experience with him a very pleasant one. He listens to me and understands what I’m going through. His staff is very professional and supportive." 
+    text: "Amara has made my experience with him a very pleasant one. He listens to me and understands what I’m going through. His staff is very professional and supportive." 
   },
   { 
     name: 'Joseph Tillman', 
     rating: 5, 
-    text: "Dr. Amara is a good doctor who listens to all your concerns and understands them to the fullest. He's very professional and takes care of all his clients with his procedures." 
+    text: "Amara is a good doctor who listens to all your concerns and understands them to the fullest. He's very professional and takes care of all his clients with his procedures." 
   },
   { 
     name: 'Telphine Williams', 
     rating: 5, 
-    text: "The doctor is very informative and listens to the patients concerns. The staff is very professional and friendly at the same time. I would definitely refer Dr. Amara to anyone." 
+    text: "The doctor is very informative and listens to the patients concerns. The staff is very professional and friendly at the same time. I would definitely refer Amara to anyone." 
   }
 ];
 
@@ -73,30 +73,29 @@ export default function Testimonials() {
                 delay: i * 0.15 
               }}
               whileHover={{ scale: 1.03 }}
-              className="group relative aspect-[4/5] overflow-hidden rounded-2xl text-left cursor-pointer border-none shadow-md"
-              style={{ background: 'linear-gradient(155deg, var(--color-blue), var(--color-ink-2))' }}
+              className="group relative aspect-[4/5] overflow-hidden rounded-2xl text-left cursor-pointer border border-stone-200/60 shadow-premium"
+              style={{ background: '#f5f5f4' }}
             >
               <img
                 src={`https://img.youtube.com/vi/${s.embedId}/hqdefault.jpg`}
                 alt={s.name}
-                className="absolute inset-0 w-full h-full object-cover opacity-45 group-hover:opacity-65 transition-all duration-500"
+                className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-95 transition-all duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" />
               <motion.div
                 className="absolute inset-0"
-                initial={{ scale: 1 }}
                 whileHover={{ scale: 1.08 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                style={{ background: 'radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,0.08), transparent 70%)' }}
+                style={{ background: 'radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,0.05), transparent 70%)' }}
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 shadow-inner">
-                  <Play size={20} color="white" fill="white" />
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-600/90 text-white backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 shadow-lg">
+                  <Play size={20} className="fill-current" />
                 </span>
               </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-                <p className="font-display text-lg text-white font-bold">{s.name}</p>
-                <p className="text-xs text-white/70">{s.condition}</p>
+              <div className="absolute inset-x-0 bottom-0 p-5 z-20">
+                <p className="font-heading text-lg text-white font-extrabold">{s.name}</p>
+                <p className="text-xs text-white/80 font-bold">{s.condition}</p>
               </div>
             </motion.button>
           ))}
@@ -110,32 +109,29 @@ export default function Testimonials() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4 }}
-            className="mx-auto mt-10 max-w-2xl text-center font-display text-2xl italic font-medium"
-            style={{ color: 'var(--color-text-dark)' }}
+            className="mx-auto mt-10 max-w-2xl text-center font-heading text-2xl italic font-medium text-stone-800"
           >
-            <Quote size={22} className="mx-auto mb-3 opacity-30" />
+            <Quote size={22} className="mx-auto mb-3 text-emerald-600 opacity-60" />
             "{videoStories[activeTab].quote}"
           </motion.blockquote>
         </AnimatePresence>
 
         {/* Written reviews carousel */}
         <div className="mt-20 flex items-center justify-between">
-          <p className="font-mono text-[11px] uppercase tracking-[0.28em] font-bold text-left" style={{ color: 'var(--color-blue)' }}>
+          <p className="font-mono text-[11px] uppercase tracking-[0.28em] font-bold text-left text-emerald-800">
             Google Reviews · 4.9 Star average
           </p>
           <div className="flex gap-2">
             <button
               onClick={() => setReviewIndex((i) => (i - 1 + writtenReviews.length) % writtenReviews.length)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-black/5"
-              style={{ borderColor: 'rgba(10,93,155,0.25)' }}
+              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-emerald-50 text-emerald-700 border-emerald-600/20"
               aria-label="Previous review"
             >
               <ChevronLeft size={16} />
             </button>
             <button
               onClick={() => setReviewIndex((i) => (i + 1) % writtenReviews.length)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-black/5"
-              style={{ borderColor: 'rgba(10,93,155,0.25)' }}
+              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-emerald-50 text-emerald-700 border-emerald-600/20"
               aria-label="Next review"
             >
               <ChevronRight size={16} />
@@ -154,16 +150,16 @@ export default function Testimonials() {
             {writtenReviews.map((r) => (
               <div
                 key={r.name}
-                className="rounded-xl border bg-white/60 p-5 backdrop-blur shadow-sm shrink-0"
-                style={{ width: `${100 / writtenReviews.length}%`, borderColor: 'rgba(10,93,155,0.1)' }}
+                className="rounded-2xl border border-stone-200/60 bg-white p-6 shadow-premium hover:shadow-premium-hover transition-all duration-300 shrink-0"
+                style={{ width: `${100 / writtenReviews.length}%` }}
               >
                 <div className="mb-2 flex gap-0.5">
                   {Array.from({ length: r.rating }).map((_, i) => (
-                    <Star key={i} size={13} fill="var(--color-coral)" color="var(--color-coral)" />
+                    <Star key={i} size={15} fill="#eab308" color="#eab308" />
                   ))}
                 </div>
-                <p className="text-sm font-light leading-relaxed" style={{ color: 'rgba(27,27,27,0.75)' }}>"{r.text}"</p>
-                <p className="mt-3 text-xs font-semibold" style={{ color: 'var(--color-text-dark)' }}>{r.name}</p>
+                <p className="text-sm font-normal leading-relaxed text-stone-600">"{r.text}"</p>
+                <p className="mt-3 text-xs font-bold text-stone-800">{r.name}</p>
               </div>
             ))}
           </motion.div>

@@ -73,14 +73,14 @@ export default function Contact() {
     <div ref={containerRef} className="w-full relative py-16 px-4 md:px-8 max-w-7xl mx-auto space-y-16 text-left">
 
       {/* 1. PAGE HEADER */}
-      <div className="space-y-4 max-w-3xl border-b border-slate-200 pb-8 relative z-10">
-        <Badge variant="secondary" className="bg-cyan-50 text-cyan-800 border border-cyan-200 font-bold uppercase tracking-widest">
+      <div className="space-y-4 max-w-3xl border-b border-stone-200 pb-8 relative z-10">
+        <Badge variant="secondary" className="bg-emerald-50 text-emerald-850 border border-emerald-200 font-bold uppercase tracking-widest">
           Connect With Us
         </Badge>
-        <h1 className="text-4xl md:text-5xl font-black font-heading tracking-tight text-slate-900 leading-none">
+        <h1 className="text-4xl md:text-5xl font-black font-heading tracking-tight text-stone-900 leading-none">
           Contact Our Pain Clinic
         </h1>
-        <p className="text-lg text-slate-700 leading-relaxed font-medium">
+        <p className="text-lg text-stone-605 leading-relaxed font-medium">
           Have questions about insurance, billing, or interventional treatments? Reach out to our care team today or find driving and public transit directions.
         </p>
       </div>
@@ -90,33 +90,33 @@ export default function Contact() {
         
         {/* Left Column: Contact Cards */}
         <div className="lg:col-span-5 space-y-6">
-          <h2 className="text-2xl font-black font-heading text-slate-900">
+          <h2 className="text-2xl font-black font-heading text-stone-900">
             Clinic Contact Points
           </h2>
           
           <div className="grid grid-cols-1 gap-4">
             {/* Phone & Fax Card */}
-            <Card variant="white" padding="md" className="border-slate-200/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex gap-4 items-start console-card-3d animate-reveal-3d" style={{ animationDelay: '0.05s' }}>
-              <Phone className="h-6 w-6 text-medical-600 shrink-0 mt-1" />
+            <Card variant="white" padding="md" className="border-stone-200 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex gap-4 items-start bg-white p-6 rounded-2xl">
+              <Phone className="h-6 w-6 text-emerald-600 shrink-0 mt-1" />
               <div>
-                <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">Phone &amp; Fax</h3>
-                <a href="tel:7045039338" className="block text-lg font-black text-medical-600 hover:text-medical-700 mt-1">
+                <h3 className="font-bold text-sm text-stone-900 uppercase tracking-wider">Phone &amp; Fax</h3>
+                <a href="tel:7045039338" className="block text-lg font-black text-emerald-650 hover:text-emerald-750 mt-1">
                   704-503-9338
                 </a>
-                <span className="block text-xs text-slate-400 font-medium mt-1">Fax Number: 704-503-9339</span>
+                <span className="block text-xs text-stone-400 font-bold mt-1">Fax Number: 704-503-9339</span>
               </div>
             </Card>
 
             {/* Address Card */}
-            <Card variant="white" padding="md" className="border-slate-200/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex gap-4 items-start console-card-3d animate-reveal-3d" style={{ animationDelay: '0.1s' }}>
-              <MapPin className="h-6 w-6 text-accent-600 shrink-0 mt-1" />
+            <Card variant="white" padding="md" className="border-stone-200 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex gap-4 items-start bg-white p-6 rounded-2xl">
+              <MapPin className="h-6 w-6 text-emerald-600 shrink-0 mt-1" />
               <div>
-                <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">Location Address</h3>
+                <h3 className="font-bold text-sm text-stone-900 uppercase tracking-wider">Location Address</h3>
                 <a 
                   href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="block text-sm text-slate-600 hover:text-accent-600 transition-colors leading-relaxed mt-1"
+                  className="block text-sm text-stone-600 hover:text-emerald-700 transition-colors leading-relaxed mt-1 font-medium"
                 >
                   6429 Bannington Road, Suite B,<br />
                   Charlotte, NC 28226
@@ -125,7 +125,7 @@ export default function Contact() {
                   href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-bold text-accent-600 hover:text-accent-700 mt-2"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-750 mt-2"
                 >
                   Get Directions
                   <ArrowRight className="h-3 w-3" />
@@ -134,23 +134,23 @@ export default function Contact() {
             </Card>
 
             {/* Office Hours Card */}
-            <Card variant="white" padding="md" className="border-slate-200/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex gap-4 items-start console-card-3d animate-reveal-3d" style={{ animationDelay: '0.15s' }}>
-              <Clock className="h-6 w-6 text-cta-600 shrink-0 mt-1" />
+            <Card variant="white" padding="md" className="border-stone-200 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex gap-4 items-start bg-white p-6 rounded-2xl">
+              <Clock className="h-6 w-6 text-emerald-600 shrink-0 mt-1" />
               <div>
-                <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">Office Hours</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mt-1">
+                <h3 className="font-bold text-sm text-stone-900 uppercase tracking-wider">Office Hours</h3>
+                <p className="text-sm text-stone-600 leading-relaxed mt-1 font-medium">
                   Monday - Friday: 8:00 AM - 5:00 PM
                 </p>
-                <span className="block text-xs text-slate-400 font-medium mt-1">Closed Saturday &amp; Sunday</span>
+                <span className="block text-xs text-stone-400 font-bold mt-1">Closed Saturday &amp; Sunday</span>
               </div>
             </Card>
 
             {/* Email Card */}
-            <Card variant="white" padding="md" className="border-slate-200/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex gap-4 items-start console-card-3d animate-reveal-3d" style={{ animationDelay: '0.2s' }}>
-              <Mail className="h-6 w-6 text-slate-500 shrink-0 mt-1" />
+            <Card variant="white" padding="md" className="border-stone-200 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex gap-4 items-start bg-white p-6 rounded-2xl">
+              <Mail className="h-6 w-6 text-stone-400 shrink-0 mt-1" />
               <div>
-                <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">Email</h3>
-                <a href="mailto:contact@amarapain.com" className="block text-sm text-slate-600 hover:text-medical-600 mt-1">
+                <h3 className="font-bold text-sm text-stone-900 uppercase tracking-wider">Email</h3>
+                <a href="mailto:contact@amarapain.com" className="block text-sm text-stone-600 hover:text-emerald-700 mt-1 font-medium">
                   contact@amarapain.com
                 </a>
               </div>
@@ -160,18 +160,18 @@ export default function Contact() {
 
         {/* Right Column: Contact Form */}
         <div className="lg:col-span-7 space-y-6">
-          <h2 className="text-2xl font-black font-heading text-slate-900">
+          <h2 className="text-2xl font-black font-heading text-stone-900">
             Send an Inquiry
           </h2>
 
-          <Card variant="white" padding="lg" className="border-slate-200/80 shadow-premium relative console-card-3d animate-reveal-3d" style={{ animationDelay: '0.1s' }}>
+          <Card variant="white" padding="lg" className="border-stone-200 shadow-premium relative bg-white p-8 rounded-2xl">
             {submitSuccess ? (
               <div className="text-center py-12 space-y-4" aria-live="polite">
                 <div className="p-3 bg-emerald-50 text-emerald-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="h-10 w-10" />
                 </div>
-                <h3 className="text-2xl font-bold font-heading text-slate-900">Inquiry Sent Successfully</h3>
-                <p className="text-sm text-slate-600 max-w-md mx-auto">
+                <h3 className="text-2xl font-bold font-heading text-stone-900">Inquiry Sent Successfully</h3>
+                <p className="text-sm text-stone-600 max-w-md mx-auto">
                   Thank you for reaching out! Our clinical coordinators will review your message and contact you within 24 to 48 business hours.
                 </p>
                 <Button variant="outline" size="sm" onClick={() => setSubmitSuccess(false)}>
@@ -183,7 +183,7 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name */}
                   <div className="space-y-1">
-                    <label htmlFor="contact-name" className="text-xs font-bold uppercase tracking-wider text-slate-600">Your Full Name</label>
+                    <label htmlFor="contact-name" className="text-xs font-bold uppercase tracking-wider text-stone-500">Your Full Name</label>
                     <input
                       id="contact-name"
                       type="text"
@@ -194,13 +194,13 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="e.g. John Doe"
-                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
+                      className="w-full px-4 py-2.5 bg-stone-50 border border-stone-300 text-stone-850 rounded-xl text-sm focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 shadow-sm transition-all duration-200"
                     />
                   </div>
 
                   {/* Phone */}
                   <div className="space-y-1">
-                    <label htmlFor="contact-phone" className="text-xs font-bold uppercase tracking-wider text-slate-600">Phone Number</label>
+                    <label htmlFor="contact-phone" className="text-xs font-bold uppercase tracking-wider text-stone-500">Phone Number</label>
                     <input
                       id="contact-phone"
                       type="tel"
@@ -211,14 +211,14 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="e.g. 704-555-0199"
-                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
+                      className="w-full px-4 py-2.5 bg-stone-50 border border-stone-300 text-stone-850 rounded-xl text-sm focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 shadow-sm transition-all duration-200"
                     />
                   </div>
                 </div>
 
                 {/* Email */}
                 <div className="space-y-1">
-                  <label htmlFor="contact-email" className="text-xs font-bold uppercase tracking-wider text-slate-600">Email Address</label>
+                  <label htmlFor="contact-email" className="text-xs font-bold uppercase tracking-wider text-stone-500">Email Address</label>
                   <input
                     id="contact-email"
                     type="email"
@@ -229,19 +229,19 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="e.g. john@example.com"
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
+                    className="w-full px-4 py-2.5 bg-stone-50 border border-stone-300 text-stone-850 rounded-xl text-sm focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 shadow-sm transition-all duration-200"
                   />
                 </div>
 
                 {/* Subject */}
                 <div className="space-y-1">
-                  <label htmlFor="contact-subject" className="text-xs font-bold uppercase tracking-wider text-slate-600">Inquiry Subject</label>
+                  <label htmlFor="contact-subject" className="text-xs font-bold uppercase tracking-wider text-stone-500">Inquiry Subject</label>
                   <select
                     id="contact-subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200 text-slate-800 font-semibold"
+                    className="w-full px-4 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-sm focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 shadow-sm transition-all duration-200 text-stone-850 font-bold"
                   >
                     <option>General Inquiry</option>
                     <option>Insurance &amp; Billing Question</option>
@@ -253,7 +253,7 @@ export default function Contact() {
 
                 {/* Message */}
                 <div className="space-y-1">
-                  <label htmlFor="contact-message" className="text-xs font-bold uppercase tracking-wider text-slate-600">Message / Comments</label>
+                  <label htmlFor="contact-message" className="text-xs font-bold uppercase tracking-wider text-stone-500">Message / Comments</label>
                   <textarea
                     id="contact-message"
                     name="message"
@@ -263,7 +263,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Describe your question in detail..."
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
+                    className="w-full px-4 py-2.5 bg-stone-50 border border-stone-300 text-stone-850 rounded-xl text-sm focus:outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 shadow-sm transition-all duration-200"
                   />
                 </div>
 
@@ -271,7 +271,7 @@ export default function Contact() {
                 <Button
                   type="submit"
                   variant="primary"
-                  className="w-full bg-cta-600 hover:bg-cta-700 text-white shadow-md hover:shadow-lg"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-md hover:shadow-lg font-bold"
                   loading={isSubmitting}
                   icon={Send}
                 >
@@ -286,25 +286,25 @@ export default function Contact() {
 
       {/* 3. MAPS & DRIVING DIRECTIONS SECTION */}
       <section className="space-y-8 pt-6 relative z-10">
-        <h2 className="text-3xl font-black font-heading tracking-tight text-slate-900 text-left">
+        <h2 className="text-3xl font-black font-heading tracking-tight text-stone-900 text-left">
           Location Map &amp; Driving Directions
         </h2>
 
-        {/* Mock/Styled Google Map Card */}
-        <Card variant="white" padding="none" className="border-slate-200/80 shadow-premium overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] w-full bg-slate-200 relative group">
+        {/* Styled Google Map Card */}
+        <Card variant="white" padding="none" className="border-stone-200 shadow-premium overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] w-full bg-stone-100 relative group rounded-2xl">
           {/* Static premium graphic representation of a map */}
-          <div className="absolute inset-0 bg-gradient-to-br from-medical-50/20 via-slate-100 to-slate-200 flex items-center justify-center p-6 text-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/10 via-stone-100 to-stone-200 flex items-center justify-center p-6 text-center">
             <div className="space-y-4 max-w-md">
-              <div className="p-3 bg-white text-medical-600 rounded-2xl shadow-md w-14 h-14 flex items-center justify-center mx-auto border border-slate-100">
+              <div className="p-3 bg-white text-emerald-600 rounded-2xl shadow-md w-14 h-14 flex items-center justify-center mx-auto border border-stone-200">
                 <MapPin className="h-7 w-7 animate-bounce" />
               </div>
               <div className="space-y-1">
-                <h4 className="font-black text-lg text-slate-900">Amara Pain &amp; Spine Management</h4>
+                <h4 className="font-black text-lg text-stone-900">Amara Pain &amp; Spine Management</h4>
                 <a 
                   href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-xs text-slate-500 hover:text-medical-600 transition-colors underline decoration-dotted block"
+                  className="text-xs text-stone-500 hover:text-emerald-700 transition-colors underline decoration-dotted block"
                 >
                   6429 Bannington Road, Suite B, Charlotte, NC 28226
                 </a>
@@ -314,66 +314,66 @@ export default function Contact() {
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                <Button variant="secondary" size="sm" icon={Navigation} className="bg-medical-600 hover:bg-medical-700 text-white">
+                <Button variant="secondary" size="sm" icon={Navigation} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold">
                   Open in Google Maps
                 </Button>
               </a>
             </div>
           </div>
           {/* Decorative geometric background lines to look like roads */}
-          <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#0284c7_1.5px,transparent_1.5px),linear-gradient(to_bottom,#0284c7_1.5px,transparent_1.5px)] bg-[size:48px_48px] pointer-events-none" />
+          <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#10b981_1.5px,transparent_1.5px),linear-gradient(to_bottom,#10b981_1.5px,transparent_1.5px)] bg-[size:48px_48px] pointer-events-none" />
         </Card>
 
         {/* Direction Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* Card 1: Driving Directions */}
-          <Card variant="white" padding="md" className="border-slate-200/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 space-y-4">
-            <div className="flex items-center gap-2 text-medical-600 border-b border-slate-100 pb-2">
-              <Car className="h-5 w-5" />
-              <h3 className="font-bold text-base text-slate-900 font-heading">Driving Directions</h3>
+          <Card variant="white" padding="md" className="border-stone-200 shadow-premium hover:shadow-premium-hover transition-all duration-300 space-y-4 bg-white p-6 rounded-2xl">
+            <div className="flex items-center gap-2 text-emerald-600 border-b border-stone-150 pb-2">
+              <Car className="h-5 w-5 animate-pulse" />
+              <h3 className="font-bold text-base text-stone-900 font-heading">Driving Directions</h3>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-stone-600 leading-relaxed font-medium">
               Driving on <strong>I-485 outer</strong>, take <strong>Exit 64-A</strong> to <strong>Hwy 51 North</strong> (Pineville Matthews Rd).
             </p>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-stone-600 leading-relaxed font-medium">
               Turn left at <strong>Bannington Rd</strong> (near the office complexes), and drive further down to see <strong>Bannington Office Park</strong>.
             </p>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-stone-600 leading-relaxed font-medium">
               Drive into the office park and take two quick right turns. Our pain center is located directly in <strong>Suite B</strong>. Call us at 704-503-9338 if you need further guidance.
             </p>
           </Card>
 
           {/* Card 2: Public Transit (CATS) */}
-          <Card variant="white" padding="md" className="border-slate-200/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 space-y-4">
-            <div className="flex items-center gap-2 text-accent-600 border-b border-slate-100 pb-2">
-              <Bus className="h-5 w-5" />
-              <h3 className="font-bold text-base text-slate-900 font-heading">CATS Bus Routes</h3>
+          <Card variant="white" padding="md" className="border-stone-200 shadow-premium hover:shadow-premium-hover transition-all duration-300 space-y-4 bg-white p-6 rounded-2xl">
+            <div className="flex items-center gap-2 text-emerald-600 border-b border-stone-150 pb-2">
+              <Bus className="h-5 w-5 animate-pulse" />
+              <h3 className="font-bold text-base text-stone-900 font-heading">CATS Bus Routes</h3>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-stone-600 leading-relaxed font-medium">
               Amara Pain &amp; Spine is accessible via the <strong>Charlotte Area Transit System (CATS)</strong> bus routes.
             </p>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-stone-600 leading-relaxed font-medium">
               Take the <strong>Route 51 Bus (Pineville / Matthews)</strong>, which stops directly on Hwy 51 (Pineville-Matthews Road) near the intersection of Bannington Road.
             </p>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-stone-600 leading-relaxed font-medium">
               From the bus stop, it is a short, flat walk of approximately 3-5 minutes into Bannington Office Park, making the clinic highly accessible for all patients.
             </p>
           </Card>
 
-          {/* Card 3: Rideshare &amp; Taxis */}
-          <Card variant="white" padding="md" className="border-slate-200/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 space-y-4">
-            <div className="flex items-center gap-2 text-slate-500 border-b border-slate-100 pb-2">
-              <Navigation className="h-5 w-5" />
-              <h3 className="font-bold text-base text-slate-900 font-heading">Uber, Lyft, &amp; Taxi</h3>
+          {/* Card 3: Rideshare & Taxis */}
+          <Card variant="white" padding="md" className="border-stone-200 shadow-premium hover:shadow-premium-hover transition-all duration-300 space-y-4 bg-white p-6 rounded-2xl">
+            <div className="flex items-center gap-2 text-emerald-600 border-b border-stone-150 pb-2">
+              <Navigation className="h-5 w-5 animate-pulse" />
+              <h3 className="font-bold text-base text-stone-900 font-heading">Uber, Lyft, &amp; Taxi</h3>
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-stone-600 leading-relaxed font-medium">
               For patients utilizing rideshares, input the destination address exactly: <strong>6429 Bannington Road, Suite B, Charlotte, NC 28226</strong>.
             </p>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-stone-600 leading-relaxed font-medium">
               Our building has a dedicated patient drop-off zone directly in front of the lobby entrance, with a ramp for wheelchair and walker accessibility.
             </p>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-stone-600 leading-relaxed font-medium">
               If you require our staff to coordinate a pickup via local taxi providers or Crown Cab post-procedure, please notify our front desk upon check-in.
             </p>
           </Card>

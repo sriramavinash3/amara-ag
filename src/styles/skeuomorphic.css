@@ -1,57 +1,4 @@
-/* Premium Healthcare Clean Neomorphic Styling Sheet */
-
-/* Custom Animations */
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 4px var(--led-color, #0284c7), inset 0 1px 1px rgba(255,255,255,0.8);
-    opacity: 0.85;
-  }
-  50% {
-    box-shadow: 0 0 12px var(--led-color, #0284c7), 0 0 4px var(--led-color, #0284c7), inset 0 1px 1px rgba(255,255,255,1);
-    opacity: 1;
-  }
-}
-
-@keyframes pulseLed {
-  0%, 100% {
-    opacity: 0.7;
-    transform: scale(0.95);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes floatOrb {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-}
-
-@keyframes floatOrbDelayed {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  50% {
-    transform: translate(-40px, 40px) scale(1.15);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
+/* Premium Healthcare Modern Clean Styling Sheet */
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
@@ -62,381 +9,210 @@
   animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Floating Utilities */
-.parallax-orb-1 {
-  transform: translateY(calc(var(--scroll-y, 0px) * 0.15));
-  will-change: transform;
-}
-
-.parallax-orb-2 {
-  transform: translateY(calc(var(--scroll-y, 0px) * -0.1));
-  will-change: transform;
-}
-
-.parallax-orb-3 {
-  transform: translateY(calc(var(--scroll-y, 0px) * 0.12));
-  will-change: transform;
-}
-
-.animate-float-slow {
-  animation: floatOrb 12s infinite ease-in-out;
-}
-
-.animate-float-delayed {
-  animation: floatOrbDelayed 15s infinite ease-in-out;
-}
-
 /* Base Wrapper for Console Theme */
 .skeuomorphic-console {
-  --color-console-bg: #f8fafc; /* Clean Light Slate/Gray background */
-  --color-console-panel-bg: #ffffff; /* Crisp white panels */
-  --color-console-dark: #0f172a; /* Slate 900 for text contrast */
-  --color-console-border-light: rgba(255, 255, 255, 1);
-  --color-console-border-dark: rgba(148, 163, 184, 0.15);
-  
-  background-color: var(--color-console-bg);
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
-    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 24px 24px, 24px 24px;
-  color: #1e293b; /* Deep slate for high-contrast accessibility */
-  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg-slate);
+  color: var(--color-primary-700);
+  font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
-/* Aggressive viewport reveals (Smooth slide and zoom trigger) */
+/* Viewport reveals */
 .animate-reveal {
   opacity: 0;
-  transform: translateY(60px) scale(0.96);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .animate-reveal.revealed {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
-/* Console Panel - Raised Bezel Plate (White Neomorphism) */
+/* Re-map Neomorphic Panel to Premium Card */
 .console-panel {
   background: #ffffff;
-  border: 1px solid var(--color-console-border-dark);
-  box-shadow: 
-    0 12px 36px rgba(148, 163, 184, 0.08),
-    0 1px 3px rgba(148, 163, 184, 0.04),
-    inset 2px 2px 0 var(--color-console-border-light),
-    inset -2px -2px 0 rgba(148, 163, 184, 0.05);
+  border: 1px solid rgba(17, 28, 21, 0.06);
+  box-shadow: 0 10px 30px rgba(11, 28, 21, 0.02);
   border-radius: 24px;
   position: relative;
-  transition: box-shadow 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .console-panel:hover {
-  box-shadow: 
-    0 20px 48px rgba(148, 163, 184, 0.12),
-    0 2px 8px rgba(148, 163, 184, 0.05),
-    inset 2px 2px 0 var(--color-console-border-light),
-    inset -2px -2px 0 rgba(148, 163, 184, 0.05);
+  box-shadow: 0 20px 40px rgba(11, 28, 21, 0.04);
 }
 
-/* Inset Panel - Carved into the surface */
+/* Inset Panel - Simple clean background box */
 .console-inset {
-  background: #f1f5f9;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  box-shadow: 
-    inset 2px 2px 5px rgba(148, 163, 184, 0.1),
-    inset -2px -2px 5px rgba(255, 255, 255, 1),
-    1px 1px 0 rgba(255, 255, 255, 0.9);
+  background: #f4f6f5;
+  border: 1px solid rgba(11, 28, 21, 0.04);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
 
-/* Screws */
+/* Screws - Hide screws as they are too industrial/scary */
 .console-screw {
-  width: 10px;
-  height: 10px;
-  background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
-  border-radius: 50%;
-  box-shadow: 
-    inset 1px 1px 1px rgba(255, 255, 255, 0.8),
-    1px 1px 2px rgba(148, 163, 184, 0.2);
-  position: absolute;
+  display: none !important;
 }
 
-.console-screw::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 1px;
-  width: 8px;
-  height: 2px;
-  background: #64748b;
-  transform: rotate(45deg);
-}
-
-/* High-Tech Diagnostic Glass Screen (Medical Blue themed) */
+/* Diagnostic Glass Screen - Re-map to clean white content block */
 .console-screen {
-  background-color: #0f172a;
-  border: 2px solid rgba(148, 163, 184, 0.2);
-  box-shadow: 
-    0 10px 30px rgba(148, 163, 184, 0.08),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.9);
+  background-color: #ffffff;
+  border: 1px solid rgba(11, 28, 21, 0.06);
+  box-shadow: 0 4px 20px rgba(11, 28, 21, 0.01);
   border-radius: 20px;
   position: relative;
   overflow: hidden;
 }
 
-/* Gloss Glass Glare Overlay */
+/* Gloss Glass Glare Overlay - Remove */
 .console-screen-glass {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 60%, rgba(255,255,255,0) 100%);
-  pointer-events: none;
-  z-index: 10;
+  display: none !important;
 }
 
-/* Glossy Gel Buttons */
+/* Re-map Gel Buttons to Modern Clean Green Buttons */
 .console-button-gel {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 750;
+  font-weight: 600;
   border-radius: 9999px;
   position: relative;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-sizing: border-box;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(0,0,0,0.25);
+  transition: all 0.2s ease;
   cursor: pointer;
   outline-offset: 4px;
+  border: none;
+  padding: 10px 24px;
 }
 
-/* High Contrast Action Color - Coral/Orange Gel Button (CTA) */
+/* High Contrast Action Color - Green Button */
 .console-button-gel-cta {
-  background: linear-gradient(180deg, #ff7e40 0%, #ea580c 60%, #c2410c 100%);
+  background: var(--color-medical-600);
   color: #ffffff;
-  box-shadow: 
-    0 4px 0 #9a3412,
-    0 6px 10px rgba(154, 52, 18, 0.25),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.2);
 }
 
 .console-button-gel-cta:hover {
-  background: linear-gradient(180deg, #ff925c 0%, #f97316 60%, #ea580c 100%);
-  transform: translateY(-2px);
-  box-shadow: 
-    0 6px 0 #9a3412,
-    0 10px 15px rgba(154, 52, 18, 0.3),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.5);
+  background: var(--color-medical-700);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.25);
 }
 
 .console-button-gel-cta:active {
-  transform: translateY(3px);
-  background: linear-gradient(180deg, #d94e06 0%, #c2410c 80%, #9a3412 100%);
-  box-shadow: 
-    0 1px 0 #9a3412,
-    0 2px 4px rgba(0, 0, 0, 0.15),
-    inset 0 4px 6px rgba(0, 0, 0, 0.25);
+  transform: translateY(1px);
 }
 
-/* Medical Blue Gel Button (Primary) */
+/* Medical Blue Gel Button - Re-mapped to Green */
 .console-button-gel-secondary {
-  background: linear-gradient(180deg, #38bdf8 0%, #0284c7 60%, #0369a1 100%);
+  background: var(--color-medical-600);
   color: #ffffff;
-  box-shadow: 
-    0 4px 0 #075985,
-    0 6px 10px rgba(7, 89, 133, 0.25),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.2);
 }
 
 .console-button-gel-secondary:hover {
-  background: linear-gradient(180deg, #7dd3fc 0%, #0ea5e9 60%, #0284c7 100%);
-  transform: translateY(-2px);
-  box-shadow: 
-    0 6px 0 #075985,
-    0 10px 15px rgba(7, 89, 133, 0.3),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.5);
-}
-
-.console-button-gel-secondary:active {
-  transform: translateY(3px);
-  background: linear-gradient(180deg, #0271ab 0%, #0369a1 80%, #075985 100%);
-  box-shadow: 
-    0 1px 0 #075985,
-    0 2px 4px rgba(0, 0, 0, 0.15),
-    inset 0 4px 6px rgba(0, 0, 0, 0.25);
+  background: var(--color-medical-700);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.25);
 }
 
 /* Secondary Teal/Green Gel Button */
 .console-button-gel-teal {
-  background: linear-gradient(180deg, #2dd4bf 0%, #0d9488 60%, #0f766e 100%);
+  background: var(--color-teal);
   color: #ffffff;
-  box-shadow: 
-    0 4px 0 #115e59,
-    0 6px 10px rgba(17, 94, 89, 0.25),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.2);
 }
 
 .console-button-gel-teal:hover {
-  background: linear-gradient(180deg, #5eead4 0%, #14b8a6 60%, #0d9488 100%);
-  transform: translateY(-2px);
-  box-shadow: 
-    0 6px 0 #115e59,
-    0 10px 15px rgba(17, 94, 89, 0.3),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.5);
+  background: #0f766e;
+  transform: translateY(-1px);
 }
 
-.console-button-gel-teal:active {
-  transform: translateY(3px);
-  background: linear-gradient(180deg, #0c7a70 0%, #0f766e 80%, #115e59 100%);
-  box-shadow: 
-    0 1px 0 #115e59,
-    0 2px 4px rgba(0, 0, 0, 0.15),
-    inset 0 4px 6px rgba(0, 0, 0, 0.25);
-}
-
-/* Outline/Carved Inset Button */
+/* Outline Button */
 .console-button-outline {
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
-  color: #0369a1; /* Primary Medical Blue for accessibility */
-  box-shadow: 
-    0 2px 4px rgba(148, 163, 184, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--color-medical-600);
+  background: #ffffff;
+  color: var(--color-medical-600);
+  transition: all 0.2s ease;
 }
 
 .console-button-outline:hover {
-  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-  border-color: #0284c7;
-  color: #0284c7;
+  background: var(--color-medical-50);
+  color: var(--color-medical-700);
 }
 
-.console-button-outline:active {
-  background: #cbd5e1;
-  box-shadow: 
-    inset 0 2px 4px rgba(148, 163, 184, 0.15);
-}
-
-/* Glowing Indicator LEDs */
+/* Glowing Indicator LEDs - Make them clean modern status dots */
 .console-led {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
   display: inline-block;
-  animation: pulseLed 2s infinite ease-in-out;
 }
 
 .console-led-cyan {
-  --led-color: #0ea5e9;
-  background-color: #0ea5e9;
-  box-shadow: 0 0 6px #0ea5e9;
+  background-color: var(--color-medical-500);
 }
 
 .console-led-green {
-  --led-color: #22c55e;
-  background-color: #22c55e;
-  box-shadow: 0 0 6px #22c55e;
+  background-color: #10b981;
 }
 
 .console-led-amber {
-  --led-color: #f59e0b;
-  background-color: #f59e0b;
-  box-shadow: 0 0 6px #f59e0b;
+  background-color: var(--color-accent-500);
 }
 
-/* Soft Neomorphic White Cards (Supports Clean White Space) */
+/* Tactile Cards - Clean Premium White Cards */
 .console-card-tactile {
   background: #ffffff;
-  border: 1px solid rgba(148, 163, 184, 0.12);
+  border: 1px solid rgba(11, 28, 21, 0.05);
   border-radius: 20px;
-  box-shadow: 
-    0 8px 24px rgba(148, 163, 184, 0.04),
-    0 1px 3px rgba(148, 163, 184, 0.02),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 24px rgba(11, 28, 21, 0.02);
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
 }
 
 .console-card-tactile:hover {
-  transform: translateY(-4px);
-  border-color: rgba(2, 132, 199, 0.25);
-  box-shadow: 
-    0 16px 36px rgba(148, 163, 184, 0.07),
-    0 4px 10px rgba(148, 163, 184, 0.03),
-    inset 1.5px 1.5px 0 rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  border-color: rgba(5, 150, 105, 0.15);
+  box-shadow: 0 16px 36px rgba(11, 28, 21, 0.04);
 }
 
-/* Inset display panels inside cards */
+/* Inset display panels inside cards - Clean neutral background */
 .console-display-panel {
-  background-color: #0f172a;
-  color: #e0f2fe;
+  background-color: #faf9f6;
+  color: var(--color-primary-900);
   border-radius: 12px;
-  border: 1.5px solid #334155;
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.3),
-    0 1px 0 rgba(255,255,255,0.9);
+  border: 1px solid rgba(11, 28, 21, 0.08);
 }
 
-/* Clinical Binder Clip Design */
+/* Clinical Binder Clip - Remove */
 .console-binder-clip {
-  width: 65px;
-  height: 16px;
-  background: linear-gradient(90deg, #94a3b8 0%, #cbd5e1 30%, #f1f5f9 50%, #cbd5e1 70%, #64748b 100%);
-  border: 1px solid rgba(148,163,184,0.25);
-  border-radius: 4px 4px 0 0;
-  box-shadow: 
-    inset 1px 1px 1px rgba(255,255,255,0.8),
-    0 2px 4px rgba(0,0,0,0.06);
-  margin: 0 auto -1px auto;
-  position: relative;
-  z-index: 10;
+  display: none !important;
 }
 
-.console-binder-clip::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: calc(50% - 13px);
-  width: 26px;
-  height: 7px;
-  border: 2px solid #475569;
-  border-bottom: none;
-  border-radius: 5px 5px 0 0;
-}
-
-/* Tab Folder System - Skeuomorphic Folder Divider */
+/* Folder Tabs - Clean rounded buttons */
 .console-folder-tab {
-  background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: #f4f6f5;
+  border: 1px solid rgba(11, 28, 21, 0.06);
   border-bottom: none;
   border-radius: 12px 12px 0 0;
   padding: 12px 24px;
-  font-weight: 700;
-  color: #475569;
-  position: relative;
-  box-shadow: 
-    inset 1px 1px 0 rgba(255, 255, 255, 0.8),
-    0 -2px 4px rgba(148, 163, 184, 0.02);
+  font-weight: 600;
+  color: var(--color-primary-600);
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .console-folder-tab:hover {
-  background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
-  color: #0369a1;
+  background: #ffffff;
+  color: var(--color-medical-600);
 }
 
 .console-folder-tab.tab-active {
   background: #ffffff;
-  color: #0284c7;
+  color: var(--color-medical-600);
   border-bottom: 2px solid #ffffff;
-  box-shadow: 
-    inset 1.5px 1.5px 0 rgba(255, 255, 255, 1),
-    0 -4px 10px rgba(148, 163, 184, 0.04);
+  box-shadow: 0 -4px 10px rgba(11, 28, 21, 0.02);
   z-index: 5;
 }
 
@@ -447,39 +223,33 @@
   left: 0;
   right: 0;
   height: 3px;
-  background-color: #0284c7;
+  background-color: var(--color-medical-600);
   border-radius: 12px 12px 0 0;
 }
 
 .console-folder-body {
   background-color: #ffffff;
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border: 1px solid rgba(11, 28, 21, 0.06);
   border-radius: 0 16px 16px 16px;
-  box-shadow: 
-    inset 1px 1px 0 rgba(255, 255, 255, 1),
-    0 10px 30px rgba(148, 163, 184, 0.04);
+  box-shadow: 0 10px 30px rgba(11, 28, 21, 0.02);
   padding: 32px;
   position: relative;
   z-index: 1;
 }
 
-/* Sticky Note for Testimonials */
+/* Sticky Note for Testimonials - Clean card with a support yellow left border */
 .sticky-note-testimonial {
   background: #ffffff;
-  border: 1px solid rgba(148, 163, 184, 0.15);
-  border-left: 6px solid #f59e0b; /* Amber left line */
-  border-radius: 8px;
-  box-shadow: 
-    0 6px 18px rgba(148, 163, 184, 0.04),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(11, 28, 21, 0.05);
+  border-left: 4px solid var(--color-accent-500); /* Yellow support border */
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(11, 28, 21, 0.02);
   transition: all 0.25s ease;
 }
 
 .sticky-note-testimonial:hover {
-  transform: translateY(-3px) rotate(0.5deg);
-  box-shadow: 
-    0 12px 24px rgba(148, 163, 184, 0.08),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(11, 28, 21, 0.03);
 }
 
 /* Video Slider Snap-Deck Styles */
@@ -526,39 +296,29 @@
 
 /* Focus indicator for accessibility */
 *:focus-visible {
-  outline: 3px solid #ea580c !important; /* CTA color for outline focus indicators */
+  outline: 3px solid var(--color-medical-600) !important; /* Green primary color for focus */
   outline-offset: 3px;
 }
 
-/* 3D Scroll Reveal & Tactile Hover Effects */
+/* Scroll reveal overrides */
 .animate-reveal-3d {
   opacity: 0;
-  transform: perspective(1200px) rotateX(15deg) translateZ(-60px) translateY(40px);
-  transform-origin: top center;
-  transition: 
-    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
-  backface-visibility: hidden;
 }
 
 .animate-reveal-3d.revealed {
   opacity: 1;
-  transform: perspective(1200px) rotateX(0deg) translateZ(0) translateY(0);
+  transform: translateY(0);
 }
 
-/* 3D Tactile Hover Tilt Card */
 .console-card-3d {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-  transform-style: preserve-3d;
+  transition: all 0.3s ease;
 }
 
 .console-card-3d:hover {
-  transform: translateY(-6px) perspective(1000px) rotateX(4deg) rotateY(-1.5deg);
-  border-color: rgba(2, 132, 199, 0.25);
-  box-shadow: 
-    0 20px 40px rgba(148, 163, 184, 0.12),
-    0 4px 12px rgba(148, 163, 184, 0.04),
-    inset 1.5px 1.5px 0 rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  border-color: rgba(5, 150, 105, 0.15);
+  box-shadow: 0 16px 36px rgba(11, 28, 21, 0.04);
 }
-

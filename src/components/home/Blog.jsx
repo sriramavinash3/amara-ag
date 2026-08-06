@@ -14,15 +14,15 @@ export default function Blog() {
   const rest = filtered.slice(1);
 
   return (
-    <section className="bg-mist px-6 py-28 md:px-16" id="blog">
+    <section className="bg-stone-50 px-6 py-20 md:px-16" id="blog">
       <div className="mx-auto max-w-[1400px]">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6 text-left">
           <div>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em]" style={{ color: 'var(--color-blue)' }}>
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-emerald-800 font-bold">
               Patient Education
             </p>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-text-dark leading-tight">
-              Understand your care, in plain language.
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-stone-900 leading-tight">
+              Understand Your Care, in Plain English
             </h2>
           </div>
 
@@ -31,11 +31,11 @@ export default function Blog() {
               <button
                 key={c}
                 onClick={() => setFilter(c)}
-                className="rounded-full border px-4 py-1.5 text-xs font-semibold transition-colors cursor-pointer border-slate-300"
+                className="rounded-full border px-4 py-1.5 text-xs font-bold transition-all cursor-pointer"
                 style={{
-                  borderColor: filter === c ? 'var(--color-blue)' : 'rgba(10,93,155,0.15)',
-                  background: filter === c ? 'var(--color-blue)' : 'transparent',
-                  color: filter === c ? 'white' : 'var(--color-text-dark)',
+                  borderColor: filter === c ? '#059669' : '#e7e5e4',
+                  background: filter === c ? '#059669' : '#ffffff',
+                  color: filter === c ? '#ffffff' : '#4b5563',
                 }}
               >
                 {c}
@@ -47,14 +47,13 @@ export default function Blog() {
         {featured && (
           <Link 
             to={`/blog/${featured.id}`}
-            className="mb-8 block rounded-2xl p-9 text-white text-left hover:brightness-110 transition-all shadow-md"
-            style={{ background: 'linear-gradient(135deg, var(--color-blue), var(--color-ink-2))' }}
+            className="mb-8 block rounded-2xl p-9 text-white text-left hover:brightness-105 transition-all shadow-md bg-gradient-to-br from-emerald-800 to-emerald-950"
           >
-            <span className="text-xs font-mono uppercase tracking-widest text-white/60">{featured.category} · Featured</span>
-            <h3 className="mt-3 font-display text-2xl md:text-3xl font-bold">{featured.title}</h3>
-            <p className="mt-2 max-w-lg text-sm text-white/70 font-light leading-relaxed">{featured.excerpt}</p>
-            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold">
-              Read article <ArrowRight size={15} />
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-200 font-bold">{featured.category} · Featured</span>
+            <h3 className="mt-3 font-heading text-2xl md:text-3xl font-extrabold">{featured.title}</h3>
+            <p className="mt-2 max-w-lg text-sm text-emerald-50 leading-relaxed font-normal">{featured.excerpt}</p>
+            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold">
+              Read Article <ArrowRight size={15} />
             </span>
           </Link>
         )}
@@ -82,15 +81,14 @@ export default function Blog() {
                   damping: 11, 
                   delay: i * 0.1 
                 }}
-                className="rounded-xl border bg-white/70 p-6 flex flex-col justify-between hover:shadow-[0_18px_40px_rgba(10,93,155,0.12)] hover:-translate-y-1 transition-all duration-300 h-full"
-                style={{ borderColor: 'rgba(10,93,155,0.1)' }}
+                className="rounded-2xl border border-stone-200 bg-white p-6 flex flex-col justify-between hover:shadow-premium-hover hover:-translate-y-1 transition-all duration-300 h-full shadow-premium"
               >
                 <div>
-                  <span className="text-[11px] font-mono uppercase tracking-widest font-semibold" style={{ color: 'var(--color-blue)' }}>{p.category}</span>
-                  <h3 className="mt-2 font-display text-lg font-bold text-text-dark">{p.title}</h3>
-                  <p className="mt-2 text-sm text-text-dark/70 font-light leading-relaxed">{p.excerpt}</p>
+                  <span className="text-[11px] font-mono uppercase tracking-widest font-extrabold text-emerald-800">{p.category}</span>
+                  <h3 className="mt-2 font-heading text-lg font-bold text-stone-900">{p.title}</h3>
+                  <p className="mt-2 text-sm text-stone-600 font-normal leading-relaxed">{p.excerpt}</p>
                 </div>
-                <span className="mt-4 flex items-center gap-1 text-xs text-text-dark/40 font-mono">
+                <span className="mt-4 flex items-center gap-1 text-xs text-stone-400 font-bold font-mono">
                   <Clock size={12} /> {p.readTime || '5 min'} read
                 </span>
               </motion.div>

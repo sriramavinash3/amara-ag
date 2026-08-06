@@ -1,55 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-heading: "Inter", system-ui, -apple-system, sans-serif;
-  --font-display: "Fraunces", serif;
+  --font-sans: "Inter", "Manrope", system-ui, -apple-system, sans-serif;
+  --font-heading: "Manrope", "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Manrope", serif;
   --font-mono: "JetBrains Mono", monospace;
   
-  --color-ink: #060d17;
-  --color-ink-2: #0b1b2e;
-  --color-blue-light: #4fa4e0;
-  --color-mist: #f5f7fa;
+  --color-ink: #0b1c15; /* Forest slate dark text */
+  --color-ink-2: #0e241b; /* Deep forest slate */
+  --color-blue-light: #34d399; /* Healing emerald tint */
+  --color-mist: #faf9f6; /* Warm off-white background */
   --color-paper: #ffffff;
-  --color-coral: #ff6b35;
-  --color-text-dark: #1b1b1b;
-  --color-teal: #1baa9c;
-  --color-blue: #0a5d9b;
+  --color-coral: #059669; /* Green replaces orange CTA */
+  --color-text-dark: #0f1f18; /* Rich dark charcoal/forest text */
+  --color-teal: #0d9488; /* Clinical teal */
+  --color-blue: #047857; /* Deep clinical green */
 
-  --color-primary-900: #0f172a;
-  --color-primary-800: #1e293b;
-  --color-primary-700: #334155;
-  --color-primary-600: #475569;
+  --color-primary-900: #0f1f18;
+  --color-primary-800: #1c2e24;
+  --color-primary-700: #2d4236;
+  --color-primary-600: #475d50;
   
-  --color-medical-600: #0284c7;
-  --color-medical-700: #0369a1;
-  --color-medical-500: #0ea5e9;
-  --color-medical-100: #e0f2fe;
-  --color-medical-50: #f0f9ff;
+  --color-medical-600: #059669; /* Primary Green */
+  --color-medical-700: #047857; /* Dark Primary Green */
+  --color-medical-500: #10b981; /* Light Primary Green */
+  --color-medical-100: #d1fae5; /* Soft Green highlight */
+  --color-medical-50: #ecfdf5; /* Warm Green background */
   
-  --color-accent-600: #0d9488;
-  --color-accent-700: #0f766e;
-  --color-accent-500: #14b8a6;
-  --color-accent-100: #ccfbf1;
-  --color-accent-50: #f0fdfa;
+  --color-accent-600: #d97706; /* Support Amber Yellow */
+  --color-accent-700: #b45309; /* Dark Amber Yellow */
+  --color-accent-500: #f59e0b; /* Bright Amber Yellow */
+  --color-accent-100: #fef9c3; /* Soft Yellow highlight */
+  --color-accent-50: #fffbeb; /* Warm pale cream background */
   
-  --color-cta-600: #ea580c;
-  --color-cta-700: #c2410c;
-  --color-cta-500: #f97316;
-  --color-cta-100: #ffedd5;
+  --color-cta-600: #059669; /* Replaces orange CTA with primary green */
+  --color-cta-700: #047857;
+  --color-cta-500: #10b981;
+  --color-cta-100: #d1fae5;
   
-  --color-bg-slate: #f8fafc;
+  --color-bg-slate: #faf9f6; /* Warm off-white global background */
   
-  --shadow-premium: 0 10px 30px rgba(15, 23, 42, 0.03);
-  --shadow-premium-hover: 0 20px 40px rgba(15, 23, 42, 0.06);
+  --shadow-premium: 0 10px 30px rgba(11, 28, 21, 0.02);
+  --shadow-premium-hover: 0 20px 40px rgba(11, 28, 21, 0.04);
 }
 
 /* Custom Core Resets */
 html,
 body {
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: 18px; /* Digital body text minimum 18px-20px */
   font-weight: 400;
   line-height: 1.75;
   letter-spacing: 0;

@@ -35,9 +35,9 @@ export default function Header() {
       path: '/about',
       submenu: [
         { name: 'Our Story & Team', path: '/about' },
-        { name: 'Dr. Ashvin K. Amara, MD', path: '/providers/dr-ashvin-amara' },
-        { name: 'Sarah Whitfield, NP', path: '/providers/sarah-whitfield' },
-        { name: 'James Okafor, PA-C', path: '/providers/james-okafor' },
+        { name: 'Ashvin K. Amara, MD', path: '/providers/dr-ashvin-amara' },
+        { name: 'Eunice Babalola, NP, MSN', path: '/providers/eunice-babalola' },
+        { name: 'Alexander Carmenaty Rodriguez, MSN, FNP-C', path: '/providers/alexander-carmenaty' },
       ]
     },
     {
@@ -97,7 +97,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 w-full z-50 bg-white shadow-sm">
       {/* 1. TOP SUBHEADER BAR */}
-      <div className="w-full bg-primary-900 text-slate-300 text-xs py-2.5 px-4 md:px-8 border-b border-slate-800/50 hidden md:block">
+      <div className="w-full bg-stone-50 text-stone-600 text-xs py-2.5 px-4 md:px-8 border-b border-stone-200/50 hidden md:block">
         <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
           {/* Clinic Details */}
           <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
@@ -105,24 +105,24 @@ export default function Header() {
               href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-white transition-colors"
+              className="flex items-center gap-1.5 hover:text-emerald-700 transition-colors"
             >
-              <MapPin className="h-3.5 w-3.5 text-medical-500" />
+              <MapPin className="h-3.5 w-3.5 text-emerald-600" />
               6429 Bannington Road, Suite B, Charlotte, NC 28226
             </a>
             <span className="flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5 text-medical-500" />
+              <Clock className="h-3.5 w-3.5 text-emerald-600" />
               Mon - Fri: 8:00 AM - 5:00 PM
             </span>
           </div>
 
           {/* Action Contacts */}
           <div className="flex items-center gap-x-6">
-            <a href="tel:7045039338" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <Phone className="h-3.5 w-3.5 text-accent-500" />
-              Call: <span className="font-semibold text-white">704-503-9338</span>
+            <a href="tel:7045039338" className="flex items-center gap-1.5 hover:text-emerald-700 transition-colors">
+              <Phone className="h-3.5 w-3.5 text-emerald-600" />
+              Call: <span className="font-semibold text-stone-800">704-503-9338</span>
             </a>
-            <span className="text-slate-500">|</span>
+            <span className="text-stone-300">|</span>
             <span>Fax: 704-503-9339</span>
           </div>
         </div>

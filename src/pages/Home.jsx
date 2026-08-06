@@ -29,81 +29,19 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-ink">
-      <SyringeJourney>
-        {/* 1. Book App */}
-        <Hero />
-        <InsuranceMarquee />
+    <main className="bg-stone-50 min-h-screen">
+      <Hero />
+      <InsuranceMarquee />
 
-        {/* Transition Dark -> Light */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #0d1a2c 0%, #f5f7fa 100%)' }}
-        />
-
-        {/* 2. Testimonial */}
-        <div className="relative z-10">
-          <Testimonials />
-        </div>
-
-        {/* Transition Light -> Dark */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #f5f7fa 0%, #060d17 100%)' }}
-        />
-
-        {/* 3. 5 steps for your 1st Visit */}
+      <div className="space-y-16 md:space-y-24 py-8 md:py-12">
+        <Testimonials />
         <AppointmentJourney />
-
-        {/* Transition Dark -> Light */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #060d17 0%, #f5f7fa 100%)' }}
-        />
-
-        {/* 4. Ans for your [FAQs] */}
-        <div className="relative z-10">
-          <AIAssistant />
-        </div>
-
-        {/* Transition Light -> Dark */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #f5f7fa 0%, #0c1422 100%)' }}
-        />
-
-        {/* 5. Insurance */}
+        <AIAssistant />
         <InsuranceVerification />
-
-        {/* 6. Pain Conditions */}
         <Conditions />
-
-        {/* Transition Dark -> Light */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #0a1120 0%, #f5f7fa 100%)' }}
-        />
-
-        {/* 7. 6 Reasons */}
-        <div className="relative z-10">
-          <WhyChoose />
-        </div>
-
-        {/* Transition Light -> Dark */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #f5f7fa 0%, #0c1422 100%)' }}
-        />
-
-        {/* 8. Doctor */}
+        <WhyChoose />
         <Providers />
-      </SyringeJourney>
+      </div>
     </main>
   );
 }

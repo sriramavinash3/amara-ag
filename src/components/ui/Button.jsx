@@ -16,11 +16,11 @@ export default function Button({
   const baseStyles = 'inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer';
   
   const variants = {
-    primary: 'bg-cta-600 hover:bg-cta-700 text-white shadow-md hover:shadow-lg focus-visible:outline-cta-600 transform hover:-translate-y-0.5 active:translate-y-0',
-    secondary: 'bg-medical-600 hover:bg-medical-700 text-white shadow-sm hover:shadow-md focus-visible:outline-medical-600 transform hover:-translate-y-0.5 active:translate-y-0',
-    accent: 'bg-accent-600 hover:bg-accent-700 text-white shadow-sm hover:shadow-md focus-visible:outline-accent-600 transform hover:-translate-y-0.5 active:translate-y-0',
-    outline: 'border border-primary-900/10 hover:border-medical-600 hover:bg-medical-50 text-primary-800 hover:text-medical-600 focus-visible:outline-medical-600',
-    ghost: 'hover:bg-primary-900/5 text-primary-700 hover:text-primary-900 focus-visible:outline-primary-900',
+    primary: 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-md hover:shadow-lg focus-visible:outline-emerald-600 transform hover:-translate-y-0.5 active:translate-y-0',
+    secondary: 'bg-white border-2 border-emerald-650 hover:bg-emerald-50 text-emerald-700 font-bold focus-visible:outline-emerald-600 transform hover:-translate-y-0.5 active:translate-y-0',
+    accent: 'bg-red-600 hover:bg-red-700 text-white shadow-md hover:shadow-lg focus-visible:outline-red-600 transform hover:-translate-y-0.5 active:translate-y-0',
+    outline: 'bg-white border border-slate-300 hover:border-emerald-600 hover:bg-emerald-50 text-slate-700 hover:text-emerald-750 focus-visible:outline-emerald-600',
+    ghost: 'hover:bg-slate-100 text-slate-700 hover:text-slate-900 focus-visible:outline-slate-900',
   };
 
   const sizes = {

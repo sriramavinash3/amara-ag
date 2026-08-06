@@ -10,40 +10,44 @@ import '../styles/skeuomorphic.css';
 const providerData = {
   "dr-ashvin-amara": {
     id: "dr-ashvin-amara",
-    name: "Dr. Ashvin K. Amara, MD",
-    role: "Founder & Lead Physician",
-    credentials: "Specialist in Pain Medicine & Anesthesiology",
-    bio: "Dr. Ashvin K. Amara, MD, is a highly trusted physician in Charlotte, NC. With over 15 years of interventional pain management experience, he completed advanced fellowship training specifically targeting chronic spine and joint conditions. His patient-focused approach avoids heavy hospitalization markups, focusing instead on clinical accuracy and compassionate care.",
-    detailedBio: "Dr. Amara established Amara Pain & Spine Management to offer a true alternative to corporate hospital chains. He believes that chronic pain management requires a tailored approach. Pain is personal, and a standard one-size-fits-all plan is rarely successful. Our specialist care plans use targeted anti-inflammatory blocks, radiofrequency ablations, and spinal cord neuromodulation to block pain pathways at their source.",
+    name: "Ashvin K. Amara, MD",
+    role: "Founder & Medical Director",
+    credentials: "Board Certified in Anesthesiology & Pain Medicine",
+    bio: "Ashvin K. Amara, MD, is a highly trusted double board-certified physician in both Anesthesiology and Interventional Pain Medicine. He completed his comprehensive fellowship training in pain management and has dedicated over 15 years to helping patients in Charlotte, NC, find relief from complex chronic and acute pain conditions.",
+    detailedBio: "Amara graduated from Osmania Medical College in India. He completed a one-year internship at Richmond University Medical Center (Staten Island, NY) followed by a four-year residency at Brookdale University Hospital Medical Center (Brooklyn, NY). He went on to complete a one-year sub-specialist fellowship in Interventional Pain Management at John H. Stroger Hospital of Cook County (Chicago, IL). Throughout his career, Amara has rotated through prestigious institutions including Staten Island University Hospital, Memorial Sloan Kettering Cancer Center, and St. Luke's Roosevelt Hospital Center. He established Amara Pain & Spine Management to offer high-quality, transparent, and patient-centered care without corporate hospital markups.",
     education: [
-      "Fellowship in Pain Management - Interventional Pain Medicine",
-      "Residency in Anesthesiology - Certified Specialist",
-      "Medical Doctor Degree (MD) - Licensed Practitioner in NC"
+      "Fellowship in Interventional Pain Management – John H. Stroger Hospital of Cook County, Chicago, IL",
+      "Residency in Anesthesiology – Brookdale University Hospital Medical Center, Brooklyn, NY",
+      "Internship – Richmond University Medical Center, Staten Island, NY",
+      "Medical Doctor (MD) – Osmania Medical College, India"
     ],
     memberships: [
       "American Society of Anesthesiologists (ASA)",
       "American Society of Interventional Pain Physicians (ASIPP)",
-      "North Carolina Medical Society (NCMS)"
+      "American Academy of Pain Medicine (AAPM)",
+      "North American Spine Society (NASS)",
+      "Spine Intervention Society (SIS)"
     ],
     specializations: [
       "Facet Joint Blocks & Ablations",
       "Epidural Steroid Injections (ESI)",
       "Spinal Cord Stimulator (SCS) Trials & Implants",
-      "Genicular Nerve Blocks for Knee Pain"
+      "Radiofrequency Ablation (RFA)",
+      "Genicular Nerve Blocks & Joint Injections"
     ],
-    languages: ["English", "Spanish", "Hindi", "Telugu"],
+    languages: ["English", "Hindi", "Telugu", "Spanish"],
     experience: "15+ Years",
     certifications: [
-      "Certified in Pain Medicine - American Board of Anesthesiology",
-      "Certified in Anesthesiology - American Board of Anesthesiology",
-      "Advanced Cardiac Life Support (ACLS) Certified"
+      "Board Certified in Pain Management – American Board of Anesthesiology",
+      "Board Certified in Anesthesiology – American Board of Anesthesiology",
+      "Medical License – North Carolina Medical Board"
     ],
     schema: {
       "@context": "https://schema.org",
       "@type": "Physician",
-      "name": "Dr. Ashvin K. Amara, MD",
+      "name": "Ashvin K. Amara, MD",
       "medicalSpecialty": "PainManagement",
-      "knowsLanguage": ["English", "Spanish", "Hindi", "Telugu"],
+      "knowsLanguage": ["English", "Hindi", "Telugu", "Spanish"],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "6429 Bannington Road, Suite B",
@@ -53,38 +57,39 @@ const providerData = {
       }
     }
   },
-  "sarah-whitfield": {
-    id: "sarah-whitfield",
-    name: "Sarah Whitfield, NP",
+  "eunice-babalola": {
+    id: "eunice-babalola",
+    name: "Eunice Babalola, NP, MSN",
     role: "Nurse Practitioner",
-    credentials: "Certified Family Nurse Practitioner",
-    bio: "Sarah Whitfield, NP, is a compassionate and dedicated Nurse Practitioner at Amara Pain & Spine Management. With extensive clinical training, she collaborates closely with Dr. Amara to deliver personalized, empathetic pain relief plans focused on chronic pain management and trigger point therapy.",
-    detailedBio: "Sarah believes in a patient-first model of care, taking the time to listen to your concerns and validate your experiences. She specialized in Master of Science in Nursing and focuses on trigger point injections, chronic pain follow-ups, and collaborative therapy adjustments to support your daily return to comfort and active living.",
+    credentials: "Board-Certified Family Nurse Practitioner",
+    bio: "Eunice Babalola, NP, MSN, is a board-certified Nurse Practitioner at Amara Pain & Spine Management. She is dedicated to walking alongside patients on their path to recovery, focusing on holistic, evidence-based pain management and customized care plans to promote long-term comfort and well-being.",
+    detailedBio: "Eunice earned her Master of Science in Nursing (MSN-FNP) from the University of North Carolina at Charlotte (UNCC). Her extensive clinical background includes medical-surgical and neurosurgical care, which guides her safe and thorough approach to patient assessments. Eunice is board-certified by the American Association of Nurse Practitioners (AANP) and is also a board-certified Medical-Surgical Nurse through the American Nurses Credentialing Center (ANCC). She is an active member of the American Nurses Association (ANA) and the North Carolina Nurses Association (NCNA). Eunice focuses on patient-centered care and enjoys incorporating evidence-based practices like aromatherapy to maximize comfort.",
     education: [
-      "Master of Science in Nursing (MSN) - Advanced Practice Nursing",
-      "Family Nurse Practitioner Program - Graduate with Honors",
-      "Specialized Clinical Training in Myofascial Release & Joint Injections"
+      "Master of Science in Nursing (MSN-FNP) – University of North Carolina at Charlotte (UNCC)",
+      "Bachelor of Science in Nursing (BSN) – Registered Nurse"
     ],
     memberships: [
-      "American Association of Nurse Practitioners (AANP)",
+      "American Nurses Association (ANA)",
       "North Carolina Nurses Association (NCNA)"
     ],
     specializations: [
-      "Trigger Point Injections (TPI) for Myofascial Knots",
-      "Medication Management & Guidance",
-      "Chronic Pain Progress Monitoring",
-      "Joint & Soft Tissue Injections"
+      "Chronic Pain Management & Monitoring",
+      "Medication Management & Patient Guidance",
+      "Myofascial Trigger Point Therapy",
+      "Complementary & Holistic Wellness Care",
+      "Aromatherapy for Patient Comfort"
     ],
     languages: ["English", "Spanish"],
-    experience: "Certified Practitioner",
+    experience: "Board Certified",
     certifications: [
-      "Registered Nurse (RN) Licensure - North Carolina",
-      "Family Nurse Practitioner Certification (AANP-FNP)"
+      "Certified Family Nurse Practitioner – American Association of Nurse Practitioners (AANP)",
+      "Certified Medical-Surgical Nurse – American Nurses Credentialing Center (ANCC)",
+      "Registered Nurse (RN) Licensure – North Carolina"
     ],
     schema: {
       "@context": "https://schema.org",
       "@type": "Physician",
-      "name": "Sarah Whitfield, NP",
+      "name": "Eunice Babalola, NP, MSN",
       "medicalSpecialty": "PainManagement",
       "knowsLanguage": ["English", "Spanish"],
       "address": {
@@ -96,40 +101,40 @@ const providerData = {
       }
     }
   },
-  "james-okafor": {
-    id: "james-okafor",
-    name: "James Okafor, PA-C",
-    role: "Physician Assistant",
-    credentials: "Certified Physician Assistant",
-    bio: "James Okafor, PA-C, is a highly attentive and compassionate Physician Assistant specializing in interventional therapies. Working in direct clinical collaboration with Dr. Amara, James delivers precise, result-oriented plans to restore joint and back function.",
-    detailedBio: "James completed his Master of Physician Assistant Studies (MPAS) and is certified by the NCCPA. He is dedicated to helping patients find relief from post-surgical and joint pain through targeted injection therapies, structured rehabilitation plans, and direct provider alignment.",
+  "alexander-carmenaty": {
+    id: "alexander-carmenaty",
+    name: "Alexander Carmenaty Rodriguez, MSN, FNP-C",
+    role: "Nurse Practitioner",
+    credentials: "Board-Certified Family Nurse Practitioner",
+    bio: "Alexander Carmenaty Rodriguez, MSN, FNP-C, is a board-certified Nurse Practitioner at Amara Pain & Spine Management. He possesses a diverse international background in healthcare, enabling him to identify patient needs and develop highly effective medical plans and treatments.",
+    detailedBio: "Alexander earned his Master of Science in Nursing (MSN-FNP) from South University–Savannah. He gained valuable clinical experience as a Registered Nurse in pediatric home health and specialized rehabilitation facilities. Furthermore, he holds extensive international medical experience, having previously served as a Family Physician in Cuba, Venezuela, and Brazil. Alexander is board-certified by the American Association of Nurse Practitioners (AANP), is a member of the American Association of Nurse Practitioners, and holds Advanced Life Support (ALS) certification. He is dedicated to helping patients restore their physical function and achieve their long-term well-being goals.",
     education: [
-      "Master of Physician Assistant Studies (MPAS)",
-      "Physician Assistant Certification Program - Clinical Training",
-      "Specialized Training in Spine & Joint Injections"
+      "Master of Science in Nursing (MSN-FNP) – South University, Savannah, GA",
+      "Doctor of Medicine (MD Equivalent) / Family Physician Training – Cuba"
     ],
     memberships: [
-      "American Academy of Physician Associates (AAPA)",
-      "North Carolina Academy of Physician Assistants (NCAPA)"
+      "American Association of Nurse Practitioners (AANP)"
     ],
     specializations: [
-      "Spine & Joint Injection Therapies",
-      "Post-Surgical Pain Management",
-      "Physical Recovery & Rehabilitation Planning",
-      "Diagnostic Nerve Blocks Assistance"
+      "Spine & Joint Injection Assistance",
+      "Chronic Pain Evaluation & Assessment",
+      "Patient-Centered Treatment Planning",
+      "International Primary Care",
+      "Rehabilitation Care Coordination"
     ],
-    languages: ["English"],
-    experience: "Certified Specialist",
+    languages: ["English", "Spanish", "Portuguese"],
+    experience: "Board Certified",
     certifications: [
-      "NCCPA Certified Physician Assistant",
-      "Physician Assistant License - North Carolina"
+      "Family Nurse Practitioner Certification (FNP-C) – American Association of Nurse Practitioners (AANP)",
+      "Advanced Life Support (ALS) Certified",
+      "Registered Nurse (RN) Licensure – North Carolina"
     ],
     schema: {
       "@context": "https://schema.org",
       "@type": "Physician",
-      "name": "James Okafor, PA-C",
+      "name": "Alexander Carmenaty Rodriguez, MSN, FNP-C",
       "medicalSpecialty": "PainManagement",
-      "knowsLanguage": ["English"],
+      "knowsLanguage": ["English", "Spanish", "Portuguese"],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "6429 Bannington Road, Suite B",
