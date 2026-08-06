@@ -15,12 +15,12 @@ export default function About() {
     {
       name: "Dr. Ashvin K. Amara, MD",
       role: "Founder & Lead Physician",
-      credentials: "Double Board-Certified in Pain Medicine & Anesthesiology",
-      bio: "Dr. Amara has spent over 15 years diagnosing and treating complex spinal and joint pain disorders. He believes in a patient-centered model that combines advanced diagnostic blocks with minimally invasive outpatient treatments, avoiding unnecessary surgery. He is double board-certified by the American Board of Anesthesiology.",
+      credentials: "Specialist in Pain Medicine & Anesthesiology",
+      bio: "Dr. Amara has spent over 15 years diagnosing and treating complex spinal and joint pain disorders. He believes in a patient-centered model that combines advanced diagnostic blocks with minimally invasive outpatient treatments, avoiding unnecessary surgery. He is double-certified by the American Board of Anesthesiology.",
       education: [
         "Fellowship in Pain Management - Interventional Pain Medicine",
-        "Residency in Anesthesiology - Board Certified",
-        "Medical Doctor Degree (MD) - Double Board Certified Specialist"
+        "Residency in Anesthesiology - Certified Specialist",
+        "Medical Doctor Degree (MD) - Certified Specialist"
       ],
       memberships: [
         "American Society of Anesthesiologists (ASA)",
@@ -29,18 +29,33 @@ export default function About() {
       ]
     },
     {
-      name: "Nurse Practitioners (NPs)",
-      role: "Advanced Clinical Providers",
-      credentials: "Board-Certified Family Nurse Practitioners",
-      bio: "Our highly trained Family Nurse Practitioners work in close clinical collaboration with Dr. Amara. They provide comprehensive evaluations, trigger point injections, chronic pain management follow-ups, and metabolic coaching for our medical weight loss program. They are dedicated to validating your concerns and supporting your daily recovery.",
+      name: "Sarah Whitfield, NP",
+      role: "Nurse Practitioner",
+      credentials: "Certified Family Nurse Practitioner",
+      bio: "Sarah Whitfield, NP, is dedicated to walking alongside patients on their path to recovery. Sarah focuses on chronic pain relief, myofascial trigger point therapy, and collaborative care plans. She is widely recognized for her warm, attentive listening and her deep devotion to helping patients restore their physical function and daily comfort.",
       education: [
         "Master of Science in Nursing (MSN) - Advanced Practice Registered Nurse",
-        "Board Certified Nurse Practitioners (AANP / ANCC)",
+        "Certified Family Nurse Practitioner (AANP / ANCC)",
         "Specialized Clinical Training in Myofascial Release & Joint Injections"
       ],
       memberships: [
         "American Association of Nurse Practitioners (AANP)",
         "North Carolina Nurses Association (NCNA)"
+      ]
+    },
+    {
+      name: "James Okafor, PA-C",
+      role: "Physician Assistant",
+      credentials: "Certified Physician Assistant",
+      bio: "James Okafor, PA-C, is a compassionate Physician Assistant specializing in interventional pain therapies. James focuses on joint injections, post-surgical pain management, and personalized physical recovery plans. He takes great pride in validating patient concerns, helping them restore their daily mobility and improve their overall quality of life.",
+      education: [
+        "Master of Physician Assistant Studies (MPAS)",
+        "NCCPA Certified Physician Assistant",
+        "Specialized Training in Joint Injections & Post-Surgical Recovery Plans"
+      ],
+      memberships: [
+        "American Academy of Physician Associates (AAPA)",
+        "North Carolina Academy of Physician Assistants (NCAPA)"
       ]
     }
   ];
@@ -111,7 +126,7 @@ export default function About() {
               <li className="flex gap-3">
                 <CheckCircle2 className="h-5 w-5 text-accent-600 shrink-0 mt-0.5" />
                 <div>
-                  <strong>Double Board-Certified:</strong> Directed by a physician board-certified in both pain medicine and anesthesiology.
+                  <strong>Double-Certified Specialist:</strong> Directed by a physician certified in both pain medicine and anesthesiology.
                 </div>
               </li>
               <li className="flex gap-3">
@@ -153,7 +168,7 @@ export default function About() {
                     <span className="text-sm font-semibold text-slate-500 block mt-0.5">{provider.role}</span>
                   </div>
                   <Badge variant={idx === 0 ? "secondary" : "accent"} className={idx === 0 ? "bg-medical-50 text-medical-800 border border-medical-100" : "bg-cyan-50 text-cyan-800 border border-cyan-100"}>
-                    {idx === 0 ? "Double Board Certified" : "Clinical Partner"}
+                    {idx === 0 ? "Double-Certified Specialist" : "Clinical Partner"}
                   </Badge>
                 </div>
 

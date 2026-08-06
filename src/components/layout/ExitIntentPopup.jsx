@@ -55,7 +55,7 @@ export default function ExitIntentPopup() {
               Get Your Pain Evaluated This Week
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              We offer same-week consultations in Charlotte, NC. Directed by double board-certified specialists with zero facility fees.
+              We offer same-week consultations in Charlotte, NC. Directed by double-certified specialists with zero facility fees.
             </p>
           </div>
 

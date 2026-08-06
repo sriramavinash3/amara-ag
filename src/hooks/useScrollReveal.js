@@ -16,39 +16,58 @@ export default function useScrollReveal(containerRef) {
     const container = containerRef?.current;
     if (!container) return;
 
-    const revealElements = container.querySelectorAll('.animate-reveal, .animate-reveal-3d');
+    let revealObserver;
 
-    if (prefersReducedMotion) {
-      // Force all elements to reveal immediately without transition styles
-      revealElements.forEach((el) => {
-        el.classList.add('revealed');
-        el.style.transition = 'none';
-        el.style.transform = 'none';
-        el.style.opacity = '1';
-      });
-      return;
-    }
+    const observeElements = () => {
+      const revealElements = container.querySelectorAll('.animate-reveal, .animate-reveal-3d');
 
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-          } else {
-            entry.target.classList.remove('revealed');
-          }
+      if (prefersReducedMotion) {
+        // Force all elements to reveal immediately without transition styles
+        revealElements.forEach((el) => {
+          el.classList.add('revealed');
+          el.style.transition = 'none';
+          el.style.transform = 'none';
+          el.style.opacity = '1';
         });
-      },
-      {
-        threshold: MOTION_TOKENS.threshold,
-        rootMargin: MOTION_TOKENS.rootMargin,
+        return;
       }
-    );
 
-    revealElements.forEach((el) => revealObserver.observe(el));
+      if (!revealObserver) {
+        revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+              }
+            });
+          },
+          {
+            threshold: MOTION_TOKENS.threshold,
+            rootMargin: MOTION_TOKENS.rootMargin,
+          }
+        );
+      }
+
+      revealElements.forEach((el) => {
+        // Reveal immediately if already intersecting or observe
+        revealObserver.observe(el);
+      });
+    };
+
+    observeElements();
+
+    // Observe container mutations so dynamically added cards/elements get revealed
+    const mutationObserver = new MutationObserver(() => {
+      observeElements();
+    });
+
+    mutationObserver.observe(container, { childList: true, subtree: true });
 
     return () => {
-      revealElements.forEach((el) => revealObserver.unobserve(el));
+      if (revealObserver) {
+        revealObserver.disconnect();
+      }
+      mutationObserver.disconnect();
     };
   }, [containerRef]);
 }

@@ -129,7 +129,7 @@ export default function AIChatbot() {
     }
     // 9. Default Chat Text response
     else {
-      addMessage('bot', "I understand. To get personalized diagnostic advice, we highly recommend scheduling a physical consultation with our board-certified specialist.", [
+      addMessage('bot', "I understand. To get personalized diagnostic advice, we highly recommend scheduling a physical consultation with our certified specialist.", [
         { label: '📅 Book Online', value: 'book' },
         { label: 'Back to Main Menu', value: 'main_menu' }
       ]);

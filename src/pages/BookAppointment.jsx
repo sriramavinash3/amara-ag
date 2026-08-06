@@ -54,8 +54,9 @@ export default function BookAppointment() {
   };
 
   const providers = [
-    { name: 'Dr. Ashvin K. Amara, MD', role: 'Double Board-Certified Specialist' },
-    { name: 'Nurse Practitioners (NPs)', role: 'Advanced Care Practice Group' },
+    { name: 'Dr. Ashvin K. Amara, MD', role: 'Founder & Lead Specialist' },
+    { name: 'Sarah Whitfield, NP', role: 'Certified Family Nurse Practitioner' },
+    { name: 'James Okafor, PA-C', role: 'Certified Physician Assistant' },
     { name: 'First Available Clinical Provider', role: 'Fastest Schedule Option' }
   ];
 
@@ -205,7 +206,15 @@ export default function BookAppointment() {
               <h2 className="text-2xl font-black font-heading text-slate-900">Select your medical provider</h2>
               <p className="text-sm text-slate-600 leading-relaxed">Choose a specific clinical specialist or select First Available for faster appointment slots.</p>
             </div>
-            
+
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3 text-sm text-amber-800 leading-relaxed shadow-sm">
+              <Info className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
+              <div>
+                <strong className="font-bold block">Provider Selection Note:</strong>
+                This section is currently pending administrative review [to be discussed]. Select any provider to proceed with requesting your appointment slot.
+              </div>
+            </div>
+
             <div className="space-y-3 pt-2">
               {providers.map((prov, idx) => (
                 <button

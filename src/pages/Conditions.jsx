@@ -68,7 +68,7 @@ export default function Conditions() {
       <Card variant="slate" padding="sm" className="bg-slate-100/50 border-slate-200 flex gap-3.5 items-start relative z-10 p-6 animate-reveal">
         <Info className="h-5 w-5 text-medical-600 shrink-0 mt-0.5" />
         <p className="text-xs text-slate-600 leading-relaxed">
-          <strong>Important Note:</strong> The conditions listed below represent broad clinical categories we treat. Pain can manifest in highly complex, overlapping ways. A physical evaluation and review of recent diagnostics (such as MRIs or X-rays) by our double board-certified specialist is necessary to formulate an accurate, targeted treatment plan.
+          <strong>Important Note:</strong> The conditions listed below represent broad clinical categories we treat. Pain can manifest in highly complex, overlapping ways. A physical evaluation and review of recent diagnostics (such as MRIs or X-rays) by our double-certified specialist is necessary to formulate an accurate, targeted treatment plan.
         </p>
       </Card>
 
@@ -138,7 +138,7 @@ export default function Conditions() {
             Ready to Find Long-Lasting Pain Relief?
           </h2>
           <p className="text-sm md:text-base text-slate-300 leading-relaxed">
-            You do not have to live with chronic, debilitating pain. Book a comprehensive, same-week consultation with our double board-certified specialist today.
+            You do not have to live with chronic, debilitating pain. Book a comprehensive, same-week consultation with our double-certified specialist today.
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-4 pt-2">

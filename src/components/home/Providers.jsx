@@ -9,18 +9,27 @@ const providers = [
     name: 'Dr. Ashvin K. Amara, MD',
     role: 'Founder & Lead Interventionalist',
     education: 'Fellowship in Interventional Pain Management',
-    certs: 'ABA Board Certified — Anesthesiology & Pain Medicine',
+    certs: 'ABA Certified — Anesthesiology & Pain Medicine',
     languages: 'English, Spanish, Hindi, Telugu',
     specialties: 'Spinal cord stimulation, fluoroscopic injections, radiofrequency ablation',
   },
   {
-    id: 'nurse-practitioners',
-    name: 'Advanced Practice NPs',
-    role: 'Board-Certified Nurse Practitioners',
-    education: 'Master of Science in Nursing (MSN)',
-    certs: 'AANP Certified - Family Practice',
+    id: 'sarah-whitfield',
+    name: 'Sarah Whitfield, NP',
+    role: 'Nurse Practitioner',
+    education: 'MSN, Family Nurse Practitioner Program',
+    certs: 'Certified — Family Practice',
     languages: 'English, Spanish',
-    specialties: 'Clinical diagnostics, trigger point blocks, joint injections, metabolic therapy',
+    specialties: 'Chronic pain management, medication management, trigger point blocks',
+  },
+  {
+    id: 'james-okafor',
+    name: 'James Okafor, PA-C',
+    role: 'Physician Assistant',
+    education: 'MPAS, Physician Assistant Studies',
+    certs: 'NCCPA Certified',
+    languages: 'English',
+    specialties: 'Injection therapies, post-surgical pain, joint preservation',
   },
 ];
 
@@ -33,23 +42,22 @@ export default function Providers() {
             Provider Spotlight
           </p>
           <h2 className="font-display text-4xl text-mist md:text-5xl font-bold leading-tight">
-            The board-certified team behind your care plan.
+            The specialized team dedicated to your care.
           </h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 text-left">
+        <div className="grid gap-6 md:grid-cols-3 text-left">
           {providers.map((p, i) => (
             <motion.div
               key={p.id}
               initial={{ 
                 opacity: 0, 
-                x: i === 0 ? -120 : 120, 
+                x: i === 0 ? -100 : i === 2 ? 100 : 0, 
                 y: 40,
-                rotate: i === 0 ? -4 : 4,
-                scale: 0.88, 
-                rotateX: 10 
+                scale: 0.9, 
+                rotateX: 5 
               }}
-              whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, rotateX: 0 }}
+              whileInView={{ opacity: 1, x: 0, y: 0, scale: 1, rotateX: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ 
                 type: 'spring', 

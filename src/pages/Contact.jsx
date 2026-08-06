@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Printer, Send, Info, Bus, Car, Navigation, CheckCircle2 } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Phone, Mail, MapPin, Clock, Printer, Send, Info, Bus, Car, Navigation, CheckCircle2, ArrowRight } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
+import useScrollReveal from '../hooks/useScrollReveal';
 import '../styles/skeuomorphic.css';
 
 export default function Contact() {
+  const containerRef = useRef(null);
+  useScrollReveal(containerRef);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -66,7 +70,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="w-full relative py-16 px-4 md:px-8 max-w-7xl mx-auto space-y-16 text-left">
+    <div ref={containerRef} className="w-full relative py-16 px-4 md:px-8 max-w-7xl mx-auto space-y-16 text-left">
 
       {/* 1. PAGE HEADER */}
       <div className="space-y-4 max-w-3xl border-b border-slate-200 pb-8 relative z-10">
@@ -82,7 +86,7 @@ export default function Contact() {
       </div>
 
       {/* 2. CONTACT DETAILS & FORM DUAL PANEL */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10">
         
         {/* Left Column: Contact Cards */}
         <div className="lg:col-span-5 space-y-6">
@@ -108,12 +112,17 @@ export default function Contact() {
               <MapPin className="h-6 w-6 text-accent-600 shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">Location Address</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mt-1">
+                <a 
+                  href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block text-sm text-slate-600 hover:text-accent-600 transition-colors leading-relaxed mt-1"
+                >
                   6429 Bannington Road, Suite B,<br />
                   Charlotte, NC 28226
-                </p>
+                </a>
                 <a 
-                  href="https://maps.google.com/?q=6429+Bannington+Road,+Suite+B,+Charlotte,+NC+28226" 
+                  href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-xs font-bold text-accent-600 hover:text-accent-700 mt-2"
@@ -140,9 +149,9 @@ export default function Contact() {
             <Card variant="white" padding="md" className="border-slate-200/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex gap-4 items-start console-card-3d animate-reveal-3d" style={{ animationDelay: '0.2s' }}>
               <Mail className="h-6 w-6 text-slate-500 shrink-0 mt-1" />
               <div>
-                <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">Administrative Email</h3>
-                <a href="mailto:amarapain@gmail.com" className="block text-sm text-slate-605 hover:text-medical-600 mt-1">
-                  amarapain@gmail.com
+                <h3 className="font-bold text-sm text-slate-900 uppercase tracking-wider">Email</h3>
+                <a href="mailto:contact@amarapain.com" className="block text-sm text-slate-600 hover:text-medical-600 mt-1">
+                  contact@amarapain.com
                 </a>
               </div>
             </Card>
@@ -157,7 +166,7 @@ export default function Contact() {
 
           <Card variant="white" padding="lg" className="border-slate-200/80 shadow-premium relative console-card-3d animate-reveal-3d" style={{ animationDelay: '0.1s' }}>
             {submitSuccess ? (
-              <div className="text-center py-12 space-y-4">
+              <div className="text-center py-12 space-y-4" aria-live="polite">
                 <div className="p-3 bg-emerald-50 text-emerald-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="h-10 w-10" />
                 </div>
@@ -170,59 +179,69 @@ export default function Contact() {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleFormSubmit} className="space-y-5">
+              <form onSubmit={handleFormSubmit} className="space-y-5" aria-label="Contact clinic form">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Name */}
                   <div className="space-y-1">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Your Full Name</label>
+                    <label htmlFor="contact-name" className="text-xs font-bold uppercase tracking-wider text-slate-600">Your Full Name</label>
                     <input
+                      id="contact-name"
                       type="text"
                       name="name"
                       required
+                      aria-required="true"
+                      autoComplete="name"
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="e.g. John Doe"
-                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-205 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
                     />
                   </div>
 
                   {/* Phone */}
                   <div className="space-y-1">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Phone Number</label>
+                    <label htmlFor="contact-phone" className="text-xs font-bold uppercase tracking-wider text-slate-600">Phone Number</label>
                     <input
+                      id="contact-phone"
                       type="tel"
                       name="phone"
                       required
+                      aria-required="true"
+                      autoComplete="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="e.g. 704-555-0199"
-                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-205 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
                     />
                   </div>
                 </div>
 
                 {/* Email */}
                 <div className="space-y-1">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Email Address</label>
+                  <label htmlFor="contact-email" className="text-xs font-bold uppercase tracking-wider text-slate-600">Email Address</label>
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
                     required
+                    aria-required="true"
+                    autoComplete="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="e.g. john@example.com"
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-205 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
                   />
                 </div>
 
                 {/* Subject */}
                 <div className="space-y-1">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Inquiry Subject</label>
+                  <label htmlFor="contact-subject" className="text-xs font-bold uppercase tracking-wider text-slate-600">Inquiry Subject</label>
                   <select
+                    id="contact-subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-205 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200 text-slate-700 font-semibold"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200 text-slate-800 font-semibold"
                   >
                     <option>General Inquiry</option>
                     <option>Insurance &amp; Billing Question</option>
@@ -234,15 +253,17 @@ export default function Contact() {
 
                 {/* Message */}
                 <div className="space-y-1">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-400">Message / Comments</label>
+                  <label htmlFor="contact-message" className="text-xs font-bold uppercase tracking-wider text-slate-600">Message / Comments</label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     required
+                    aria-required="true"
                     rows="4"
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Describe your question in detail..."
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-205 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-xl text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
                   />
                 </div>
 
@@ -265,12 +286,12 @@ export default function Contact() {
 
       {/* 3. MAPS & DRIVING DIRECTIONS SECTION */}
       <section className="space-y-8 pt-6 relative z-10">
-        <h2 className="text-3xl font-black font-heading tracking-tight text-slate-900 text-center">
+        <h2 className="text-3xl font-black font-heading tracking-tight text-slate-900 text-left">
           Location Map &amp; Driving Directions
         </h2>
 
         {/* Mock/Styled Google Map Card */}
-        <Card variant="white" padding="none" className="border-slate-200/80 shadow-premium overflow-hidden aspect-[21/9] w-full bg-slate-200 relative group">
+        <Card variant="white" padding="none" className="border-slate-200/80 shadow-premium overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] w-full bg-slate-200 relative group">
           {/* Static premium graphic representation of a map */}
           <div className="absolute inset-0 bg-gradient-to-br from-medical-50/20 via-slate-100 to-slate-200 flex items-center justify-center p-6 text-center">
             <div className="space-y-4 max-w-md">
@@ -279,10 +300,17 @@ export default function Contact() {
               </div>
               <div className="space-y-1">
                 <h4 className="font-black text-lg text-slate-900">Amara Pain &amp; Spine Management</h4>
-                <p className="text-xs text-slate-500">6429 Bannington Road, Suite B, Charlotte, NC 28226</p>
+                <a 
+                  href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-xs text-slate-500 hover:text-medical-600 transition-colors underline decoration-dotted block"
+                >
+                  6429 Bannington Road, Suite B, Charlotte, NC 28226
+                </a>
               </div>
               <a 
-                href="https://maps.google.com/?q=6429+Bannington+Road,+Suite+B,+Charlotte,+NC+28226" 
+                href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >

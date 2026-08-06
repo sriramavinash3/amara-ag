@@ -85,7 +85,7 @@ export default function PrivacyPolicy() {
             <p className="text-sm font-bold text-slate-900">Amara Pain &amp; Spine Management</p>
             <p>Attn: Privacy &amp; HIPAA Officer</p>
             <p>6429 Bannington Road, Suite B, Charlotte, NC 28226</p>
-            <p>Phone: 704-503-9338 &bull; Email: amarapain@gmail.com</p>
+            <p>Phone: 704-503-9338 &bull; Email: contact@amarapain.com</p>
           </div>
         </div>
 

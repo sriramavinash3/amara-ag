@@ -36,7 +36,8 @@ export default function Header() {
       submenu: [
         { name: 'Our Story & Team', path: '/about' },
         { name: 'Dr. Ashvin K. Amara, MD', path: '/providers/dr-ashvin-amara' },
-        { name: 'Nurse Practitioners (NPs)', path: '/providers/nurse-practitioners' },
+        { name: 'Sarah Whitfield, NP', path: '/providers/sarah-whitfield' },
+        { name: 'James Okafor, PA-C', path: '/providers/james-okafor' },
       ]
     },
     {
@@ -74,12 +75,11 @@ export default function Header() {
       name: 'Patients',
       path: '/patients',
       submenu: [
-        { name: 'Overview & Portal', path: '/patients' },
+        { name: 'Overview & Resources', path: '/patients' },
+        { name: 'Tebra Patient Portal Login', path: 'https://portal.kareo.com/app/new/login', external: true },
         { name: 'FAQs', path: '/patients#faqs' },
         { name: 'Referral Submission', path: '/referrals' },
         { name: 'Download Intake Forms', path: '/patients#forms' },
-        { name: 'Patient Portal (Athena)', path: 'https://8476.portal.athenahealth.com/', external: true },
-        { name: 'Pay Bills (Athena)', path: 'https://8476.portal.athenahealth.com/', external: true },
       ]
     },
     { name: 'Referrals', path: '/referrals' },
@@ -101,10 +101,15 @@ export default function Header() {
         <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
           {/* Clinic Details */}
           <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
-            <span className="flex items-center gap-1.5">
+            <a
+              href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
+            >
               <MapPin className="h-3.5 w-3.5 text-medical-500" />
               6429 Bannington Road, Suite B, Charlotte, NC 28226
-            </span>
+            </a>
             <span className="flex items-center gap-1.5">
               <Clock className="h-3.5 w-3.5 text-medical-500" />
               Mon - Fri: 8:00 AM - 5:00 PM
@@ -295,10 +300,15 @@ export default function Header() {
         {/* Mobile menu bottom contact details */}
         <div className="p-6 bg-slate-50 border-t border-slate-100 space-y-4">
           <div className="space-y-2 text-sm text-slate-600">
-            <p className="flex items-center gap-2 font-medium">
+            <a
+              href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 font-medium hover:text-medical-600 transition-colors"
+            >
               <MapPin className="h-4 w-4 text-medical-600 shrink-0" />
-              6429 Bannington Road, Suite B, Charlotte, NC
-            </p>
+              <span>6429 Bannington Road, Suite B, Charlotte, NC</span>
+            </a>
             <p className="flex items-center gap-2">
               <Clock className="h-4 w-4 text-medical-600 shrink-0" />
               Mon - Fri: 8:00 AM - 5:00 PM

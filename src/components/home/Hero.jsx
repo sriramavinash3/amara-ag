@@ -21,7 +21,7 @@ const item = {
 
 const stats = [
   { value: '10,000+', label: 'Patients treated' },
-  { value: '15+ Yrs', label: 'Double Board-Certified' },
+  { value: '15+ Yrs', label: 'Specialized Care' },
   { value: '95%+', label: 'Lasting Pain Relief' },
 ];
 

@@ -24,7 +24,7 @@ export default function AppointmentJourney() {
 
   const condList = Object.values(conditions).slice(0, 5);
   const treatList = Object.values(treatments).slice(0, 5);
-  const providers = ['Dr. Ashvin K. Amara, MD', 'Nurse Practitioners (NPs)', 'First Available Provider'];
+  const providers = ['Dr. Ashvin K. Amara, MD', 'Sarah Whitfield, NP', 'James Okafor, PA-C', 'First Available Provider'];
 
   const handleSelectCondition = (title) => {
     console.log("Stepper selection - Condition:", title);
@@ -152,8 +152,11 @@ export default function AppointmentJourney() {
             )}
 
             {localStep === 2 && (
-              <div className="space-y-4">
+              <div className="space-y-4 text-left">
                 <p className="text-sm text-mist/60">{steps[2].copy}</p>
+                <div className="bg-amber-950/40 border border-amber-900/50 rounded-xl p-3 text-xs text-amber-300 leading-relaxed max-w-md">
+                  <strong>Notice:</strong> This section is currently pending review [to be discussed]. Select any provider below to proceed.
+                </div>
                 <div className="flex flex-wrap gap-2.5">
                   {providers.map((p) => (
                     <button

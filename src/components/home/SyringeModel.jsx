@@ -58,11 +58,26 @@ export default function SyringeModel({ scrollProgress, isMobile }) {
   const model = useMemo(() => {
     const clone = scene.clone(true);
     
+    const applyMaterialProperties = (mat) => {
+      if (!mat) return;
+      mat.envMapIntensity = 1.4;
+      mat.transparent = true;
+      mat.opacity = 0.6;
+      mat.depthWrite = false;
+      mat.side = THREE.DoubleSide;
+    };
+
     clone.traverse((child) => {
       if (child.isMesh) {
         child.castShadow = true;
         child.receiveShadow = true;
-        if (child.material) child.material.envMapIntensity = 1.4;
+        if (child.material) {
+          if (Array.isArray(child.material)) {
+            child.material.forEach(applyMaterialProperties);
+          } else {
+            applyMaterialProperties(child.material);
+          }
+        }
       }
     });
     

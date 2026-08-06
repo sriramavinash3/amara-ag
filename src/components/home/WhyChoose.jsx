@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Award, HeartHandshake, FlaskConical, Users, ShieldCheck, Compass } from 'lucide-react';
 
 const pillars = [
-  { icon: Award, title: 'Experienced Specialists', copy: 'Led by double board-certified training with over 15 years diagnosing and treating complex spinal & joint pain.' },
+  { icon: Award, title: 'Experienced Specialists', copy: 'Led by double-certified specialist training with over 15 years diagnosing and treating complex spinal & joint pain.' },
   { icon: HeartHandshake, title: 'Patient-First Focus', copy: 'We take the time to listen, locate the biological cause of pain, and design personalized recovery plans.' },
   { icon: FlaskConical, title: 'Fluoroscopic Precision', copy: 'All procedures utilize advanced live X-ray or ultrasound guidance for safety and diagnostic accuracy.' },
   { icon: Users, title: 'Billing Transparency', copy: 'As an independent practice, we charge zero hospital facility fees, saving patients hundreds of dollars.' },

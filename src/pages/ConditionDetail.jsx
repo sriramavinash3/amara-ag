@@ -177,13 +177,13 @@ export default function ConditionDetail() {
                 Schedule Relief for {cond.title.split(' & ')[0]}
               </h3>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Take the first step toward reclaiming your quality of life. Consult directly with our board-certified pain specialist.
+                Take the first step toward reclaiming your quality of life. Consult directly with our certified pain specialist.
               </p>
               
               <div className="space-y-3 pt-4 text-xs text-slate-600 border-t border-slate-200">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0" />
-                  <span>Double board-certified specialist care</span>
+                  <span>Double-certified specialist care</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0" />

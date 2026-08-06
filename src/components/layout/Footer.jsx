@@ -65,7 +65,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm leading-relaxed text-slate-400">
-              Transforming pain care in Charlotte, NC. Led by double board-certified specialists, we offer personalized, non-invasive treatments designed to restore your quality of life.
+              Transforming pain care in Charlotte, NC. Led by double-certified specialists, we offer personalized, non-invasive treatments designed to restore your quality of life.
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
@@ -138,8 +138,18 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/providers/nurse-practitioners" className="hover:text-medical-500 hover:translate-x-1 inline-block transition-all duration-200">
-                  Nurse Practitioners Bio
+                <Link to="/providers/dr-ashvin-amara" className="hover:text-medical-500 hover:translate-x-1 inline-block transition-all duration-200">
+                  Dr. Ashvin K. Amara, MD
+                </Link>
+              </li>
+              <li>
+                <Link to="/providers/sarah-whitfield" className="hover:text-medical-500 hover:translate-x-1 inline-block transition-all duration-200">
+                  Sarah Whitfield, NP
+                </Link>
+              </li>
+              <li>
+                <Link to="/providers/james-okafor" className="hover:text-medical-500 hover:translate-x-1 inline-block transition-all duration-200">
+                  James Okafor, PA-C
                 </Link>
               </li>
               <li>
@@ -149,22 +159,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://8476.portal.athenahealth.com/"
+                  href="https://portal.kareo.com/app/new/login"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-medical-500 hover:translate-x-1 inline-block transition-all duration-200 text-sky-400 font-semibold"
                 >
-                  Athena Patient Portal
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://8476.portal.athenahealth.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-medical-500 hover:translate-x-1 inline-block transition-all duration-200 text-emerald-400 font-semibold"
-                >
-                  Pay Medical Bills Online
+                  Tebra Patient Portal Login
                 </a>
               </li>
               <li>
@@ -184,7 +184,7 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-medical-500 shrink-0 mt-0.5" />
                 <a
-                  href="https://maps.google.com/?q=6429+Bannington+Road,+Suite+B,+Charlotte,+NC+28226"
+                  href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors leading-relaxed"
@@ -204,8 +204,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2 text-slate-400">
                 <Mail className="h-4 w-4 text-slate-500 shrink-0" />
-                <a href="mailto:amarapain@gmail.com" className="hover:text-white transition-colors">
-                  amarapain@gmail.com
+                <a href="mailto:contact@amarapain.com" className="hover:text-white transition-colors">
+                  contact@amarapain.com
                 </a>
               </li>
               <li className="flex items-start gap-2 text-slate-400">
@@ -229,7 +229,7 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-slate-800/80 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>&copy; {currentYear} Amara Pain &amp; Spine Management. All rights reserved.</p>
+          <p>&copy; 2026 Amara Pain &amp; Spine Management. - Maintained by Freddie Business Solutions</p>
           <div className="flex gap-4">
             <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
             <span>&bull;</span>

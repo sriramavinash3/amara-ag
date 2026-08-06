@@ -1,0 +1,13 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "amara-pain"
+compatibility_date = "2026-07-30"
+
+# --- Option 1: Cloudflare Pages (Recommended for purely static Vite/React apps) ---
+# Specifies the directory containing the static assets to be deployed.
+pages_build_output_dir = "./dist"
+
+# --- Option 2: Cloudflare Workers with Assets (Alternative) ---
+# If you want to use the unified Workers Assets model, uncomment the section below
+# and comment out 'pages_build_output_dir' above.
+# [assets]
+# directory = "./dist"

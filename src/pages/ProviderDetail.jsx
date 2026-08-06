@@ -12,12 +12,12 @@ const providerData = {
     id: "dr-ashvin-amara",
     name: "Dr. Ashvin K. Amara, MD",
     role: "Founder & Lead Physician",
-    credentials: "Double Board-Certified in Pain Medicine & Anesthesiology",
-    bio: "Dr. Ashvin K. Amara, MD, is a highly trusted physician in Charlotte, NC. With over 15 years of interventional pain management experience, he completed advanced fellowship training specifically targeting chronic spine and joint conditions. His patient-focused approach avoids heavy hospitalization markups, focusing instead on double board-certified clinical accuracy and compassionate care.",
+    credentials: "Specialist in Pain Medicine & Anesthesiology",
+    bio: "Dr. Ashvin K. Amara, MD, is a highly trusted physician in Charlotte, NC. With over 15 years of interventional pain management experience, he completed advanced fellowship training specifically targeting chronic spine and joint conditions. His patient-focused approach avoids heavy hospitalization markups, focusing instead on clinical accuracy and compassionate care.",
     detailedBio: "Dr. Amara established Amara Pain & Spine Management to offer a true alternative to corporate hospital chains. He believes that chronic pain management requires a tailored approach. Pain is personal, and a standard one-size-fits-all plan is rarely successful. Our specialist care plans use targeted anti-inflammatory blocks, radiofrequency ablations, and spinal cord neuromodulation to block pain pathways at their source.",
     education: [
       "Fellowship in Pain Management - Interventional Pain Medicine",
-      "Residency in Anesthesiology - Board Certified Specialist",
+      "Residency in Anesthesiology - Certified Specialist",
       "Medical Doctor Degree (MD) - Licensed Practitioner in NC"
     ],
     memberships: [
@@ -34,8 +34,8 @@ const providerData = {
     languages: ["English", "Spanish", "Hindi", "Telugu"],
     experience: "15+ Years",
     certifications: [
-      "Board Certified in Pain Medicine - American Board of Anesthesiology",
-      "Board Certified in Anesthesiology - American Board of Anesthesiology",
+      "Certified in Pain Medicine - American Board of Anesthesiology",
+      "Certified in Anesthesiology - American Board of Anesthesiology",
       "Advanced Cardiac Life Support (ACLS) Certified"
     ],
     schema: {
@@ -53,17 +53,17 @@ const providerData = {
       }
     }
   },
-  "nurse-practitioners": {
-    id: "nurse-practitioners",
-    name: "Nurse Practitioners (NPs)",
-    role: "Advanced Practice Clinical Group",
-    credentials: "Board-Certified Family Nurse Practitioners",
-    bio: "Our highly trained Family Nurse Practitioners work in close clinical partnership with Dr. Amara. They provide comprehensive evaluations, follow-ups, trigger point injections, and coaching for our medical weight loss program.",
-    detailedBio: "Our Advanced Practice Registered Nurses (APRNs) are integral to your clinical journey. They collaborate daily with Dr. Amara to ensure that your treatments are adjusted to your recovery speed, coordinate physical therapy programs, and perform diagnostic evaluations. They validate your concerns and support your daily return to active living.",
+  "sarah-whitfield": {
+    id: "sarah-whitfield",
+    name: "Sarah Whitfield, NP",
+    role: "Nurse Practitioner",
+    credentials: "Certified Family Nurse Practitioner",
+    bio: "Sarah Whitfield, NP, is a compassionate and dedicated Nurse Practitioner at Amara Pain & Spine Management. With extensive clinical training, she collaborates closely with Dr. Amara to deliver personalized, empathetic pain relief plans focused on chronic pain management and trigger point therapy.",
+    detailedBio: "Sarah believes in a patient-first model of care, taking the time to listen to your concerns and validate your experiences. She specialized in Master of Science in Nursing and focuses on trigger point injections, chronic pain follow-ups, and collaborative therapy adjustments to support your daily return to comfort and active living.",
     education: [
       "Master of Science in Nursing (MSN) - Advanced Practice Nursing",
-      "Board Certified Family Nurse Practitioners (AANP / ANCC)",
-      "Specialized Interventional Training in Myofascial Knots & Joint Injections"
+      "Family Nurse Practitioner Program - Graduate with Honors",
+      "Specialized Clinical Training in Myofascial Release & Joint Injections"
     ],
     memberships: [
       "American Association of Nurse Practitioners (AANP)",
@@ -71,20 +71,65 @@ const providerData = {
     ],
     specializations: [
       "Trigger Point Injections (TPI) for Myofascial Knots",
-      "Joint & Soft Tissue Injections",
-      "Medically Supervised Weight Loss Coaching",
-      "Chronic Pain Progress Monitoring"
+      "Medication Management & Guidance",
+      "Chronic Pain Progress Monitoring",
+      "Joint & Soft Tissue Injections"
     ],
     languages: ["English", "Spanish"],
-    experience: "Combined Clinical Practice",
+    experience: "Certified Practitioner",
     certifications: [
       "Registered Nurse (RN) Licensure - North Carolina",
-      "Family Nurse Practitioner Board Certification (FNP-BC)"
+      "Family Nurse Practitioner Certification (AANP-FNP)"
     ],
     schema: {
       "@context": "https://schema.org",
-      "@type": "MedicalBusiness",
-      "name": "Amara Pain Advanced Clinical Providers",
+      "@type": "Physician",
+      "name": "Sarah Whitfield, NP",
+      "medicalSpecialty": "PainManagement",
+      "knowsLanguage": ["English", "Spanish"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "6429 Bannington Road, Suite B",
+        "addressLocality": "Charlotte",
+        "addressRegion": "NC",
+        "postalCode": "28226"
+      }
+    }
+  },
+  "james-okafor": {
+    id: "james-okafor",
+    name: "James Okafor, PA-C",
+    role: "Physician Assistant",
+    credentials: "Certified Physician Assistant",
+    bio: "James Okafor, PA-C, is a highly attentive and compassionate Physician Assistant specializing in interventional therapies. Working in direct clinical collaboration with Dr. Amara, James delivers precise, result-oriented plans to restore joint and back function.",
+    detailedBio: "James completed his Master of Physician Assistant Studies (MPAS) and is certified by the NCCPA. He is dedicated to helping patients find relief from post-surgical and joint pain through targeted injection therapies, structured rehabilitation plans, and direct provider alignment.",
+    education: [
+      "Master of Physician Assistant Studies (MPAS)",
+      "Physician Assistant Certification Program - Clinical Training",
+      "Specialized Training in Spine & Joint Injections"
+    ],
+    memberships: [
+      "American Academy of Physician Associates (AAPA)",
+      "North Carolina Academy of Physician Assistants (NCAPA)"
+    ],
+    specializations: [
+      "Spine & Joint Injection Therapies",
+      "Post-Surgical Pain Management",
+      "Physical Recovery & Rehabilitation Planning",
+      "Diagnostic Nerve Blocks Assistance"
+    ],
+    languages: ["English"],
+    experience: "Certified Specialist",
+    certifications: [
+      "NCCPA Certified Physician Assistant",
+      "Physician Assistant License - North Carolina"
+    ],
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Physician",
+      "name": "James Okafor, PA-C",
+      "medicalSpecialty": "PainManagement",
+      "knowsLanguage": ["English"],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "6429 Bannington Road, Suite B",
@@ -179,7 +224,7 @@ export default function ProviderDetail() {
               <div className="border-t border-slate-100 pt-6 space-y-2.5 text-xs text-slate-600 text-left">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4.5 w-4.5 text-emerald-600 shrink-0" />
-                  <span>Double Board-Certified Interventional Care</span>
+                  <span>Double-Certified Interventional Care</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4.5 w-4.5 text-emerald-600 shrink-0" />
@@ -261,7 +306,7 @@ export default function ProviderDetail() {
             <div className="space-y-4 animate-reveal">
               <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
                 <Award className="h-5 w-5 text-accent-600" />
-                <h4 className="font-extrabold text-base text-slate-900 uppercase tracking-wider">Board Certifications</h4>
+                <h4 className="font-extrabold text-base text-slate-900 uppercase tracking-wider">Certifications &amp; Licensure</h4>
               </div>
               <ul className="space-y-3.5 text-xs text-slate-700 leading-relaxed">
                 {provider.certifications.map((cert, idx) => (

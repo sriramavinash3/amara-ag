@@ -1,27 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Calendar, User, ArrowRight, Activity } from 'lucide-react';
 import Card from '../components/ui/Card';
-import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
+import useScrollReveal from '../hooks/useScrollReveal';
 import { blogPosts } from '../utils/medicalData';
 import '../styles/skeuomorphic.css';
 
 export default function Blog() {
+  const containerRef = useRef(null);
+  useScrollReveal(containerRef);
+
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = ['All', 'Patient Education', 'Billing & Insurance', 'Tips & Wellness'];
 
+  const posts = blogPosts || [];
+
   const filteredPosts = selectedCategory === 'All'
-    ? blogPosts
-    : blogPosts.filter(post => post.category === selectedCategory);
+    ? posts
+    : posts.filter(post => post && post.category === selectedCategory);
 
   return (
-    <div className="w-full relative py-20 px-4 md:px-8 max-w-7xl mx-auto space-y-16 text-left">
+    <div ref={containerRef} className="w-full relative py-20 px-4 md:px-8 max-w-7xl mx-auto space-y-16 text-left">
 
       {/* 1. PAGE HEADER */}
       <div className="space-y-6 max-w-3xl border-b border-slate-200 pb-10 relative z-10">
-        <Badge variant="secondary" className="bg-cyan-50 text-cyan-805 border border-cyan-200 font-bold uppercase tracking-widest">
+        <Badge variant="secondary" className="bg-cyan-50 text-cyan-800 border border-cyan-200 font-bold uppercase tracking-widest">
           Clinical Insights
         </Badge>
         <h1 className="text-4xl md:text-[56px] font-extrabold font-heading tracking-tight text-slate-900 leading-[1.1]">
@@ -33,21 +38,22 @@ export default function Blog() {
       </div>
 
       {/* 2. CATEGORY FILTERS */}
-      <div className="flex flex-wrap gap-2 pt-2 relative z-10">
+      <nav aria-label="Blog category filters" className="flex flex-wrap gap-2 pt-2 relative z-10">
         {categories.map((cat, idx) => (
           <button
             key={idx}
             onClick={() => setSelectedCategory(cat)}
+            aria-pressed={selectedCategory === cat}
             className={`px-5 py-2 text-xs font-bold rounded-full transition-all duration-200 cursor-pointer ${
               selectedCategory === cat
                 ? 'bg-medical-600 text-white shadow-sm'
-                : 'bg-white border border-slate-200 text-slate-855 hover:bg-slate-50'
+                : 'bg-white border border-slate-200 text-slate-800 hover:bg-slate-50'
             }`}
           >
             {cat}
           </button>
         ))}
-      </div>
+      </nav>
 
       {/* 3. BLOG POSTS GRID */}
       <div className="relative z-10">
@@ -62,9 +68,9 @@ export default function Blog() {
               >
                 <div className="space-y-4">
                   {/* Meta Row */}
-                  <div className="flex items-center justify-between text-xs text-slate-400 font-semibold">
+                  <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
                     <span className="flex items-center gap-1">
-                      <Calendar className="h-3.5 w-3.5 text-medical-500" />
+                      <Calendar className="h-3.5 w-3.5 text-medical-600" />
                       {post.date}
                     </span>
                     <Badge variant="accent" className="bg-cyan-50 text-cyan-800 border border-cyan-100">{post.category}</Badge>
@@ -74,25 +80,26 @@ export default function Blog() {
                     <h3 className="text-xl font-bold font-heading text-slate-900 group-hover:text-medical-600 transition-colors leading-snug">
                       {post.title}
                     </h3>
-                    <span className="text-xs text-slate-400 font-bold flex items-center gap-1">
-                      <User className="h-3.5 w-3.5 text-slate-400" />
+                    <span className="text-xs text-slate-500 font-bold flex items-center gap-1">
+                      <User className="h-3.5 w-3.5 text-slate-500" />
                       By {post.author}
                     </span>
                   </div>
 
-                  <p className="text-sm text-slate-500 leading-relaxed line-clamp-3">
+                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
                     {post.excerpt}
                   </p>
                 </div>
 
                 {/* Read Full Button */}
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs text-slate-400 flex items-center gap-1 font-medium">
+                  <span className="text-xs text-slate-500 flex items-center gap-1 font-medium">
                     <BookOpen className="h-4 w-4 text-emerald-600" />
                     5 min read
                   </span>
                   <Link 
                     to={`/blog/${post.id}`}
+                    aria-label={`Read article: ${post.title}`}
                     className="inline-flex items-center text-sm font-bold text-medical-600 hover:text-medical-700 gap-1.5"
                   >
                     <span>Read Article</span>

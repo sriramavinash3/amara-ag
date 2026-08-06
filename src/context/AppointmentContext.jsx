@@ -96,20 +96,56 @@ export function AppointmentProvider({ children }) {
         }
       };
 
+      const saveBookingToLocalStorage = (bookingId) => {
+        const newLead = {
+          id: bookingId,
+          type: 'appointment',
+          dateCreated: new Date().toISOString(),
+          status: 'New',
+          condition: selectedCondition,
+          treatment: selectedTreatment,
+          provider: selectedProvider,
+          appointmentDate: selectedDate,
+          appointmentTime: selectedTime,
+          patient: {
+            firstName: patientDetails.firstName,
+            lastName: patientDetails.lastName,
+            email: patientDetails.email,
+            phone: patientDetails.phone,
+            dob: patientDetails.dob,
+            insurance: patientDetails.insurance || 'N/A',
+            comments: patientDetails.comments || ''
+          }
+        };
+        try {
+          const existingLeads = JSON.parse(localStorage.getItem('APS_LEADS') || '[]');
+          existingLeads.unshift(newLead);
+          localStorage.setItem('APS_LEADS', JSON.stringify(existingLeads));
+        } catch (storageErr) {
+          console.error("Failed to save appointment to localStorage:", storageErr);
+        }
+      };
+
       try {
-        const response = await axios.post('http://localhost:3000/api/v1/appointments/smart', payload);
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const apiBaseUrl = isLocal ? 'http://localhost:3000' : '';
+        const response = await axios.post(`${apiBaseUrl}/api/v1/appointments/smart`, payload);
         
         if (response.data && response.data.success) {
-          setGeneratedBookingId(response.data.data.id);
+          const bookingId = response.data.data.id;
+          setGeneratedBookingId(bookingId);
           setBookingSuccess(true);
+          saveBookingToLocalStorage(bookingId);
         } else {
           throw new Error(response.data.message || 'Failed to book appointment');
         }
       } catch (e) {
         console.warn("API endpoint offline. Falling back to mock successful confirmation details:", e.message);
         // Realistic fallback mock ID for staging testing
-        setGeneratedBookingId(`AMARA-MOCK-${Math.floor(100000 + Math.random() * 900000)}`);
+        const mockId = `AMARA-MOCK-${Math.floor(100000 + Math.random() * 900000)}`;
+        setGeneratedBookingId(mockId);
         setBookingSuccess(true);
+        saveBookingToLocalStorage(mockId);
       }
     } catch (error) {
       console.error("Unexpected parsing error:", error);

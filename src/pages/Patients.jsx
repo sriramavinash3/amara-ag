@@ -52,7 +52,7 @@ export default function Patients() {
       {/* 2. PORTAL & PORTAL ACTION CARDS */}
       <section className="space-y-8 relative z-10 animate-reveal">
         <h2 className="text-3xl md:text-[42px] font-extrabold font-heading leading-[1.2] text-slate-900">
-          AthenaHealth Portal Integrations
+          Tebra Patient Portal Login
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Card 1: Patient Portal */}
@@ -62,21 +62,21 @@ export default function Patients() {
                 <UserCheck className="h-6 w-6" />
               </div>
               <h3 className="text-xl font-bold font-heading text-slate-900">
-                Athena Patient Portal
+                Tebra Patient Portal
               </h3>
               <p className="text-sm text-slate-500 leading-relaxed">
-                Log in securely to your clinical record. View lab results, message your care team, request prescription refills, and review clinical summaries from previous visits.
+                Log in securely to view your clinical records, access diagnostic updates, message our care coordinators, request prescription refills, and review clinical summaries from previous visits.
               </p>
             </div>
             <div className="pt-8 border-t border-slate-100">
               <a 
-                href="https://8476.portal.athenahealth.com/" 
+                href="https://portal.kareo.com/app/new/login" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-full block"
               >
                 <Button variant="secondary" className="w-full bg-medical-600 hover:bg-medical-700 text-white">
-                  Access Patient Portal
+                  Tebra Patient Portal Login
                 </Button>
               </a>
             </div>
@@ -92,18 +92,18 @@ export default function Patients() {
                 Online Bill Payment
               </h3>
               <p className="text-sm text-slate-500 leading-relaxed">
-                Make fast, secure payments on your account statement online. Enter your statement account number to pay medical balances with zero hassle.
+                Log in securely to your account portal to pay statement balances, review invoices, and handle medical balances with zero hassle.
               </p>
             </div>
             <div className="pt-8 border-t border-slate-100">
               <a 
-                href="https://8476.portal.athenahealth.com/" 
+                href="https://portal.kareo.com/app/new/login" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-full block"
               >
                 <Button variant="accent" className="w-full bg-accent-600 hover:bg-accent-700 text-white">
-                  Pay Bill Online
+                  Patient Portal Login
                 </Button>
               </a>
             </div>

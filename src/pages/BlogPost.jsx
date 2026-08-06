@@ -10,7 +10,9 @@ import '../styles/skeuomorphic.css';
 export default function BlogPost() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const post = blogPosts.find(p => p.id === id);
+  
+  const posts = blogPosts || [];
+  const post = posts.find(p => p && p.id === id);
 
   useEffect(() => {
     if (post) {
@@ -46,13 +48,13 @@ export default function BlogPost() {
         </Link>
 
         {/* Breadcrumbs */}
-        <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
+        <nav aria-label="Breadcrumb navigation" className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
           <Link to="/" className="hover:text-primary-900">Home</Link>
-          <ChevronRight className="h-3.5 w-3.5" />
+          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
           <Link to="/blog" className="hover:text-primary-900">Patient Blog</Link>
-          <ChevronRight className="h-3.5 w-3.5" />
-          <span className="text-slate-500 truncate">{post.title}</span>
-        </div>
+          <ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+          <span className="text-slate-600 truncate font-semibold" aria-current="page">{post.title}</span>
+        </nav>
       </div>
 
       {/* 2. ARTICLE HEADER */}
@@ -99,12 +101,12 @@ export default function BlogPost() {
             <Share2 className="h-4 w-4 text-medical-600" />
             Share Article:
           </span>
-          <button className="p-2 bg-slate-50 hover:bg-slate-100 rounded-full text-slate-500 hover:text-medical-600 transition-colors cursor-pointer flex items-center justify-center border border-slate-200" title="Share on Facebook">
+          <button className="p-2 bg-slate-50 hover:bg-slate-100 rounded-full text-slate-500 hover:text-medical-600 transition-colors cursor-pointer flex items-center justify-center border border-slate-200" title="Share on Facebook" aria-label="Share on Facebook">
             <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
               <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
             </svg>
           </button>
-          <button className="p-2 bg-slate-50 hover:bg-slate-100 rounded-full text-slate-500 hover:text-medical-600 transition-colors cursor-pointer flex items-center justify-center border border-slate-200" title="Share on Twitter">
+          <button className="p-2 bg-slate-50 hover:bg-slate-100 rounded-full text-slate-500 hover:text-medical-600 transition-colors cursor-pointer flex items-center justify-center border border-slate-200" title="Share on Twitter" aria-label="Share on Twitter">
             <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
@@ -112,7 +114,7 @@ export default function BlogPost() {
         </div>
         
         <Link to="/blog">
-          <Button variant="outline" size="sm" icon={ArrowLeft} className="text-slate-900 border-slate-350 hover:border-slate-400">
+          <Button variant="outline" size="sm" icon={ArrowLeft} className="text-slate-900 border-slate-300 hover:border-slate-400">
             Back to All Articles
           </Button>
         </Link>
@@ -124,14 +126,17 @@ export default function BlogPost() {
         <p className="text-xs text-slate-600 max-w-xl mx-auto">
           Sign up to receive our monthly newsletter containing new interventional treatment studies, wellness tips, and clinic announcements from Amara Pain &amp; Spine.
         </p>
-        <div className="flex max-w-md mx-auto gap-2">
+        <form onSubmit={(e) => e.preventDefault()} className="flex max-w-md mx-auto gap-2">
+          <label htmlFor="newsletter-email" className="sr-only">Email address for newsletter</label>
           <input 
+            id="newsletter-email"
             type="email" 
             placeholder="Enter your email" 
-            className="flex-1 px-4 py-2 bg-white border border-slate-250 rounded-full text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
+            aria-label="Email address for newsletter"
+            className="flex-1 px-4 py-2 bg-white border border-slate-200 text-slate-800 rounded-full text-sm focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm transition-all duration-200"
           />
-          <Button variant="secondary" size="sm" className="bg-medical-600 hover:bg-medical-700 text-white">Subscribe</Button>
-        </div>
+          <Button type="submit" variant="secondary" size="sm" className="bg-medical-600 hover:bg-medical-700 text-white">Subscribe</Button>
+        </form>
       </Card>
 
     </div>
