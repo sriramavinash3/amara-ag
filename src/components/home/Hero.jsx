@@ -41,7 +41,7 @@ export default function Hero() {
         >
           <motion.div variants={item} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-widest">
             <Award size={14} className="text-emerald-700" />
-            Double Board-Certified Pain Care
+            Board-Certified Pain Care
           </motion.div>
 
           <motion.h1

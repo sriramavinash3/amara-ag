@@ -13,7 +13,7 @@ const providerData = {
     name: "Ashvin K. Amara, MD",
     role: "Founder & Medical Director",
     credentials: "Board Certified in Anesthesiology & Pain Medicine",
-    bio: "Ashvin K. Amara, MD, is a highly trusted double board-certified physician in both Anesthesiology and Interventional Pain Medicine. He completed his comprehensive fellowship training in pain management and has dedicated over 15 years to helping patients in Charlotte, NC, find relief from complex chronic and acute pain conditions.",
+    bio: "Ashvin K. Amara, MD, is a highly trusted physician board-certified in both Anesthesiology and Interventional Pain Medicine. He completed his comprehensive fellowship training in pain management and has dedicated over 15 years to helping patients in Charlotte, NC, find relief from complex chronic and acute pain conditions.",
     detailedBio: "Amara graduated from Osmania Medical College in India. He completed a one-year internship at Richmond University Medical Center (Staten Island, NY) followed by a four-year residency at Brookdale University Hospital Medical Center (Brooklyn, NY). He went on to complete a one-year sub-specialist fellowship in Interventional Pain Management at John H. Stroger Hospital of Cook County (Chicago, IL). Throughout his career, Amara has rotated through prestigious institutions including Staten Island University Hospital, Memorial Sloan Kettering Cancer Center, and St. Luke's Roosevelt Hospital Center. He established Amara Pain & Spine Management to offer high-quality, transparent, and patient-centered care without corporate hospital markups.",
     education: [
       "Fellowship in Interventional Pain Management – John H. Stroger Hospital of Cook County, Chicago, IL",
