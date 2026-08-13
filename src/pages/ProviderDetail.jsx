@@ -13,6 +13,7 @@ const providerData = {
     name: "Ashvin K. Amara, MD",
     role: "Founder & Medical Director",
     credentials: "Board Certified in Anesthesiology & Pain Medicine",
+    image: "/images/ashvin-amara.jpg",
     bio: "Ashvin K. Amara, MD, is a highly trusted physician board-certified in both Anesthesiology and Interventional Pain Medicine. He completed his comprehensive fellowship training in pain management and has dedicated over 15 years to helping patients in Charlotte, NC, find relief from complex chronic and acute pain conditions.",
     detailedBio: "Amara graduated from Osmania Medical College in India. He completed a one-year internship at Richmond University Medical Center (Staten Island, NY) followed by a four-year residency at Brookdale University Hospital Medical Center (Brooklyn, NY). He went on to complete a one-year sub-specialist fellowship in Interventional Pain Management at John H. Stroger Hospital of Cook County (Chicago, IL). Throughout his career, Amara has rotated through prestigious institutions including Staten Island University Hospital, Memorial Sloan Kettering Cancer Center, and St. Luke's Roosevelt Hospital Center. He established Amara Pain & Spine Management to offer high-quality, transparent, and patient-centered care without corporate hospital markups.",
     education: [
@@ -62,6 +63,7 @@ const providerData = {
     name: "Eunice Babalola, NP, MSN",
     role: "Nurse Practitioner",
     credentials: "Board-Certified Family Nurse Practitioner",
+    image: "/images/eunice-babalola.jpg",
     bio: "Eunice Babalola, NP, MSN, is a board-certified Nurse Practitioner at Amara Pain & Spine Management. She is dedicated to walking alongside patients on their path to recovery, focusing on holistic, evidence-based pain management and customized care plans to promote long-term comfort and well-being.",
     detailedBio: "Eunice earned her Master of Science in Nursing (MSN-FNP) from the University of North Carolina at Charlotte (UNCC). Her extensive clinical background includes medical-surgical and neurosurgical care, which guides her safe and thorough approach to patient assessments. Eunice is board-certified by the American Association of Nurse Practitioners (AANP) and is also a board-certified Medical-Surgical Nurse through the American Nurses Credentialing Center (ANCC). She is an active member of the American Nurses Association (ANA) and the North Carolina Nurses Association (NCNA). Eunice focuses on patient-centered care and enjoys incorporating evidence-based practices like aromatherapy to maximize comfort.",
     education: [
@@ -106,6 +108,7 @@ const providerData = {
     name: "Alexander Carmenaty Rodriguez, MSN, FNP-C",
     role: "Nurse Practitioner",
     credentials: "Board-Certified Family Nurse Practitioner",
+    image: "/images/alexander-carmenaty.webp",
     bio: "Alexander Carmenaty Rodriguez, MSN, FNP-C, is a board-certified Nurse Practitioner at Amara Pain & Spine Management. He possesses a diverse international background in healthcare, enabling him to identify patient needs and develop highly effective medical plans and treatments.",
     detailedBio: "Alexander earned his Master of Science in Nursing (MSN-FNP) from South University–Savannah. He gained valuable clinical experience as a Registered Nurse in pediatric home health and specialized rehabilitation facilities. Furthermore, he holds extensive international medical experience, having previously served as a Family Physician in Cuba, Venezuela, and Brazil. Alexander is board-certified by the American Association of Nurse Practitioners (AANP), is a member of the American Association of Nurse Practitioners, and holds Advanced Life Support (ALS) certification. He is dedicated to helping patients restore their physical function and achieve their long-term well-being goals.",
     education: [
@@ -208,9 +211,13 @@ export default function ProviderDetail() {
         <div className="lg:col-span-4 space-y-6">
           <Card variant="white" padding="lg" className="border-slate-200/80 shadow-premium text-center space-y-6 p-8 relative overflow-hidden bg-white/95 rounded-3xl flex flex-col justify-between h-full group">
             <div className="space-y-6">
-              {/* Visual avatar slot */}
-              <div className="mx-auto w-36 h-36 rounded-full bg-gradient-to-tr from-medical-600 to-accent-500 p-1 shadow-md flex items-center justify-center text-white">
-                <Award className="h-16 w-16" />
+              {/* Provider Photo */}
+              <div className="mx-auto w-36 h-36 rounded-full overflow-hidden border-4 border-slate-100 shadow-md">
+                <img 
+                  src={provider.image} 
+                  alt={provider.name} 
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               <div className="space-y-1.5">
