@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Phone, CalendarCheck2, ArrowUpRight, Award, Shield } from 'lucide-react';
+import { Phone, CalendarCheck2, Award, Shield } from 'lucide-react';
 import Button from '../ui/Button';
 
 const container = {

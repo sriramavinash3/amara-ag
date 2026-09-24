@@ -1,6 +1,10 @@
 import React, { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+
+function pseudoRandom(seed) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
 
 export default function ParticleField({ count = 220 }) {
   const points = useRef();
@@ -8,9 +12,9 @@ export default function ParticleField({ count = 220 }) {
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      arr[i * 3] = (Math.random() - 0.5) * 14;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 8;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 8;
+      arr[i * 3] = (pseudoRandom(i * 3 + 1) - 0.5) * 14;
+      arr[i * 3 + 1] = (pseudoRandom(i * 3 + 2) - 0.5) * 8;
+      arr[i * 3 + 2] = (pseudoRandom(i * 3 + 3) - 0.5) * 8;
     }
     return arr;
   }, [count]);

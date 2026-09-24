@@ -1,27 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useAppointment } from '../context/AppointmentContext';
+import React, { useState } from 'react';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import { 
-  Users, UserCheck, Calendar, Phone, Activity, ArrowRight, CheckCircle2, 
-  Clock, Trash2, ShieldAlert, TrendingUp, HelpCircle, Eye 
+  Users, Calendar, Phone, Trash2, TrendingUp 
 } from 'lucide-react';
 import '../styles/skeuomorphic.css';
 
 export default function AdminDashboard() {
-  const [leads, setLeads] = useState([]);
+  const [leads, setLeads] = useState(() => {
+    if (typeof window === 'undefined') return [];
+    try {
+      const existing = localStorage.getItem('APS_LEADS');
+      return existing ? JSON.parse(existing) : [];
+    } catch {
+      return [];
+    }
+  });
   const [selectedLead, setSelectedLead] = useState(null);
-
-  const loadLeads = () => {
-    const existing = localStorage.getItem('APS_LEADS');
-    return existing ? JSON.parse(existing) : [];
-  };
-
-  useEffect(() => {
-    const loadedLeads = loadLeads();
-    setLeads(loadedLeads);
-  }, []);
 
   const updateLeadStatus = (leadId, newStatus) => {
     const updated = leads.map(lead => {

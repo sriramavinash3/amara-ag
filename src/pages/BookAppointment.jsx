@@ -5,7 +5,10 @@ import { conditions, treatments } from '../utils/medicalData';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
-import { CheckCircle2, ChevronRight, ChevronLeft, Calendar, ShieldAlert, ShieldCheck, FileText, Info, Award, Phone } from 'lucide-react';
+import { 
+  CheckCircle2, ChevronRight, ChevronLeft, Calendar, ShieldAlert, ShieldCheck, 
+  FileText, Info, Award, Phone, AlertTriangle, RefreshCw, Clock, Loader2 
+} from 'lucide-react';
 import '../styles/skeuomorphic.css';
 
 export default function BookAppointment() {
@@ -26,8 +29,13 @@ export default function BookAppointment() {
     patientDetails,
     setPatientDetails,
     isSubmitting,
+    bookingStatus,
     bookingSuccess,
+    bookingError,
+    bookingResult,
     generatedBookingId,
+    liveSlots,
+    isLoadingSlots,
     nextStep,
     prevStep,
     resetWizard,
@@ -55,15 +63,18 @@ export default function BookAppointment() {
 
   const providers = [
     { name: 'Ashvin K. Amara, MD', role: 'Founder & Medical Director' },
-    { name: 'Eunice Babalola, NP, MSN', role: 'Board-Certified Family Nurse Practitioner' },
     { name: 'Alexander Carmenaty Rodriguez, MSN, FNP-C', role: 'Board-Certified Family Nurse Practitioner' },
+    { name: 'Eunice Babalola, NP, MSN', role: 'Board-Certified Family Nurse Practitioner' },
     { name: 'First Available Clinical Provider', role: 'Fastest Schedule Option' }
   ];
 
-  const timeSlots = [
-    '09:00 AM', '09:45 AM', '10:30 AM', '11:15 AM',
-    '01:30 PM', '02:15 PM', '03:00 PM', '03:45 PM'
+  const defaultTimeSlots = [
+    '08:30 AM', '09:00 AM', '09:45 AM', '10:30 AM', '11:15 AM',
+    '01:30 PM', '02:15 PM', '03:00 PM', '03:45 PM', '04:15 PM'
   ];
+
+  const activeTimeSlots = liveSlots && liveSlots.length > 0 ? liveSlots : defaultTimeSlots;
+
 
   // Helper to check if step is complete to enable "Next"
   const isStepValid = () => {
@@ -237,8 +248,8 @@ export default function BookAppointment() {
             <div className="bg-[#363434] border border-[#585454] rounded-xl p-4 flex gap-3 text-sm text-[#F0F0F0] leading-relaxed shadow-sm">
               <Info className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
               <div>
-                <strong className="font-bold block text-[#FFFFFF]">Provider Selection Note:</strong>
-                This section is currently pending administrative review [to be discussed]. Select any provider to proceed with requesting your appointment slot.
+                <strong className="font-bold block text-[#FFFFFF]">Clinical Specialist Scheduling:</strong>
+                Select your desired specialist to query their live calendar openings in Charlotte, NC, or pick First Available for the earliest consultation slot.
               </div>
             </div>
 
@@ -295,10 +306,23 @@ export default function BookAppointment() {
 
               {/* Time Slots (Right) */}
               <div className="md:col-span-7 space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-[#D1D5DB]">Available Time Slots</label>
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-bold uppercase tracking-wider text-[#D1D5DB]">Available Time Slots</label>
+                  {isLoadingSlots && (
+                    <span className="flex items-center gap-1.5 text-xs text-emerald-400 font-medium">
+                      <Loader2 className="h-3.5 w-3.5 animate-spin" /> Querying Tebra...
+                    </span>
+                  )}
+                  {liveSlots && liveSlots.length > 0 && !isLoadingSlots && (
+                    <Badge variant="secondary" className="bg-emerald-950/40 text-emerald-300 border-emerald-800/40 text-[10px] font-bold">
+                      Live Openings
+                    </Badge>
+                  )}
+                </div>
+
                 {selectedDate ? (
-                  <div className="grid grid-cols-2 gap-2.5">
-                    {timeSlots.map((time, idx) => (
+                  <div className="grid grid-cols-2 gap-2.5 max-h-[280px] overflow-y-auto pr-1">
+                    {activeTimeSlots.map((time, idx) => (
                       <button
                         key={idx}
                         type="button"
@@ -444,41 +468,119 @@ export default function BookAppointment() {
                   </div>
                 </Card>
               </div>
+
+              {/* Error Banner if booking failed */}
+              {bookingStatus === 'booking_failed' && bookingError && (
+                <div className="md:col-span-12 p-4 bg-red-950/40 border border-red-800/60 rounded-xl flex items-start gap-3 text-red-200 text-sm animate-reveal">
+                  <AlertTriangle className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
+                  <div className="space-y-2 text-left flex-1">
+                    <p className="font-bold text-white">Booking Submission Unsuccessful</p>
+                    <p className="text-xs text-red-200 leading-relaxed">
+                      {bookingError.message || 'Unable to confirm appointment with the Tebra scheduling system.'}
+                    </p>
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {bookingError.isSlotUnavailable ? (
+                        <button
+                          type="button"
+                          onClick={() => setStep(4)}
+                          className="px-3 py-1.5 bg-red-900/60 hover:bg-red-800/80 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5"
+                        >
+                          <Clock className="h-3.5 w-3.5" /> Choose Another Slot
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={submitAppointment}
+                          disabled={isSubmitting}
+                          className="px-3 py-1.5 bg-red-900/60 hover:bg-red-800/80 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5"
+                        >
+                          <RefreshCw className={`h-3.5 w-3.5 ${isSubmitting ? 'animate-spin' : ''}`} /> Try Again
+                        </button>
+                      )}
+                      <a
+                        href="tel:+17045039338"
+                        className="px-3 py-1.5 bg-[#363434] hover:bg-[#514E4E] border border-[#585454] text-white rounded-lg text-xs font-bold transition-colors inline-flex items-center gap-1.5"
+                      >
+                        <Phone className="h-3.5 w-3.5 text-emerald-400" /> Call Clinic: (704) 503-9338
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
 
-        {/* STEP 6: BOOKING SUCCESS SCREEN */}
+        {/* STEP 6: BOOKING SUCCESS / PENDING SCREEN */}
         {bookingSuccess && (
-          <div className="text-center py-12 space-y-6">
-            <div className="p-4 bg-emerald-950/60 text-emerald-400 rounded-full w-20 h-20 flex items-center justify-center mx-auto border border-emerald-800/60">
+          <div className="text-center py-10 space-y-6">
+            <div className="p-4 bg-emerald-950/60 text-emerald-400 rounded-full w-20 h-20 flex items-center justify-center mx-auto border border-emerald-800/60 shadow-lg">
               <CheckCircle2 className="h-12 w-12" />
             </div>
             
             <div className="space-y-2">
-              <Badge variant="success" className="bg-emerald-950/60 text-emerald-300 border border-emerald-800/60 font-bold">Confirmed Appointment</Badge>
-              <h2 className="text-[28px] font-black font-heading text-[#FFFFFF] animate-reveal">Appointment Requested!</h2>
-              <p className="text-sm text-[#F0F0F0] max-w-md mx-auto font-medium">
-                Your request has been successfully registered. Your booking reference code is:
+              <Badge 
+                variant={bookingStatus === 'booking_confirmed' ? 'success' : 'secondary'} 
+                className={
+                  bookingStatus === 'booking_confirmed'
+                    ? 'bg-emerald-950/60 text-emerald-300 border border-emerald-800/60 font-bold'
+                    : 'bg-amber-950/50 text-amber-300 border border-amber-800/60 font-bold'
+                }
+              >
+                {bookingStatus === 'booking_confirmed' ? 'Appointment Confirmed' : 'Request Submitted • Pending Confirmation'}
+              </Badge>
+              
+              <h2 className="text-[26px] md:text-[30px] font-black font-heading text-[#FFFFFF] animate-reveal">
+                {bookingStatus === 'booking_confirmed' ? 'Appointment Confirmed!' : 'Appointment Request Received!'}
+              </h2>
+              
+              <p className="text-sm text-[#F0F0F0] max-w-lg mx-auto font-medium leading-relaxed">
+                {bookingStatus === 'booking_confirmed'
+                  ? 'Your appointment has been successfully scheduled and confirmed on our clinical calendar.'
+                  : 'Your request has been received by our clinical system. Our patient coordinator will review your chart and verify your appointment slot.'}
               </p>
-              <span className="inline-block px-5 py-2 bg-[#363434] text-emerald-400 font-black text-lg rounded-xl tracking-wider border border-[#585454] shadow-inner">
-                {generatedBookingId}
-              </span>
+              
+              {generatedBookingId && (
+                <div className="pt-2">
+                  <span className="text-[11px] uppercase tracking-wider text-[#D1D5DB] font-semibold block mb-1">
+                    Tebra Reference Verification Code:
+                  </span>
+                  <span className="inline-block px-5 py-2 bg-[#363434] text-emerald-400 font-mono font-bold text-base md:text-lg rounded-xl tracking-wider border border-[#585454] shadow-inner">
+                    {generatedBookingId}
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Appointment Details Summary */}
+            <div className="max-w-md mx-auto p-5 bg-[#363434] border border-[#585454] rounded-2xl text-left space-y-2 text-xs text-[#F0F0F0] leading-relaxed shadow-sm">
+              <h4 className="font-bold text-[12px] text-[#FFFFFF] border-b border-[#585454] pb-2">
+                Reserved Visit Information
+              </h4>
+              <p><strong className="text-[#FFFFFF]">Provider:</strong> <span className="text-emerald-400 font-bold">{bookingResult?.provider || selectedProvider}</span></p>
+              <p><strong className="text-[#FFFFFF]">Scheduled:</strong> <span className="text-emerald-400 font-bold">{selectedDate} at {selectedTime}</span></p>
+              <p><strong className="text-[#FFFFFF]">Clinic Location:</strong> <span>{bookingResult?.location || '6429 Bannington Road, Suite B, Charlotte, NC 28226'}</span></p>
+              {selectedCondition && <p><strong className="text-[#FFFFFF]">Primary Focus:</strong> <span>{selectedCondition}</span></p>}
             </div>
 
             <div className="max-w-md mx-auto p-5 bg-[#363434] border border-[#585454] rounded-2xl text-left space-y-3 text-xs text-[#F0F0F0] leading-relaxed shadow-sm">
               <h4 className="font-bold text-[12px] text-[#FFFFFF] flex items-center gap-1.5">
-                <FileText className="h-4.5 w-4.5 text-emerald-400" /> Next Steps &amp; Preparation:
+                <FileText className="h-4.5 w-4.5 text-emerald-400" /> Next Steps &amp; Clinical Intake:
               </h4>
-              <p>&bull; A clinical patient coordinator will call or email you within <strong className="text-[#FFFFFF]">24 business hours</strong> to finalize insurance details and confirm your slot.</p>
-              <p>&bull; Please download and fill out the <Link to="/patients#forms" className="text-emerald-400 font-bold hover:underline">New Patient Intake Packet</Link> prior to your visit to save time.</p>
-              <p>&bull; Bring a valid government photo ID, your insurance card, and any recent MRIs/imaging discs related to your pain condition.</p>
+              <p>&bull; A patient coordinator will review your submission and contact you within <strong className="text-[#FFFFFF]">24 business hours</strong> to confirm insurance and answer questions.</p>
+              <p>&bull; Please review and complete the <Link to="/patients#forms" className="text-emerald-400 font-bold hover:underline">New Patient Intake Packet</Link> prior to your visit.</p>
+              <p>&bull; Please bring a valid government photo ID, your insurance card, and any recent MRIs/imaging discs related to your condition.</p>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-4 flex flex-wrap justify-center gap-3">
               <Button variant="secondary" size="sm" onClick={resetWizard}>
-                Book Another Appointment
+                Schedule Another Visit
               </Button>
+              <a href="tel:+17045039338">
+                <Button variant="outline" size="sm" icon={Phone}>
+                  Call Clinic Front Desk
+                </Button>
+              </a>
             </div>
           </div>
         )}
@@ -493,6 +595,7 @@ export default function BookAppointment() {
                 onClick={prevStep}
                 icon={ChevronLeft}
                 iconPosition="left"
+                disabled={isSubmitting}
               >
                 Back
               </Button>
@@ -516,13 +619,13 @@ export default function BookAppointment() {
                 variant="primary"
                 size="sm"
                 loading={isSubmitting}
-                disabled={!isStepValid()}
+                disabled={!isStepValid() || isSubmitting}
                 onClick={submitAppointment}
                 icon={CheckCircle2}
                 iconPosition="right"
-                className="animate-pulse"
+                className={isSubmitting ? '' : 'animate-pulse'}
               >
-                Submit Booking Request
+                {isSubmitting ? 'Submitting to Tebra...' : 'Submit Booking Request'}
               </Button>
             )}
           </div>

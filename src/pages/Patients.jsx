@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { FileText, CreditCard, UserCheck, ShieldCheck, Download, Calendar, Search, HelpCircle, Phone } from 'lucide-react';
-import Card from '../components/ui/Card';
+import { FileText, CreditCard, UserCheck, ShieldCheck, Download, Calendar, Search, Phone } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import Accordion from '../components/ui/Accordion';
@@ -250,7 +249,7 @@ export default function Patients() {
         )}
       </section>
 
-      {/* 5. MOCK SCHEDULE PROMPT */}
+      {/* 5. SCHEDULE PROMPT */}
       <div className="border border-[#585454] bg-[#363434] text-white flex flex-col md:flex-row gap-8 items-center justify-between shadow-xl relative z-10 p-8 animate-reveal rounded-2xl my-8">
         <div className="space-y-3 text-left">
           <h3 className="text-[22px] font-bold font-heading text-white">Need to Speak with a Clinical Assistant?</h3>

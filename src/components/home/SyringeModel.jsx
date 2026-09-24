@@ -24,7 +24,7 @@ function sampleWaypoints(p, waypointsList) {
   return { pos: last.pos, rot: last.rot, scale: last.scale };
 }
 
-function spinRate(p) {
+function spinRate(_p) {
   return 1;
 }
 

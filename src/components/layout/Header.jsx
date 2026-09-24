@@ -10,10 +10,12 @@ export default function Header() {
   const location = useLocation();
 
   // Close mobile menu on route change
-  useEffect(() => {
+  const [prevPath, setPrevPath] = useState(location.pathname);
+  if (prevPath !== location.pathname) {
+    setPrevPath(location.pathname);
     setIsOpen(false);
     setActiveDropdown(null);
-  }, [location]);
+  }
 
   // Handle header background on scroll
   useEffect(() => {

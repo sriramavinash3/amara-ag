@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Award, BookOpen, CheckCircle2, ChevronRight, Calendar, Phone, ShieldCheck, HeartHandshake, ArrowLeft } from 'lucide-react';
+import { Award, BookOpen, CheckCircle2, ChevronRight, Calendar, Phone, HeartHandshake, ArrowLeft } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';

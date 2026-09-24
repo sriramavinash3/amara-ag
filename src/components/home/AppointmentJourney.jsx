@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Stethoscope, ClipboardList, UserCheck, CalendarDays, CheckCircle2, ChevronRight, ArrowLeft } from 'lucide-react';
 import { conditions, treatments } from '../../utils/medicalData';
 import { useAppointment } from '../../context/AppointmentContext';

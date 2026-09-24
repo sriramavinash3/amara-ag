@@ -9,22 +9,22 @@ const script = [
   { from: 'faq', text: 'At Amara Pain & Spine, we believe in complete financial transparency. We charge one flat office fee and zero hospital facility fees. We accept Medicare, Medicaid, Blue Cross Blue Shield, United, Cigna, and Aetna.' },
 ];
 
-function useTypedScript(active) {
+export default function AIAssistant() {
+  const [runKey, setRunKey] = useState(0);
   const [visible, setVisible] = useState(0);
+
   useEffect(() => {
-    if (!active) return;
-    setVisible(0);
+    if (runKey === 0) return;
     const id = setInterval(() => {
       setVisible((v) => (v < script.length ? v + 1 : v));
     }, 1500);
     return () => clearInterval(id);
-  }, [active]);
-  return visible;
-}
+  }, [runKey]);
 
-export default function AIAssistant() {
-  const [active, setActive] = useState(false);
-  const visible = useTypedScript(active);
+  const handleStart = () => {
+    setVisible(1);
+    setRunKey((k) => k + 1);
+  };
 
   return (
     <section className="bg-[#3A3838] py-12 md:py-16 m-0 border-t border-[#585454]" id="faq-assistant">
@@ -47,11 +47,11 @@ export default function AIAssistant() {
           </ul>
 
           <button
-            onClick={() => setActive(true)}
+            onClick={handleStart}
             className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white cursor-pointer hover:bg-emerald-500 transition-all border-none bg-emerald-600 shadow-md"
           >
             <HelpCircle size={16} />
-            {active ? 'Replay Demo' : 'See It in Action'}
+            {runKey > 0 ? 'Replay Demo' : 'See It in Action'}
           </button>
         </div>
 
@@ -88,7 +88,7 @@ export default function AIAssistant() {
                 </motion.div>
               ))}
             </AnimatePresence>
-            {!active && (
+            {runKey === 0 && (
               <div className="flex flex-1 items-center justify-center text-sm text-[#D1D5DB] font-medium">
                 Click "See It in Action" to preview a conversation
               </div>

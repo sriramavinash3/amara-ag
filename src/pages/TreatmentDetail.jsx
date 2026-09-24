@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Activity, ArrowLeft, CheckCircle2, ChevronRight, Calendar, Phone, ShieldCheck, Clock, AlertCircle } from 'lucide-react';
-import Card from '../components/ui/Card';
+import { ArrowLeft, CheckCircle2, ChevronRight, Calendar, Phone, ShieldCheck, Clock, AlertCircle } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import Accordion from '../components/ui/Accordion';

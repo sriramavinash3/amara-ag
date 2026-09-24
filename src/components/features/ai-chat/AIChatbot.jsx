@@ -1,14 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { MessageSquare, X, Send, ArrowRight, Activity, Calendar, HelpCircle, Phone } from 'lucide-react';
-import Card from '../../ui/Card';
-import Button from '../../ui/Button';
-import Badge from '../../ui/Badge';
-import { conditions, treatments } from '../../../utils/medicalData';
+import { MessageSquare, X, Send, ArrowRight, Activity } from 'lucide-react';
+import { conditions } from '../../../utils/medicalData';
 
 export default function AIChatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      sender: 'bot',
+      text: "Hello! I am your Amara Clinical Assistant. How can I help you find pain relief today?",
+      options: [
+        { label: '🔍 Symptom Checker', value: 'symptoms' },
+        { label: '💳 Insurance & Fees', value: 'billing' },
+        { label: '🕒 Hours & Location', value: 'hours' },
+        { label: '📅 Book Appointment', value: 'book' }
+      ]
+    }
+  ]);
   const [inputText, setInputText] = useState('');
   const chatEndRef = useRef(null);
   const navigate = useNavigate();
@@ -19,24 +27,6 @@ export default function AIChatbot() {
       chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isOpen]);
-
-  // Initial welcome message when chat is opened
-  useEffect(() => {
-    if (isOpen && messages.length === 0) {
-      setMessages([
-        {
-          sender: 'bot',
-          text: "Hello! I am your Amara Clinical Assistant. How can I help you find pain relief today?",
-          options: [
-            { label: '🔍 Symptom Checker', value: 'symptoms' },
-            { label: '💳 Insurance & Fees', value: 'billing' },
-            { label: '🕒 Hours & Location', value: 'hours' },
-            { label: '📅 Book Appointment', value: 'book' }
-          ]
-        }
-      ]);
-    }
-  }, [isOpen, messages]);
 
   const addMessage = (sender, text, options = null, links = null) => {
     setMessages(prev => [...prev, { sender, text, options, links }]);

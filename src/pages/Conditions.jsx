@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Activity, Search, ArrowRight, ShieldCheck, Calendar, Info, Phone } from 'lucide-react';
-import Card from '../components/ui/Card';
+import { Activity, Search, ArrowRight, ShieldCheck, Calendar, Phone } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import useScrollReveal from '../hooks/useScrollReveal';

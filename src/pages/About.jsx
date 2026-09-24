@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Award, CheckCircle2, Shield, Calendar, MapPin, Heart, BookOpen, HeartHandshake } from 'lucide-react';
+import { CheckCircle2, Shield, Calendar, Heart, BookOpen, HeartHandshake } from 'lucide-react';
 import Button from '../components/ui/Button';
-import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import useScrollReveal from '../hooks/useScrollReveal';
 import '../styles/skeuomorphic.css';

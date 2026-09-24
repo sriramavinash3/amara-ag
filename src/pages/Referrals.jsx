@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // Manual state-driven validation using Zod for 100% stable runtime.
 import { z } from 'zod';
-import { FileText, Download, CheckCircle2, ListFilter, Search, Clock, ArrowRight, ShieldCheck, ClipboardCheck, Lock } from 'lucide-react';
+import { FileText, Download, CheckCircle2, Clock, ArrowRight, ShieldCheck, ClipboardCheck, Lock } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
@@ -74,7 +74,7 @@ export default function Referrals() {
     // Success flow
     setErrors({});
     const newRef = {
-      id: `REF-${Math.floor(1000 + Math.random() * 9000)}`,
+      id: `REF-${Date.now().toString().slice(-6)}`,
       patient: `${formData.patientFirstName} ${formData.patientLastName.charAt(0)}. (DOB: ${formData.patientDob.split('-')[0] || formData.patientDob})`,
       referredBy: formData.doctorName,
       date: new Date().toISOString().split('T')[0],

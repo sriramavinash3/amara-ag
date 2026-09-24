@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import StickyActionBar from './components/layout/StickyActionBar';
@@ -20,6 +20,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Referrals from './pages/Referrals';
 import ProviderDetail from './pages/ProviderDetail';
+import NotFound from './pages/NotFound';
 import ExitIntentPopup from './components/layout/ExitIntentPopup';
 import { AppointmentProvider } from './context/AppointmentContext';
 import useScrollProgress from './hooks/useScrollProgress';
@@ -74,6 +75,9 @@ function MainLayout() {
 
           {/* Dynamic Provider Detail Pages */}
           <Route path="/providers/:id" element={<ProviderDetail />} />
+
+          {/* 404 Catch-All Route */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 

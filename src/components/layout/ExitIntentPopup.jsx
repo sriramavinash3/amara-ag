@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { X, Calendar, Phone, ShieldCheck } from 'lucide-react';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 
 export default function ExitIntentPopup() {
   const [isVisible, setIsVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  const [dismissed, setDismissed] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    try {
+      return Boolean(sessionStorage.getItem('exit_intent_seen'));
+    } catch {
+      return false;
+    }
+  });
 
   useEffect(() => {
-    // Check if user has already dismissed it in this session
-    const hasSeen = sessionStorage.getItem('exit_intent_seen');
-    if (hasSeen) {
-      setDismissed(true);
-      return;
-    }
+    if (dismissed) return;
 
     const handleMouseLeave = (e) => {
-      if (dismissed) return;
       // Trigger when mouse moves out of top viewport (typical exit path)
       if (e.clientY < 20) {
         setIsVisible(true);
@@ -32,7 +34,11 @@ export default function ExitIntentPopup() {
   const handleClose = () => {
     setIsVisible(false);
     setDismissed(true);
-    sessionStorage.setItem('exit_intent_seen', 'true');
+    try {
+      sessionStorage.setItem('exit_intent_seen', 'true');
+    } catch {
+      // Ignore storage errors in private browsing
+    }
   };
 
   if (!isVisible) return null;
@@ -77,11 +83,11 @@ export default function ExitIntentPopup() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <a href="/book" onClick={handleClose} className="flex-grow">
+            <Link to="/book" onClick={handleClose} className="flex-grow">
               <Button variant="primary" className="w-full font-bold" icon={Calendar}>
                 Book Appointment
               </Button>
-            </a>
+            </Link>
             <a href="tel:+17045039338" onClick={handleClose} className="flex-grow">
               <Button variant="secondary" className="w-full" icon={Phone}>
                 Call +1 704-503-9338

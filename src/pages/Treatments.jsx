@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Activity, Search, ArrowRight, Shield, Calendar, Clock } from 'lucide-react';
-import Card from '../components/ui/Card';
+import { Activity, Search, ArrowRight, Shield, Clock } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import useScrollReveal from '../hooks/useScrollReveal';
@@ -137,7 +136,7 @@ export default function Treatments() {
         )}
       </div>
 
-      {/* 3. MOCK HOSPITAL FEE REMINDER PANEL */}
+      {/* 3. HOSPITAL FEE REMINDER PANEL */}
       <div className="border border-[#585454] bg-[#363434] flex flex-col md:flex-row gap-6 items-center justify-between relative z-10 shadow-xl p-8 animate-reveal rounded-2xl my-8">
         <div className="space-y-3 max-w-2xl text-left">
           <h3 className="text-[18px] font-bold font-heading text-white">

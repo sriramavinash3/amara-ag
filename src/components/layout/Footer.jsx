@@ -211,7 +211,7 @@ export default function Footer() {
             <span>&bull;</span>
             <Link to="/contact" className="hover:text-emerald-300 transition-colors">Directions &amp; Hours</Link>
             <span>&bull;</span>
-            <a href="https://amarapain.com" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-300 transition-colors">Old Website Reference</a>
+            <Link to="/referrals" className="hover:text-emerald-300 transition-colors">Physician Referrals</Link>
           </div>
         </div>
       </div>

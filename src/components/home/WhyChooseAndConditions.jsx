@@ -55,8 +55,6 @@ const conditionCards = [
   },
 ];
 
-const springBase = { type: 'spring', stiffness: 90, damping: 11, mass: 0.95 };
-
 function PillarCard({ p, index }) {
   const Icon = p.icon;
   return (

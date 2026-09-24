@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Phone, Mail, MapPin, Clock, Printer, Send, Info, Bus, Car, Navigation, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Printer, Send, Bus, Car, Navigation, CheckCircle2, ArrowRight } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
@@ -30,11 +30,8 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1200));
-
     const newLead = {
-      id: 'APS-' + Math.floor(100000 + Math.random() * 900000),
+      id: 'APS-MSG-' + Date.now(),
       type: 'contact',
       dateCreated: new Date().toISOString(),
       status: 'New',
@@ -117,8 +114,8 @@ export default function Contact() {
                 <Phone className="h-6 w-6 text-emerald-400 shrink-0 mt-1" />
                 <div>
                   <h3 className="font-bold text-sm text-[#D1D5DB] uppercase tracking-wider">Phone</h3>
-                  <a href="tel:7045039338" className="block text-lg font-black text-emerald-400 hover:text-emerald-300 mt-1">
-                    704-503-9338
+                  <a href="tel:+17045039338" className="block text-lg font-black text-emerald-400 hover:text-emerald-300 mt-1">
+                    +1 704-503-9338
                   </a>
                 </div>
               </Card>
