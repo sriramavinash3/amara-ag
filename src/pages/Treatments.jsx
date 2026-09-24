@@ -4,12 +4,19 @@ import { Activity, Search, ArrowRight, Shield, Clock } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useSEO from '../hooks/useSEO';
 import { treatments } from '../utils/medicalData';
 import '../styles/skeuomorphic.css';
 
 export default function Treatments() {
   const containerRef = useRef(null);
   useScrollReveal(containerRef);
+
+  useSEO({
+    title: "Interventional Pain Procedures & Treatments | Amara Pain Charlotte NC",
+    description: "Minimally invasive, fluoroscopy-guided pain treatments including epidural steroid injections, radiofrequency ablation, and nerve blocks.",
+    url: "/treatments"
+  });
 
   const [searchQuery, setSearchQuery] = useState('');
 

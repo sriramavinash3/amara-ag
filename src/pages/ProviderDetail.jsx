@@ -5,6 +5,7 @@ import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useSEO from '../hooks/useSEO';
 import '../styles/skeuomorphic.css';
 
 const providerData = {
@@ -160,10 +161,15 @@ export default function ProviderDetail() {
   const navigate = useNavigate();
   const provider = providerData[id];
 
+  useSEO({
+    title: provider ? `${provider.name} | Interventional Pain Specialist | Charlotte NC` : "Provider Profile | Amara Pain",
+    description: provider ? `${provider.name} is a ${provider.credentials} dedicated to non-surgical pain relief at Amara Pain in Charlotte, NC.` : "Learn more about our interventional pain specialists in Charlotte, NC.",
+    url: `/providers/${id}`,
+    image: provider?.image || "https://www.amarapain.com/images/og-image.png"
+  });
+
   useEffect(() => {
     if (provider) {
-      document.title = `${provider.name} | Amara Pain & Spine Charlotte NC`;
-      
       // Inject dynamic schema markup for SEO
       const existingScript = document.getElementById('provider-schema');
       if (existingScript) existingScript.remove();

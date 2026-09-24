@@ -5,6 +5,7 @@ import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import Accordion from '../components/ui/Accordion';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useSEO from '../hooks/useSEO';
 import { conditions } from '../utils/medicalData';
 import '../styles/skeuomorphic.css';
 
@@ -16,15 +17,13 @@ export default function ConditionDetail() {
   const navigate = useNavigate();
   const cond = conditions[id];
 
-  // Dynamically update page titles and meta descriptions for SEO
+  useSEO({
+    title: cond ? cond.metaTitle : "Condition Detail | Amara Pain",
+    description: cond ? cond.metaDesc : "Learn more about conditions treated at Amara Pain in Charlotte, NC.",
+    url: `/conditions/${id}`
+  });
+
   useEffect(() => {
-    if (cond) {
-      document.title = cond.metaTitle;
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', cond.metaDesc);
-      }
-    }
     window.scrollTo(0, 0);
   }, [cond]);
 

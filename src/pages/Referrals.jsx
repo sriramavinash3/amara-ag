@@ -5,6 +5,7 @@ import { FileText, Download, CheckCircle2, Clock, ArrowRight, ShieldCheck, Clipb
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
+import useSEO from '../hooks/useSEO';
 import '../styles/skeuomorphic.css';
 
 // Zod Validation Schema
@@ -23,6 +24,11 @@ const referralSchema = z.object({
 });
 
 export default function Referrals() {
+  useSEO({
+    title: "Physician Referrals | Fast-Track Patient Placement | Amara Pain",
+    description: "Refer a patient to Amara Pain in Charlotte, NC. Fast-track peer-to-peer consultations, comprehensive clinic notes, and coordinated specialist care.",
+    url: "/referrals"
+  });
   const [activeTab, setActiveTab] = useState('form');
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);

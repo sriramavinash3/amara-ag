@@ -5,12 +5,19 @@ import { Activity, Search, ArrowRight, ShieldCheck, Calendar, Phone } from 'luci
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useSEO from '../hooks/useSEO';
 import { conditions } from '../utils/medicalData';
 import '../styles/skeuomorphic.css';
 
 export default function Conditions() {
   const containerRef = useRef(null);
   useScrollReveal(containerRef);
+
+  useSEO({
+    title: "Pain Conditions We Treat | Amara Pain Charlotte NC",
+    description: "Specialized interventional treatments for back pain, neck pain, sciatica, arthritis, joint pain, and neuropathic pain in Charlotte, NC.",
+    url: "/conditions"
+  });
 
   const [searchQuery, setSearchQuery] = useState('');
   

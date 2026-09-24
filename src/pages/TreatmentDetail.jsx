@@ -5,6 +5,7 @@ import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import Accordion from '../components/ui/Accordion';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useSEO from '../hooks/useSEO';
 import { treatments } from '../utils/medicalData';
 import '../styles/skeuomorphic.css';
 
@@ -16,15 +17,13 @@ export default function TreatmentDetail() {
   const navigate = useNavigate();
   const treat = treatments[id];
 
-  // Dynamically update metadata for SEO
+  useSEO({
+    title: treat ? treat.metaTitle : "Treatment Detail | Amara Pain",
+    description: treat ? treat.metaDesc : "Learn more about interventional pain treatments offered at Amara Pain in Charlotte, NC.",
+    url: `/treatments/${id}`
+  });
+
   useEffect(() => {
-    if (treat) {
-      document.title = treat.metaTitle;
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', treat.metaDesc);
-      }
-    }
     window.scrollTo(0, 0);
   }, [treat]);
 

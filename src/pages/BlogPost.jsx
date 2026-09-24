@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar, User, BookOpen, ChevronRight, AlertCircle, Share2 
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
+import useSEO from '../hooks/useSEO';
 import { blogPosts } from '../utils/medicalData';
 import '../styles/skeuomorphic.css';
 
@@ -14,10 +15,13 @@ export default function BlogPost() {
   const posts = blogPosts || [];
   const post = posts.find(p => p && p.id === id);
 
+  useSEO({
+    title: post ? `${post.title} | Amara Pain Blog` : "Blog Article | Amara Pain",
+    description: post ? (post.excerpt || post.shortDesc) : "Read evidence-based patient guides and pain management insights.",
+    url: `/blog/${id}`
+  });
+
   useEffect(() => {
-    if (post) {
-      document.title = `${post.title} | Amara Pain Blog`;
-    }
     window.scrollTo(0, 0);
   }, [post]);
 

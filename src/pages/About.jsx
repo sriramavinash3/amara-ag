@@ -4,11 +4,18 @@ import { CheckCircle2, Shield, Calendar, Heart, BookOpen, HeartHandshake } from 
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useSEO from '../hooks/useSEO';
 import '../styles/skeuomorphic.css';
 
 export default function About() {
   const containerRef = useRef(null);
   useScrollReveal(containerRef);
+
+  useSEO({
+    title: "About Our Interventional Pain Specialists | Amara Pain Charlotte NC",
+    description: "Meet our double board-certified interventional pain specialists in Charlotte, NC. Evidence-based, non-surgical relief with $0 hospital facility fees.",
+    url: "/about"
+  });
 
   const staff = [
     {

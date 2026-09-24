@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
+import useSEO from '../hooks/useSEO';
 import Hero from '../components/home/Hero';
 import InsuranceMarquee from '../components/home/InsuranceMarquee';
 import WhyChooseAndConditions from '../components/home/WhyChooseAndConditions';
@@ -12,6 +13,13 @@ import Blog from '../components/home/Blog';
 import FinalCTA from '../components/home/FinalCTA';
 
 export default function Home() {
+  useSEO({
+    title: "Amara Pain | Advanced Interventional Pain Specialists",
+    description: "Charlotte's leading interventional specialists delivering advanced, evidence-based pain relief built around your body, your diagnostics, and your life outside of the clinic.",
+    url: "https://www.amarapain.com/",
+    image: "https://www.amarapain.com/images/og-image.png"
+  });
+
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;

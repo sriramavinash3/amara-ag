@@ -4,12 +4,19 @@ import { BookOpen, Calendar, User, ArrowRight, Activity } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useSEO from '../hooks/useSEO';
 import { blogPosts } from '../utils/medicalData';
 import '../styles/skeuomorphic.css';
 
 export default function Blog() {
   const containerRef = useRef(null);
   useScrollReveal(containerRef);
+
+  useSEO({
+    title: "Patient Education & Pain Management Blog | Amara Pain Charlotte NC",
+    description: "Evidence-based articles, lifestyle tips, and clinical updates on chronic pain management and spine health from Amara Pain.",
+    url: "/blog"
+  });
 
   const [selectedCategory, setSelectedCategory] = useState('All');
 

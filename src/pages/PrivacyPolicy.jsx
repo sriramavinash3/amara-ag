@@ -2,9 +2,15 @@ import React from 'react';
 import { Shield } from 'lucide-react';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
+import useSEO from '../hooks/useSEO';
 import '../styles/skeuomorphic.css';
 
 export default function PrivacyPolicy() {
+  useSEO({
+    title: "Privacy Policy & HIPAA Notice | Amara Pain Charlotte NC",
+    description: "Amara Pain's commitment to patient privacy, HIPAA compliance, and data protection in Charlotte, NC.",
+    url: "/privacy"
+  });
   return (
     <div className="w-full relative py-8 md:py-12 px-4 sm:px-6 md:px-8 max-w-3xl mx-auto space-y-10 text-left">
 

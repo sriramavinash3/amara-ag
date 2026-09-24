@@ -4,11 +4,18 @@ import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useSEO from '../hooks/useSEO';
 import '../styles/skeuomorphic.css';
 
 export default function Contact() {
   const containerRef = useRef(null);
   useScrollReveal(containerRef);
+
+  useSEO({
+    title: "Contact Amara Pain | Clinic Location & Hours | Charlotte NC",
+    description: "Visit Amara Pain at 6429 Bannington Road Suite B, Charlotte, NC 28226. Call 704-503-9338 or schedule a consultation.",
+    url: "/contact"
+  });
 
   const [formData, setFormData] = useState({
     name: '',

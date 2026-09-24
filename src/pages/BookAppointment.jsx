@@ -5,6 +5,7 @@ import { conditions, treatments } from '../utils/medicalData';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import Badge from '../components/ui/Badge';
+import useSEO from '../hooks/useSEO';
 import { 
   CheckCircle2, ChevronRight, ChevronLeft, Calendar, ShieldAlert, ShieldCheck, 
   FileText, Info, Award, Phone, AlertTriangle, RefreshCw, Clock, Loader2 
@@ -13,6 +14,12 @@ import '../styles/skeuomorphic.css';
 
 export default function BookAppointment() {
   const location = useLocation();
+
+  useSEO({
+    title: "Book an Appointment | Amara Pain Charlotte NC",
+    description: "Schedule a consultation with our double board-certified pain specialists in Charlotte, NC. Fast appointment availability with zero hospital facility fees.",
+    url: "/book"
+  });
   const {
     step,
     setStep,
@@ -32,10 +39,12 @@ export default function BookAppointment() {
     bookingStatus,
     bookingSuccess,
     bookingError,
+    clearBookingError,
     bookingResult,
     generatedBookingId,
     liveSlots,
     isLoadingSlots,
+    fetchAvailability,
     nextStep,
     prevStep,
     resetWizard,
@@ -60,6 +69,9 @@ export default function BookAppointment() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setPatientDetails(prev => ({ ...prev, [name]: value }));
+    if (bookingStatus === 'booking_failed') {
+      clearBookingError();
+    }
   };
 
   const providers = [
@@ -260,7 +272,10 @@ export default function BookAppointment() {
                   key={idx}
                   type="button"
                   onClick={() => {
-                    setSelectedProvider(prov.name);
+                    if (selectedProvider !== prov.name) {
+                      setSelectedProvider(prov.name);
+                      setSelectedTime('');
+                    }
                     nextStep();
                   }}
                   className={`w-full px-5 py-4 rounded-xl border font-bold text-left transition-all duration-200 cursor-pointer flex items-center justify-between group ${
@@ -300,7 +315,10 @@ export default function BookAppointment() {
                   type="date"
                   value={selectedDate}
                   min={new Date().toISOString().split('T')[0]} // Block past dates
-                  onChange={(e) => setSelectedDate(e.target.value)}
+                  onChange={(e) => {
+                    setSelectedDate(e.target.value);
+                    setSelectedTime('');
+                  }}
                   className="w-full px-4 py-3 bg-[#363434] border border-[#585454] text-[#FFFFFF] rounded-xl text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 shadow-sm transition-all duration-200"
                 />
               </div>
@@ -504,7 +522,9 @@ export default function BookAppointment() {
                 <div className="md:col-span-12 p-4 bg-red-950/40 border border-red-800/60 rounded-xl flex items-start gap-3 text-red-200 text-sm animate-reveal">
                   <AlertTriangle className="h-5 w-5 text-red-400 shrink-0 mt-0.5" />
                   <div className="space-y-2 text-left flex-1">
-                    <p className="font-bold text-white">Booking Submission Unsuccessful</p>
+                    <p className="font-bold text-white">
+                      {bookingError.isSlotUnavailable ? 'Selected Time Slot Unavailable' : 'Booking Submission Unsuccessful'}
+                    </p>
                     <p className="text-xs text-red-200 leading-relaxed">
                       {bookingError.message || 'Unable to confirm appointment with the Tebra scheduling system.'}
                     </p>
@@ -512,24 +532,44 @@ export default function BookAppointment() {
                       {bookingError.isSlotUnavailable ? (
                         <button
                           type="button"
-                          onClick={() => setStep(4)}
-                          className="px-3 py-1.5 bg-red-900/60 hover:bg-red-800/80 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5"
+                          onClick={() => {
+                            clearBookingError();
+                            setSelectedTime('');
+                            fetchAvailability(selectedProvider, selectedDate);
+                            setStep(4);
+                          }}
+                          className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm"
                         >
-                          <Clock className="h-3.5 w-3.5" /> Choose Another Slot
+                          <Clock className="h-3.5 w-3.5" /> Select Another Time Slot
                         </button>
                       ) : (
-                        <button
-                          type="button"
-                          onClick={submitAppointment}
-                          disabled={isSubmitting}
-                          className="px-3 py-1.5 bg-red-900/60 hover:bg-red-800/80 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5"
-                        >
-                          <RefreshCw className={`h-3.5 w-3.5 ${isSubmitting ? 'animate-spin' : ''}`} /> Try Again
-                        </button>
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              submitAppointment();
+                            }}
+                            disabled={isSubmitting}
+                            className="px-3.5 py-1.5 bg-red-900/60 hover:bg-red-800/80 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5"
+                          >
+                            <RefreshCw className={`h-3.5 w-3.5 ${isSubmitting ? 'animate-spin' : ''}`} /> {isSubmitting ? 'Retrying...' : 'Try Again'}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              clearBookingError();
+                              fetchAvailability(selectedProvider, selectedDate);
+                              setStep(4);
+                            }}
+                            className="px-3.5 py-1.5 bg-[#363434] hover:bg-[#514E4E] border border-[#585454] text-white rounded-lg text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5"
+                          >
+                            <Clock className="h-3.5 w-3.5" /> Change Time / Date
+                          </button>
+                        </>
                       )}
                       <a
                         href="tel:+17045039338"
-                        className="px-3 py-1.5 bg-[#363434] hover:bg-[#514E4E] border border-[#585454] text-white rounded-lg text-xs font-bold transition-colors inline-flex items-center gap-1.5"
+                        className="px-3.5 py-1.5 bg-[#363434] hover:bg-[#514E4E] border border-[#585454] text-white rounded-lg text-xs font-bold transition-colors inline-flex items-center gap-1.5"
                       >
                         <Phone className="h-3.5 w-3.5 text-emerald-400" /> Call Clinic: (704) 503-9338
                       </a>
@@ -659,6 +699,8 @@ export default function BookAppointment() {
                   ? 'Submitting to Tebra...'
                   : bookingStatus === 'booking_ambiguous'
                   ? 'Confirmation In Progress'
+                  : bookingStatus === 'booking_failed'
+                  ? 'Retry Booking Request'
                   : 'Submit Booking Request'}
               </Button>
             )}

@@ -2,43 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Static Pages -->
   <url>
-    <loc>https://amarapain.com/</loc>
+    <loc>https://www.amarapain.com/</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/book</loc>
+    <loc>https://www.amarapain.com/book</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/about</loc>
+    <loc>https://www.amarapain.com/about</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/contact</loc>
+    <loc>https://www.amarapain.com/contact</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/patients</loc>
+    <loc>https://www.amarapain.com/patients</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/referrals</loc>
+    <loc>https://www.amarapain.com/referrals</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/privacy</loc>
+    <loc>https://www.amarapain.com/privacy</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -46,19 +46,19 @@
 
   <!-- Providers -->
   <url>
-    <loc>https://amarapain.com/providers/dr-ashvin-amara</loc>
+    <loc>https://www.amarapain.com/providers/dr-ashvin-amara</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/providers/eunice-babalola</loc>
+    <loc>https://www.amarapain.com/providers/eunice-babalola</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/providers/alexander-carmenaty</loc>
+    <loc>https://www.amarapain.com/providers/alexander-carmenaty</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -66,61 +66,61 @@
 
   <!-- Conditions -->
   <url>
-    <loc>https://amarapain.com/conditions</loc>
+    <loc>https://www.amarapain.com/conditions</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/conditions/back-pain</loc>
+    <loc>https://www.amarapain.com/conditions/back-pain</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/conditions/neck-pain</loc>
+    <loc>https://www.amarapain.com/conditions/neck-pain</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/conditions/sciatica</loc>
+    <loc>https://www.amarapain.com/conditions/sciatica</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/conditions/knee-pain</loc>
+    <loc>https://www.amarapain.com/conditions/knee-pain</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/conditions/shoulder-pain</loc>
+    <loc>https://www.amarapain.com/conditions/shoulder-pain</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/conditions/neuropathic-pain</loc>
+    <loc>https://www.amarapain.com/conditions/neuropathic-pain</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/conditions/sports-injuries</loc>
+    <loc>https://www.amarapain.com/conditions/sports-injuries</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/conditions/arthritis</loc>
+    <loc>https://www.amarapain.com/conditions/arthritis</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/conditions/post-surgical-pain</loc>
+    <loc>https://www.amarapain.com/conditions/post-surgical-pain</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -128,49 +128,49 @@
 
   <!-- Treatments -->
   <url>
-    <loc>https://amarapain.com/treatments</loc>
+    <loc>https://www.amarapain.com/treatments</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/treatments/epidural-injections</loc>
+    <loc>https://www.amarapain.com/treatments/epidural-injections</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/treatments/nerve-blocks</loc>
+    <loc>https://www.amarapain.com/treatments/nerve-blocks</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/treatments/radiofrequency-ablation</loc>
+    <loc>https://www.amarapain.com/treatments/radiofrequency-ablation</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/treatments/spinal-cord-stimulation</loc>
+    <loc>https://www.amarapain.com/treatments/spinal-cord-stimulation</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/treatments/trigger-point-therapy</loc>
+    <loc>https://www.amarapain.com/treatments/trigger-point-therapy</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/treatments/regenerative-treatments</loc>
+    <loc>https://www.amarapain.com/treatments/regenerative-treatments</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/treatments/weight-loss</loc>
+    <loc>https://www.amarapain.com/treatments/weight-loss</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -178,67 +178,67 @@
 
   <!-- Blog & Articles -->
   <url>
-    <loc>https://amarapain.com/blog</loc>
+    <loc>https://www.amarapain.com/blog</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/blog/understanding-myofascial-pain</loc>
+    <loc>https://www.amarapain.com/blog/understanding-myofascial-pain</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/blog/why-facility-fees-matter</loc>
+    <loc>https://www.amarapain.com/blog/why-facility-fees-matter</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/blog/managing-arthritis-in-winter</loc>
+    <loc>https://www.amarapain.com/blog/managing-arthritis-in-winter</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/blog/spinal-cord-stimulation-guide</loc>
+    <loc>https://www.amarapain.com/blog/spinal-cord-stimulation-guide</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/blog/role-of-nutrition-in-pain</loc>
+    <loc>https://www.amarapain.com/blog/role-of-nutrition-in-pain</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/blog/what-is-radiofrequency-ablation</loc>
+    <loc>https://www.amarapain.com/blog/what-is-radiofrequency-ablation</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/blog/coping-with-chronic-pain</loc>
+    <loc>https://www.amarapain.com/blog/coping-with-chronic-pain</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/blog/understanding-sciatica</loc>
+    <loc>https://www.amarapain.com/blog/understanding-sciatica</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/blog/preparing-for-your-first-visit</loc>
+    <loc>https://www.amarapain.com/blog/preparing-for-your-first-visit</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://amarapain.com/blog/joint-preservation-techniques</loc>
+    <loc>https://www.amarapain.com/blog/joint-preservation-techniques</loc>
     <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>

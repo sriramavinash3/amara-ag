@@ -5,12 +5,19 @@ import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import Accordion from '../components/ui/Accordion';
 import useScrollReveal from '../hooks/useScrollReveal';
+import useSEO from '../hooks/useSEO';
 import { faqs } from '../utils/medicalData';
 import '../styles/skeuomorphic.css';
 
 export default function Patients() {
   const containerRef = useRef(null);
   useScrollReveal(containerRef);
+
+  useSEO({
+    title: "Patient Resources, Insurance & Portal | Amara Pain Charlotte NC",
+    description: "Patient forms, accepted insurance plans, payment options, and FAQs for Amara Pain patients in Charlotte, NC.",
+    url: "/patients"
+  });
 
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
