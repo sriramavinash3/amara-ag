@@ -4,6 +4,7 @@
 export const conditions = {
   "back-pain": {
     id: "back-pain",
+    image: "/images/conditions/back-pain.jpg",
     title: "Back Pain & Leg Pain",
     shortDesc: "Comprehensive care for Lumbar Spine Arthritis, Degenerative Disc Disease, and Pain After Surgery.",
     icon: "Activity",
@@ -44,6 +45,7 @@ export const conditions = {
   },
   "neck-pain": {
     id: "neck-pain",
+    image: "/images/conditions/neck-pain.jpg",
     title: "Neck Pain & Arm Pain",
     shortDesc: "Advanced treatment for Cervical Spine Arthritis, Cervical Stenosis, Herniated Discs, and Whiplash.",
     icon: "Activity",
@@ -82,6 +84,7 @@ export const conditions = {
   },
   "sciatica": {
     id: "sciatica",
+    image: "/images/conditions/sciatica.jpg",
     title: "Sciatica Treatment",
     shortDesc: "Targeted relief for radiating nerve pain, numbness, and tingling along the sciatic nerve pathway.",
     icon: "Zap",
@@ -119,6 +122,7 @@ export const conditions = {
   },
   "joint-pain": {
     id: "joint-pain",
+    image: "/images/conditions/joint-pain.jpg",
     title: "Joint Pain & Arthritis",
     shortDesc: "Comprehensive therapies for hip osteoarthritis, shoulder pain, sacroiliac (SI) joint pain, and facet arthritis.",
     icon: "Shield",
@@ -157,6 +161,7 @@ export const conditions = {
   },
   "knee-pain": {
     id: "knee-pain",
+    image: "/images/conditions/knee-pain.jpg",
     title: "Knee Pain & Leg Pain",
     shortDesc: "Specialized care for knee osteoarthritis, sports injuries, bursitis, and ligament strains.",
     icon: "Activity",
@@ -194,6 +199,7 @@ export const conditions = {
   },
   "shoulder-pain": {
     id: "shoulder-pain",
+    image: "/images/conditions/shoulder-pain.jpg",
     title: "Shoulder Pain & Abdomen Pain",
     shortDesc: "Targeted therapies for Frozen Shoulder, rotator cuff tears, work injuries, and chronic abdominal pain.",
     icon: "Shield",
@@ -232,6 +238,7 @@ export const conditions = {
   },
   "neuropathic-pain": {
     id: "neuropathic-pain",
+    image: "/images/conditions/neuropathic-pain.jpg",
     title: "Neuropathic Pain & Neuropathy",
     shortDesc: "Expert care for diabetic neuropathy, shingles pain (PHN), complex regional pain syndrome (CRPS), and fibromyalgia.",
     icon: "Zap",
@@ -269,6 +276,7 @@ export const conditions = {
   },
   "sports-injuries": {
     id: "sports-injuries",
+    image: "/images/conditions/sports-injuries.jpg",
     title: "Sports & Work Injuries",
     shortDesc: "Rapid recovery programs for tendonitis, muscle strains, ligament sprains, and joint injuries.",
     icon: "Activity",
@@ -307,6 +315,7 @@ export const conditions = {
   },
   "arthritis": {
     id: "arthritis",
+    image: "/images/conditions/arthritis.jpg",
     title: "Joint Arthritis & Preservation",
     shortDesc: "Specialized non-surgical joint-preservation protocols for Osteoarthritis, SI joint pain, and Rheumatoid flares.",
     icon: "Shield",
@@ -343,6 +352,7 @@ export const conditions = {
   },
   "post-surgical-pain": {
     id: "post-surgical-pain",
+    image: "/images/conditions/post-surgical-pain.jpg",
     title: "Post-Surgical Pain & FBSS",
     shortDesc: "Comprehensive interventional treatment for Failed Back Surgery Syndrome, persistent nerve irritation, and post-joint surgery pain.",
     icon: "Activity",
@@ -570,6 +580,7 @@ export const blogPosts = [
     title: "Understanding Myofascial Pain and Muscle Knots",
     date: "June 15, 2026",
     author: "Ashvin K. Amara, MD",
+    image: "/images/blog/myofascial_trigger_points.jpg",
     excerpt: "Learn what causes painful muscle knots, how they refer pain to other parts of your body, and the most effective clinical therapies to find relief.",
     category: "Patient Education",
     content: "If you have ever felt a tender, painful 'knot' in your shoulder, neck, or upper back that makes your muscles feel constantly tight and restricted, you have likely experienced a trigger point. Myofascial pain syndrome is a common chronic pain disorder where pressure on these sensitive points in your muscles causes deep, aching pain in the muscle itself, and sometimes in seemingly unrelated parts of your body. This phenomenon is known as referred pain. For instance, a trigger point in your upper trapezius muscle can frequently refer pain upward, resulting in tension headaches.\n\nAt a biological level, these knots are areas of localized muscle spasm. They occur when a tiny bundle of muscle fibers remains locked in a state of continuous contraction. This constant contraction restricts local blood flow, cutting off oxygen and allowing metabolic waste products to build up, which in turn irritates local nerve endings and signals pain to the brain. Trigger points can develop due to sudden muscle trauma, repetitive strain from occupational movements, poor posture (such as slouching over a computer keyboard), or emotional stress that causes unconscious muscle clenching.\n\nWe understand how exhausting it is to live with muscles that never seem to relax, no matter how much you stretch or rest. Fortunately, you do not have to just 'live with it.' In our clinic, we offer Trigger Point Injections (TPI) to help break this painful cycle. During a TPI procedure, a physician uses a very fine needle to inject a small amount of local anesthetic directly into the trigger point. The physical insertion of the needle, combined with the numbing agent, works to mechanically disrupt the localized spasm, allowing the contracted muscle fibers to instantly release. This restores blood flow, flushes out accumulated toxins, and provides rapid pain relief, enabling you to participate in physical therapy and rebuild natural movement patterns without discomfort."
@@ -579,6 +590,7 @@ export const blogPosts = [
     title: "Why Clinic Choice Matters: The Truth About Facility Fees",
     date: "May 20, 2026",
     author: "Amara Pain Administration",
+    image: "/images/blog/transparent_medical_billing.jpg",
     excerpt: "Discover how independent clinics like Amara Pain & Spine save patients thousands of dollars by eliminating hidden hospital facility fees.",
     category: "Billing & Insurance",
     content: "Navigating medical billing can be incredibly stressful, especially when you are already dealing with the physical and emotional burden of chronic pain. One of the most common surprises patients encounter when receiving care is the sudden appearance of a 'facility fee' on their medical bill. This fee often duplicates the cost of the actual procedure and can add hundreds or even thousands of dollars to your out-of-pocket expenses. In this article, we want to demystify facility fees and explain why choosing an independent clinic for your care makes a massive financial difference.\n\nTo understand facility fees, it helps to understand how hospital-owned systems operate. When a hospital system buys a private medical practice, they transition the clinic's billing system to hospital billing. Consequently, when you visit that clinic, you receive two separate bills: one for the physician's professional services (the actual medical care), and a second bill—the facility fee—simply for walking through the door of a hospital-owned property. Even if the procedure is a minor, low-risk injection that takes ten minutes, you are charged for the overhead, maintenance, and administrative costs of the entire hospital network.\n\nAt Amara Pain & Spine Management, we believe that high-quality pain care should be accessible, transparent, and fair. Because we are a proud, independent, physician-owned practice, we do not have a hospital board or corporate parent company dictating our billing. We charge one flat, transparent fee for our services and absolutely zero facility fees. By keeping our care model independent, we save patients and their insurance networks up to 60% of the cost of identical procedures performed in hospital outpatient departments. We believe that you should only pay for the care you receive, and we are committed to keeping your treatment both effective and affordable."
@@ -588,6 +600,7 @@ export const blogPosts = [
     title: "Managing Joint Arthritis and Cold Weather Flares",
     date: "April 10, 2026",
     author: "Ashvin K. Amara, MD",
+    image: "/images/blog/winter_arthritis_care.jpg",
     excerpt: "Does cold weather really make your joints hurt? We look at the scientific link between barometric pressure and arthritis, and offer tips to stay active.",
     category: "Tips & Wellness",
     content: "It is an observation shared by millions of individuals living with joint arthritis: 'I can feel a storm coming in my knees.' For generations, this was dismissed as an old wives' tale. However, modern medical research has confirmed a direct, physical link between changes in the weather and increased joint pain. If you find that cold, damp winter days make your arthritis flare up, you are not imagining it. There are clear biological reasons why your body reacts to the elements.\n\nThe primary culprit behind weather-related joint pain is barometric pressure—the weight of the atmosphere pressing down on the Earth. Before a cold front or rainstorm arrives, barometric pressure drops. This decrease in air pressure means the atmosphere exerts less pressure on your body, allowing the fluids and tissues surrounding your joints to expand. In a joint already inflamed by arthritis, even a microscopic expansion can put extra pressure on highly sensitive nerve endings, leading to stiffness and pain. Additionally, cold temperatures can increase the viscosity of synovial fluid (the joint's natural lubricant), making joint movements feel tighter and more resistant.\n\nWe know how discouraging it is when weather changes disrupt your plans and limit your mobility. To help protect your joints during colder months, we recommend dressing in layers to keep your joints warm, using supportive heat therapy (such as warm baths or heating pads) to soothe stiff muscles, and staying active with low-impact indoor exercises like swimming or stationary cycling to keep joint fluid circulating. If seasonal pain becomes unmanageable, we encourage you to schedule a consultation. From targeted joint injections to advanced anti-inflammatory blocks, we can help calm the underlying inflammation so you can stay active and comfortable all year round."
@@ -597,6 +610,7 @@ export const blogPosts = [
     title: "Understanding Spinal Cord Stimulation for Chronic Back Pain",
     date: "July 10, 2026",
     author: "Ashvin K. Amara, MD",
+    image: "/images/blog/spinal_cord_stimulation.jpg",
     excerpt: "A gentle guide on how advanced neuromodulation works to soothe persistent pain pathways and help you reclaim your comfort.",
     category: "Tips & Wellness",
     content: "Living with chronic back or leg pain can make even the simplest daily tasks feel like a mountain to climb. If you have tried medications, physical therapy, and traditional injections, and still find yourself struggling to get through the day, it is easy to feel like you have run out of options. We want you to know that there is still hope. Spinal Cord Stimulation (SCS) is an advanced, clinically proven neuromodulation therapy designed to help patients manage persistent nerve pain and reclaim their quality of life.\n\nHow does Spinal Cord Stimulation work? In simple terms, SCS acts like a pacemaker for your nervous system. When you experience pain, sensory nerves send electrical signals up your spinal cord to your brain, which interprets them as discomfort. An SCS system consists of a small, implantable generator that delivers mild, low-frequency electrical currents directly to the spinal cord. These gentle pulses work by interrupting the pain signals before they can reach the brain, effectively replacing the sensation of sharp, shooting pain with a soothing, subtle tingling feeling (known as paresthesia) or, in newer systems, complete silent relief.\n\nOne of the greatest benefits of Spinal Cord Stimulation is that it is the only pain treatment that includes a trial phase. Before committing to a permanent implant, you undergo a temporary trial lasting 5 to 7 days. During a quick, outpatient procedure, thin temporary leads are placed under live X-ray guidance next to the spinal cord, connected to a small external controller. You go home and test the system in your daily life. If you experience a significant reduction in pain (typically 50% or greater) and an increase in your ability to perform daily activities, you can proceed with confidence to the permanent implant. Our team is here to guide you through every step of this journey with care and precision."
@@ -606,6 +620,7 @@ export const blogPosts = [
     title: "Nourishing Your Body: How Nutrition Affects Chronic Inflammation",
     date: "July 05, 2026",
     author: "Amara Pain Administration",
+    image: "/images/blog/anti_inflammatory_nutrition.jpg",
     excerpt: "Explore the powerful link between what we eat and how we feel, with simple, supportive dietary adjustments to help soothe joint pain.",
     category: "Tips & Wellness",
     content: "When we think about managing chronic joint or spine pain, our minds naturally go to clinical interventions like injections, blocks, and physical therapy. While these treatments are crucial, chronic pain management is most successful when we care for the entire body. One of the most powerful tools you have to support your recovery is sitting right in your kitchen. The foods you consume have a direct, measurable impact on systemic inflammation, which is a major driver of chronic pain.\n\nInflammation is your body's natural response to injury or illness. However, when the immune system remains activated over a long period, it can lead to chronic inflammation that damages healthy joint cartilage and irritates spinal nerves. Certain foods trigger the release of inflammatory markers in the body. Diets high in refined sugars, trans fats, processed meats, and refined grains keep inflammatory pathways active, amplifying your pain. Conversely, an anti-inflammatory diet rich in antioxidants, omega-3 fatty acids, and vitamins helps the body actively calm these inflammatory responses.\n\nTransitioning to an anti-inflammatory lifestyle does not have to be restrictive or stressful. We recommend focusing on simple, nourishing additions to your plate. Incorporate omega-3 rich foods like wild-caught salmon, walnuts, and chia seeds to lubricate joints. Eat a colorful variety of berries, leafy greens (like spinach and kale), and cruciferous vegetables to supply your body with powerful antioxidants. Use extra virgin olive oil as your primary healthy fat, and flavor meals with anti-inflammatory spices like turmeric and ginger. By nourishing your body from the inside out, you provide your tissues with the building blocks they need to heal, supporting your clinical treatments and helping you feel your best."
@@ -615,6 +630,7 @@ export const blogPosts = [
     title: "Radiofrequency Ablation: Long-Lasting Relief for Arthritis Pain",
     date: "June 28, 2026",
     author: "Ashvin K. Amara, MD",
+    image: "/images/blog/radiofrequency_ablation.jpg",
     excerpt: "Learn how this minimally invasive, precise therapy gently quietens painful joint signals to restore your daily mobility.",
     category: "Patient Education",
     content: "If you suffer from chronic neck or lower back pain caused by facet joint arthritis, you know how exhausting it is when simple movements—like turning your head to check your blind spot or bending down to tie your shoes—cause a sharp, pinching ache. When conservative treatments like physical therapy and anti-inflammatory medications fail to provide lasting relief, Radiofrequency Ablation (RFA) offers a safe, minimally invasive outpatient alternative designed to stop the pain at its source.\n\nThe facet joints are small, bony connections that link your vertebrae and allow your spine to bend and twist. Like any joint in the body, they can develop wear-and-tear arthritis, leading to chronic inflammation and localized pain. RFA works by utilizing advanced thermal energy to temporarily disable the specific sensory nerves (called medial branch nerves) that carry pain signals from these arthritic joints to the brain. During the procedure, which is performed under local anesthesia and precise fluoroscopic (live X-ray) guidance, a specialized needle is placed adjacent to the target nerve, and controlled radiofrequency waves are applied to create a small, therapeutic heat lesion.\n\nBecause the sensory nerve is deactivated, the pain signals are blocked from reaching the brain, providing significant and long-lasting pain relief that typically lasts between 6 to 18 months. Because the structure of the nerve remains intact, it will slowly regenerate over time. However, this extended window of relief provides a critical opportunity for you to engage in physical rehabilitation, rebuild core and spinal stabilizer strength, and return to the active lifestyle you deserve without being held back by daily joint pain."
@@ -624,6 +640,7 @@ export const blogPosts = [
     title: "Mind & Body: Supportive Coping Strategies for Chronic Pain",
     date: "June 20, 2026",
     author: "Amara Pain Clinical Staff",
+    image: "/images/blog/mind_body_pain_relief.jpg",
     excerpt: "Practical, compassionate tools to help you manage the emotional weight of persistent pain and support your mental wellness.",
     category: "Tips & Wellness",
     content: "Living with persistent, chronic pain is a deeply challenging experience that extends far beyond physical discomfort. It affects your sleep, your energy levels, your work, and your relationships. It is entirely normal to feel overwhelmed, anxious, frustrated, or isolated. Our clinical team believes in treating the whole person, and that means validating the emotional weight of pain just as much as the physical symptoms. Understanding the connection between the mind and the body is a powerful step toward finding relief.\n\nThe brain and the nervous system operate in a continuous feedback loop. When you experience chronic pain, your body is in a state of constant stress. This stress triggers the 'fight or flight' response, which increases muscle tension, elevates heart rate, and makes your nervous system more sensitive to pain signals. When you are anxious or stressed, your brain actually amplifies the intensity of the pain you feel. By utilizing targeted mind-body strategies, you can learn to calm this sympathetic nervous system response, lowering the stress hormones that exacerbate pain.\n\nWe encourage you to incorporate small, gentle mindfulness practices into your routine. Diaphragmatic breathing—slow, deep belly breaths—works to immediately stimulate the vagus nerve, signaling your body to relax and lower muscle tension. Guided imagery, progressive muscle relaxation, and restorative sleep hygiene can also help soothe an overactive nervous system. Remember, seeking support for your mental and emotional well-being is not a sign of weakness; it is a vital, courageous component of your overall clinical recovery plan. Our team is here to walk alongside you, offering both medical expertise and compassionate support."
@@ -633,6 +650,7 @@ export const blogPosts = [
     title: "Understanding Sciatica: From Irritation to Gentle Recovery",
     date: "June 02, 2026",
     author: "Ashvin K. Amara, MD",
+    image: "/images/blog/sciatica_nerve_relief.jpg",
     excerpt: "Demystifying the sharp, shooting leg pain known as sciatica and outlining non-surgical care paths to relieve the pressure.",
     category: "Patient Education",
     content: "Sciatica is a term that many people have heard, but it is often misunderstood. It is not a disease in itself, but rather a set of symptoms caused by the compression or irritation of the sciatic nerve—the longest and thickest nerve in the human body. When this nerve becomes pinched or inflamed, it can cause a sharp, electric, or burning pain that radiates from your lower back, down through your buttock, and straight down the back of your leg. For many, this shooting pain can make simple movements like sitting, walking, or standing feel almost impossible.\n\nSciatica most commonly develops when a lumbar disc bulges or herniates, pressing directly against the nerve roots that form the sciatic nerve. Other causes include spinal stenosis (a narrowing of the spinal canal) or a spasm of the piriformis muscle in the buttock. We know how frightening and debilitating this pain can be, and how it can make you feel restricted in your own home. The good news is that the vast majority of sciatica cases respond exceptionally well to conservative, non-surgical treatment options.\n\nOur clinical approach focuses on reducing nerve inflammation and relieving pressure on the sciatic pathway. In cases of severe or persistent pain, we can perform a targeted Epidural Steroid Injection (ESI). Under precise live X-ray guidance, we deliver a powerful anti-inflammatory medication directly into the epidural space surrounding the irritated nerve root. This works to rapidly reduce swelling and calm the nerve, providing a critical window of pain relief. With the pain managed, you can safely begin physical therapy and core stabilization exercises to support your spine, correct posture, and prevent future sciatic flares."
@@ -642,6 +660,7 @@ export const blogPosts = [
     title: "What to Expect: Preparing for Your First Visit with Us",
     date: "May 15, 2026",
     author: "Amara Pain Clinical Staff",
+    image: "/images/blog/first_visit_preparation.jpg",
     excerpt: "A warm, step-by-step guide to help you prepare for your initial consultation so you feel heard, supported, and comfortable.",
     category: "Patient Education",
     content: "We understand that scheduling an appointment at a pain management clinic can bring up a mixture of hope and anxiety. You may have visited multiple doctors in the past, only to feel rushed, dismissed, or left with unanswered questions. We want to reassure you that at Amara Pain & Spine Management, your experience will be different. We believe that the foundation of excellent medical care is listening. Your story, your concerns, and your goals are the most important pieces of information we have to help you heal.\n\nDuring your initial consultation, our goal is to build a complete, detailed picture of your health. We will sit down with you to review your medical history, discuss when and how your pain started, and explore how it impacts your daily activities. We will also review any previous imaging you have had, such as MRI, CT, or X-ray scans. It is highly beneficial to bring copies of these reports or the actual image discs to your visit. Next, we will perform a gentle, focused physical evaluation to identify specific areas of tenderness, muscle restriction, and nerve sensitivity.\n\nOnce we have identified the root cause of your pain, we will discuss our findings with you clearly, without confusing medical jargon. We will then collaborate to design a personalized treatment plan that aligns with your lifestyle, comfort levels, and recovery goals. Whether that involves conservative physical therapy, targeted injections, or advanced neuromodulation, you are an active partner in your care. We encourage you to print and complete our New Patient Intake Packet in advance of your visit, and to write down any questions you have so we can address them together."
@@ -651,6 +670,7 @@ export const blogPosts = [
     title: "Joint Preservation: Beyond Major Surgery",
     date: "May 01, 2026",
     author: "Ashvin K. Amara, MD",
+    image: "/images/blog/joint_preservation.jpg",
     excerpt: "Exploring advanced joint-preservation and nerve-calming therapies that help you delay or avoid joint replacement surgery.",
     category: "Patient Education",
     content: "When chronic joint pain in your knees, shoulders, or hips begins to limit your ability to walk, garden, or play with your grandchildren, it is easy to feel discouraged. Many patients believe that once arthritis becomes advanced, their only remaining option is a major, invasive joint replacement surgery. However, joint preservation is an excellent, highly effective clinical pathway that focuses on protecting your natural joints, reducing chronic inflammation, and restoring mobility without major surgery.\n\nJoint preservation utilizes a combination of advanced outpatient procedures and rehabilitation strategies. For patients suffering from moderate to severe knee arthritis, we can perform hyaluronic acid injections (also known as viscosupplementation). Hyaluronic acid is a natural substance found in healthy joint fluid. In an arthritic joint, this fluid becomes thin and depleted. By injecting a sterile, gel-like hyaluronic acid directly into the joint, we can restore natural lubrication, cushion the bones, and reduce painful friction during movement.\n\nFor joint pain that does not respond to lubrication, we can perform advanced nerve-blocking procedures, such as genicular nerve blocks for the knee or suprascapular nerve blocks for the shoulder. These procedures temporarily interrupt the sensory nerves that transmit pain signals from the joint capsule to the brain, providing profound relief. By combining these targeted therapies with structured physical therapy to rebuild supporting muscle strength, we can help preserve your natural joint function, manage your symptoms, and delay or entirely avoid the need for invasive surgical replacements."
@@ -660,7 +680,7 @@ export const blogPosts = [
 export const faqs = [
   {
     q: "Do I need a referral to book an appointment?",
-    a: "No! You do not need a physician's referral to schedule a consultation with our double-certified specialist. You can call us directly at 704-503-9338 or use our online Smart Booking Wizard to request an appointment."
+    a: "No! You do not need a physician's referral to schedule a consultation with our double-certified specialist. You can call us directly at +1 704-503-9338 or use our online Smart Booking Wizard to request an appointment."
   },
   {
     q: "What insurances do you accept?",

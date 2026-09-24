@@ -12,10 +12,14 @@ export default function Card({
   const baseStyles = 'rounded-2xl transition-all duration-300 overflow-hidden';
   
   const variants = {
-    white: 'bg-white border border-slate-100 shadow-premium',
-    slate: 'bg-slate-50 border border-slate-100',
-    glass: 'bg-white/80 backdrop-blur-md border border-white/20 shadow-premium',
-    borderless: 'bg-transparent shadow-none',
+    white: 'bg-[#454242] border border-[#585454] text-[#FFFFFF] shadow-premium',
+    slate: 'bg-[#363434] border border-[#585454] text-[#FFFFFF]',
+    'warm-offwhite': 'bg-[#454242] border border-[#585454] text-[#FFFFFF] shadow-premium',
+    graphite: 'bg-[#454242] border border-[#585454] text-[#FFFFFF] shadow-graphite',
+    'graphite-elevated': 'bg-[#514E4E] border border-[#585454] text-[#FFFFFF] shadow-graphite',
+    glass: 'bg-[#454242]/90 backdrop-blur-md border border-[#585454] text-[#FFFFFF] shadow-premium',
+    'glass-dark': 'bg-[#323030]/90 backdrop-blur-md border border-[#585454] text-[#FFFFFF]',
+    borderless: 'bg-transparent shadow-none text-[#FFFFFF]',
   };
 
   const paddings = {

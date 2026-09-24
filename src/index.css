@@ -7,42 +7,62 @@
   --font-display: "Manrope", serif;
   --font-mono: "JetBrains Mono", monospace;
   
-  --color-ink: #0b1c15; /* Forest slate dark text */
-  --color-ink-2: #0e241b; /* Deep forest slate */
-  --color-blue-light: #34d399; /* Healing emerald tint */
-  --color-mist: #faf9f6; /* Warm off-white background */
-  --color-paper: #ffffff;
-  --color-coral: #059669; /* Green replaces orange CTA */
-  --color-text-dark: #0f1f18; /* Rich dark charcoal/forest text */
-  --color-teal: #0d9488; /* Clinical teal */
-  --color-blue: #047857; /* Deep clinical green */
+  /* Central Dark Mode Healthcare Palette centered on #3A3838 */
+  --color-dark-bg-primary: #3A3838;     /* Core Dark Page Background */
+  --color-dark-bg-secondary: #323030;   /* Secondary Background / Recessed */
+  --color-dark-bg-section: #363434;     /* Section Background */
+  --color-dark-bg-card: #454242;        /* Card Surface */
+  --color-dark-bg-elevated: #514E4E;    /* Elevated Surface / Popovers / Modals */
+  --color-dark-border: #585454;         /* Primary Border */
+  --color-dark-border-subtle: #484444;  /* Subtle Border */
 
-  --color-primary-900: #0f1f18;
-  --color-primary-800: #1c2e24;
-  --color-primary-700: #2d4236;
-  --color-primary-600: #475d50;
+  /* Typography / Text Colors - White Dominant */
+  --color-text-primary: #FFFFFF;        /* Primary Crisp White Headings & Titles */
+  --color-text-secondary: #F0F0F0;      /* Secondary Soft White Body Text */
+  --color-text-muted: #D1D5DB;          /* Muted Light Gray-White for Labels/Sub-captions */
+
+  /* Amara Green Identity */
+  --color-amara-green: #059669;         /* Primary Amara Green CTA */
+  --color-amara-green-hover: #047857;   /* Darker Green Hover */
+  --color-amara-green-light: #10b981;   /* Light Green Highlight */
+  --color-amara-green-tint: rgba(5, 150, 105, 0.2); /* Soft green tint */
+  --color-amara-green-border: rgba(16, 185, 129, 0.35);
+
+  /* Legacy & Utility Aliases mapped to new dark system */
+  --color-ink: #FFFFFF;
+  --color-ink-2: #F0F0F0;
+  --color-mist: #363434;
+  --color-paper: #454242;
+  --color-text-dark: #FFFFFF;
+  --color-blue: #10b981;
   
-  --color-medical-600: #059669; /* Primary Green */
-  --color-medical-700: #047857; /* Dark Primary Green */
-  --color-medical-500: #10b981; /* Light Primary Green */
-  --color-medical-100: #d1fae5; /* Soft Green highlight */
-  --color-medical-50: #ecfdf5; /* Warm Green background */
+  --color-primary-900: #FFFFFF;
+  --color-primary-800: #FFFFFF;
+  --color-primary-700: #F0F0F0;
+  --color-primary-600: #D1D5DB;
   
-  --color-accent-600: #d97706; /* Support Amber Yellow */
-  --color-accent-700: #b45309; /* Dark Amber Yellow */
-  --color-accent-500: #f59e0b; /* Bright Amber Yellow */
-  --color-accent-100: #fef9c3; /* Soft Yellow highlight */
-  --color-accent-50: #fffbeb; /* Warm pale cream background */
+  --color-medical-600: #059669;
+  --color-medical-700: #047857;
+  --color-medical-500: #10b981;
+  --color-medical-100: rgba(5, 150, 105, 0.2);
+  --color-medical-50: rgba(5, 150, 105, 0.1);
   
-  --color-cta-600: #059669; /* Replaces orange CTA with primary green */
+  --color-accent-600: #d97706;
+  --color-accent-700: #b45309;
+  --color-accent-500: #f59e0b;
+  --color-accent-100: rgba(217, 119, 6, 0.2);
+  --color-accent-50: rgba(217, 119, 6, 0.1);
+  
+  --color-cta-600: #059669;
   --color-cta-700: #047857;
   --color-cta-500: #10b981;
-  --color-cta-100: #d1fae5;
+  --color-cta-100: rgba(5, 150, 105, 0.2);
   
-  --color-bg-slate: #faf9f6; /* Warm off-white global background */
+  --color-bg-slate: #3A3838;
   
-  --shadow-premium: 0 10px 30px rgba(11, 28, 21, 0.02);
-  --shadow-premium-hover: 0 20px 40px rgba(11, 28, 21, 0.04);
+  --shadow-premium: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-premium-hover: 0 16px 36px rgba(0, 0, 0, 0.5);
+  --shadow-graphite: 0 10px 30px rgba(0, 0, 0, 0.55);
 }
 
 /* Custom Core Resets */
@@ -53,17 +73,26 @@ body {
   font-weight: 400;
   line-height: 1.75;
   letter-spacing: 0;
-  background-color: var(--color-bg-slate);
-  color: var(--color-primary-700);
+  background-color: #3A3838;
+  color: #F0F0F0;
   scroll-behavior: smooth;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Ensure consecutive sections have zero margin between them */
+section {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+section + section {
+  margin-top: 0 !important;
+}
+
 /* Focus Ring Customization for Accessibility */
 *:focus-visible {
-  outline: 2px solid var(--color-medical-600);
+  outline: 2px solid #059669;
   outline-offset: 2px;
 }
 
@@ -73,16 +102,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #323030;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #585454;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #6A6565;
 }
 
 /* Lenis Smooth Scroll Configuration */
@@ -105,24 +134,24 @@ html.lenis body {
 
 /* Glassmorphism & High-end Card Overlays */
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(69, 66, 66, 0.88);
   backdrop-filter: blur(16px) saturate(120%);
   -webkit-backdrop-filter: blur(16px) saturate(120%);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(88, 84, 84, 0.6);
 }
 
 .glassmorphism-dark {
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(50, 48, 48, 0.92);
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(88, 84, 84, 0.7);
 }
 
 .glow-hover {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glow-hover:hover {
-  box-shadow: 0 0 30px rgba(2, 132, 199, 0.15);
+  box-shadow: 0 0 30px rgba(5, 150, 105, 0.2);
   transform: translateY(-2px);
 }
 

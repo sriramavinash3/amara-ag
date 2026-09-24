@@ -1,59 +1,49 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
-const insurers = [
-  'Blue Cross Blue Shield', 'Medicare', 'Medicaid', 'Aetna', 'Cigna',
-  'UnitedHealthcare', 'Humana', 'Tricare', 'Medcost', 'Workers\' Comp'
+const insurerLogos = [
+  { name: 'Blue Cross Blue Shield NC', src: '/images/insurers/BCBS NC.png' },
+  { name: 'BCBS Blue Advantage', src: '/images/insurers/BCBS Blue Advantage.png' },
+  { name: 'BCBS Blue Options', src: '/images/insurers/BCBS Blue Options.png' },
+  { name: 'BCBS NC State Health Plan Network', src: '/images/insurers/BCBS NC State Health Plan Network.png' },
+  { name: 'BCBS Healthy Blue', src: '/images/insurers/BCBSNC_Abbrev-HealthyBlue-HBCareTogether_RGB-SkyDkSea.svg' },
+  { name: 'Healthy Blue', src: '/images/insurers/HealthyBlue-HB.png' },
+  { name: 'Aetna Commercial', src: '/images/insurers/Aetna Commercial.png' },
+  { name: 'Aetna Medicare', src: '/images/insurers/Aetna Medicare.png' },
+  { name: 'Cigna', src: '/images/insurers/Cigna-Logo.png' },
+  { name: 'UnitedHealthcare Commercial', src: '/images/insurers/United Healthcare Commercial.png' },
+  { name: 'Humana', src: '/images/insurers/Humana logo png.png' },
+  { name: 'NC Medicaid Direct', src: '/images/insurers/Medicaid NC Drect logo.png' },
+  { name: 'Wellcare', src: '/images/insurers/Wellcare logo png.png' },
+  { name: 'AmeriHealth Caritas', src: '/images/insurers/amerihealth-consd-logo.jpg' },
+  { name: 'Carolina Complete Health', src: '/images/insurers/carolina-complete-health-logo.jpg' },
 ];
 
 export default function InsuranceMarquee() {
-  const row = [...insurers, ...insurers];
-
   return (
-    <section className="relative overflow-hidden border-y bg-stone-50 py-10" style={{ borderColor: '#e7e5e4' }}>
-      <p className="mb-6 text-center font-mono text-[11px] uppercase tracking-[0.28em] text-stone-500 font-bold">
-        In-Network with Most Major Insurers
-      </p>
+    <section className="relative border-b bg-[#323030] py-8 border-[#585454]" id="insurer-logos">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+        <h2 className="mb-6 text-center font-heading text-[13px] md:text-[15px] uppercase tracking-[0.2em] text-[#FFFFFF] font-bold">
+          In-Network Insurance Partners
+        </h2>
 
-      <div className="group relative flex overflow-hidden">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-stone-50 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-stone-50 to-transparent" />
-
-        <motion.div
-          className="flex shrink-0 items-center gap-14 pr-14 group-hover:[animation-play-state:paused]"
-          style={{ animation: 'marquee 32s linear infinite' }}
-        >
-          {row.map((name, i) => (
-            <span
-              key={i}
-              className="whitespace-nowrap font-heading text-lg text-stone-400 hover:text-emerald-700 transition-all duration-300 font-semibold"
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 items-center justify-items-center">
+          {insurerLogos.map((logo, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-center p-2.5 bg-[#454242] rounded-xl border border-[#585454] hover:border-emerald-500/50 shadow-sm transition-all duration-300 w-full h-20 sm:h-24"
             >
-              {name}
-            </span>
+              <div className="w-full h-full bg-white/95 rounded-lg p-2 flex items-center justify-center">
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className="max-h-11 sm:max-h-12 max-w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           ))}
-        </motion.div>
-        <motion.div
-          className="flex shrink-0 items-center gap-14 pr-14 group-hover:[animation-play-state:paused]"
-          style={{ animation: 'marquee 32s linear infinite' }}
-          aria-hidden="true"
-        >
-          {row.map((name, i) => (
-            <span
-              key={`b${i}`}
-              className="whitespace-nowrap font-heading text-lg text-stone-400 hover:text-emerald-700 transition-all duration-300 font-semibold"
-            >
-              {name}
-            </span>
-          ))}
-        </motion.div>
+        </div>
       </div>
-
-      <style>{`
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-100%); }
-        }
-      `}</style>
     </section>
   );
 }

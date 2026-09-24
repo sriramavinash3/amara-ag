@@ -30,7 +30,7 @@ function MainLayout() {
   useScrollProgress(containerRef);
 
   return (
-    <div ref={containerRef} className="flex flex-col min-h-screen skeuomorphic-console text-primary-800 selection:bg-medical-100 selection:text-medical-800 pb-[68px] lg:pb-0 relative">
+    <div ref={containerRef} className="flex flex-col min-h-screen bg-[#3A3838] text-[#F0F0F0] selection:bg-emerald-950 selection:text-emerald-300 pb-[68px] lg:pb-0 relative">
       {/* Removed Global Parallax Ambient Orbs to preserve dark mode integrity */}
 
       {/* Main Navigation Header */}

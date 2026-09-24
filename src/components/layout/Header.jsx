@@ -88,83 +88,74 @@ export default function Header() {
   ];
 
   const toggleDropdown = (index, e) => {
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < 1280) {
       e.preventDefault();
       setActiveDropdown(activeDropdown === index ? null : index);
     }
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 w-full z-50 bg-white shadow-sm">
+    <header className="fixed top-0 left-0 right-0 w-full z-50 bg-[#323030] shadow-md border-b border-[#585454]">
       {/* 1. TOP SUBHEADER BAR */}
-      <div className="w-full bg-stone-50 text-stone-600 text-xs py-2.5 px-4 md:px-8 border-b border-stone-200/50 hidden md:block">
-        <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
+      <div className="w-full bg-[#2E2C2C] text-[#F0F0F0] text-xs py-2.5 border-b border-[#585454] hidden md:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-3">
           {/* Clinic Details */}
           <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
             <a
               href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-emerald-700 transition-colors"
+              className="flex items-center gap-1.5 text-[#F0F0F0] hover:text-emerald-300 transition-colors"
             >
-              <MapPin className="h-3.5 w-3.5 text-emerald-600" />
+              <MapPin className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
               6429 Bannington Road, Suite B, Charlotte, NC 28226
             </a>
-            <span className="flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5 text-emerald-600" />
+            <span className="flex items-center gap-1.5 text-[#D1D5DB]">
+              <Clock className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
               Mon - Fri: 8:00 AM - 5:00 PM
             </span>
           </div>
 
           {/* Action Contacts */}
           <div className="flex items-center gap-x-6">
-            <a href="tel:7045039338" className="flex items-center gap-1.5 hover:text-emerald-700 transition-colors">
-              <Phone className="h-3.5 w-3.5 text-emerald-600" />
-              Call: <span className="font-semibold text-stone-800">704-503-9338</span>
-            </a>
-            <span className="text-stone-300">|</span>
-            <span>Fax: 704-503-9339</span>
+            <span className="text-[#D1D5DB]">Fax: 704-503-9339</span>
           </div>
         </div>
       </div>
 
       {/* 2. MAIN HEADER */}
       <nav className={`w-full transition-all duration-300 ${scrolled
-        ? 'bg-white/90 backdrop-blur-md shadow-md py-3'
-        : 'bg-white py-4 border-b border-slate-100'
+        ? 'bg-[#323030]/95 backdrop-blur-md shadow-lg py-2.5'
+        : 'bg-[#323030] py-3.5 border-b border-[#585454]'
         }`}>
-        <div className=" mx-auto px-4 md:px-8 flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-medical-600 rounded-lg pr-2">
-            <img src="/images/amara_logo.png" alt="Amara logo" className="h-8 w-auto object-contain shrink-0" />
-            <div className="flex flex-col text-left">
-              <span className="text-xl md:text-2xl font-black font-heading text-primary-900 tracking-tight flex items-center leading-none">
-                AMARA<span className="text-medical-600 ml-0.5">PAIN</span>
-              </span>
-              <span className="text-[9px] md:text-[10px] text-slate-500 font-bold tracking-[0.2em] uppercase mt-0.5 leading-none">
-                &amp; Spine Management
-              </span>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex items-center justify-between gap-3">
+          {/* Noticeably Larger Logo with Preserved Proportions */}
+          <Link to="/" className="flex items-center focus-visible:outline-2 focus-visible:outline-emerald-500 rounded-lg py-0.5 shrink-0">
+            <img
+              src="/images/AmaraPain_Logo_dark.png"
+              alt="Amara Pain & Spine logo"
+              className="h-12 sm:h-14 md:h-16 lg:h-[68px] xl:h-[76px] 2xl:h-20 w-auto object-contain shrink-0 transition-all duration-300"
+            />
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden xl:flex items-center gap-x-1">
+          <div className="hidden xl:flex items-center gap-x-0.5 2xl:gap-x-1 min-w-0">
             {navItems.map((item, index) => (
               <div key={index} className="relative group">
                 {item.submenu ? (
                   <button
                     onClick={(e) => toggleDropdown(index, e)}
-                    className="flex items-center gap-1 px-1 py-2 text-[14px] xl:text-[15px] font-semibold text-primary-800 hover:text-medical-600 transition-colors rounded-full cursor-pointer focus-visible:outline-medical-600 whitespace-nowrap"
+                    className="flex items-center gap-0.5 px-2 2xl:px-2.5 py-2 text-[12.5px] 2xl:text-[13.5px] font-semibold text-[#F0F0F0] hover:text-[#FFFFFF] hover:bg-[#454242] transition-colors rounded-full cursor-pointer focus-visible:outline-emerald-500 whitespace-nowrap"
                   >
                     {item.name}
-                    <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
+                    <ChevronDown className="h-3.5 w-3.5 text-[#D1D5DB] transition-transform duration-300 group-hover:rotate-180 group-hover:text-emerald-400" />
                   </button>
                 ) : (
                   <NavLink
                     to={item.path}
-                    className={({ isActive }) => `block px-1 py-2 text-[14px] xl:text-[15px] font-semibold transition-colors rounded-full focus-visible:outline-medical-600 whitespace-nowrap ${isActive
-                      ? 'text-medical-600 bg-medical-50'
-                      : 'text-primary-800 hover:text-medical-600'
+                    className={({ isActive }) => `block px-2 2xl:px-2.5 py-2 text-[12.5px] 2xl:text-[13.5px] font-semibold transition-colors rounded-full focus-visible:outline-emerald-500 whitespace-nowrap ${isActive
+                      ? 'text-white bg-emerald-600 font-bold shadow-sm'
+                      : 'text-[#F0F0F0] hover:text-[#FFFFFF] hover:bg-[#454242]'
                       }`}
                   >
                     {item.name}
@@ -173,8 +164,8 @@ export default function Header() {
 
                 {/* Submenu Dropdown */}
                 {item.submenu && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-white border border-slate-100 rounded-2xl shadow-xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 transform origin-top scale-95 group-hover:scale-100">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 border-8 border-transparent border-b-white" />
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-64 bg-[#454242] border border-[#585454] rounded-2xl shadow-2xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 transform origin-top scale-95 group-hover:scale-100">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 border-8 border-transparent border-b-[#454242]" />
                     {item.submenu.map((sub, sIdx) => (
                       sub.external ? (
                         <a
@@ -182,7 +173,7 @@ export default function Header() {
                           href={sub.path}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block px-6 py-2.5 text-[14px] font-medium text-primary-700 hover:text-medical-600 hover:bg-medical-50 transition-all duration-150"
+                          className="block px-6 py-2.5 text-[14px] font-medium text-[#F0F0F0] hover:text-emerald-300 hover:bg-[#514E4E] transition-all duration-150"
                         >
                           {sub.name}
                         </a>
@@ -192,8 +183,8 @@ export default function Header() {
                           to={sub.path}
                           end
                           className={({ isActive }) => `block px-6 py-2.5 text-[14px] font-medium transition-all duration-150 ${isActive
-                            ? 'text-medical-600 bg-medical-50 font-semibold'
-                            : 'text-primary-700 hover:text-medical-600 hover:bg-slate-50'
+                            ? 'text-emerald-300 bg-[#514E4E] font-bold'
+                            : 'text-[#F0F0F0] hover:text-emerald-300 hover:bg-[#514E4E]'
                             }`}
                         >
                           {sub.name}
@@ -207,23 +198,19 @@ export default function Header() {
           </div>
 
           {/* Desktop Right Actions */}
-          <div className="hidden xl:flex items-center gap-2 2xl:gap-4 shrink-0">
-            <a href="tel:7045039338" className="text-primary-800 hover:text-medical-600 font-bold transition-colors text-sm flex items-center gap-1.5 focus-visible:outline-medical-600 rounded-full px-2 py-1 whitespace-nowrap">
-              <Phone className="h-4 w-4 text-medical-600" />
-              704-503-9338
-            </a>
+          <div className="hidden xl:flex items-center gap-2 2xl:gap-3 shrink-0">
             <Link to="/book">
-              <Button variant="primary" size="sm" icon={Calendar} iconPosition="left">
+              <Button variant="primary" size="xs" icon={Calendar} iconPosition="left" className="font-bold">
                 Book Appointment
               </Button>
             </Link>
           </div>
 
-          {/* Mobile Menu Actions */}
-          <div className="flex xl:hidden items-center gap-3">
+          {/* Mobile Header Actions with Generous Touch Targets */}
+          <div className="flex xl:hidden items-center gap-2.5 sm:gap-3 shrink-0">
             <a
-              href="tel:7045039338"
-              className="p-2 bg-slate-50 text-medical-600 rounded-full border border-slate-100 flex items-center justify-center focus-visible:outline-medical-600"
+              href="tel:+17045039338"
+              className="p-2.5 bg-[#454242] text-emerald-300 rounded-full border border-[#585454] flex items-center justify-center focus-visible:outline-emerald-500 min-w-[44px] min-h-[44px] active:scale-95 transition-transform"
               aria-label="Call Clinic"
             >
               <Phone className="h-5 w-5" />
@@ -231,7 +218,7 @@ export default function Header() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-primary-900 rounded-lg hover:bg-slate-50 border border-transparent hover:border-slate-100 flex items-center justify-center focus:outline-none cursor-pointer"
+              className="p-2.5 text-[#FFFFFF] rounded-xl bg-[#454242] hover:bg-[#514E4E] border border-[#585454] flex items-center justify-center focus:outline-none cursor-pointer min-w-[44px] min-h-[44px] active:scale-95 transition-transform"
               aria-expanded={isOpen}
               aria-label="Toggle Navigation Menu"
             >
@@ -242,25 +229,25 @@ export default function Header() {
       </nav>
 
       {/* 3. MOBILE FULL-SCREEN OVERLAY MENU */}
-      <div className={`fixed inset-0 top-[60px] md:top-[100px] z-40 bg-white border-t border-slate-100 xl:hidden flex flex-col justify-between overflow-y-auto transition-all duration-300 transform ${isOpen ? 'translate-x-0 opacity-100 visible' : 'translate-x-full opacity-0 invisible'
+      <div className={`fixed inset-0 top-[72px] sm:top-[82px] md:top-[128px] z-40 bg-[#323030] border-t border-[#585454] xl:hidden flex flex-col justify-between overflow-y-auto transition-all duration-300 transform ${isOpen ? 'translate-x-0 opacity-100 visible' : 'translate-x-full opacity-0 invisible'
         }`}>
         {/* Navigation Items list */}
         <div className="px-6 py-6 space-y-2 flex-1">
           {navItems.map((item, index) => (
-            <div key={index} className="border-b border-slate-50 pb-2 last:border-0">
+            <div key={index} className="border-b border-[#585454] pb-2 last:border-0">
               {item.submenu ? (
                 <div>
                   <button
                     onClick={(e) => toggleDropdown(index, e)}
-                    className="w-full flex items-center justify-between py-2 text-lg font-bold text-primary-900 text-left focus:outline-none"
+                    className="w-full flex items-center justify-between py-2.5 text-lg font-bold text-[#FFFFFF] text-left focus:outline-none"
                   >
                     {item.name}
-                    <ChevronDown className={`h-5 w-5 text-slate-400 transition-transform duration-300 ${activeDropdown === index ? 'rotate-180 text-medical-600' : ''
+                    <ChevronDown className={`h-5 w-5 text-[#D1D5DB] transition-transform duration-300 ${activeDropdown === index ? 'rotate-180 text-emerald-400' : ''
                       }`} />
                   </button>
 
                   {/* Mobile Submenu items */}
-                  <div className={`mt-1 pl-4 space-y-1 transition-all duration-300 overflow-hidden ${activeDropdown === index ? 'max-h-[400px] opacity-100 py-1' : 'max-h-0 opacity-0'
+                  <div className={`mt-1 pl-4 space-y-1 transition-all duration-300 overflow-hidden ${activeDropdown === index ? 'max-h-[460px] opacity-100 py-1' : 'max-h-0 opacity-0'
                     }`}>
                     {item.submenu.map((sub, sIdx) => (
                       sub.external ? (
@@ -269,7 +256,7 @@ export default function Header() {
                           href={sub.path}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block py-2 text-base font-medium text-slate-600 hover:text-medical-600"
+                          className="block py-2.5 text-base font-medium text-[#F0F0F0] hover:text-emerald-300"
                         >
                           {sub.name}
                         </a>
@@ -277,7 +264,7 @@ export default function Header() {
                         <Link
                           key={sIdx}
                           to={sub.path}
-                          className="block py-2 text-base font-medium text-slate-600 hover:text-medical-600"
+                          className="block py-2.5 text-base font-medium text-[#F0F0F0] hover:text-emerald-300"
                         >
                           {sub.name}
                         </Link>
@@ -288,7 +275,7 @@ export default function Header() {
               ) : (
                 <Link
                   to={item.path}
-                  className="block py-2 text-lg font-bold text-primary-900 hover:text-medical-600"
+                  className="block py-2.5 text-lg font-bold text-[#FFFFFF] hover:text-emerald-300"
                 >
                   {item.name}
                 </Link>
@@ -298,32 +285,32 @@ export default function Header() {
         </div>
 
         {/* Mobile menu bottom contact details */}
-        <div className="p-6 bg-slate-50 border-t border-slate-100 space-y-4">
-          <div className="space-y-2 text-sm text-slate-600">
+        <div className="p-6 bg-[#2E2C2C] border-t border-[#585454] space-y-4">
+          <div className="space-y-2 text-sm text-[#F0F0F0]">
             <a
               href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 font-medium hover:text-medical-600 transition-colors"
+              className="flex items-center gap-2 font-medium hover:text-emerald-300 transition-colors"
             >
-              <MapPin className="h-4 w-4 text-medical-600 shrink-0" />
+              <MapPin className="h-4 w-4 text-emerald-400 shrink-0" />
               <span>6429 Bannington Road, Suite B, Charlotte, NC</span>
             </a>
-            <p className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-medical-600 shrink-0" />
+            <p className="flex items-center gap-2 text-[#D1D5DB]">
+              <Clock className="h-4 w-4 text-emerald-400 shrink-0" />
               Mon - Fri: 8:00 AM - 5:00 PM
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-3">
             <Link to="/book" className="w-full">
-              <Button variant="primary" className="w-full" icon={Calendar}>
+              <Button variant="primary" className="w-full font-bold" icon={Calendar}>
                 Book Appointment
               </Button>
             </Link>
-            <a href="tel:7045039338" className="w-full">
-              <Button variant="outline" className="w-full text-primary-900 border-slate-300" icon={Phone}>
-                Call 704-503-9338
+            <a href="tel:+17045039338" className="w-full">
+              <Button variant="secondary" className="w-full" icon={Phone}>
+                Call +1 704-503-9338
               </Button>
             </a>
           </div>

@@ -37,13 +37,13 @@ export default function Testimonials() {
   const [modalVideoId, setModalVideoId] = useState(null);
 
   return (
-    <section className="bg-mist px-6 py-28 md:px-16" id="testimonials">
-      <div className="mx-auto max-w-[1400px]">
-        <div className="mb-14 max-w-xl text-left">
-          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em]" style={{ color: 'var(--color-blue)' }}>
+    <section className="bg-[#3A3838] py-12 md:py-16 m-0 border-t border-[#585454]" id="testimonials">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+        <div className="mb-8 max-w-xl text-left">
+          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-emerald-400 font-bold">
             Patient Success Stories
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-text-dark leading-tight">
+          <h2 className="font-display text-[32px] sm:text-[38px] md:text-[46px] font-bold text-[#FFFFFF] leading-tight">
             Real patients, real relief.
           </h2>
         </div>
@@ -58,10 +58,10 @@ export default function Testimonials() {
               }}
               initial={{ 
                 opacity: 0, 
-                x: i === 0 ? -120 : i === 2 ? 120 : 0, 
-                y: i === 1 ? 70 : 40,
-                rotate: i === 0 ? -4 : i === 2 ? 4 : 0,
-                scale: 0.88 
+                x: i === 0 ? -80 : i === 2 ? 80 : 0, 
+                y: i === 1 ? 50 : 30,
+                rotate: i === 0 ? -3 : i === 2 ? 3 : 0,
+                scale: 0.9 
               }}
               whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -73,15 +73,14 @@ export default function Testimonials() {
                 delay: i * 0.15 
               }}
               whileHover={{ scale: 1.03 }}
-              className="group relative aspect-[4/5] overflow-hidden rounded-2xl text-left cursor-pointer border border-stone-200/60 shadow-premium"
-              style={{ background: '#f5f5f4' }}
+              className="group relative aspect-[4/5] overflow-hidden rounded-2xl text-left cursor-pointer border border-[#585454] shadow-lg bg-[#454242]"
             >
               <img
                 src={`https://img.youtube.com/vi/${s.embedId}/hqdefault.jpg`}
                 alt={s.name}
                 className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-95 transition-all duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#323030]/95 via-[#323030]/40 to-transparent" />
               <motion.div
                 className="absolute inset-0"
                 whileHover={{ scale: 1.08 }}
@@ -94,8 +93,8 @@ export default function Testimonials() {
                 </span>
               </div>
               <div className="absolute inset-x-0 bottom-0 p-5 z-20">
-                <p className="font-heading text-lg text-white font-extrabold">{s.name}</p>
-                <p className="text-xs text-white/80 font-bold">{s.condition}</p>
+                <p className="font-heading text-lg text-[#FFFFFF] font-extrabold">{s.name}</p>
+                <p className="text-xs text-[#D1D5DB] font-bold">{s.condition}</p>
               </div>
             </motion.button>
           ))}
@@ -109,29 +108,29 @@ export default function Testimonials() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4 }}
-            className="mx-auto mt-10 max-w-2xl text-center font-heading text-2xl italic font-medium text-stone-800"
+            className="mx-auto mt-10 max-w-2xl text-center font-heading text-xl sm:text-2xl italic font-medium text-[#FFFFFF]"
           >
-            <Quote size={22} className="mx-auto mb-3 text-emerald-600 opacity-60" />
+            <Quote size={22} className="mx-auto mb-3 text-emerald-400 opacity-80" />
             "{videoStories[activeTab].quote}"
           </motion.blockquote>
         </AnimatePresence>
 
         {/* Written reviews carousel */}
-        <div className="mt-20 flex items-center justify-between">
-          <p className="font-mono text-[11px] uppercase tracking-[0.28em] font-bold text-left text-emerald-800">
+        <div className="mt-12 flex items-center justify-between">
+          <p className="font-mono text-[11px] uppercase tracking-[0.28em] font-bold text-left text-emerald-400">
             Google Reviews · 4.9 Star average
           </p>
           <div className="flex gap-2">
             <button
               onClick={() => setReviewIndex((i) => (i - 1 + writtenReviews.length) % writtenReviews.length)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-emerald-50 text-emerald-700 border-emerald-600/20"
+              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-[#514E4E] text-emerald-300 border-[#585454] bg-[#454242]"
               aria-label="Previous review"
             >
               <ChevronLeft size={16} />
             </button>
             <button
               onClick={() => setReviewIndex((i) => (i + 1) % writtenReviews.length)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-emerald-50 text-emerald-700 border-emerald-600/20"
+              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-[#514E4E] text-emerald-300 border-[#585454] bg-[#454242]"
               aria-label="Next review"
             >
               <ChevronRight size={16} />
@@ -150,7 +149,7 @@ export default function Testimonials() {
             {writtenReviews.map((r) => (
               <div
                 key={r.name}
-                className="rounded-2xl border border-stone-200/60 bg-white p-6 shadow-premium hover:shadow-premium-hover transition-all duration-300 shrink-0"
+                className="rounded-2xl border border-[#585454] bg-[#454242] p-6 shadow-lg hover:border-emerald-500/50 transition-all duration-300 shrink-0"
                 style={{ width: `${100 / writtenReviews.length}%` }}
               >
                 <div className="mb-2 flex gap-0.5">
@@ -158,8 +157,8 @@ export default function Testimonials() {
                     <Star key={i} size={15} fill="#eab308" color="#eab308" />
                   ))}
                 </div>
-                <p className="text-sm font-normal leading-relaxed text-stone-600">"{r.text}"</p>
-                <p className="mt-3 text-xs font-bold text-stone-800">{r.name}</p>
+                <p className="text-sm font-normal leading-relaxed text-[#F0F0F0]">"{r.text}"</p>
+                <p className="mt-3 text-xs font-bold text-[#FFFFFF]">{r.name}</p>
               </div>
             ))}
           </motion.div>
@@ -173,17 +172,17 @@ export default function Testimonials() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#3A3838]/85 backdrop-blur-md p-4"
           >
             <motion.div 
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
-              className="relative w-full max-w-3xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+              className="relative w-full max-w-3xl aspect-video bg-[#323030] border border-[#585454] rounded-2xl overflow-hidden shadow-2xl"
             >
               <button 
                 onClick={() => setModalVideoId(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-black/40 hover:bg-black/80 text-white rounded-full transition-colors cursor-pointer border-none"
+                className="absolute top-4 right-4 z-10 p-2 bg-[#323030]/80 hover:bg-[#323030] text-[#FFFFFF] rounded-full transition-colors cursor-pointer border border-[#585454]"
               >
                 <X size={20} />
               </button>

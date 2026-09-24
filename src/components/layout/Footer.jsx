@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, Printer, ShieldAlert } from 'lucide-react';
-import Card from '../ui/Card';
+import { Phone, Mail, MapPin, Clock, Printer } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -46,25 +45,17 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-stone-100 text-stone-700 pt-16 pb-8 border-t border-stone-200">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+    <footer className="w-full bg-[#323030] text-[#F0F0F0] pt-14 pb-8 border-t border-[#585454]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
 
           {/* Column 1: Brand Info */}
           <div className="space-y-5 text-left">
-            <Link to="/" className="flex items-center gap-2.5">
-              <img src="/images/amara_logo.png" alt="Amara logo" className="h-8 w-auto object-contain shrink-0" />
-              <div className="flex flex-col text-left">
-                <span className="text-xl md:text-2xl font-black font-heading text-stone-900 tracking-tight leading-none">
-                  AMARA<span className="text-emerald-600 ml-0.5">PAIN</span>
-                </span>
-                <span className="text-[9px] md:text-[10px] text-stone-500 font-bold tracking-[0.2em] uppercase mt-0.5 leading-none">
-                  &amp; Spine Management
-                </span>
-              </div>
+            <Link to="/" className="inline-block bg-[#363434] p-2.5 rounded-xl border border-[#585454] shadow-sm">
+              <img src="/images/AmaraPain_Logo_dark.png" alt="Amara Pain & Spine logo" className="h-11 sm:h-12 w-auto object-contain shrink-0" />
             </Link>
-            <p className="text-sm leading-relaxed text-stone-600">
+            <p className="text-sm leading-relaxed text-[#F0F0F0]">
               Transforming pain care in Charlotte, NC. Led by double-certified specialists, we offer personalized, non-invasive treatments designed to restore your quality of life.
             </p>
             {/* Social Icons */}
@@ -77,7 +68,7 @@ export default function Footer() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-stone-200 text-stone-600 hover:text-white hover:bg-emerald-600 rounded-full transition-all duration-300 flex items-center justify-center focus-visible:outline-2 focus-visible:outline-emerald-500"
+                    className="p-2.5 bg-[#454242] text-[#F0F0F0] hover:text-white hover:bg-emerald-600 border border-[#585454] rounded-full transition-all duration-300 flex items-center justify-center focus-visible:outline-2 focus-visible:outline-emerald-500"
                     title={social.name}
                   >
                     <Icon className="h-4 w-4" />
@@ -89,32 +80,32 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div className="space-y-4 text-left">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-stone-850 border-l-2 border-emerald-600 pl-3">
+            <h4 className="text-[12px] font-bold uppercase tracking-widest text-[#FFFFFF] border-l-2 border-emerald-500 pl-3">
               Redesign Navigation
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/" className="text-stone-600 hover:text-emerald-650 hover:translate-x-1 inline-block transition-all duration-200">
+                <Link to="/" className="text-[#F0F0F0] hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200">
                   Home Page
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-stone-600 hover:text-emerald-655 hover:translate-x-1 inline-block transition-all duration-200">
+                <Link to="/about" className="text-[#F0F0F0] hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200">
                   Our Story &amp; Team
                 </Link>
               </li>
               <li>
-                <Link to="/conditions" className="text-stone-600 hover:text-emerald-655 hover:translate-x-1 inline-block transition-all duration-200">
+                <Link to="/conditions" className="text-[#F0F0F0] hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200">
                   Conditions We Treat
                 </Link>
               </li>
               <li>
-                <Link to="/treatments" className="text-stone-600 hover:text-emerald-655 hover:translate-x-1 inline-block transition-all duration-200">
+                <Link to="/treatments" className="text-[#F0F0F0] hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200">
                   Pain Treatments
                 </Link>
               </li>
               <li>
-                <Link to="/referrals" className="hover:text-emerald-700 hover:translate-x-1 inline-block transition-all duration-200 font-semibold text-emerald-600">
+                <Link to="/referrals" className="hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200 font-semibold text-emerald-400">
                   Physician Referrals
                 </Link>
               </li>
@@ -123,32 +114,32 @@ export default function Footer() {
 
           {/* Column 3: Patient Resources */}
           <div className="space-y-4 text-left">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-stone-850 border-l-2 border-emerald-600 pl-3">
+            <h4 className="text-[12px] font-bold uppercase tracking-widest text-[#FFFFFF] border-l-2 border-emerald-500 pl-3">
               Patient Resources
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/patients" className="text-stone-600 hover:text-emerald-655 hover:translate-x-1 inline-block transition-all duration-200">
+                <Link to="/patients" className="text-[#F0F0F0] hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200">
                   FAQ &amp; Intake Guides
                 </Link>
               </li>
               <li>
-                <Link to="/providers/dr-ashvin-amara" className="text-stone-600 hover:text-emerald-655 hover:translate-x-1 inline-block transition-all duration-200">
+                <Link to="/providers/dr-ashvin-amara" className="text-[#F0F0F0] hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200">
                   Ashvin K. Amara, MD
                 </Link>
               </li>
               <li>
-                <Link to="/providers/eunice-babalola" className="text-stone-600 hover:text-emerald-655 hover:translate-x-1 inline-block transition-all duration-200">
+                <Link to="/providers/eunice-babalola" className="text-[#F0F0F0] hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200">
                   Eunice Babalola, NP, MSN
                 </Link>
               </li>
               <li>
-                <Link to="/providers/alexander-carmenaty" className="text-stone-600 hover:text-emerald-655 hover:translate-x-1 inline-block transition-all duration-200">
+                <Link to="/providers/alexander-carmenaty" className="text-[#F0F0F0] hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200">
                   Alexander Carmenaty, MSN, FNP-C
                 </Link>
               </li>
               <li>
-                <Link to="/patients#forms" className="text-stone-600 hover:text-emerald-655 hover:translate-x-1 inline-block transition-all duration-200">
+                <Link to="/patients#forms" className="text-[#F0F0F0] hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200">
                   Referral Pack (Forms)
                 </Link>
               </li>
@@ -157,13 +148,13 @@ export default function Footer() {
                   href="https://portal.kareo.com/app/new/login"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-emerald-700 hover:translate-x-1 inline-block transition-all duration-200 text-emerald-600 font-semibold"
+                  className="hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200 text-emerald-400 font-semibold"
                 >
                   Tebra Patient Portal Login
                 </a>
               </li>
               <li>
-                <Link to="/privacy" className="text-stone-600 hover:text-emerald-655 hover:translate-x-1 inline-block transition-all duration-200">
+                <Link to="/privacy" className="text-[#F0F0F0] hover:text-emerald-300 hover:translate-x-1 inline-block transition-all duration-200">
                   Privacy Policy
                 </Link>
               </li>
@@ -172,39 +163,39 @@ export default function Footer() {
 
           {/* Column 4: Contact & Location */}
           <div className="space-y-4 text-left">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-stone-850 border-l-2 border-emerald-600 pl-3">
+            <h4 className="text-[12px] font-bold uppercase tracking-widest text-[#FFFFFF] border-l-2 border-emerald-500 pl-3">
               Contact Details
             </h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+                <MapPin className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
                 <a
                   href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-emerald-700 text-stone-600 transition-colors leading-relaxed"
+                  className="hover:text-emerald-300 text-[#F0F0F0] transition-colors leading-relaxed"
                 >
                   6429 Bannington Road, Suite B,<br />Charlotte, NC 28226
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-emerald-600 shrink-0" />
-                <a href="tel:7045039338" className="hover:text-emerald-700 transition-colors font-bold text-stone-800">
-                  704-503-9338
+                <Phone className="h-4 w-4 text-emerald-400 shrink-0" />
+                <a href="tel:+17045039338" className="hover:text-emerald-300 transition-colors font-bold text-[#FFFFFF]">
+                  +1 704-503-9338
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-stone-500">
-                <Printer className="h-4 w-4 text-stone-400 shrink-0" />
+              <li className="flex items-center gap-2 text-[#D1D5DB]">
+                <Printer className="h-4 w-4 text-emerald-400 shrink-0" />
                 <span>Fax: 704-503-9339</span>
               </li>
-              <li className="flex items-center gap-2 text-stone-500">
-                <Mail className="h-4 w-4 text-stone-400 shrink-0" />
-                <a href="mailto:contact@amarapain.com" className="hover:text-emerald-700 transition-colors">
+              <li className="flex items-center gap-2 text-[#D1D5DB]">
+                <Mail className="h-4 w-4 text-emerald-400 shrink-0" />
+                <a href="mailto:contact@amarapain.com" className="hover:text-emerald-300 transition-colors text-[#F0F0F0]">
                   contact@amarapain.com
                 </a>
               </li>
-              <li className="flex items-start gap-2 text-stone-500">
-                <Clock className="h-4 w-4 text-stone-400 shrink-0 mt-0.5" />
+              <li className="flex items-start gap-2 text-[#D1D5DB]">
+                <Clock className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
                 <span>Mon - Fri: 8 AM - 5 PM</span>
               </li>
             </ul>
@@ -212,23 +203,15 @@ export default function Footer() {
 
         </div>
 
-        {/* Top/Middle disclaimer card */}
-        <div className="border-t border-stone-200 pt-8 pb-6">
-          <Card variant="slate" padding="sm" className="bg-red-50/50 border-red-100 text-xs text-red-800 leading-relaxed flex gap-3 text-left">
-            <ShieldAlert className="h-5 w-5 text-red-600 shrink-0" />
-            <p>
-              <strong>Disclaimer:</strong> Amara Pain &amp; Spine Management is an independent physician practice. The clinical, treatment, and condition information provided on this website is exclusively for educational and informational purposes. It is not intended to be, and should not be used as, a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider regarding any chronic pain conditions or medical concerns.
-            </p>
-          </Card>
-        </div>
-
         {/* Bottom Section */}
-        <div className="border-t border-stone-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-500">
+        <div className="border-t border-[#585454] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#D1D5DB]">
           <p>&copy; {currentYear} Amara Pain &amp; Spine Management. - Maintained by Freddie Business Solutions</p>
-          <div className="flex gap-4">
-            <Link to="/privacy" className="hover:text-emerald-700 transition-colors">Privacy Policy</Link>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy" className="hover:text-emerald-300 transition-colors">Privacy Policy</Link>
             <span>&bull;</span>
-            <Link to="/contact" className="hover:text-emerald-700 transition-colors">Directions &amp; Hours</Link>
+            <Link to="/contact" className="hover:text-emerald-300 transition-colors">Directions &amp; Hours</Link>
+            <span>&bull;</span>
+            <a href="https://amarapain.com" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-300 transition-colors">Old Website Reference</a>
           </div>
         </div>
       </div>

@@ -38,11 +38,11 @@ export default function ExitIntentPopup() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-md transition-all duration-300">
-      <Card variant="white" padding="lg" className="relative w-full max-w-lg border-stone-200/80 shadow-2xl p-8 bg-white/95 rounded-3xl text-left">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#3A3838]/85 backdrop-blur-md transition-all duration-300">
+      <Card variant="white" padding="lg" className="relative w-full max-w-lg border-[#585454] shadow-2xl p-6 sm:p-8 bg-[#454242] rounded-3xl text-left">
         <button 
           onClick={handleClose} 
-          className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-600 rounded-full hover:bg-stone-50 transition-colors cursor-pointer"
+          className="absolute top-4 right-4 p-2 text-[#D1D5DB] hover:text-[#FFFFFF] rounded-full hover:bg-[#514E4E] transition-colors cursor-pointer"
           aria-label="Close popup"
         >
           <X className="h-5 w-5" />
@@ -50,27 +50,27 @@ export default function ExitIntentPopup() {
 
         <div className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-bold tracking-widest text-emerald-600 uppercase">Don't Live in Pain</span>
-            <h3 className="text-2xl font-black font-heading text-stone-900 leading-tight">
+            <span className="text-xs font-bold tracking-widest text-emerald-400 uppercase">Don't Live in Pain</span>
+            <h3 className="text-[22px] font-black font-heading text-[#FFFFFF] leading-tight">
               Get Your Pain Evaluated This Week
             </h3>
-            <p className="text-sm text-stone-600 leading-relaxed">
+            <p className="text-sm text-[#F0F0F0] leading-relaxed">
               We offer same-week consultations in Charlotte, NC. Directed by double-certified specialists with zero facility fees.
             </p>
           </div>
 
-          <div className="bg-stone-50 border border-stone-200/60 rounded-2xl p-4.5 space-y-3">
-            <div className="flex gap-2.5 text-xs text-stone-700 items-start">
-              <ShieldCheck className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+          <div className="bg-[#363434] border border-[#585454] rounded-2xl p-4.5 space-y-3">
+            <div className="flex gap-2.5 text-xs text-[#F0F0F0] items-start">
+              <ShieldCheck className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
               <div>
-                <strong className="text-stone-900 block">Independent Private Practice</strong>
+                <strong className="text-[#FFFFFF] block">Independent Private Practice</strong>
                 No hidden hospital fees or markups—saving you up to 60%.
               </div>
             </div>
-            <div className="flex gap-2.5 text-xs text-stone-700 items-start">
-              <ShieldCheck className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+            <div className="flex gap-2.5 text-xs text-[#F0F0F0] items-start">
+              <ShieldCheck className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
               <div>
-                <strong className="text-stone-900 block">No Referral Required</strong>
+                <strong className="text-[#FFFFFF] block">No Referral Required</strong>
                 Self-schedule directly today for rapid pain diagnostic testing.
               </div>
             </div>
@@ -78,13 +78,13 @@ export default function ExitIntentPopup() {
 
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <a href="/book" onClick={handleClose} className="flex-grow">
-              <Button variant="primary" className="w-full cursor-pointer" icon={Calendar}>
+              <Button variant="primary" className="w-full font-bold" icon={Calendar}>
                 Book Appointment
               </Button>
             </a>
-            <a href="tel:7045039338" onClick={handleClose} className="flex-grow">
-              <Button variant="outline" className="w-full text-stone-800 cursor-pointer" icon={Phone}>
-                Call 704-503-9338
+            <a href="tel:+17045039338" onClick={handleClose} className="flex-grow">
+              <Button variant="secondary" className="w-full" icon={Phone}>
+                Call +1 704-503-9338
               </Button>
             </a>
           </div>

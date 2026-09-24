@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
-import SyringeJourney from '../components/home/SyringeJourney';
 import Hero from '../components/home/Hero';
 import InsuranceMarquee from '../components/home/InsuranceMarquee';
-import Conditions from '../components/home/Conditions';
-import Treatments from '../components/home/Treatments';
-import WhyChoose from '../components/home/WhyChoose';
+import WhyChooseAndConditions from '../components/home/WhyChooseAndConditions';
 import Providers from '../components/home/Providers';
 import Testimonials from '../components/home/Testimonials';
 import AppointmentJourney from '../components/home/AppointmentJourney';
@@ -29,19 +26,17 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-stone-50 min-h-screen">
+    <main className="bg-[#3A3838] min-h-screen text-[#F0F0F0]">
       <Hero />
       <InsuranceMarquee />
-
-      <div className="space-y-16 md:space-y-24 py-8 md:py-12">
-        <Testimonials />
-        <AppointmentJourney />
-        <AIAssistant />
-        <InsuranceVerification />
-        <Conditions />
-        <WhyChoose />
-        <Providers />
-      </div>
+      <Testimonials />
+      <AppointmentJourney />
+      <AIAssistant />
+      <InsuranceVerification />
+      <WhyChooseAndConditions />
+      <Providers />
+      <Blog />
+      <FinalCTA />
     </main>
   );
 }

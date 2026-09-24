@@ -47,22 +47,22 @@ export default function AppointmentJourney() {
   };
 
   return (
-    <section className="bg-white px-6 py-20 md:px-16" id="book">
-      <div className="mx-auto max-w-[1100px]">
-        <div className="mb-16 max-w-xl text-left">
-          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-emerald-800 font-bold">
+    <section className="bg-[#363434] py-12 md:py-16 m-0 border-t border-[#585454]" id="book">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+        <div className="mb-10 max-w-xl text-left">
+          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-emerald-400 font-bold">
             Booking, Simplified
           </p>
-          <h2 className="font-heading text-4xl text-stone-900 md:text-5xl font-bold">
+          <h2 className="font-heading text-[32px] sm:text-[38px] md:text-[44px] text-[#FFFFFF] font-bold">
             Five Steps to Your First Visit
           </h2>
         </div>
 
         {/* Progress rail */}
-        <div className="relative mb-14 flex justify-between">
-          <div className="absolute top-5 left-0 right-0 h-0.5 bg-stone-200" />
+        <div className="relative mb-8 flex justify-between">
+          <div className="absolute top-5 left-0 right-0 h-0.5 bg-[#585454]" />
           <motion.div
-            className="absolute top-5 left-0 h-0.5 bg-emerald-600"
+            className="absolute top-5 left-0 h-0.5 bg-emerald-500"
             animate={{ width: `${(localStep / (steps.length - 1)) * 100}%` }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           />
@@ -78,13 +78,13 @@ export default function AppointmentJourney() {
                 <span
                   className="flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all duration-300 shadow-sm"
                   style={{
-                    borderColor: done ? '#059669' : '#e7e5e4',
-                    background: done ? '#059669' : '#ffffff',
+                    borderColor: done ? '#10B981' : '#585454',
+                    background: done ? '#059669' : '#454242',
                   }}
                 >
-                  <Icon size={16} color={done ? '#ffffff' : '#a8a29e'} />
+                  <Icon size={16} color={done ? '#ffffff' : '#D1D5DB'} />
                 </span>
-                <span className={`hidden text-[11px] font-bold uppercase tracking-wider sm:block transition-colors duration-300 ${done ? 'text-emerald-800' : 'text-stone-400'}`}>
+                <span className={`hidden text-[11px] font-bold uppercase tracking-wider sm:block transition-colors duration-300 ${done ? 'text-emerald-300' : 'text-[#D1D5DB]'}`}>
                   {s.title}
                 </span>
               </button>
@@ -98,17 +98,17 @@ export default function AppointmentJourney() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-2xl border border-stone-200 bg-stone-50 p-8 md:p-10 text-left shadow-premium"
+          className="rounded-2xl border border-[#585454] bg-[#454242] p-6 sm:p-8 md:p-10 text-left shadow-xl"
         >
-          <p className="font-mono text-[11px] uppercase tracking-widest text-stone-400 font-bold">
+          <p className="font-mono text-[11px] uppercase tracking-widest text-[#D1D5DB] font-bold">
             Step {localStep + 1} of {steps.length}
           </p>
-          <h3 className="mt-2 font-heading text-2xl text-stone-900 font-bold">{steps[localStep].title}</h3>
+          <h3 className="mt-2 font-heading text-[22px] text-[#FFFFFF] font-bold">{steps[localStep].title}</h3>
           
           <div className="mt-6 min-h-[140px]">
             {localStep === 0 && (
               <div className="space-y-4">
-                <p className="text-sm text-stone-600">{steps[0].copy}</p>
+                <p className="text-sm text-[#F0F0F0]">{steps[0].copy}</p>
                 <div className="flex flex-wrap gap-2.5">
                   {condList.map((c) => (
                     <button
@@ -116,8 +116,8 @@ export default function AppointmentJourney() {
                       onClick={() => handleSelectCondition(c.title)}
                       className={`px-4 py-2.5 border rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
                         selectedCondition === c.title
-                          ? 'bg-emerald-50 border-emerald-600 text-emerald-800'
-                          : 'bg-white border-stone-200 text-stone-600 hover:border-emerald-650 hover:bg-emerald-50/50'
+                          ? 'bg-emerald-950/70 border-emerald-500 text-emerald-300 shadow-sm'
+                          : 'bg-[#363434] border-[#585454] text-[#F0F0F0] hover:border-emerald-500/50 hover:bg-[#514E4E]'
                       }`}
                     >
                       {c.title}
@@ -129,7 +129,7 @@ export default function AppointmentJourney() {
 
             {localStep === 1 && (
               <div className="space-y-4">
-                <p className="text-sm text-stone-600">{steps[1].copy}</p>
+                <p className="text-sm text-[#F0F0F0]">{steps[1].copy}</p>
                 <div className="flex flex-wrap gap-2.5">
                   {treatList.map((t) => (
                     <button
@@ -137,8 +137,8 @@ export default function AppointmentJourney() {
                       onClick={() => handleSelectTreatment(t.title)}
                       className={`px-4 py-2.5 border rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
                         selectedTreatment === t.title
-                          ? 'bg-emerald-50 border-emerald-600 text-emerald-800'
-                          : 'bg-white border-stone-200 text-stone-600 hover:border-emerald-650 hover:bg-emerald-50/50'
+                          ? 'bg-emerald-950/70 border-emerald-500 text-emerald-300 shadow-sm'
+                          : 'bg-[#363434] border-[#585454] text-[#F0F0F0] hover:border-emerald-500/50 hover:bg-[#514E4E]'
                       }`}
                     >
                       {t.title}
@@ -150,11 +150,11 @@ export default function AppointmentJourney() {
 
             {localStep === 2 && (
               <div className="space-y-4 text-left">
-                <p className="text-sm text-stone-600">{steps[2].copy}</p>
+                <p className="text-sm text-[#F0F0F0]">{steps[2].copy}</p>
                 
                 {/* Yellow alert badge */}
-                <div className="bg-amber-50 border border-amber-100 rounded-xl p-3 text-xs text-amber-800 leading-relaxed max-w-md">
-                  <strong>Specialist Matching:</strong> Select your preferred specialist or opt for "First Available Provider" for speedier scheduling.
+                <div className="bg-amber-950/40 border border-amber-500/40 rounded-xl p-3 text-xs text-amber-200 leading-relaxed max-w-md">
+                  <strong className="text-amber-300">Specialist Matching:</strong> Select your preferred specialist or opt for "First Available Provider" for speedier scheduling.
                 </div>
                 
                 <div className="flex flex-wrap gap-2.5">
@@ -164,8 +164,8 @@ export default function AppointmentJourney() {
                       onClick={() => handleSelectProvider(p)}
                       className={`px-4 py-2.5 border rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
                         selectedProvider === p
-                          ? 'bg-emerald-50 border-emerald-600 text-emerald-800'
-                          : 'bg-white border-stone-200 text-stone-600 hover:border-emerald-650 hover:bg-emerald-50/50'
+                          ? 'bg-emerald-950/70 border-emerald-500 text-emerald-300 shadow-sm'
+                          : 'bg-[#363434] border-[#585454] text-[#F0F0F0] hover:border-emerald-500/50 hover:bg-[#514E4E]'
                       }`}
                     >
                       {p}
@@ -177,8 +177,8 @@ export default function AppointmentJourney() {
 
             {localStep === 3 && (
               <div className="space-y-4">
-                <p className="text-sm text-stone-600">{steps[3].copy}</p>
-                <div className="p-4 bg-white border border-stone-200 rounded-xl text-xs text-stone-600 max-w-lg">
+                <p className="text-sm text-[#F0F0F0]">{steps[3].copy}</p>
+                <div className="p-4 bg-[#363434] border border-[#585454] rounded-xl text-xs text-[#F0F0F0] max-w-lg">
                   We offer direct, same-week schedules. Proceed to confirmation to trigger our real-time clinic scheduler.
                 </div>
               </div>
@@ -186,17 +186,17 @@ export default function AppointmentJourney() {
 
             {localStep === 4 && (
               <div className="space-y-6">
-                <p className="text-sm text-stone-600">{steps[4].copy}</p>
-                <div className="grid gap-3 p-5 bg-white border border-stone-200 rounded-xl text-xs text-stone-600 max-w-md">
-                  <p><strong>Primary Concern:</strong> {selectedCondition || 'Not chosen yet'}</p>
-                  <p><strong>Suggested Procedure:</strong> {selectedTreatment || 'Not chosen yet'}</p>
-                  <p><strong>Clinical Specialist:</strong> {selectedProvider || 'Not chosen yet'}</p>
+                <p className="text-sm text-[#F0F0F0]">{steps[4].copy}</p>
+                <div className="grid gap-3 p-5 bg-[#363434] border border-[#585454] rounded-xl text-xs text-[#F0F0F0] max-w-md">
+                  <p><strong className="text-[#FFFFFF]">Primary Concern:</strong> {selectedCondition || 'Not chosen yet'}</p>
+                  <p><strong className="text-[#FFFFFF]">Suggested Procedure:</strong> {selectedTreatment || 'Not chosen yet'}</p>
+                  <p><strong className="text-[#FFFFFF]">Clinical Specialist:</strong> {selectedProvider || 'Not chosen yet'}</p>
                 </div>
               </div>
             )}
           </div>
 
-          <div className="mt-8 flex justify-between gap-3 pt-6 border-t border-stone-200">
+          <div className="mt-8 flex justify-between gap-3 pt-6 border-t border-[#585454]">
             <Button
               disabled={localStep === 0}
               onClick={() => setLocalStep((s) => Math.max(0, s - 1))}
@@ -222,6 +222,7 @@ export default function AppointmentJourney() {
                 <Button
                   variant="primary"
                   size="sm"
+                  className="font-bold"
                 >
                   Finalize Booking Slots
                 </Button>

@@ -53,18 +53,18 @@ export default function Modal({
       {/* Backdrop */}
       <div
         onClick={onClose}
-        className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300 animate-fade-in"
+        className="fixed inset-0 bg-[#3A3838]/85 backdrop-blur-md transition-opacity duration-300 animate-fade-in"
       />
 
       {/* Modal Container */}
       <div
-        className={`relative w-full bg-white rounded-2xl shadow-2xl border border-slate-100 flex flex-col max-h-[90vh] overflow-hidden transform transition-all duration-300 scale-100 animate-slide-up ${sizes[size]} ${className}`}
+        className={`relative w-full bg-[#454242] rounded-2xl shadow-2xl border border-[#585454] flex flex-col max-h-[90vh] overflow-hidden transform transition-all duration-300 scale-100 animate-slide-up ${sizes[size]} ${className}`}
       >
         {/* Header */}
         {(title || onClose) && (
-          <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+          <div className="flex items-center justify-between px-6 py-5 border-b border-[#585454]">
             {title && (
-              <h3 className="text-lg md:text-xl font-bold font-heading text-primary-900">
+              <h3 className="text-[16px] md:text-[18px] font-bold font-heading text-[#FFFFFF]">
                 {title}
               </h3>
             )}
@@ -72,7 +72,7 @@ export default function Modal({
               <button
                 type="button"
                 onClick={onClose}
-                className="p-1.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-primary-900 transition-colors focus:outline-none cursor-pointer"
+                className="p-1.5 rounded-full hover:bg-[#514E4E] text-[#D1D5DB] hover:text-[#FFFFFF] transition-colors focus:outline-none cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="h-5 w-5" />
@@ -82,7 +82,7 @@ export default function Modal({
         )}
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-6 text-primary-800">
+        <div className="flex-1 overflow-y-auto p-6 text-[#F0F0F0]">
           {children}
         </div>
       </div>

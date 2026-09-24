@@ -20,8 +20,8 @@
 /* Viewport reveals */
 .animate-reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(12px);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
 }
 
 .animate-reveal.revealed {
@@ -29,24 +29,36 @@
   transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-reveal,
+  .animate-reveal-3d,
+  .animate-fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 /* Re-map Neomorphic Panel to Premium Card */
 .console-panel {
-  background: #ffffff;
-  border: 1px solid rgba(17, 28, 21, 0.06);
-  box-shadow: 0 10px 30px rgba(11, 28, 21, 0.02);
+  background: #454242;
+  border: 1px solid #585454;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   border-radius: 24px;
   position: relative;
   transition: all 0.3s ease;
 }
 
 .console-panel:hover {
-  box-shadow: 0 20px 40px rgba(11, 28, 21, 0.04);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  border-color: #6A6565;
 }
 
 /* Inset Panel - Simple clean background box */
 .console-inset {
-  background: #f4f6f5;
-  border: 1px solid rgba(11, 28, 21, 0.04);
+  background: #363434;
+  border: 1px solid #585454;
   border-radius: 16px;
   transition: all 0.3s ease;
 }
@@ -56,11 +68,11 @@
   display: none !important;
 }
 
-/* Diagnostic Glass Screen - Re-map to clean white content block */
+/* Diagnostic Glass Screen - Re-map to clean dark content block */
 .console-screen {
-  background-color: #ffffff;
-  border: 1px solid rgba(11, 28, 21, 0.06);
-  box-shadow: 0 4px 20px rgba(11, 28, 21, 0.01);
+  background-color: #454242;
+  border: 1px solid #585454;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -303,8 +315,8 @@
 /* Scroll reveal overrides */
 .animate-reveal-3d {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(12px);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
   will-change: transform, opacity;
 }
 
@@ -314,7 +326,7 @@
 }
 
 .console-card-3d {
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .console-card-3d:hover {

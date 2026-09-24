@@ -175,7 +175,7 @@ export default function AIChatbot() {
       {/* 1. FLOATING CHAT BUBBLE BUTTON */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-20 lg:bottom-6 right-6 z-50 p-4 bg-medical-600 hover:bg-medical-700 text-white rounded-full shadow-[0_10px_30px_rgba(2,132,199,0.3)] hover:shadow-[0_15px_40px_rgba(2,132,199,0.4)] transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 cursor-pointer flex items-center justify-center border border-white/10"
+        className="fixed bottom-20 lg:bottom-6 right-6 z-50 p-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-[0_10px_30px_rgba(5,150,105,0.4)] hover:shadow-[0_15px_40px_rgba(5,150,105,0.5)] transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 cursor-pointer flex items-center justify-center border border-emerald-400/30"
         aria-label="Open AI Clinic Assistant"
       >
         {isOpen ? <X className="h-6 w-6" /> : <MessageSquare className="h-6 w-6 animate-pulse" />}
@@ -183,19 +183,17 @@ export default function AIChatbot() {
 
       {/* 2. CHAT CONTAINER WINDOW */}
       {isOpen && (
-        <Card
-          variant="white"
-          padding="none"
-          className="fixed bottom-36 lg:bottom-24 right-6 w-[340px] sm:w-[360px] md:w-[400px] max-w-[calc(100vw-2rem)] h-[440px] lg:h-[520px] z-50 border-slate-100 shadow-2xl flex flex-col justify-between overflow-hidden animate-slide-up bg-white/95 backdrop-blur-md"
+        <div
+          className="fixed bottom-36 lg:bottom-24 right-6 w-[340px] sm:w-[360px] md:w-[400px] max-w-[calc(100vw-2rem)] h-[440px] lg:h-[520px] z-50 border border-[#585454] rounded-2xl shadow-2xl flex flex-col justify-between overflow-hidden animate-slide-up bg-[#323030]"
         >
           {/* Header */}
-          <div className="bg-primary-900 text-white px-5 py-4 flex items-center justify-between">
+          <div className="bg-[#3A3838] border-b border-[#585454] text-white px-5 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-medical-600 rounded-xl flex items-center justify-center">
-                <Activity className="h-4.5 w-4.5 text-white animate-pulse" />
+              <div className="p-2 bg-emerald-600/20 border border-emerald-500/30 rounded-xl flex items-center justify-center">
+                <Activity className="h-4.5 w-4.5 text-emerald-400 animate-pulse" />
               </div>
               <div>
-                <h4 className="font-bold text-sm font-heading">Clinic Assistant</h4>
+                <h4 className="font-bold text-[13px] font-heading text-white">Clinic Assistant</h4>
                 <span className="text-[10px] text-emerald-400 font-semibold flex items-center gap-1">
                   <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping" /> Online Support
                 </span>
@@ -203,14 +201,14 @@ export default function AIChatbot() {
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
+              className="p-1 text-[#D1D5DB] hover:text-white rounded-lg hover:bg-[#454242] transition-colors cursor-pointer"
             >
               <X className="h-4.5 w-4.5" />
             </button>
           </div>
 
           {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto p-5 space-y-4 text-xs">
+          <div className="flex-1 overflow-y-auto p-5 space-y-4 text-xs bg-[#323030]">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
@@ -220,8 +218,8 @@ export default function AIChatbot() {
                 {/* Text Bubble */}
                 <div
                   className={`p-3.5 rounded-2xl leading-relaxed whitespace-pre-line ${msg.sender === 'user'
-                      ? 'bg-medical-600 text-white rounded-br-none font-medium shadow-sm'
-                      : 'bg-slate-100 text-primary-900 rounded-bl-none border border-slate-200/50 shadow-[0_4px_10px_rgba(15,23,42,0.02)]'
+                      ? 'bg-emerald-600 text-white rounded-br-none font-medium shadow-sm'
+                      : 'bg-[#454242] text-white rounded-bl-none border border-[#585454] shadow-sm'
                     }`}
                 >
                   {msg.text}
@@ -235,7 +233,7 @@ export default function AIChatbot() {
                         key={lIdx}
                         to={link.path}
                         onClick={() => setIsOpen(false)}
-                        className="inline-flex items-center text-xs font-bold text-medical-600 hover:underline gap-1 mt-1"
+                        className="inline-flex items-center text-xs font-bold text-emerald-400 hover:text-emerald-300 hover:underline gap-1 mt-1"
                       >
                         <span>{link.label}</span>
                         <ArrowRight className="h-3.5 w-3.5" />
@@ -251,7 +249,7 @@ export default function AIChatbot() {
                       <button
                         key={oIdx}
                         onClick={() => handleOptionClick(opt.value, opt.label)}
-                        className="px-3.5 py-2 bg-white hover:bg-slate-50 text-slate-700 hover:text-medical-600 border border-slate-200 rounded-full font-semibold transition-all duration-150 cursor-pointer shadow-sm text-left text-[11px]"
+                        className="px-3.5 py-2 bg-[#454242] hover:bg-[#514E4E] text-[#F0F0F0] hover:text-white border border-[#585454] hover:border-emerald-500/40 rounded-full font-semibold transition-all duration-150 cursor-pointer shadow-sm text-left text-[11px]"
                       >
                         {opt.label}
                       </button>
@@ -266,25 +264,25 @@ export default function AIChatbot() {
           {/* Text Input Form */}
           <form
             onSubmit={handleTextInputSubmit}
-            className="p-3 border-t border-slate-100 bg-slate-50 flex items-center gap-2"
+            className="p-3 border-t border-[#585454] bg-[#3A3838] flex items-center gap-2"
           >
             <input
               type="text"
               placeholder="Ask about symptoms, fees, hours..."
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              className="flex-1 px-4 py-2.5 bg-white border border-slate-200 rounded-full text-xs focus:outline-none focus:border-medical-600 focus:ring-1 focus:ring-medical-600 shadow-sm"
+              className="flex-1 px-4 py-2.5 bg-[#323030] text-white placeholder-[#D1D5DB] border border-[#585454] rounded-full text-xs focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30"
             />
             <button
               type="submit"
               disabled={!inputText.trim()}
-              className="p-2.5 bg-medical-600 hover:bg-medical-700 text-white rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center"
+              className="p-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer flex items-center justify-center shadow-sm"
               aria-label="Send message"
             >
               <Send className="h-4 w-4" />
             </button>
           </form>
-        </Card>
+        </div>
       )}
     </>
   );
