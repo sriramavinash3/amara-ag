@@ -17,17 +17,49 @@ function tebraDevPlugin() {
           if (req.method === 'OPTIONS') {
             res.statusCode = 204;
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
             res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Idempotency-Key, Authorization');
             return res.end();
           }
 
+          if (req.method === 'GET') {
+            try {
+              const context = {
+                request: new Request(url.toString(), {
+                  method: 'GET',
+                  headers: req.headers,
+                }),
+                env: process.env,
+              };
+
+              const { onRequestGet } = await import('./functions/api/v1/appointments/smart.js');
+              const response = await onRequestGet(context);
+              const responseBody = await response.text();
+
+              res.statusCode = response.status;
+              for (const [key, value] of response.headers.entries()) {
+                res.setHeader(key, value);
+              }
+              return res.end(responseBody);
+            } catch (err) {
+              res.statusCode = 500;
+              res.setHeader('Content-Type', 'application/json');
+              return res.end(JSON.stringify({
+                success: false,
+                status: 'booking_failed',
+                error: { code: 'DEV_SERVER_ERROR', message: err.message },
+              }));
+            }
+          }
+
           if (req.method === 'POST') {
             try {
-              let rawBody = '';
+              const chunks = [];
               for await (const chunk of req) {
-                rawBody += chunk;
+                chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
               }
+              const rawBody = Buffer.concat(chunks).toString('utf-8');
+
               const context = {
                 request: new Request(url.toString(), {
                   method: 'POST',

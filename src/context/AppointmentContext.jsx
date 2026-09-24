@@ -155,6 +155,38 @@ export function AppointmentProvider({ children }) {
     }
   }, [selectedProvider, selectedDate, fetchAvailability]);
 
+  // Helper to persist genuine booking record to localStorage
+  const saveBookingToLocalStorage = (result) => {
+    const newLead = {
+      id: result.referenceId || result.appointmentToken,
+      appointmentToken: result.appointmentToken,
+      type: 'appointment',
+      dateCreated: new Date().toISOString(),
+      status: result.status || 'PENDING_CLINIC_CONFIRMATION',
+      condition: selectedCondition,
+      treatment: selectedTreatment,
+      provider: selectedProvider,
+      appointmentDate: selectedDate,
+      appointmentTime: selectedTime,
+      patient: {
+        firstName: patientDetails.firstName,
+        lastName: patientDetails.lastName,
+        email: patientDetails.email,
+        phone: patientDetails.phone,
+        dob: patientDetails.dob,
+        insurance: patientDetails.insurance || 'N/A',
+        comments: patientDetails.comments || ''
+      }
+    };
+    try {
+      const existingLeads = JSON.parse(localStorage.getItem('APS_LEADS') || '[]');
+      existingLeads.unshift(newLead);
+      localStorage.setItem('APS_LEADS', JSON.stringify(existingLeads));
+    } catch (storageErr) {
+      console.error('Failed to save appointment to localStorage:', storageErr);
+    }
+  };
+
   // Submit the booking to production Tebra API
   const submitAppointment = async () => {
     // Guard against duplicate in-flight submissions
@@ -211,43 +243,12 @@ export function AppointmentProvider({ children }) {
         }
       };
 
-      const saveBookingToLocalStorage = (result) => {
-        const newLead = {
-          id: result.referenceId || result.appointmentToken,
-          appointmentToken: result.appointmentToken,
-          type: 'appointment',
-          dateCreated: new Date().toISOString(),
-          status: result.status || 'PENDING_CLINIC_CONFIRMATION',
-          condition: selectedCondition,
-          treatment: selectedTreatment,
-          provider: selectedProvider,
-          appointmentDate: selectedDate,
-          appointmentTime: selectedTime,
-          patient: {
-            firstName: patientDetails.firstName,
-            lastName: patientDetails.lastName,
-            email: patientDetails.email,
-            phone: patientDetails.phone,
-            dob: patientDetails.dob,
-            insurance: patientDetails.insurance || 'N/A',
-            comments: patientDetails.comments || ''
-          }
-        };
-        try {
-          const existingLeads = JSON.parse(localStorage.getItem('APS_LEADS') || '[]');
-          existingLeads.unshift(newLead);
-          localStorage.setItem('APS_LEADS', JSON.stringify(existingLeads));
-        } catch (storageErr) {
-          console.error('Failed to save appointment to localStorage:', storageErr);
-        }
-      };
-
       const response = await axios.post('/api/v1/appointments/smart', payload, {
         headers: {
           'X-Idempotency-Key': idempotencyKey,
           'Content-Type': 'application/json',
         },
-        timeout: 25000,
+        timeout: 15000,
       });
 
       if (response.data && response.data.success) {
@@ -276,7 +277,40 @@ export function AppointmentProvider({ children }) {
       
       const errorData = err.response?.data?.error;
       const statusCode = err.response?.status;
-      
+      const isTimeout = err.code === 'ECONNABORTED' || err.message?.includes('timeout') || statusCode === 504;
+
+      if (isTimeout) {
+        // Attempt an immediate idempotent verification probe to check if Tebra completed the booking
+        try {
+          const verifyProbe = await axios.get(`/api/v1/appointments/smart?verifyKey=${encodeURIComponent(idempotencyKey)}`, {
+            timeout: 5000,
+          });
+          if (verifyProbe.data && verifyProbe.data.success) {
+            const resultData = verifyProbe.data.data || {};
+            setBookingResult(resultData);
+            setBookingStatus(verifyProbe.data.status || 'booking_pending');
+            setBookingSuccess(true);
+            const genuineId = resultData.referenceId || resultData.appointmentToken || '';
+            setGeneratedBookingId(genuineId);
+            saveBookingToLocalStorage(resultData);
+            return;
+          }
+        } catch (probeErr) {
+          console.warn('Verification probe following timeout did not find recorded booking:', probeErr.message);
+        }
+
+        // Handle ambiguous booking state without assuming failure or causing duplicate appointments
+        setBookingStatus('booking_ambiguous');
+        setBookingSuccess(false);
+        setBookingError({
+          code: 'AMBIGUOUS_TIMEOUT',
+          message: 'Your booking details were submitted to our scheduling server, but confirmation timed out. To prevent duplicate bookings, please do not resubmit. Our clinical coordinator will verify your slot directly with Tebra.',
+          isAmbiguous: true,
+          details: err.message,
+        });
+        return;
+      }
+
       let formattedError = {
         code: errorData?.code || `HTTP_${statusCode || 'NETWORK_ERROR'}`,
         message: errorData?.message || (
@@ -291,6 +325,40 @@ export function AppointmentProvider({ children }) {
       setBookingStatus('booking_failed');
       setBookingSuccess(false);
       setBookingError(formattedError);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Dedicated manual verification function for ambiguous booking states
+  const verifyAmbiguousBooking = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    try {
+      const verifyProbe = await axios.get(`/api/v1/appointments/smart?verifyKey=${encodeURIComponent(idempotencyKey)}`, {
+        timeout: 5000,
+      });
+      if (verifyProbe.data && verifyProbe.data.success) {
+        const resultData = verifyProbe.data.data || {};
+        setBookingResult(resultData);
+        setBookingStatus(verifyProbe.data.status || 'booking_pending');
+        setBookingSuccess(true);
+        const genuineId = resultData.referenceId || resultData.appointmentToken || '';
+        setGeneratedBookingId(genuineId);
+        saveBookingToLocalStorage(resultData);
+      } else {
+        setBookingError({
+          code: 'AMBIGUOUS_UNVERIFIED',
+          message: 'Confirmation is still pending in the clinical portal. Please call our clinic at (704) 503-9338 for instant assistance.',
+          isAmbiguous: true,
+        });
+      }
+    } catch {
+      setBookingError({
+        code: 'AMBIGUOUS_UNVERIFIED',
+        message: 'Unable to check status online right now. Please call our clinic at (704) 503-9338.',
+        isAmbiguous: true,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -325,6 +393,7 @@ export function AppointmentProvider({ children }) {
     prevStep,
     resetWizard,
     submitAppointment,
+    verifyAmbiguousBooking,
   };
 
   return (

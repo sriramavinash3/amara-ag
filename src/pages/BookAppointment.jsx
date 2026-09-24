@@ -40,6 +40,7 @@ export default function BookAppointment() {
     prevStep,
     resetWizard,
     submitAppointment,
+    verifyAmbiguousBooking,
   } = useAppointment();
 
   // Handle pre-filled state when navigating from a specific condition/treatment page
@@ -469,6 +470,35 @@ export default function BookAppointment() {
                 </Card>
               </div>
 
+              {/* Ambiguous Timeout Banner (Network timed out during confirmation) */}
+              {bookingStatus === 'booking_ambiguous' && (
+                <div className="md:col-span-12 p-5 bg-amber-950/40 border border-amber-800/60 rounded-xl flex items-start gap-3 text-amber-200 text-sm animate-reveal">
+                  <AlertTriangle className="h-5 w-5 text-amber-400 shrink-0 mt-0.5" />
+                  <div className="space-y-2 text-left flex-1">
+                    <p className="font-bold text-white">Booking Transmitted • Confirmation Pending</p>
+                    <p className="text-xs text-amber-100 leading-relaxed">
+                      Your appointment details reached our clinic server, but the network confirmation took longer than expected. To prevent creating accidental duplicate bookings, our clinical staff is verifying your slot.
+                    </p>
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      <button
+                        type="button"
+                        onClick={verifyAmbiguousBooking}
+                        disabled={isSubmitting}
+                        className="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm"
+                      >
+                        <RefreshCw className={`h-3.5 w-3.5 ${isSubmitting ? 'animate-spin' : ''}`} /> Check Confirmation Status
+                      </button>
+                      <a
+                        href="tel:+17045039338"
+                        className="px-3.5 py-1.5 bg-[#363434] hover:bg-[#514E4E] border border-[#585454] text-white rounded-lg text-xs font-bold transition-colors inline-flex items-center gap-1.5"
+                      >
+                        <Phone className="h-3.5 w-3.5 text-emerald-400" /> Call Clinic Front Desk: (704) 503-9338
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Error Banner if booking failed */}
               {bookingStatus === 'booking_failed' && bookingError && (
                 <div className="md:col-span-12 p-4 bg-red-950/40 border border-red-800/60 rounded-xl flex items-start gap-3 text-red-200 text-sm animate-reveal">
@@ -619,13 +649,17 @@ export default function BookAppointment() {
                 variant="primary"
                 size="sm"
                 loading={isSubmitting}
-                disabled={!isStepValid() || isSubmitting}
+                disabled={!isStepValid() || isSubmitting || bookingStatus === 'booking_ambiguous'}
                 onClick={submitAppointment}
                 icon={CheckCircle2}
                 iconPosition="right"
-                className={isSubmitting ? '' : 'animate-pulse'}
+                className={isSubmitting || bookingStatus === 'booking_ambiguous' ? '' : 'animate-pulse'}
               >
-                {isSubmitting ? 'Submitting to Tebra...' : 'Submit Booking Request'}
+                {isSubmitting
+                  ? 'Submitting to Tebra...'
+                  : bookingStatus === 'booking_ambiguous'
+                  ? 'Confirmation In Progress'
+                  : 'Submit Booking Request'}
               </Button>
             )}
           </div>

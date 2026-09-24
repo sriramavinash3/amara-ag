@@ -1,3 +1,3 @@
-import { onRequestPost, onRequestOptions } from '../v1/appointments/smart.js';
+import { onRequestPost, onRequestOptions, onRequestGet } from '../v1/appointments/smart.js';
 
-export { onRequestPost, onRequestOptions };
+export { onRequestPost, onRequestOptions, onRequestGet };
