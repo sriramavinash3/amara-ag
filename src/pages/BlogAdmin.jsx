@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Eye, LogIn, LogOut, Plus, Save, Trash2, FileText, Globe2 } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
@@ -41,7 +41,7 @@ export default function BlogAdmin() {
   };
 
   useEffect(() => {
-    refresh().catch(() => setAuthenticated(false)).finally(() => setLoading(false));
+    Promise.resolve().then(() => refresh()).catch(() => setAuthenticated(false)).finally(() => setLoading(false));
   }, []);
 
   const setField = (name,value) => setForm((current) => ({ ...current, [name]: value }));
