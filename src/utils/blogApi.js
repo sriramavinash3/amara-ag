@@ -10,14 +10,18 @@ const mapPost = (post) => ({
 });
 
 export async function getBlogPosts(category = '') {
+  const legacy = (fallbackPosts || []).map(mapPost);
   try {
     const query = category ? '?category=' + encodeURIComponent(category) : '';
     const response = await fetch('/api/blog' + query, { headers: { Accept: 'application/json' } });
     if (!response.ok) throw new Error('Blog API unavailable');
     const payload = await response.json();
-    return (payload.posts || []).map(mapPost);
+    const live = (payload.posts || []).map(mapPost);
+    const liveSlugs = new Set(live.map((post) => post.slug || post.id));
+    const legacyVisible = legacy.filter((post) => !liveSlugs.has(post.slug || post.id));
+    return [...live, ...legacyVisible];
   } catch {
-    return (fallbackPosts || []).map(mapPost);
+    return category ? legacy.filter((post) => post.category === category) : legacy;
   }
 }
 
