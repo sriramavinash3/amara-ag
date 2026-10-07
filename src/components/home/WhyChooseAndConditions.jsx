@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { Award, HeartHandshake, FlaskConical, Users, ShieldCheck, Compass, ChevronRight } from 'lucide-react';
 
 const pillars = [
-  { icon: Award, title: 'Experienced Specialists', copy: 'Led by double-certified specialist training with over 15 years diagnosing and treating complex spinal & joint pain.' },
-  { icon: HeartHandshake, title: 'Patient-First Focus', copy: 'We take the time to listen, locate the biological cause of pain, and design personalized recovery plans.' },
-  { icon: FlaskConical, title: 'Fluoroscopic Precision', copy: 'All procedures utilize advanced live X-ray or ultrasound guidance for safety and diagnostic accuracy.' },
-  { icon: Users, title: 'Billing Transparency', copy: 'As an independent practice, we charge zero hospital facility fees, saving patients hundreds of dollars.' },
-  { icon: ShieldCheck, title: 'Evidence-Based Care', copy: 'We specialize in clinically proven treatments—from nerve blocks to regenerative therapies—not guesswork.' },
-  { icon: Compass, title: 'Direct Care Access', copy: 'Offering same-week appointments, rapid prior authorization reviews, and direct primary provider sync.' },
+  { icon: Award, title: 'Interventional Specialists', copy: 'Physician training in anesthesiology and interventional pain medicine.' },
+  { icon: HeartHandshake, title: 'Focused Clinical Evaluation', copy: 'We review your diagnostic imaging and medical history to evaluate what is causing your pain.' },
+  { icon: FlaskConical, title: 'Image-Guided Precision', copy: 'All procedures use fluoroscopy (real-time X-ray) or ultrasound guidance to verify target anatomy.' },
+  { icon: Users, title: 'Transparent In-Office Billing', copy: 'As an independent practice, we charge transparent office fees with zero hospital facility charges.' },
+  { icon: ShieldCheck, title: 'Targeted Non-Surgical Care', copy: 'We provide outpatient procedures including epidural injections, nerve blocks, and neuromodulation.' },
+  { icon: Compass, title: 'Prompt Scheduling', copy: 'Offering same-week consultations, prior authorization coordination, and direct communication with referring physicians.' },
 ];
 
 const conditionCards = [
@@ -138,10 +138,10 @@ export default function WhyChooseAndConditions() {
               Why Choose Amara
             </p>
             <h2 className="font-heading text-[32px] sm:text-[38px] md:text-[46px] font-bold text-[#FFFFFF] leading-tight">
-              Six reasons patients stay with us for years, not one visit.
+              Clinical Care at Amara Pain &amp; Spine
             </h2>
             <p className="text-sm md:text-base text-[#F0F0F0] font-normal leading-relaxed mt-3">
-              Independent, double board-certified interventional care with one flat office visit fee and zero hospital facility charges.
+              Independent interventional care with transparent office visit billing and zero hospital facility charges.
             </p>
           </div>
 
@@ -161,10 +161,10 @@ export default function WhyChooseAndConditions() {
               Conditions We Treat
             </p>
             <h2 className="font-heading text-[32px] sm:text-[38px] md:text-[46px] font-bold text-[#FFFFFF] leading-tight">
-              Comprehensive Treatment for Complex Spine &amp; Joint Pain
+              Conditions We Treat
             </h2>
             <p className="text-sm md:text-base text-[#F0F0F0] font-normal leading-relaxed max-w-xl mt-3">
-              Whether your pain is chronic, post-surgical, or caused by joint wear, we prioritize pinpointing the biological source of your pain.
+              We evaluate chronic spine, nerve, and joint pain to recommend appropriate non-surgical treatment options.
             </p>
           </div>
 

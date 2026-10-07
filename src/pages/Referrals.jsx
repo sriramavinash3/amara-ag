@@ -518,7 +518,7 @@ export default function Referrals() {
       <div className="flex gap-3 bg-[#363434] border border-[#585454] rounded-2xl p-6 text-xs text-[#F0F0F0] leading-relaxed w-full my-8">
         <ShieldCheck className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
         <p className="font-medium">
-          <strong className="text-[#FFFFFF]">HIPAA Compliance Safeguard:</strong> This portal utilizes end-to-end socket encryption. All patient identifiers, date-of-birth timestamps, and medical conditions are fully tokenized before database logs are recorded. We comply fully with the Health Insurance Portability and Accountability Act (HIPAA) standards.
+          <strong className="text-[#FFFFFF]">HIPAA Compliance Safeguard:</strong> This portal utilizes secure socket encryption. All patient identifiers, date-of-birth timestamps, and clinical information are encrypted during transmission in compliance with Health Insurance Portability and Accountability Act (HIPAA) standards.
         </p>
       </div>
 

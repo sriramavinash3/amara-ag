@@ -39,7 +39,7 @@ export default function Treatments() {
             Interventional Pain Treatments
           </h1>
           <p className="text-[18px] text-[#F0F0F0] font-normal leading-[1.75] max-w-[720px]">
-            Discover our advanced, FDA-approved outpatient therapies. We focus on non-surgical joint-preservation, muscle spasm release, and nerve-calming procedures.
+            Outpatient interventional procedures including joint injections, nerve blocks, and radiofrequency ablation for chronic pain conditions.
           </p>
         </div>
 
@@ -63,15 +63,15 @@ export default function Treatments() {
             Restorative Mobility
           </Badge>
           <h2 className="text-[24px] md:text-[32px] font-bold font-heading text-white leading-tight">
-            Targeted Relief to Support Active Rehabilitation
+            Targeted Procedures to Support Rehabilitation
           </h2>
           <p className="text-base text-[#F0F0F0] leading-relaxed">
-            Our outpatient interventional therapies are designed to relieve acute and chronic pain barriers, empowering older adults to return to rehabilitation, daily walks, and active family life without lengthy hospital downtime.
+            Our outpatient interventional therapies are designed to reduce pain symptoms so patients can participate in physical therapy and daily activities without lengthy hospital recovery periods.
           </p>
           <div className="pt-2 flex flex-wrap gap-4 text-xs font-bold text-[#D1D5DB] uppercase tracking-wider">
             <span className="flex items-center gap-1.5"><Shield className="h-4 w-4 text-emerald-400" /> Outpatient Procedures</span>
-            <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-emerald-400" /> Rapid 1-3 Day Recovery</span>
-            <span className="flex items-center gap-1.5"><Activity className="h-4 w-4 text-emerald-400" /> Restores Joint Flexibility</span>
+            <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-emerald-400" /> 1-3 Day Recovery</span>
+            <span className="flex items-center gap-1.5"><Activity className="h-4 w-4 text-emerald-400" /> Supports Joint Mobility</span>
           </div>
         </div>
         <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#585454] shadow-md bg-[#323030]">

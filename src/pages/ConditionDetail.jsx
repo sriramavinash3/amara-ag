@@ -181,24 +181,24 @@ export default function ConditionDetail() {
                 Direct Clinic Intake
               </Badge>
               <h3 className="text-[18px] sm:text-[20px] font-bold font-heading text-[#FFFFFF] leading-tight">
-                Schedule Relief for {cond.title.split(' & ')[0]}
+                Consultation for {cond.title.split(' & ')[0]}
               </h3>
               <p className="text-xs text-[#D1D5DB] leading-relaxed font-medium">
-                Take the first step toward reclaiming your quality of life. Consult directly with our certified pain specialist.
+                Schedule a consultation with our specialist to evaluate your symptoms and discuss treatment options.
               </p>
               
               <div className="space-y-3 pt-4 text-xs text-[#F0F0F0] border-t border-[#585454] font-medium">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span>Double-certified specialist care</span>
+                  <span>Physician clinical evaluation</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span>Affordable flat fee (no facility fees)</span>
+                  <span>Transparent fee (no hospital facility fees)</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span>Rapid schedule bookings</span>
+                  <span>Prompt appointment scheduling</span>
                 </div>
               </div>
             </div>

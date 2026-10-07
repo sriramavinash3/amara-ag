@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-const DEFAULT_TITLE = "Amara Pain | Advanced Interventional Pain Specialists";
-const DEFAULT_DESC = "Charlotte's leading interventional specialists delivering advanced, evidence-based pain relief built around your body, your diagnostics, and your life outside of the clinic.";
+const DEFAULT_TITLE = "Amara Pain & Spine | Interventional Pain Management Charlotte NC";
+const DEFAULT_DESC = "Interventional pain management in Charlotte, NC. Non-surgical evaluation and targeted treatments for back, neck, joint, and nerve pain with zero hospital facility fees.";
 const DEFAULT_IMAGE = "https://www.amarapain.com/images/og-image.png";
 const DOMAIN = "https://www.amarapain.com";
 

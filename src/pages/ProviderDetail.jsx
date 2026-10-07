@@ -13,11 +13,11 @@ const providerData = {
     id: "dr-ashvin-amara",
     name: "Ashvin K. Amara, MD",
     role: "Founder & Medical Director",
-    credentials: "Board Certified in Anesthesiology & Pain Medicine",
+    credentials: "Anesthesiology & Pain Medicine",
     acceptingNewPatients: true,
     image: "/images/ashvin-amara.jpg",
-    bio: "Ashvin K. Amara, MD, is a highly trusted physician board-certified in both Anesthesiology and Interventional Pain Medicine. He completed his comprehensive fellowship training in pain management and has dedicated over 15 years to helping patients in Charlotte, NC, find relief from complex chronic and acute pain conditions.",
-    detailedBio: "Amara graduated from Osmania Medical College in India. He completed a one-year internship at Richmond University Medical Center (Staten Island, NY) followed by a four-year residency at Brookdale University Hospital Medical Center (Brooklyn, NY). He went on to complete a one-year sub-specialist fellowship in Interventional Pain Management at John H. Stroger Hospital of Cook County (Chicago, IL). Throughout his career, Amara has rotated through prestigious institutions including Staten Island University Hospital, Memorial Sloan Kettering Cancer Center, and St. Luke's Roosevelt Hospital Center. He established Amara Pain & Spine Management to offer high-quality, transparent, and patient-centered care without corporate hospital markups.",
+    bio: "Ashvin K. Amara, MD, is a physician specializing in both Anesthesiology and Interventional Pain Medicine. He completed fellowship training in pain management and has dedicated over 15 years to diagnosing and treating complex chronic and acute pain conditions in Charlotte, NC.",
+    detailedBio: "Amara graduated from Osmania Medical College in India. He completed a one-year internship at Richmond University Medical Center (Staten Island, NY) followed by residency at Brookdale University Hospital Medical Center (Brooklyn, NY). He went on to complete a sub-specialist fellowship in Interventional Pain Management at John H. Stroger Hospital of Cook County (Chicago, IL). Clinical rotations during training included Staten Island University Hospital, Memorial Sloan Kettering Cancer Center, and St. Luke's Roosevelt Hospital Center. He established Amara Pain & Spine Management to offer high-quality interventional care in an independent office setting with zero hospital facility charges.",
     education: [
       "Fellowship in Interventional Pain Management – John H. Stroger Hospital of Cook County, Chicago, IL",
       "Residency in Anesthesiology – Brookdale University Hospital Medical Center, Brooklyn, NY",
@@ -41,8 +41,8 @@ const providerData = {
     languages: ["English", "Hindi", "Telugu", "Spanish"],
     experience: "15+ Years",
     certifications: [
-      "Board Certified in Pain Management – American Board of Anesthesiology",
-      "Board Certified in Anesthesiology – American Board of Anesthesiology",
+      "Specialty Training in Pain Management – American Board of Anesthesiology",
+      "Specialty Training in Anesthesiology – American Board of Anesthesiology",
       "Medical License – North Carolina Medical Board"
     ],
     schema: {
@@ -64,11 +64,11 @@ const providerData = {
     id: "eunice-babalola",
     name: "Eunice Babalola, NP, MSN",
     role: "Nurse Practitioner",
-    credentials: "Board-Certified Family Nurse Practitioner",
+    credentials: "Family Nurse Practitioner",
     acceptingNewPatients: false,
     image: "/images/eunice-babalola.jpg",
-    bio: "Eunice Babalola, NP, MSN, is a board-certified Nurse Practitioner at Amara Pain & Spine Management. She is dedicated to walking alongside patients on their path to recovery, focusing on holistic, evidence-based pain management and customized care plans to promote long-term comfort and well-being.",
-    detailedBio: "Eunice earned her Master of Science in Nursing (MSN-FNP) from the University of North Carolina at Charlotte (UNCC). Her extensive clinical background includes medical-surgical and neurosurgical care, which guides her safe and thorough approach to patient assessments. Eunice is board-certified by the American Association of Nurse Practitioners (AANP) and is also a board-certified Medical-Surgical Nurse through the American Nurses Credentialing Center (ANCC). She is an active member of the American Nurses Association (ANA) and the North Carolina Nurses Association (NCNA). Eunice focuses on patient-centered care and enjoys incorporating evidence-based practices like aromatherapy to maximize comfort.",
+    bio: "Eunice Babalola, NP, MSN, is a Family Nurse Practitioner at Amara Pain & Spine Management. She assists with clinical evaluations, patient follow-ups, and treatment plans.",
+    detailedBio: "Eunice earned her Master of Science in Nursing (MSN-FNP) from the University of North Carolina at Charlotte (UNCC). Her clinical background includes medical-surgical and neurosurgical care, which guides her thorough approach to patient assessments. Eunice holds professional credentials through the American Association of Nurse Practitioners (AANP) and the American Nurses Credentialing Center (ANCC). She is an active member of the American Nurses Association (ANA) and the North Carolina Nurses Association (NCNA).",
     education: [
       "Master of Science in Nursing (MSN-FNP) – University of North Carolina at Charlotte (UNCC)",
       "Bachelor of Science in Nursing (BSN) – Registered Nurse"
@@ -81,11 +81,10 @@ const providerData = {
       "Chronic Pain Management & Monitoring",
       "Medication Management & Patient Guidance",
       "Myofascial Trigger Point Therapy",
-      "Complementary & Holistic Wellness Care",
-      "Aromatherapy for Patient Comfort"
+      "Patient Education & Clinical Assessments"
     ],
     languages: ["English", "Spanish"],
-    experience: "Board Certified",
+    experience: "Family Nurse Practitioner",
     certifications: [
       "Certified Family Nurse Practitioner – American Association of Nurse Practitioners (AANP)",
       "Certified Medical-Surgical Nurse – American Nurses Credentialing Center (ANCC)",
@@ -110,11 +109,11 @@ const providerData = {
     id: "alexander-carmenaty",
     name: "Alexander Carmenaty Rodriguez, MSN, FNP-C",
     role: "Nurse Practitioner",
-    credentials: "Board-Certified Family Nurse Practitioner",
+    credentials: "Family Nurse Practitioner",
     acceptingNewPatients: false,
     image: "/images/alexander-carmenaty.jpg",
-    bio: "Alexander Carmenaty Rodriguez, MSN, FNP-C, is a board-certified Nurse Practitioner at Amara Pain & Spine Management. He possesses a diverse international background in healthcare, enabling him to identify patient needs and develop highly effective medical plans and treatments.",
-    detailedBio: "Alexander earned his Master of Science in Nursing (MSN-FNP) from South University–Savannah. He gained valuable clinical experience as a Registered Nurse in pediatric home health and specialized rehabilitation facilities. Furthermore, he holds extensive international medical experience, having previously served as a Family Physician in Cuba, Venezuela, and Brazil. Alexander is board-certified by the American Association of Nurse Practitioners (AANP), is a member of the American Association of Nurse Practitioners, and holds Advanced Life Support (ALS) certification. He is dedicated to helping patients restore their physical function and achieve their long-term well-being goals.",
+    bio: "Alexander Carmenaty Rodriguez, MSN, FNP-C, is a Family Nurse Practitioner at Amara Pain & Spine Management. He brings diverse clinical experience across primary care and rehabilitation.",
+    detailedBio: "Alexander earned his Master of Science in Nursing (MSN-FNP) from South University–Savannah. He gained clinical experience as a Registered Nurse in rehabilitation and home health facilities. He holds international medical experience, having previously served as a physician in Cuba, Venezuela, and Brazil. Alexander holds professional credentials through the American Association of Nurse Practitioners (AANP) and Advanced Life Support (ALS) certification. He works closely with patients to evaluate chronic pain symptoms and coordinate rehabilitation care.",
     education: [
       "Master of Science in Nursing (MSN-FNP) – South University, Savannah, GA",
       "Doctor of Medicine (MD Equivalent) / Family Physician Training – Cuba"
@@ -130,7 +129,7 @@ const providerData = {
       "Rehabilitation Care Coordination"
     ],
     languages: ["English", "Spanish", "Portuguese"],
-    experience: "Board Certified",
+    experience: "Family Nurse Practitioner",
     certifications: [
       "Family Nurse Practitioner Certification (FNP-C) – American Association of Nurse Practitioners (AANP)",
       "Advanced Life Support (ALS) Certified",
@@ -245,7 +244,7 @@ export default function ProviderDetail() {
               <div className="border-t border-[#585454] pt-6 space-y-2.5 text-xs text-[#F0F0F0] text-left">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4.5 w-4.5 text-emerald-400 shrink-0" />
-                  <span>Double-Certified Interventional Care</span>
+                  <span>Interventional Pain Care</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4.5 w-4.5 text-emerald-400 shrink-0" />

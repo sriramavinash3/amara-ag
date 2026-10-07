@@ -137,7 +137,7 @@ export default function TreatmentDetail() {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 border border-[#585454] shadow-sm bg-[#323030]">
               <img 
                 src="/images/audience/interventional_procedure_suite.jpg" 
-                alt="State-of-the-art interventional pain management procedure suite with C-arm fluoroscopy"
+                alt="Interventional pain management procedure suite with C-arm fluoroscopy"
                 className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
@@ -145,13 +145,13 @@ export default function TreatmentDetail() {
 
             <div className="space-y-4 text-left">
               <Badge variant="secondary" className="bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 font-bold uppercase tracking-wide text-[10px]">
-                Affordable Pain Tech
+                Clinical Procedures
               </Badge>
               <h3 className="text-[18px] font-bold font-heading text-white leading-tight">
-                Schedule {treat.title}
+                Consultation for {treat.title}
               </h3>
               <p className="text-xs text-[#D1D5DB] leading-relaxed font-medium">
-                Take a vital step toward long-term relief. Our outpatient procedures are performed with absolute precision in our local Charlotte clinic.
+                Discuss treatment suitability, expected outcomes, and procedural details with our clinical team in Charlotte.
               </p>
               
               <div className="space-y-3 pt-4 text-xs text-[#F0F0F0] border-t border-[#585454] font-medium">
@@ -161,11 +161,11 @@ export default function TreatmentDetail() {
                 </div>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span>Fluoroscopic (X-ray) precision</span>
+                  <span>Fluoroscopy (real-time X-ray) guidance</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span>Zero hospital facility fee markup</span>
+                  <span>Zero hospital facility fee charges</span>
                 </div>
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function TreatmentDetail() {
                 className="w-full block"
               >
                 <Button variant="primary" className="w-full" icon={Calendar}>
-                  Request Procedure
+                  Request an Appointment
                 </Button>
               </Link>
               

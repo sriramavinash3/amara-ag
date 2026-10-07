@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Award, HeartHandshake, FlaskConical, Users, ShieldCheck, Compass } from 'lucide-react'
 
 const pillars = [
-  { icon: Award, title: 'Experienced Specialists', copy: 'Board-certified interventional pain physicians with 14+ years treating Charlotte.' },
+  { icon: Award, title: 'Experienced Specialists', copy: 'Interventional pain physicians with 14+ years treating Charlotte.' },
   { icon: HeartHandshake, title: 'Personalized Care', copy: 'A plan built around your diagnosis, goals, and daily life — not a standard protocol.' },
   { icon: FlaskConical, title: 'Advanced Treatments', copy: 'From regenerative medicine to spinal cord stimulation, matched to what you actually need.' },
   { icon: Users, title: 'Insurance Support', copy: 'In-network with most major providers, with a team that handles the paperwork.' },

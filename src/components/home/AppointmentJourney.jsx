@@ -51,10 +51,10 @@ export default function AppointmentJourney() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         <div className="mb-10 max-w-xl text-left">
           <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-emerald-400 font-bold">
-            Booking, Simplified
+            Appointment Scheduling
           </p>
           <h2 className="font-heading text-[32px] sm:text-[38px] md:text-[44px] text-[#FFFFFF] font-bold">
-            Five Steps to Your First Visit
+            Schedule Your Consultation
           </h2>
         </div>
 

@@ -120,10 +120,10 @@ export default function Conditions() {
             Conditions We Treat
           </p>
           <h2 className="font-heading text-[32px] sm:text-[38px] md:text-[46px] text-[#FFFFFF] font-bold leading-tight">
-            Comprehensive Treatment for Complex Spine &amp; Joint Pain
+            Conditions We Treat
           </h2>
           <p className="text-sm md:text-base text-[#F0F0F0] font-medium leading-relaxed max-w-xl mt-3">
-            Whether your pain is chronic, post-surgical, or caused by joint wear, we prioritize pinpointing the biological source of your pain.
+            We evaluate chronic spine, nerve, and joint pain to recommend appropriate non-surgical treatment options.
           </p>
         </div>
 

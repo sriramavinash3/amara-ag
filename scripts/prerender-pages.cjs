@@ -34,17 +34,17 @@ async function prerender() {
     {
       path: '/about',
       title: 'About Our Interventional Pain Specialists | Amara Pain Charlotte NC',
-      desc: "Meet our double board-certified interventional pain specialists in Charlotte, NC. Evidence-based, non-surgical relief with $0 hospital facility fees."
+      desc: "Meet our interventional pain specialists in Charlotte, NC. Non-surgical pain management with zero hospital facility fees."
     },
     {
       path: '/conditions',
       title: 'Pain Conditions We Treat | Amara Pain Charlotte NC',
-      desc: "Specialized interventional treatments for back pain, neck pain, sciatica, arthritis, joint pain, and neuropathic pain in Charlotte, NC."
+      desc: "Evaluation and non-surgical treatments for back pain, neck pain, sciatica, arthritis, joint pain, and neuropathic pain in Charlotte, NC."
     },
     {
       path: '/treatments',
       title: 'Interventional Pain Procedures & Treatments | Amara Pain Charlotte NC',
-      desc: "Minimally invasive, fluoroscopy-guided pain treatments including epidural steroid injections, radiofrequency ablation, and nerve blocks."
+      desc: "Outpatient, fluoroscopy-guided pain treatments including epidural steroid injections, radiofrequency ablation, and nerve blocks."
     },
     {
       path: '/patients',
@@ -53,8 +53,8 @@ async function prerender() {
     },
     {
       path: '/blog',
-      title: 'Patient Education & Pain Management Blog | Amara Pain Charlotte NC',
-      desc: "Evidence-based articles, lifestyle tips, and clinical updates on chronic pain management and spine health from Amara Pain."
+      title: 'Patient Education & Pain Management Articles | Amara Pain Charlotte NC',
+      desc: "Clinical articles, symptom guides, and practice updates on chronic pain management from Amara Pain & Spine."
     },
     {
       path: '/contact',
@@ -64,12 +64,12 @@ async function prerender() {
     {
       path: '/book',
       title: 'Book an Appointment | Amara Pain Charlotte NC',
-      desc: "Schedule a consultation with our double board-certified pain specialists in Charlotte, NC. Fast appointment availability with zero hospital facility fees."
+      desc: "Schedule a consultation with our interventional pain specialists in Charlotte, NC. Fast appointment availability with zero hospital facility fees."
     },
     {
       path: '/referrals',
-      title: 'Physician Referrals | Fast-Track Patient Placement | Amara Pain',
-      desc: "Refer a patient to Amara Pain in Charlotte, NC. Fast-track peer-to-peer consultations, comprehensive clinic notes, and coordinated specialist care."
+      title: 'Physician Referrals | Amara Pain & Spine Charlotte NC',
+      desc: "Refer a patient to Amara Pain & Spine in Charlotte, NC. Peer-to-peer consultations, clinical documentation, and coordinated specialist care."
     },
     {
       path: '/privacy',
@@ -80,17 +80,17 @@ async function prerender() {
     {
       path: '/providers/dr-ashvin-amara',
       title: 'Ashvin K. Amara, MD | Interventional Pain Specialist | Charlotte NC',
-      desc: 'Dr. Ashvin K. Amara is a double board-certified interventional pain specialist and anesthesiologist dedicated to non-surgical pain relief in Charlotte, NC.'
+      desc: 'Dr. Ashvin K. Amara is an interventional pain specialist and anesthesiologist providing non-surgical pain care in Charlotte, NC.'
     },
     {
       path: '/providers/eunice-babalola',
       title: 'Eunice Babalola, NP, MSN | Amara Pain Charlotte NC',
-      desc: 'Eunice Babalola is a board-certified Family Nurse Practitioner specializing in patient-centered interventional pain management at Amara Pain.'
+      desc: 'Eunice Babalola is a Family Nurse Practitioner providing clinical care and pain evaluations at Amara Pain & Spine.'
     },
     {
       path: '/providers/alexander-carmenaty',
       title: 'Alexander Carmenaty Rodriguez, MSN, FNP-C | Amara Pain Charlotte NC',
-      desc: 'Alexander Carmenaty Rodriguez is a board-certified Nurse Practitioner delivering holistic, evidence-based pain management at Amara Pain.'
+      desc: 'Alexander Carmenaty Rodriguez is a Family Nurse Practitioner providing clinical care and pain evaluations at Amara Pain & Spine.'
     }
   ];
 

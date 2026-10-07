@@ -83,7 +83,7 @@ export default function AIChatbot() {
     }
     // 6. Book Appointment route
     else if (value === 'book') {
-      addMessage('bot', "Great! I am opening our Smart Appointment Booking Wizard now. You can choose your condition, preferred treatment, and schedule a slot.");
+      addMessage('bot', "Opening our appointment scheduling page now. You can choose your condition, preferred treatment, and request a consultation.");
       setTimeout(() => {
         setIsOpen(false);
         navigate('/book');
@@ -91,7 +91,7 @@ export default function AIChatbot() {
     }
     // 7. Main Menu reset
     else if (value === 'main_menu') {
-      addMessage('bot', "How can I help you find pain relief today?", [
+      addMessage('bot', "How can we help you today?", [
         { label: '🔍 Symptom Checker', value: 'symptoms' },
         { label: '💳 Insurance & Fees', value: 'billing' },
         { label: '🕒 Hours & Location', value: 'hours' },
@@ -105,7 +105,7 @@ export default function AIChatbot() {
       if (condData) {
         addMessage(
           'bot',
-          `**${condData.title}**\n\n${condData.shortDesc}\n\nCommon causes include: ${condData.causes.slice(0, 3).join(', ')}.\n\nWe offer advanced interventional blocks and epidural injections to treat this.`,
+          `**${condData.title}**\n\n${condData.shortDesc}\n\nCommon causes include: ${condData.causes.slice(0, 3).join(', ')}.\n\nWe offer interventional nerve blocks and epidural injections for this condition.`,
           [
             { label: '📅 Request Consultation', value: 'book' },
             { label: '🔍 Different Pain Area', value: 'symptoms' },
@@ -119,7 +119,7 @@ export default function AIChatbot() {
     }
     // 9. Default Chat Text response
     else {
-      addMessage('bot', "I understand. To get personalized diagnostic advice, we highly recommend scheduling a physical consultation with our certified specialist.", [
+      addMessage('bot', "To receive a clinical evaluation, we recommend scheduling an appointment with our specialist.", [
         { label: '📅 Book Online', value: 'book' },
         { label: 'Back to Main Menu', value: 'main_menu' }
       ]);

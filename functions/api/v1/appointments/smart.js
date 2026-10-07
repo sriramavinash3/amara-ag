@@ -261,15 +261,89 @@ export async function onRequestPost(context) {
     // Diagnostic Stage 3: Authentication completed
     console.log(`[Tebra Booking][${correlationId}] Stage 3: Authentication validated. Target practice: ${tebraPracticeKey}`);
 
+    // Ensure all types match Tebra Unified Availability JSON schema strictly:
+    const providerIdStr = String(providerId || '1');
+    const locationIdStr = String(locationId || '1');
+    const calendarIdStr = String(calendarId || `cal_k_1_114095_${providerIdStr}_1`);
+    const durationInt = parseInt(duration, 10) || 30;
+
+    // Pre-flight check: Query Tebra live availability to ensure slot has not already been reserved
+    try {
+      const nyDateFormatter = new Intl.DateTimeFormat('en-US', {
+        timeZone: timezone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });
+      const parts = nyDateFormatter.formatToParts(new Date(startTimeIso));
+      const partMap = {};
+      parts.forEach(p => { partMap[p.type] = p.value; });
+      const targetDate = `${partMap.year}-${partMap.month}-${partMap.day}`;
+      const targetHour = partMap.hour === '24' ? '00' : partMap.hour;
+      const targetTimePrefix = `${targetHour}:${partMap.minute}`;
+
+      const utcDate = startTimeIso.split('T')[0];
+      const utcTimePrefix = (startTimeIso.split('T')[1] || '').slice(0, 5);
+
+      const availCheckUrl = `${tebraBaseUrl}/v1/availability/practices/${tebraPracticeKey}/locations/${locationIdStr}/providers/${providerIdStr}?start_date=${targetDate}&end_date=${targetDate}&timezone=${encodeURIComponent(timezone)}`;
+      const availResp = await fetch(availCheckUrl, {
+        headers: {
+          'x-api-key': tebraApiKey,
+          'User-Agent': 'AmaraPain-AvailabilityPreflight/1.0',
+        },
+      });
+
+      if (availResp.ok) {
+        const availData = await availResp.json();
+        const existingAppts = availData.appointments || [];
+        const blockedExceptions = availData.exceptions || [];
+
+        const isAlreadyBooked = existingAppts.some(a => {
+          const aDate = a.date;
+          const aTime = (a.start_time || '').slice(0, 5);
+          return (aDate === targetDate || aDate === utcDate) && (aTime === targetTimePrefix || aTime === utcTimePrefix);
+        });
+
+        const isBlocked = blockedExceptions.some(e => {
+          if (e.state !== 'blocked') return false;
+          const eDate = e.date;
+          const eTime = (e.start_time || '').slice(0, 5);
+          return (eDate === targetDate || eDate === utcDate) && (eTime === targetTimePrefix || eTime === utcTimePrefix);
+        });
+
+        if (isAlreadyBooked || isBlocked) {
+          console.warn(`[Tebra Booking][${correlationId}] Pre-flight detected slot already reserved or blocked: ${targetDate} ${targetTimePrefix} (UTC: ${utcTimePrefix})`);
+          return new Response(
+            JSON.stringify({
+              success: false,
+              status: 'booking_failed',
+              error: {
+                code: 'SLOT_UNAVAILABLE',
+                message: 'The selected appointment slot is no longer available. Please select another time slot.',
+                isSlotUnavailable: true,
+                details: `Slot at ${targetTimePrefix} on ${targetDate} is already reserved in Tebra calendar.`,
+              },
+            }),
+            { status: 409, headers: corsHeaders }
+          );
+        }
+      }
+    } catch (availErr) {
+      console.warn(`[Tebra Booking][${correlationId}] Pre-flight availability check non-blocking error:`, availErr.message);
+    }
+
     // Atomic Single-Step POST Payload:
     // Tebra's Unified Availability service accepts all patient, calendar, and intake details in one POST.
     const createUrl = `${tebraBaseUrl}/v1/practice/${tebraPracticeKey}/appointments`;
     const createPayload = {
-      calendar_id: calendarId,
-      provider_id: providerId,
-      location_id: locationId,
+      calendar_id: calendarIdStr,
+      provider_id: providerIdStr,
+      location_id: locationIdStr,
       start_time: startTimeIso,
-      duration: duration,
+      duration: durationInt,
       original_location_timezone: timezone,
       appointment_types_enabled: false,
       reason: notes || 'Consultation / Evaluation',
@@ -339,28 +413,72 @@ export async function onRequestPost(context) {
     // Diagnostic Stage 5: Tebra response received
     console.log(`[Tebra Booking][${correlationId}] Stage 5: Received Tebra HTTP ${createResp.status} in ${elapsed}ms`);
 
-    if (createResp.status === 409) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          status: 'booking_failed',
-          error: {
-            code: 'SLOT_UNAVAILABLE',
-            message: 'The selected appointment slot is no longer available. Please select another time.',
-          },
-        }),
-        { status: 409, headers: corsHeaders }
-      );
-    }
-
     if (!createResp.ok) {
       let errBody = '';
+      let parsedDetail = '';
+      let parsedTitle = '';
       try {
         errBody = await createResp.text();
+        try {
+          const parsed = JSON.parse(errBody);
+          parsedDetail = parsed.detail || parsed.message || '';
+          parsedTitle = parsed.title || '';
+        } catch {
+          parsedDetail = errBody;
+        }
       } catch {
         errBody = createResp.statusText;
+        parsedDetail = errBody;
       }
-      console.error(`[Tebra Booking][${correlationId}] Tebra declined request: HTTP ${createResp.status}`, errBody);
+
+      console.error(`[Tebra Booking][${correlationId}] Tebra declined request: HTTP ${createResp.status}`, parsedDetail);
+
+      const lower = (parsedDetail + ' ' + parsedTitle).toLowerCase();
+      const isSlotConflict =
+        createResp.status === 409 ||
+        lower.includes('slot') ||
+        lower.includes('conflict') ||
+        lower.includes('overlap') ||
+        lower.includes('unavailable') ||
+        lower.includes('not available') ||
+        lower.includes('calendar') ||
+        lower.includes('already taken') ||
+        lower.includes('already booked') ||
+        lower.includes('schedule') ||
+        lower.includes('outside of operating hours') ||
+        lower.includes('not within availability');
+
+      if (isSlotConflict) {
+        return new Response(
+          JSON.stringify({
+            success: false,
+            status: 'booking_failed',
+            error: {
+              code: 'SLOT_UNAVAILABLE',
+              message: 'The selected appointment slot is no longer available or conflicts with clinic hours. Please select another time slot.',
+              isSlotUnavailable: true,
+              details: parsedDetail || 'Selected time slot is unavailable.',
+            },
+          }),
+          { status: 409, headers: corsHeaders }
+        );
+      }
+
+      if (createResp.status === 400) {
+        return new Response(
+          JSON.stringify({
+            success: false,
+            status: 'booking_failed',
+            error: {
+              code: 'VALIDATION_ERROR',
+              message: parsedDetail ? `Scheduling validation error: ${parsedDetail}` : 'Invalid appointment parameters.',
+              isSlotUnavailable: false,
+              details: parsedDetail,
+            },
+          }),
+          { status: 400, headers: corsHeaders }
+        );
+      }
 
       return new Response(
         JSON.stringify({
@@ -369,10 +487,11 @@ export async function onRequestPost(context) {
           error: {
             code: `TEBRA_HTTP_${createResp.status}`,
             message: 'Tebra scheduling system declined the appointment request. Please call our clinic at (704) 503-9338.',
-            details: errBody,
+            isSlotUnavailable: false,
+            details: parsedDetail,
           },
         }),
-        { status: createResp.status, headers: corsHeaders }
+        { status: createResp.status >= 500 ? 502 : createResp.status, headers: corsHeaders }
       );
     }
 

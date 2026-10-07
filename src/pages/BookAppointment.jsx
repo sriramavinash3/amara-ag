@@ -17,7 +17,7 @@ export default function BookAppointment() {
 
   useSEO({
     title: "Book an Appointment | Amara Pain Charlotte NC",
-    description: "Schedule a consultation with our double board-certified pain specialists in Charlotte, NC. Fast appointment availability with zero hospital facility fees.",
+    description: "Schedule a consultation with our interventional pain specialists in Charlotte, NC. Fast appointment availability with zero hospital facility fees.",
     url: "/book"
   });
   const {
@@ -76,8 +76,8 @@ export default function BookAppointment() {
 
   const providers = [
     { name: 'Ashvin K. Amara, MD', role: 'Founder & Medical Director' },
-    { name: 'Alexander Carmenaty Rodriguez, MSN, FNP-C', role: 'Board-Certified Family Nurse Practitioner' },
-    { name: 'Eunice Babalola, NP, MSN', role: 'Board-Certified Family Nurse Practitioner' },
+    { name: 'Alexander Carmenaty Rodriguez, MSN, FNP-C', role: 'Family Nurse Practitioner' },
+    { name: 'Eunice Babalola, NP, MSN', role: 'Family Nurse Practitioner' },
     { name: 'First Available Clinical Provider', role: 'Fastest Schedule Option' }
   ];
 

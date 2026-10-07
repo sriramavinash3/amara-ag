@@ -1,389 +1,476 @@
-// Medical Data for Amara Pain & Spine Redesign
-// Preserves 100% of original website content and services
+// Medical Data for Amara Pain & Spine
+// Factual, physician-approved clinical content
 
 export const conditions = {
   "back-pain": {
-    id: "back-pain",
-    image: "/images/conditions/back-pain.jpg",
-    title: "Back Pain & Leg Pain",
-    shortDesc: "Comprehensive care for Lumbar Spine Arthritis, Degenerative Disc Disease, and Pain After Surgery.",
-    icon: "Activity",
-    metaTitle: "Back Pain & Leg Pain Treatment Charlotte NC | Amara Pain & Spine",
-    metaDesc: "Get effective relief from back pain, leg pain, lumbar arthritis, and degenerative disc disease in Charlotte, NC. Double-certified specialized pain care.",
-    symptoms: [
-      "Dull, aching pain in the lower back or hips",
-      "Sharp, shooting pain radiating down one or both legs (Sciatica)",
+    "id": "back-pain",
+    "image": "/images/conditions/back-pain.jpg",
+    "title": "Back Pain & Leg Pain",
+    "shortDesc": "Evaluation and non-surgical care for lumbar arthritis, degenerative disc disease, and post-surgical back pain.",
+    "icon": "Activity",
+    "metaTitle": "Back Pain & Leg Pain Treatment Charlotte NC | Amara Pain & Spine",
+    "metaDesc": "Non-surgical evaluation and treatment for back pain, leg pain, lumbar arthritis, and disc disease in Charlotte, NC. Schedule a consultation.",
+    "symptoms": [
+      "Aching or stiffness in the lower back or hips",
+      "Pain radiating down the buttock, thigh, or calf (sciatica)",
       "Numbness, tingling, or weakness in the legs or feet",
-      "Stiffness and decreased range of motion in the spine",
-      "Pain that worsens after prolonged sitting or standing"
+      "Stiffness and reduced range of motion in the spine",
+      "Pain that worsens with prolonged sitting, standing, or walking"
     ],
-    causes: [
-      "Lumbar Spine Arthritis (Facet Joint Syndrome)",
-      "Degenerative Disc Disease (DDD)",
-      "Herniated or Bulging Discs",
-      "Spinal Stenosis (narrowing of the spinal canal)",
-      "Failed Back Surgery Syndrome (FBSS) / post-surgical pain",
-      "Muscle strain or ligament sprain from lifting or twisting"
+    "causes": [
+      "Lumbar facet joint arthritis",
+      "Degenerative disc disease",
+      "Lumbar disc herniation or bulge",
+      "Lumbar spinal stenosis",
+      "Persistent pain following spine surgery",
+      "Muscle strain or ligament irritation"
     ],
-    overview: "Back and leg pain are among the most common reasons patients visit our Charlotte clinic. Whether resulting from wear-and-tear, arthritis of the lumbar spine, or complications from previous surgeries, our team is dedicated to locating the precise pain generators and providing targeted, minimally invasive treatments.",
-    treatments: [
-      { name: "Epidural Injections", path: "/treatments/epidural-injections" },
-      { name: "Nerve Blocks", path: "/treatments/nerve-blocks" },
-      { name: "Radiofrequency Ablation", path: "/treatments/radiofrequency-ablation" },
-      { name: "Spinal Cord Stimulation", path: "/treatments/spinal-cord-stimulation" }
-    ],
-    faqs: [
+    "overview": "Back and leg pain are common reasons patients seek medical evaluation. Symptoms may stem from wear of the lumbar discs, arthritis of the spinal joints, or nerve irritation. Our physicians evaluate your symptoms, physical exam findings, and imaging to identify what is contributing to your pain and recommend targeted non-surgical treatment options.",
+    "treatments": [
       {
-        q: "What is Degenerative Disc Disease?",
-        a: "Degenerative Disc Disease refers to the natural wear-and-tear of spinal discs over time, which can lead to reduced cushioning, inflammation, and pain. It is highly treatable with conservative management and targeted injections."
+        "name": "Epidural Injections",
+        "path": "/treatments/epidural-injections"
       },
       {
-        q: "How can I tell if my leg pain is coming from my back?",
-        a: "Pain that originates in the lower back and travels down the thigh, calf, and foot is often caused by compression or irritation of a spinal nerve root. This condition is commonly referred to as Sciatica."
+        "name": "Nerve Blocks",
+        "path": "/treatments/nerve-blocks"
+      },
+      {
+        "name": "Radiofrequency Ablation",
+        "path": "/treatments/radiofrequency-ablation"
+      },
+      {
+        "name": "Spinal Cord Stimulation",
+        "path": "/treatments/spinal-cord-stimulation"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is degenerative disc disease?",
+        "a": "Degenerative disc disease refers to age-related changes in the spinal discs that reduce cushioning between vertebrae. It often responds to conservative management, physical therapy, and targeted spinal injections."
+      },
+      {
+        "q": "How do I know if leg pain is related to my back?",
+        "a": "Pain that travels from the lower back into the buttock, thigh, or foot is often caused by irritation of a spinal nerve root in the lumbar spine, commonly referred to as sciatica or lumbar radiculopathy."
       }
     ]
   },
   "neck-pain": {
-    id: "neck-pain",
-    image: "/images/conditions/neck-pain.jpg",
-    title: "Neck Pain & Arm Pain",
-    shortDesc: "Advanced treatment for Cervical Spine Arthritis, Cervical Stenosis, Herniated Discs, and Whiplash.",
-    icon: "Activity",
-    metaTitle: "Neck & Arm Pain Relief Charlotte NC | Amara Pain & Spine",
-    metaDesc: "Struggling with neck pain or radiating arm pain? Amara Pain & Spine offers double-certified specialized treatments for cervical stenosis and herniated discs.",
-    symptoms: [
-      "Sharp or burning pain in the neck, shoulders, or upper back",
-      "Pain that shoots down the arm into the hand or fingers (Cervical Radiculopathy)",
-      "Numbness, tingling, or pins-and-needles sensation in the arms or hands",
-      "Weakness in the arm, shoulder, or grip strength",
-      "Chronic headaches originating from the neck (Cervicogenic Headaches)"
+    "id": "neck-pain",
+    "image": "/images/conditions/neck-pain.jpg",
+    "title": "Neck Pain & Arm Pain",
+    "shortDesc": "Evaluation and treatment for cervical arthritis, cervical spinal stenosis, herniated discs, and whiplash.",
+    "icon": "Activity",
+    "metaTitle": "Neck & Arm Pain Evaluation Charlotte NC | Amara Pain & Spine",
+    "metaDesc": "Clinical evaluation and non-surgical treatment for neck pain, cervical stenosis, and radiating arm pain at Amara Pain & Spine in Charlotte, NC.",
+    "symptoms": [
+      "Pain or stiffness in the neck, shoulders, or upper back",
+      "Sharp or aching pain radiating down the arm into the hand (cervical radiculopathy)",
+      "Numbness, tingling, or reduced sensation in the arm or fingers",
+      "Reduced grip strength or arm weakness",
+      "Headaches originating from the base of the skull or neck (cervicogenic headaches)"
     ],
-    causes: [
-      "Arthritis of the Cervical Spine",
-      "Cervical Spinal Stenosis",
-      "Herniated, bulging, or ruptured discs in the neck",
-      "Whiplash and sports-related neck injuries",
-      "Muscle spasms and poor posture-induced strain"
+    "causes": [
+      "Cervical facet joint arthritis",
+      "Cervical spinal stenosis",
+      "Cervical disc herniation or bulge",
+      "Whiplash or neck sprain injuries",
+      "Postural strain and muscle spasm"
     ],
-    overview: "Neck pain accompanied by radiating arm pain or numbness can severely impact your daily productivity. Our cervical pain care focuses on relieving nerve compression and reducing inflammation through advanced diagnostic imaging and precision-guided therapies.",
-    treatments: [
-      { name: "Epidural Injections", path: "/treatments/epidural-injections" },
-      { name: "Nerve Blocks", path: "/treatments/nerve-blocks" },
-      { name: "Trigger Point Therapy", path: "/treatments/trigger-point-therapy" }
-    ],
-    faqs: [
+    "overview": "Neck pain that radiates into the shoulder or arm can limit daily activities, work, and sleep. Our evaluation focuses on identifying whether symptoms originate from irritated cervical nerve roots, facet joints, or muscular strain, and discussing non-surgical treatment options.",
+    "treatments": [
       {
-        q: "What causes pain to shoot from my neck into my arm?",
-        a: "This is usually caused by a pinched nerve in the neck, a condition known as Cervical Radiculopathy. Herniated discs or bone spurs are the most common causes of this nerve compression."
+        "name": "Epidural Injections",
+        "path": "/treatments/epidural-injections"
       },
       {
-        q: "Are neck injections safe?",
-        a: "Yes. Our procedures are performed under high-definition fluoroscopy (X-ray guidance) by our double-certified specialist, ensuring absolute precision and safety."
+        "name": "Nerve Blocks",
+        "path": "/treatments/nerve-blocks"
+      },
+      {
+        "name": "Trigger Point Therapy",
+        "path": "/treatments/trigger-point-therapy"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What causes pain to travel from the neck into the arm?",
+        "a": "Radiating arm pain is commonly caused by cervical radiculopathy, where a nerve root in the neck is compressed or irritated by a herniated disc, bone spur, or narrowed spinal canal."
+      },
+      {
+        "q": "How are neck injections performed safely?",
+        "a": "Procedures are performed using real-time fluoroscopic (X-ray) guidance to verify needle placement and confirm medication flow before injection."
       }
     ]
   },
   "sciatica": {
-    id: "sciatica",
-    image: "/images/conditions/sciatica.jpg",
-    title: "Sciatica Treatment",
-    shortDesc: "Targeted relief for radiating nerve pain, numbness, and tingling along the sciatic nerve pathway.",
-    icon: "Zap",
-    metaTitle: "Sciatica Specialist Charlotte NC | Sciatica Nerve Pain Relief",
-    metaDesc: "Find fast, effective relief from sciatic nerve pain and shooting leg pain at Amara Pain & Spine. Book your consultation today.",
-    symptoms: [
-      "Constant pain on only one side of the buttock or leg (rarely both)",
-      "Pain that originates in the low back or buttock and travels down the path of the sciatic nerve",
-      "Pain described as sharp, searing, or electric shock-like",
-      "Tingling, numbness, or difficulty moving the leg or foot",
-      "Severe or shooting pain that makes it difficult to stand or walk"
+    "id": "sciatica",
+    "image": "/images/conditions/sciatica.jpg",
+    "title": "Sciatica Treatment",
+    "shortDesc": "Evaluation and non-surgical care for radiating leg pain and sciatic nerve irritation.",
+    "icon": "Zap",
+    "metaTitle": "Sciatica Treatment Charlotte NC | Amara Pain & Spine",
+    "metaDesc": "Clinical evaluation and non-surgical treatment for sciatic nerve irritation and radiating leg pain at Amara Pain & Spine in Charlotte, NC.",
+    "symptoms": [
+      "Pain traveling from the lower back or buttock down the leg",
+      "Sharp, burning, or aching sensations along the nerve pathway",
+      "Numbness or tingling in the calf or foot",
+      "Pain that increases after prolonged sitting, standing, or walking",
+      "Difficulty standing upright or walking comfortably"
     ],
-    causes: [
-      "Herniated lumbar disc compressing the sciatic nerve root",
-      "Spinal stenosis (narrowing of the spinal canal in the lower back)",
-      "Piriformis Syndrome (spasming of the piriformis muscle compressing the nerve)",
-      "Spondylolisthesis (slippage of one vertebra over another)"
+    "causes": [
+      "Lumbar disc herniation compressing a nerve root",
+      "Lumbar spinal stenosis",
+      "Piriformis muscle spasm irritating the sciatic nerve",
+      "Spondylolisthesis (vertebral slippage)"
     ],
-    overview: "Sciatica is not a medical diagnosis itself, but rather a symptom of an underlying lumbar spine condition. We focus on diagnosing the exact location of nerve compression to alleviate pain and restore full leg function without major surgery.",
-    treatments: [
-      { name: "Epidural Injections", path: "/treatments/epidural-injections" },
-      { name: "Nerve Blocks", path: "/treatments/nerve-blocks" },
-      { name: "Spinal Cord Stimulation", path: "/treatments/spinal-cord-stimulation" }
-    ],
-    faqs: [
+    "overview": "Sciatica describes symptoms caused by irritation or compression of the nerve roots that form the sciatic nerve. Our physicians review your diagnostic imaging and exam findings to identify the site of compression and recommend non-surgical treatment options.",
+    "treatments": [
       {
-        q: "Does sciatica go away on its own?",
-        a: "Mild sciatica may resolve with rest, stretching, and time. However, chronic or severe sciatica that causes leg weakness or numbness requires specialist evaluation to prevent long-term nerve damage."
+        "name": "Epidural Injections",
+        "path": "/treatments/epidural-injections"
       },
       {
-        q: "What is the most effective non-surgical treatment for sciatica?",
-        a: "Fluoroscopically guided Lumbar Epidural Steroid Injections are highly effective at reducing inflammation around the pinched nerve, providing rapid and long-lasting pain relief."
+        "name": "Nerve Blocks",
+        "path": "/treatments/nerve-blocks"
+      },
+      {
+        "name": "Spinal Cord Stimulation",
+        "path": "/treatments/spinal-cord-stimulation"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can sciatica improve without surgery?",
+        "a": "Yes. Many patients experience improvement with conservative management, physical therapy, and targeted epidural steroid injections that reduce nerve inflammation."
+      },
+      {
+        "q": "What non-surgical treatments are available for sciatica?",
+        "a": "Fluoroscopically guided lumbar epidural steroid injections are commonly used to deliver anti-inflammatory medication directly around the irritated nerve root to help reduce symptoms."
       }
     ]
   },
   "joint-pain": {
-    id: "joint-pain",
-    image: "/images/conditions/joint-pain.jpg",
-    title: "Joint Pain & Arthritis",
-    shortDesc: "Comprehensive therapies for hip osteoarthritis, shoulder pain, sacroiliac (SI) joint pain, and facet arthritis.",
-    icon: "Shield",
-    metaTitle: "Joint Pain & Arthritis Clinic Charlotte NC | Amara Pain & Spine",
-    metaDesc: "Struggling with arthritis, hip, or shoulder pain? Our double-certified specialist offers advanced joint injections and regenerative therapies.",
-    symptoms: [
-      "Persistent joint stiffness, especially in the morning",
-      "Swelling, warmth, and tenderness around the joint",
-      "Grinding or popping sensation during joint movement (crepitus)",
-      "Deep, aching pain that worsens with weather changes or activity",
-      "Limited mobility and difficulty performing daily tasks like climbing stairs"
+    "id": "joint-pain",
+    "image": "/images/conditions/joint-pain.jpg",
+    "title": "Joint Pain & Arthritis",
+    "shortDesc": "Evaluation and treatment for hip osteoarthritis, shoulder pain, sacroiliac (SI) joint pain, and facet arthritis.",
+    "icon": "Shield",
+    "metaTitle": "Joint Pain & Arthritis Clinic Charlotte NC | Amara Pain & Spine",
+    "metaDesc": "Evaluation and treatment for arthritis, hip, and shoulder pain in Charlotte, NC. Outpatient joint injections and non-surgical care options.",
+    "symptoms": [
+      "Joint stiffness, particularly in the morning or after resting",
+      "Localized tenderness and swelling around the affected joint",
+      "Grating, catching, or popping sensations with movement",
+      "Aching pain that increases with activity or weather changes",
+      "Reduced range of motion when walking or climbing stairs"
     ],
-    causes: [
-      "Osteoarthritis (degenerative wear-and-tear of joint cartilage)",
-      "Rheumatoid or inflammatory arthritis",
-      "Sacroiliac (SI) Joint Dysfunction",
-      "Facet Joint Syndrome (spine arthritis)",
-      "Bursitis or tendonitis surrounding the joints"
+    "causes": [
+      "Osteoarthritis (cartilage wear)",
+      "Sacroiliac (SI) joint dysfunction",
+      "Facet joint arthritis in the spine",
+      "Bursitis or tendon inflammation around the joint",
+      "Inflammatory arthritis"
     ],
-    overview: "Chronic joint pain in the hips, shoulders, knees, or spine can severely restrict your lifestyle. We offer a full spectrum of joint-preservation treatments, ranging from anti-inflammatory joint injections to innovative regenerative medicine, to keep you moving pain-free.",
-    treatments: [
-      { name: "Nerve Blocks", path: "/treatments/nerve-blocks" },
-      { name: "Regenerative Treatments", path: "/treatments/regenerative-treatments" },
-      { name: "Trigger Point Therapy", path: "/treatments/trigger-point-therapy" }
-    ],
-    faqs: [
+    "overview": "Joint pain in the hips, shoulders, knees, or pelvis can reduce mobility and affect daily routines. We provide clinical evaluations and non-surgical procedures, including anti-inflammatory joint injections and nerve blocks, to help manage pain and support joint function.",
+    "treatments": [
       {
-        q: "What is Sacroiliac (SI) Joint pain?",
-        a: "The SI joints connect your lower spine to your pelvis. Inflammation in these joints can cause severe lower back, hip, and groin pain, which is often misdiagnosed as a disc issue."
+        "name": "Nerve Blocks",
+        "path": "/treatments/nerve-blocks"
       },
       {
-        q: "Can joint injections delay the need for joint replacement surgery?",
-        a: "Yes. Viscosupplementation, steroid injections, and regenerative therapies can significantly reduce inflammation and pain, allowing patients to delay or completely avoid major joint replacement surgery."
+        "name": "Regenerative Treatments",
+        "path": "/treatments/regenerative-treatments"
+      },
+      {
+        "name": "Trigger Point Therapy",
+        "path": "/treatments/trigger-point-therapy"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is sacroiliac (SI) joint pain?",
+        "a": "The sacroiliac joints connect the base of the spine to the pelvis. Inflammation in these joints can cause lower back, buttock, or groin pain that resembles lumbar disc pain."
+      },
+      {
+        "q": "Can joint injections help delay surgery?",
+        "a": "Targeted joint injections can reduce localized inflammation and relieve pain, which may help patients maintain physical activity and defer more invasive procedures."
       }
     ]
   },
   "knee-pain": {
-    id: "knee-pain",
-    image: "/images/conditions/knee-pain.jpg",
-    title: "Knee Pain & Leg Pain",
-    shortDesc: "Specialized care for knee osteoarthritis, sports injuries, bursitis, and ligament strains.",
-    icon: "Activity",
-    metaTitle: "Knee Pain Treatment Charlotte NC | Knee Osteoarthritis Relief",
-    metaDesc: "Amara Pain & Spine provides advanced knee injections, genicular nerve blocks, and regenerative therapies for knee osteoarthritis and injuries.",
-    symptoms: [
-      "Swelling and stiffness in the knee joint",
-      "Redness and warmth to the touch",
-      "Weakness or instability ('giving way' of the knee)",
-      "Inability to fully straighten or bend the knee",
-      "Sharp pain when climbing stairs, walking, or running"
+    "id": "knee-pain",
+    "image": "/images/conditions/knee-pain.jpg",
+    "title": "Knee Pain & Leg Pain",
+    "shortDesc": "Non-surgical care for knee osteoarthritis, sports injuries, bursitis, and ligament strains.",
+    "icon": "Activity",
+    "metaTitle": "Knee Pain Treatment Charlotte NC | Knee Osteoarthritis Relief",
+    "metaDesc": "Knee pain evaluation, genicular nerve blocks, and joint injections for knee osteoarthritis in Charlotte, NC. Schedule a consultation.",
+    "symptoms": [
+      "Swelling, stiffness, or warmth in the knee",
+      "Aching or sharp pain when walking, squatting, or taking stairs",
+      "Feeling of instability or weakness in the joint",
+      "Reduced ability to fully bend or straighten the leg",
+      "Catching or clicking sensations during movement"
     ],
-    causes: [
-      "Knee Osteoarthritis",
-      "Meniscus or ligament tears (ACL, MCL, LCL strains)",
-      "Patellar Tendonitis (Jumper's Knee)",
-      "Knee Bursitis",
-      "Work-related or sports-associated wear"
+    "causes": [
+      "Knee osteoarthritis",
+      "Meniscus tears or ligament sprains",
+      "Patellar tendonitis",
+      "Knee bursitis",
+      "Work-related or sports-related joint wear"
     ],
-    overview: "Your knees bear the brunt of your daily movement. Knee osteoarthritis and sports injuries are major causes of mobility loss. Our clinic provides highly targeted treatments to reduce knee inflammation, lubricate the joints, and stimulate natural healing.",
-    treatments: [
-      { name: "Nerve Blocks (Genicular)", path: "/treatments/nerve-blocks" },
-      { name: "Regenerative Treatments", path: "/treatments/regenerative-treatments" }
-    ],
-    faqs: [
+    "overview": "Knee osteoarthritis and overuse injuries are frequent causes of knee pain and walking difficulty. Our clinic provides diagnostic assessments and targeted non-surgical procedures to reduce joint inflammation and support everyday mobility.",
+    "treatments": [
       {
-        q: "What are Genicular Nerve Blocks?",
-        a: "Genicular Nerve Blocks are diagnostic injections that temporarily numb the nerves supplying the knee joint. If successful, a follow-up procedure called Radiofrequency Ablation can provide long-term knee pain relief without surgery."
+        "name": "Nerve Blocks (Genicular)",
+        "path": "/treatments/nerve-blocks"
       },
       {
-        q: "Does your clinic treat sports injuries of the knee?",
-        a: "Yes, we treat a wide variety of sports and work-related knee injuries using evidence-based conservative treatments, bracing guidance, and advanced injections."
+        "name": "Regenerative Treatments",
+        "path": "/treatments/regenerative-treatments"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is a genicular nerve block?",
+        "a": "A genicular nerve block is an outpatient injection of local anesthetic near the sensory nerves that transmit pain signals from the knee joint. It helps determine whether those nerves are contributing to your knee pain."
+      },
+      {
+        "q": "Do you treat athletic or workplace knee injuries?",
+        "a": "Yes. We evaluate sports and occupational knee injuries, providing injection therapies, bracing guidance, and coordination with physical therapy."
       }
     ]
   },
   "shoulder-pain": {
-    id: "shoulder-pain",
-    image: "/images/conditions/shoulder-pain.jpg",
-    title: "Shoulder Pain & Abdomen Pain",
-    shortDesc: "Targeted therapies for Frozen Shoulder, rotator cuff tears, work injuries, and chronic abdominal pain.",
-    icon: "Shield",
-    metaTitle: "Shoulder & Abdomen Pain Treatment Charlotte NC",
-    metaDesc: "Expert management for frozen shoulder, rotator cuff strains, abdominal pain, and pelvic pain at Amara Pain & Spine in Charlotte.",
-    symptoms: [
-      "Deep ache in the shoulder joint or outer arm",
-      "Inability to lift the arm overhead or reach behind the back",
-      "Shoulder pain that worsens at night, making it hard to sleep on that side",
-      "Chronic, unexplained abdominal or pelvic cramping and pain",
-      "Localized abdominal wall tenderness (ACNES)"
+    "id": "shoulder-pain",
+    "image": "/images/conditions/shoulder-pain.jpg",
+    "title": "Shoulder Pain & Abdomen Pain",
+    "shortDesc": "Clinical evaluation and treatment for frozen shoulder, rotator cuff strains, and chronic abdominal or pelvic pain.",
+    "icon": "Shield",
+    "metaTitle": "Shoulder & Abdomen Pain Treatment Charlotte NC | Amara Pain",
+    "metaDesc": "Evaluation and treatment for frozen shoulder, rotator cuff strains, and nerve entrapment syndromes at Amara Pain & Spine in Charlotte, NC.",
+    "symptoms": [
+      "Aching pain in the shoulder joint or outer arm",
+      "Difficulty reaching overhead, behind the back, or lifting objects",
+      "Shoulder discomfort that interrupts sleep when lying on the affected side",
+      "Chronic abdominal wall tenderness or localized cramping",
+      "Pelvic discomfort that worsens when sitting"
     ],
-    causes: [
-      "Frozen Shoulder (Adhesive Capsulitis)",
-      "Rotator Cuff Tendonitis or partial tears",
-      "Shoulder Impingement Syndrome",
-      "Abdominal Cutaneous Nerve Entrapment Syndrome (ACNES)",
-      "Chronic Pelvic Pain / Pudendal Neuralgia"
+    "causes": [
+      "Frozen shoulder (adhesive capsulitis)",
+      "Rotator cuff tendonitis or partial tear",
+      "Shoulder impingement syndrome",
+      "Abdominal cutaneous nerve entrapment (ACNES)",
+      "Pelvic nerve irritation or pudendal neuralgia"
     ],
-    overview: "Shoulder pain restricts basic tasks like dressing and driving, while chronic abdominal/pelvic pain is often frustratingly difficult to diagnose. We offer specialized nerve blocks and joint therapies specifically designed to target these complex, highly localized pain syndromes.",
-    treatments: [
-      { name: "Nerve Blocks (Pudendal / Suprascapular)", path: "/treatments/nerve-blocks" },
-      { name: "Trigger Point Therapy", path: "/treatments/trigger-point-therapy" },
-      { name: "Regenerative Treatments", path: "/treatments/regenerative-treatments" }
-    ],
-    faqs: [
+    "overview": "Shoulder pain can restrict upper body movement, while chronic abdominal or pelvic pain often requires specialized nerve evaluations. We assess these conditions to determine whether targeted nerve blocks, joint injections, or soft tissue therapies may help relieve symptoms.",
+    "treatments": [
       {
-        q: "What is Pudendal Neuralgia?",
-        a: "Pudendal Neuralgia is chronic pelvic pain caused by irritation or entrapment of the pudendal nerve. It can cause pain, burning, or numbness in the pelvic region, often worsening when sitting."
+        "name": "Nerve Blocks (Pudendal / Suprascapular)",
+        "path": "/treatments/nerve-blocks"
       },
       {
-        q: "How do you treat Frozen Shoulder?",
-        a: "We combine precision suprascapular nerve blocks to shut down the pain pathway with targeted joint injections and specialized physical therapy guidance to restore full range of motion."
+        "name": "Trigger Point Therapy",
+        "path": "/treatments/trigger-point-therapy"
+      },
+      {
+        "name": "Regenerative Treatments",
+        "path": "/treatments/regenerative-treatments"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is pudendal neuralgia?",
+        "a": "Pudendal neuralgia is pelvic nerve pain caused by irritation or compression of the pudendal nerve. It can cause burning, aching, or numbness in the pelvic area, often aggravated by sitting."
+      },
+      {
+        "q": "How is frozen shoulder evaluated?",
+        "a": "We evaluate range of motion and joint stability, and may recommend suprascapular nerve blocks or joint injections in coordination with gentle physical therapy."
       }
     ]
   },
   "neuropathic-pain": {
-    id: "neuropathic-pain",
-    image: "/images/conditions/neuropathic-pain.jpg",
-    title: "Neuropathic Pain & Neuropathy",
-    shortDesc: "Expert care for diabetic neuropathy, shingles pain (PHN), complex regional pain syndrome (CRPS), and fibromyalgia.",
-    icon: "Zap",
-    metaTitle: "Neuropathy & Nerve Pain Specialist Charlotte NC | Amara Pain",
-    metaDesc: "Struggling with burning, tingling, or diabetic neuropathy? Our double-certified nerve pain specialist offers advanced treatments in Charlotte, NC.",
-    symptoms: [
-      "Burning, freezing, stabbing, or electric shock-like sensations",
-      "Extreme sensitivity to even light touch (Allodynia)",
-      "Constant tingling or 'pins-and-needles' feeling",
-      "Numbness and loss of sensation, particularly in the hands and feet",
-      "Deep, aching pain that is unresponsive to standard pain relievers"
+    "id": "neuropathic-pain",
+    "image": "/images/conditions/neuropathic-pain.jpg",
+    "title": "Neuropathic Pain & Neuropathy",
+    "shortDesc": "Evaluation and treatment for diabetic neuropathy, post-herpetic neuralgia (shingles pain), and chronic nerve irritation.",
+    "icon": "Zap",
+    "metaTitle": "Neuropathy & Nerve Pain Specialist Charlotte NC | Amara Pain",
+    "metaDesc": "Evaluation and clinical management for burning, tingling, and neuropathic nerve pain at Amara Pain & Spine in Charlotte, NC.",
+    "symptoms": [
+      "Burning, stabbing, or tingling sensations in the extremities",
+      "Sensitivity to light touch (allodynia)",
+      "Persistent 'pins-and-needles' feelings in the feet or hands",
+      "Numbness or reduced sensation in the limbs",
+      "Deep nerve aching that does not respond to standard pain relievers"
     ],
-    causes: [
-      "Diabetic Peripheral Neuropathy",
-      "Post-Herpetic Neuralgia (chronic pain following Shingles)",
-      "Complex Regional Pain Syndrome (CRPS / RSD)",
-      "Chemotherapy-induced neuropathy",
-      "Phantom limb pain or nerve entrapments"
+    "causes": [
+      "Diabetic peripheral neuropathy",
+      "Post-herpetic neuralgia (persistent pain after shingles)",
+      "Complex regional pain syndrome (CRPS)",
+      "Chemotherapy-induced peripheral neuropathy",
+      "Peripheral nerve entrapment"
     ],
-    overview: "Nerve pain can feel like an invisible fire, severely disrupting sleep and mental well-being. Unlike muscle pain, neuropathic pain is caused by damaged or malfunctioning nerves sending misfired signals. We specialize in advanced neuromodulation and nerve-specific therapies to calm these overactive pathways.",
-    treatments: [
-      { name: "Spinal Cord Stimulation", path: "/treatments/spinal-cord-stimulation" },
-      { name: "Nerve Blocks", path: "/treatments/nerve-blocks" }
-    ],
-    faqs: [
+    "overview": "Neuropathic pain is caused by damaged or irritated nerves that send irregular pain signals to the brain. Our physicians evaluate chronic nerve symptoms and offer treatment options, including diagnostic nerve blocks and spinal cord stimulation trials, to help manage symptoms.",
+    "treatments": [
       {
-        q: "How does Spinal Cord Stimulation help nerve pain?",
-        a: "Spinal Cord Stimulation (SCS) uses a small implantable device that sends mild electrical pulses to the spinal cord. These pulses interrupt the pain signals before they reach the brain, replacing severe pain with a soothing sensation."
+        "name": "Spinal Cord Stimulation",
+        "path": "/treatments/spinal-cord-stimulation"
       },
       {
-        q: "Can diabetic neuropathy be cured?",
-        a: "While nerve damage from diabetes cannot be fully reversed, the symptoms can be exceptionally managed, pain can be significantly reduced, and nerve function can be stabilized through proper treatment and glycemic control."
+        "name": "Nerve Blocks",
+        "path": "/treatments/nerve-blocks"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "How does spinal cord stimulation work for nerve pain?",
+        "a": "Spinal cord stimulation uses an implanted device that delivers mild electrical pulses to the spinal cord, interrupting pain signals before they reach the brain."
+      },
+      {
+        "q": "Can diabetic neuropathy be managed?",
+        "a": "While underlying nerve damage cannot always be reversed, symptoms can often be managed through medication adjustments, glycemic control, and targeted interventional therapies."
       }
     ]
   },
   "sports-injuries": {
-    id: "sports-injuries",
-    image: "/images/conditions/sports-injuries.jpg",
-    title: "Sports & Work Injuries",
-    shortDesc: "Rapid recovery programs for tendonitis, muscle strains, ligament sprains, and joint injuries.",
-    icon: "Activity",
-    metaTitle: "Sports & Work Injury Clinic Charlotte NC | Amara Pain",
-    metaDesc: "Recover faster from sports or work-related injuries. Amara Pain & Spine offers personalized recovery plans, workers' comp coordination, and advanced therapies.",
-    symptoms: [
-      "Sudden, sharp pain during physical activity or heavy lifting",
-      "Bruising, swelling, and localized tenderness",
-      "Weakness or inability to bear weight on the affected limb",
-      "Clicking, popping, or catching sensations in the joint",
-      "Dull ache that persists days after an intense workout or shift"
+    "id": "sports-injuries",
+    "image": "/images/conditions/sports-injuries.jpg",
+    "title": "Sports & Work Injuries",
+    "shortDesc": "Evaluation and care for tendonitis, muscle strains, ligament sprains, and repetitive work injuries.",
+    "icon": "Activity",
+    "metaTitle": "Sports & Work Injury Clinic Charlotte NC | Amara Pain",
+    "metaDesc": "Care for sports and work-related injuries at Amara Pain & Spine in Charlotte, NC. Clinical evaluations, injection therapy, and workers' compensation coordination.",
+    "symptoms": [
+      "Sudden or gradual pain during physical activity or heavy lifting",
+      "Localized swelling, bruising, and joint tenderness",
+      "Reduced ability to bear weight or push through the joint",
+      "Clicking, popping, or catching sensations in the tendon or joint",
+      "Aching pain that persists after physical exertion or workplace shifts"
     ],
-    causes: [
-      "Tendonitis and bursitis (tennis elbow, golfer's elbow, patellar tendonitis)",
-      "Ligament sprains (ankle rolls, knee sprains)",
-      "Muscle strains (hamstring, calf, lower back strains)",
-      "Repetitive strain injuries (carpal tunnel, rotator cuff wear)",
-      "Acute trauma from sports, slips, or falls at work"
+    "causes": [
+      "Tendonitis or bursitis (such as tennis elbow or patellar tendonitis)",
+      "Ligament sprains in the ankle or knee",
+      "Muscle strains in the hamstring, calf, or back",
+      "Repetitive strain injuries (carpal tunnel or rotator cuff wear)",
+      "Acute injury from a fall or workplace incident"
     ],
-    overview: "Whether you are a competitive athlete, a weekend warrior, or injured on the job, our goal is to get you back to your peak performance safely and quickly. We coordinate closely with physical therapists and workers' compensation case managers to streamline your recovery.",
-    treatments: [
-      { name: "Regenerative Treatments", path: "/treatments/regenerative-treatments" },
-      { name: "Trigger Point Therapy", path: "/treatments/trigger-point-therapy" },
-      { name: "Nerve Blocks", path: "/treatments/nerve-blocks" }
-    ],
-    faqs: [
+    "overview": "Sports and workplace injuries often involve strained muscles, inflamed tendons, or damaged ligaments. We provide clinical evaluations and non-surgical procedures to reduce pain and inflammation, working with physical therapists and workers' compensation case managers when applicable.",
+    "treatments": [
       {
-        q: "Do you accept Workers' Compensation?",
-        a: "Yes. We work closely with employers, case managers, and insurance adjusters to provide timely, evidence-based care and clear documentation for workers' compensation claims."
+        "name": "Regenerative Treatments",
+        "path": "/treatments/regenerative-treatments"
       },
       {
-        q: "How does Regenerative Medicine help sports injuries?",
-        a: "Regenerative therapies utilize your body's natural healing components to accelerate tissue repair in damaged tendons, ligaments, and cartilage, significantly cutting down recovery time."
+        "name": "Trigger Point Therapy",
+        "path": "/treatments/trigger-point-therapy"
+      },
+      {
+        "name": "Nerve Blocks",
+        "path": "/treatments/nerve-blocks"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Do you treat patients with workers' compensation claims?",
+        "a": "Yes. We coordinate with employers, case managers, and adjusters to provide timely evaluations and objective clinical documentation for workers' compensation claims."
+      },
+      {
+        "q": "What non-surgical options exist for tendon injuries?",
+        "a": "Treatment may include diagnostic ultrasound evaluation, targeted injections, bracing recommendations, and coordination with physical therapy."
       }
     ]
   },
   "arthritis": {
-    id: "arthritis",
-    image: "/images/conditions/arthritis.jpg",
-    title: "Joint Arthritis & Preservation",
-    shortDesc: "Specialized non-surgical joint-preservation protocols for Osteoarthritis, SI joint pain, and Rheumatoid flares.",
-    icon: "Shield",
-    metaTitle: "Arthritis & Joint Preservation Specialist Charlotte NC | Amara Pain",
-    metaDesc: "Struggling with arthritis, joint stiffness, or chronic swelling? Learn about our custom non-surgical joint preservation programs in Charlotte, NC.",
-    symptoms: [
-      "Persistent joint stiffness, particularly during morning hours",
-      "Localized swelling, tenderness, or warmth around joints",
-      "Reduced mobility and difficulty climbing stairs or lifting objects",
-      "Aching or grating sensations during joint motion"
+    "id": "arthritis",
+    "image": "/images/conditions/arthritis.jpg",
+    "title": "Joint Arthritis & Preservation",
+    "shortDesc": "Non-surgical joint-preservation and treatment for osteoarthritis, SI joint dysfunction, and spinal arthritis.",
+    "icon": "Shield",
+    "metaTitle": "Arthritis & Joint Preservation Specialist Charlotte NC | Amara Pain",
+    "metaDesc": "Non-surgical care and diagnostic injections for osteoarthritis and joint pain at Amara Pain & Spine in Charlotte, NC.",
+    "symptoms": [
+      "Joint stiffness, especially in the morning or after resting",
+      "Localized joint swelling, warmth, or tenderness",
+      "Decreased range of motion when walking or reaching",
+      "Grinding or aching sensations during joint motion"
     ],
-    causes: [
-      "Osteoarthritis (cartilage wear-and-tear)",
-      "Facet Joint Syndrome (spinal arthritis)",
-      "Sacroiliac (SI) Joint Dysfunction",
-      "Inflammatory or Rheumatoid arthritis"
+    "causes": [
+      "Osteoarthritis (degenerative wear of joint cartilage)",
+      "Facet joint arthritis in the spine",
+      "Sacroiliac (SI) joint inflammation",
+      "Inflammatory joint conditions"
     ],
-    overview: "Arthritis can make basic movements feel exhausting. Our clinical focus is joint-preservation: extending joint lifespans and reducing local inflammation through advanced, non-surgical therapies. By combining physical therapy guidelines, diagnostic injections, and regenerative therapies, we help you find long-term comfort.",
-    treatments: [
-      { name: "Regenerative Medicine", path: "/treatments/regenerative-treatments" },
-      { name: "Nerve Blocks & Ablations", path: "/treatments/nerve-blocks" },
-      { name: "Trigger Point Therapy", path: "/treatments/trigger-point-therapy" }
-    ],
-    faqs: [
+    "overview": "Arthritis causes gradual wear of joint cartilage, leading to inflammation, stiffness, and reduced range of motion. We evaluate joint symptoms and offer outpatient treatments, including joint injections and nerve blocks, to manage discomfort and support daily function.",
+    "treatments": [
       {
-        q: "Can joint injections delay the need for joint replacement?",
-        a: "Yes. Injections and regenerative procedures significantly lower localized joint inflammation, allowing patients to delay or completely bypass major joint replacement surgeries while maintaining mobility."
+        "name": "Regenerative Medicine",
+        "path": "/treatments/regenerative-treatments"
       },
       {
-        q: "What is SI Joint Dysfunction?",
-        a: "The sacroiliac joints connect the lower spine to the pelvis. Inflammation here can cause severe lower back, hip, or groin pain, which is frequently misdiagnosed as lumbar disc damage."
+        "name": "Nerve Blocks & Ablations",
+        "path": "/treatments/nerve-blocks"
+      },
+      {
+        "name": "Trigger Point Therapy",
+        "path": "/treatments/trigger-point-therapy"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can joint injections delay the need for joint replacement?",
+        "a": "Targeted joint injections can reduce inflammation and relieve pain, which may help patients maintain physical activity and defer surgical joint replacement."
+      },
+      {
+        "q": "What is sacroiliac joint dysfunction?",
+        "a": "The sacroiliac joints connect the lower spine to the pelvis. Inflammation in these joints can cause pain in the lower back, hip, or buttock that resembles disc-related pain."
       }
     ]
   },
   "post-surgical-pain": {
-    id: "post-surgical-pain",
-    image: "/images/conditions/post-surgical-pain.jpg",
-    title: "Post-Surgical Pain & FBSS",
-    shortDesc: "Comprehensive interventional treatment for Failed Back Surgery Syndrome, persistent nerve irritation, and post-joint surgery pain.",
-    icon: "Activity",
-    metaTitle: "Failed Back Surgery Syndrome Treatment Charlotte NC | Post-Surgical Pain",
-    metaDesc: "Persistent pain after back or neck surgery? Learn how Amara Pain & Spine uses advanced neuromodulation to relieve Failed Back Surgery Syndrome (FBSS).",
-    symptoms: [
-      "Dull, constant aching around the surgical site",
-      "Sharp, shooting nerve pain traveling down limbs (radiculopathy)",
-      "Progressive weakness or numbness in legs or arms",
-      "Spasms in surrounding supporting muscles"
+    "id": "post-surgical-pain",
+    "image": "/images/conditions/post-surgical-pain.jpg",
+    "title": "Post-Surgical Pain & FBSS",
+    "shortDesc": "Evaluation and interventional treatments for persistent pain following spine surgery (Failed Back Surgery Syndrome).",
+    "icon": "Activity",
+    "metaTitle": "Failed Back Surgery Syndrome Treatment Charlotte NC | Post-Surgical Pain",
+    "metaDesc": "Clinical evaluation and treatment options for persistent pain after spine surgery at Amara Pain & Spine in Charlotte, NC.",
+    "symptoms": [
+      "Ongoing dull or sharp pain near the surgical site",
+      "Radiating leg or arm pain following spine surgery",
+      "Numbness, tingling, or weakness in the limbs",
+      "Spasms in the surrounding spinal musculature"
     ],
-    causes: [
-      "Scar tissue formation (epidural fibrosis) compressing nerve roots",
-      "Recurrent disc herniation or spinal stenosis at adjacent segments",
-      "Facet joint overload following spinal fusion",
-      "Hardware-induced irritation or tissue inflammation"
+    "causes": [
+      "Epidural scar tissue (fibrosis) around spinal nerve roots",
+      "Recurrent disc herniation or spinal stenosis at adjacent levels",
+      "Facet joint strain above or below a fusion site",
+      "Surgical hardware irritation"
     ],
-    overview: "Failed Back Surgery Syndrome (FBSS) occurs when chronic pain persists or worsens after spinal surgery. This is a highly frustrating condition, but it is not hopeless. We specialize in advanced interventional pain strategies, including epidural injections to calm nerve inflammation and state-of-the-art Spinal Cord Stimulation (SCS) to interrupt chronic pain signals.",
-    treatments: [
-      { name: "Spinal Cord Stimulation", path: "/treatments/spinal-cord-stimulation" },
-      { name: "Epidural Injections", path: "/treatments/epidural-injections" },
-      { name: "Nerve Blocks & Ablations", path: "/treatments/nerve-blocks" }
-    ],
-    faqs: [
+    "overview": "Failed Back Surgery Syndrome (FBSS) refers to chronic pain that persists or develops following spine surgery. Our physicians evaluate your symptoms, surgical history, and current imaging to identify whether nerve irritation, joint stress, or scar tissue is contributing to your symptoms, and discuss appropriate interventional therapies.",
+    "treatments": [
       {
-        q: "Why do I still have back pain after my surgery?",
-        a: "Post-surgical pain can stem from epidural fibrosis (scar tissue surrounding nerves), hardware irritation, recurrent disc issues, or overload on the spinal levels above/below a fusion site."
+        "name": "Spinal Cord Stimulation",
+        "path": "/treatments/spinal-cord-stimulation"
       },
       {
-        q: "What is Spinal Cord Stimulation (SCS)?",
-        a: "SCS is an FDA-approved device that sends mild electrical signals to the spinal cord to override pain messages before they reach the brain. It is highly effective for failed back surgery pain."
+        "name": "Epidural Injections",
+        "path": "/treatments/epidural-injections"
+      },
+      {
+        "name": "Nerve Blocks & Ablations",
+        "path": "/treatments/nerve-blocks"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Why do some patients have pain after spine surgery?",
+        "a": "Post-surgical symptoms can arise from scar tissue surrounding nerves, changes at spinal levels adjacent to a fusion, hardware irritation, or recurring disc issues."
+      },
+      {
+        "q": "What is spinal cord stimulation?",
+        "a": "Spinal cord stimulation is an FDA-approved therapy that delivers mild electrical pulses to the spinal cord to interrupt pain signals before they reach the brain. It is commonly used for persistent neuropathic pain after surgery."
       }
     ]
   }
@@ -391,184 +478,182 @@ export const conditions = {
 
 export const treatments = {
   "epidural-injections": {
-    id: "epidural-injections",
-    title: "Epidural Injections",
-    icon: "Activity",
-    metaTitle: "Epidural Steroid Injections Charlotte NC | Amara Pain & Spine",
-    metaDesc: "Learn about Epidural Steroid Injections (ESI) for back, neck, and leg pain relief. Double-certified specialized procedures in Charlotte, NC.",
-    overview: "Epidural Steroid Injections (ESI) are highly effective, minimally invasive procedures designed to relieve chronic pain caused by irritated and inflamed spinal nerves. Under high-precision fluoroscopic (X-ray) guidance, a powerful anti-inflammatory medication is injected directly into the epidural space surrounding the spinal nerves, providing rapid and long-lasting pain relief.",
-    benefits: [
-      "Directly targets the source of nerve inflammation",
-      "Provides significant pain reduction, often lasting for months",
-      "Helps patients participate fully in physical therapy and rehabilitation",
-      "Minimally invasive, outpatient procedure requiring no general anesthesia",
-      "Can delay or completely eliminate the need for spinal surgery"
+    "id": "epidural-injections",
+    "title": "Epidural Injections",
+    "icon": "Activity",
+    "metaTitle": "Epidural Steroid Injections Charlotte NC | Amara Pain & Spine",
+    "metaDesc": "Learn about Epidural Steroid Injections (ESI) for back, neck, and leg pain relief. Outpatient procedures in Charlotte, NC.",
+    "overview": "Epidural Steroid Injections (ESI) are outpatient procedures performed to reduce inflammation around spinal nerves. Under real-time fluoroscopic (X-ray) guidance, an anti-inflammatory medication is placed in the epidural space near the irritated nerve roots to help relieve pain radiating into the arms or legs.",
+    "benefits": [
+      "Targets the site of spinal nerve inflammation",
+      "Can provide pain relief lasting several weeks to months",
+      "Helps patients participate in physical therapy and daily activities",
+      "Outpatient procedure performed with local anesthesia",
+      "Non-surgical treatment option for disc and spinal nerve symptoms"
     ],
-    recovery: "ESIs are performed in our clinic and take only 15-20 minutes. Patients rest in a recovery area for a brief observation period and can return home the same day. Most patients return to their normal, light activities the following day. Pain relief typically begins within 2 to 7 days as the anti-inflammatory medication takes full effect.",
-    faqs: [
+    "recovery": "An epidural injection takes approximately 15 to 20 minutes in our office. Patients are observed briefly in a recovery area and can return home the same day. Most patients resume light activities the next day. Symptom relief typically develops over 2 to 7 days as the medication reduces inflammation.",
+    "faqs": [
       {
-        q: "How many epidural injections can I have in a year?",
-        a: "Generally, we limit epidural steroid injections to 3 or 4 per year to minimize potential side effects from steroids. Our specialist creates a personalized plan tailored to your specific pain levels and response."
+        "q": "How many epidural injections can a patient receive per year?",
+        "a": "We evaluate response after each procedure and generally limit steroid injections to 3 or 4 per year to minimize potential steroid-related side effects. Treatment frequency depends on clinical response."
       },
       {
-        q: "Does the injection hurt?",
-        a: "We apply a highly effective local anesthetic to numb the skin and subcutaneous tissue before the procedure, so most patients feel only a mild pressure or pinching sensation."
+        "q": "Is the procedure painful?",
+        "a": "A local anesthetic is used to numb the skin and superficial tissue before the procedure, so most patients feel pressure rather than sharp pain."
       }
     ]
   },
   "nerve-blocks": {
-    id: "nerve-blocks",
-    title: "Nerve Blocks & Ablations",
-    icon: "Zap",
-    metaTitle: "Nerve Blocks & Radiofrequency Ablation Charlotte NC",
-    metaDesc: "Find relief from chronic joint and spine pain with diagnostic nerve blocks and long-term radiofrequency ablation at Amara Pain & Spine.",
-    overview: "Nerve Blocks are highly specialized diagnostic and therapeutic procedures that temporarily block pain signals from reaching the brain. By injecting a local anesthetic near a specific nerve or nerve cluster (such as facet joint nerves, genicular nerves in the knee, or occipital nerves), we can confirm if that nerve is the source of your pain. If the block provides temporary relief, it paves the way for Radiofrequency Ablation (RFA)—a procedure that uses thermal energy to deactivate the nerve, providing long-term pain relief lasting 9 to 18 months.",
-    benefits: [
-      "Provides immediate, highly targeted pain relief",
-      "Serves as a vital diagnostic tool to locate the exact pain generator",
-      "Radiofrequency Ablation offers long-lasting relief (typically 12+ months)",
-      "Outpatient procedures with virtually no downtime",
-      "Helps reduce dependence on daily oral pain medications"
+    "id": "nerve-blocks",
+    "title": "Nerve Blocks & Ablations",
+    "icon": "Zap",
+    "metaTitle": "Nerve Blocks & Radiofrequency Ablation Charlotte NC",
+    "metaDesc": "Diagnostic nerve blocks and radiofrequency ablation for chronic joint and spine pain at Amara Pain & Spine in Charlotte, NC.",
+    "overview": "Nerve blocks are diagnostic and therapeutic procedures where a local anesthetic is injected near a specific nerve or group of nerves. If a diagnostic block provides temporary relief, it confirms that nerve as a pain contributor. In selected cases, a subsequent procedure called Radiofrequency Ablation (RFA) may be considered to provide longer-lasting relief by using heat to interrupt nerve signaling.",
+    "benefits": [
+      "Helps confirm which nerves are contributing to joint or spine pain",
+      "Can provide temporary diagnostic relief or therapeutic benefit",
+      "Radiofrequency ablation can provide extended symptom reduction (often 9 to 18 months)",
+      "Outpatient procedure with minimal recovery time",
+      "May help reduce reliance on daily pain medications"
     ],
-    recovery: "Nerve blocks are quick, outpatient procedures. You may experience temporary numbness or mild soreness at the injection site. For Radiofrequency Ablation, you might feel a temporary increase in soreness for a few days, followed by significant, long-term pain relief as the nerve fully deactivates.",
-    faqs: [
+    "recovery": "Nerve blocks are quick outpatient procedures. Patients may experience temporary numbness or soreness at the injection site. For radiofrequency ablation, mild soreness may occur for a few days before therapeutic relief develops as the treated nerve deactivates.",
+    "faqs": [
       {
-        q: "What is the difference between a Nerve Block and a Steroid Injection?",
-        a: "A nerve block focuses primarily on numbing the nerve to shut down pain transmission (often for diagnostic purposes), while a steroid injection focuses on depositing a powerful anti-inflammatory medication to heal irritated tissues over time."
+        "q": "What is the difference between a nerve block and a steroid injection?",
+        "a": "A diagnostic nerve block uses local anesthetic to temporarily numb a specific nerve to identify whether it is transmitting pain. A steroid injection delivers anti-inflammatory medication to reduce tissue swelling and inflammation over time."
       },
       {
-        q: "How long does Radiofrequency Ablation relief last?",
-        a: "Typically, RFA provides relief for 9 months to over a year, and in many cases, up to 2 years. Nerves do eventually regenerate, but if the pain returns, the procedure can be safely repeated."
+        "q": "How long does relief from radiofrequency ablation last?",
+        "a": "Relief from radiofrequency ablation typically lasts between 9 and 18 months. Nerves can regenerate over time, and the procedure can be repeated if symptoms recur."
       }
     ]
   },
   "radiofrequency-ablation": {
-    id: "radiofrequency-ablation",
-    title: "Radiofrequency Ablation (RFA)",
-    icon: "Zap",
-    metaTitle: "Radiofrequency Ablation (RFA) Charlotte NC | Amara Pain",
-    metaDesc: "Get long-term relief from chronic back, neck, and joint pain with Radiofrequency Ablation. Minimally invasive outpatient care.",
-    overview: "Radiofrequency Ablation (RFA), also known as rhizotomy, is an advanced, non-surgical procedure used to reduce chronic back, neck, and arthritic joint pain. The procedure uses radiofrequency waves to generate heat, which is precisely applied to the tiny sensory nerves (medial branches) supplying the painful joints. This heat temporarily deactivates the nerve's ability to transmit pain signals to the brain, providing extended relief and restoring mobility.",
-    benefits: [
-      "Long-term pain relief, typically lasting 12 to 24 months",
-      "Highly effective for arthritis of the spine (facet joint pain)",
+    "id": "radiofrequency-ablation",
+    "title": "Radiofrequency Ablation (RFA)",
+    "icon": "Zap",
+    "metaTitle": "Radiofrequency Ablation (RFA) Charlotte NC | Amara Pain",
+    "metaDesc": "Radiofrequency Ablation for chronic back, neck, and joint pain. Outpatient interventional care at Amara Pain & Spine in Charlotte, NC.",
+    "overview": "Radiofrequency Ablation (RFA) is an outpatient procedure used to treat chronic back, neck, or joint pain caused by arthritic facet or genicular joints. Using fluoroscopic guidance, radiofrequency energy is applied to sensory nerves supplying the painful joint, temporarily reducing their ability to transmit pain signals.",
+    "benefits": [
+      "Can provide extended symptom relief, often lasting 9 to 18 months",
+      "Commonly used for facet joint arthritis in the cervical and lumbar spine",
       "Outpatient procedure performed under local anesthesia",
-      "Significantly improves physical function and range of motion",
-      "Extremely low risk of complications and fast recovery"
+      "Supports participation in physical therapy and daily movement",
+      "Repeatable if nerves regenerate and pain returns"
     ],
-    recovery: "RFA is an outpatient procedure taking about 30 minutes. You will need a driver to take you home. Localized soreness at the treatment site is common for the first few days and can be managed with ice packs. The full pain-relieving benefits of RFA typically manifest within 1 to 3 weeks.",
-    faqs: [
+    "recovery": "RFA is an outpatient procedure that typically takes 30 to 45 minutes. A companion is required to drive you home. Mild soreness at the treatment site is common for a few days and can be managed with ice packs. Symptom improvement usually develops over 1 to 3 weeks.",
+    "faqs": [
       {
-        q: "Is Radiofrequency Ablation permanent?",
-        a: "RFA is not permanent because nerves eventually grow back. However, the relief is long-term (up to 2 years), and when the nerve regenerates, the procedure can be safely and effectively repeated."
+        "q": "Is radiofrequency ablation permanent?",
+        "a": "No. Sensory nerves gradually regenerate over time. However, relief often lasts 9 to 18 months, and the procedure can be repeated if symptoms return."
       },
       {
-        q: "What conditions are best treated by RFA?",
-        a: "RFA is highly successful in treating chronic lower back pain, neck pain, sacroiliac joint pain, and severe knee osteoarthritis (using genicular nerve ablation)."
+        "q": "Which conditions are commonly evaluated for RFA?",
+        "a": "RFA is most often used for facet joint arthritis in the lower back or neck, sacroiliac joint pain, and chronic knee osteoarthritis (genicular nerve ablation)."
       }
     ]
   },
   "spinal-cord-stimulation": {
-    id: "spinal-cord-stimulation",
-    title: "Spinal Cord Stimulation (SCS)",
-    icon: "Sliders",
-    metaTitle: "Spinal Cord Stimulator Charlotte NC | Advanced Pain Tech",
-    metaDesc: "Explore Spinal Cord Stimulation (SCS) for chronic nerve pain and failed back surgery syndrome. Try a temporary trial at Amara Pain.",
-    overview: "Spinal Cord Stimulation (SCS) is a revolutionary, FDA-approved technology designed for patients suffering from severe, chronic nerve pain that has not responded to other treatments. A spinal cord stimulator is a small, implantable device (similar to a pacemaker) that sends mild electrical pulses to the spinal cord. These pulses interrupt the pain signals travelling along the nerves to the brain, replacing the sensation of pain with a soothing, gentle tingling or completely imperceptible relief.",
-    benefits: [
-      "Highly effective for Failed Back Surgery Syndrome and neuropathy",
-      "Includes a 'Test Drive' phase (temporary trial) before committing to an implant",
-      "Patient-controlled device with customizable programs via a smartphone app",
-      "Reduces or eliminates the need for opioid pain medications",
-      "Reversible procedure—the device can be easily removed at any time"
+    "id": "spinal-cord-stimulation",
+    "title": "Spinal Cord Stimulation (SCS)",
+    "icon": "Sliders",
+    "metaTitle": "Spinal Cord Stimulator Charlotte NC | Interventional Care",
+    "metaDesc": "Spinal Cord Stimulation (SCS) for chronic nerve pain and failed back surgery syndrome. In-office evaluations and temporary trials in Charlotte, NC.",
+    "overview": "Spinal Cord Stimulation (SCS) is an FDA-approved therapy for chronic neuropathic pain that has not responded adequately to other conservative treatments, such as in Failed Back Surgery Syndrome or complex neuropathy. An SCS device delivers mild electrical pulses to the spinal cord to interrupt pain signals before they reach the brain.",
+    "benefits": [
+      "Option for persistent post-surgical back pain and peripheral neuropathy",
+      "Includes a 5-to-7-day temporary trial to evaluate relief before deciding on an implant",
+      "Adjustable stimulation settings managed by the patient",
+      "May help reduce reliance on long-term medications",
+      "Reversible therapy—the system can be removed if needed"
     ],
-    recovery: "The SCS journey starts with a 5-to-7-day temporary trial. Thin, temporary wires are placed in the epidural space, and you wear an external battery pack to test the relief in your daily life. If the trial reduces your pain by 50% or more, you can choose to proceed with a permanent, outpatient implant, which involves a quick recovery of 1-2 weeks.",
-    faqs: [
+    "recovery": "Spinal cord stimulation begins with an initial 5-to-7-day temporary trial. Thin wires are placed into the epidural space using local anesthesia and X-ray guidance, connected to an external controller. If the trial provides meaningful symptom improvement (typically 50% or greater pain reduction), you and your physician may discuss proceeding with a permanent outpatient implant.",
+    "faqs": [
       {
-        q: "What is a Spinal Cord Stimulator Trial?",
-        a: "The trial is a temporary, non-surgical 'test drive.' We place the simulator leads through a needle (like an epidural) for 5 to 7 days. You can evaluate the system's effectiveness during your normal activities at home before deciding on a permanent implant."
+        "q": "What is an SCS temporary trial?",
+        "a": "The trial is an outpatient evaluation lasting 5 to 7 days. Temporary leads are placed near the spinal cord to allow you to assess symptom relief during daily activities at home before deciding on a permanent system."
       },
       {
-        q: "Can I get an MRI with a spinal cord stimulator?",
-        a: "Yes. Most modern Spinal Cord Stimulator systems are conditionally MRI-safe, meaning you can safely undergo MRI scans under specific guidelines."
+        "q": "Can I receive an MRI with a spinal cord stimulator?",
+        "a": "Most modern spinal cord stimulator systems are MRI-conditional when specific manufacturer protocols and scanner guidelines are followed."
       }
     ]
   },
   "trigger-point-therapy": {
-    id: "trigger-point-therapy",
-    title: "Trigger Point Therapy",
-    icon: "Shield",
-    metaTitle: "Trigger Point Injections Charlotte NC | Myofascial Pain Relief",
-    metaDesc: "Relieve painful muscle knots, myofascial pain, and tension headaches with precision trigger point injections at Amara Pain & Spine.",
-    overview: "Trigger Point Injections (TPI) are highly effective treatments used to relieve myofascial pain—chronic pain caused by tight, painful knots that form in your muscles. These 'trigger points' can irritate surrounding nerves, cause local pain, or refer pain to other parts of the body. During the procedure, our specialist inserts a fine needle directly into the trigger point and injects a small amount of local anesthetic (sometimes combined with a mild anti-inflammatory), causing the muscle knot to immediately release and relax.",
-    benefits: [
-      "Provides rapid, localized muscle relaxation and pain relief",
-      "Relieves referred pain and muscle-tension headaches",
-      "Increases blood flow to the damaged muscle tissue to promote healing",
-      "Takes only a few minutes in an office setting",
-      "Improves range of motion and flexibility in the neck, shoulders, and back"
+    "id": "trigger-point-therapy",
+    "title": "Trigger Point Therapy",
+    "icon": "Shield",
+    "metaTitle": "Trigger Point Injections Charlotte NC | Myofascial Pain Relief",
+    "metaDesc": "Trigger point injections for muscle knots, myofascial pain, and tension headaches at Amara Pain & Spine in Charlotte, NC.",
+    "overview": "Trigger Point Injections (TPI) treat localized areas of taut muscle fibers, often referred to as muscle knots. These areas can cause local tenderness or referred pain to adjacent regions. During this in-office procedure, a fine needle is inserted into the trigger point with a small amount of local anesthetic to help relax the contracted muscle fibers.",
+    "benefits": [
+      "Assists in releasing localized muscle spasms",
+      "Can help reduce referred muscle pain and tension headaches",
+      "Takes only a few minutes in an office exam room",
+      "Facilitates physical therapy stretching and strengthening",
+      "Minimal downtime following the procedure"
     ],
-    recovery: "TPI is a quick, in-office procedure. You may feel immediate relief as the muscle knot releases. Some mild soreness at the injection site is normal for a day or two and can be managed with stretching and ice. There is no downtime, and patients can resume all normal activities immediately.",
-    faqs: [
+    "recovery": "Trigger point injections are quick in-office procedures. Patients may experience mild local soreness at the injection site for 24 to 48 hours, which can be managed with gentle stretching and ice. Normal daily activities can generally be resumed immediately.",
+    "faqs": [
       {
-        q: "What exactly is a trigger point?",
-        a: "A trigger point is a tight band or 'knot' of muscle fibers that cannot relax. It is often sensitive to touch and can cause pain to radiate to other areas (referred pain)."
+        "q": "What is a muscle trigger point?",
+        "a": "A trigger point is a tight band of contracted muscle tissue that can cause local tenderness or radiate pain to nearby areas."
       },
       {
-        q: "How many injections are done in one session?",
-        a: "Multiple trigger points can be safely treated during a single brief session, depending on the distribution of your muscle pain and spasms."
+        "q": "Can multiple trigger points be treated at once?",
+        "a": "Yes. Several trigger points in the neck, shoulders, or back can often be treated during a single visit depending on clinical evaluation."
       }
     ]
   },
   "regenerative-treatments": {
-    id: "regenerative-treatments",
-    title: "Regenerative Medicine",
-    icon: "Activity",
-    metaTitle: "Regenerative Medicine Charlotte NC | PRP & Cell Therapy",
-    metaDesc: "Accelerate natural joint, tendon, and ligament healing with cutting-edge regenerative medicine and PRP therapies at Amara Pain & Spine.",
-    overview: "Regenerative Medicine represents the cutting-edge of modern pain care, focusing on healing damaged tissues rather than simply masking symptoms. By utilizing the body's natural healing mechanisms, regenerative therapies (such as Platelet-Rich Plasma, or PRP) concentrate growth factors from your own blood and inject them directly into damaged tendons, ligaments, cartilage, or joints. This stimulates cellular repair, accelerates tissue regeneration, and reduces chronic inflammation.",
-    benefits: [
-      "Stimulates natural, long-term healing of tendons and cartilage",
-      "Utilizes your body's own cells, virtually eliminating allergic risks",
-      "Highly successful for tennis elbow, rotator cuff injuries, and knee arthritis",
-      "Minimally invasive, outpatient procedure",
-      "Improves joint function and structural integrity over time"
+    "id": "regenerative-treatments",
+    "title": "Regenerative Medicine",
+    "icon": "Activity",
+    "metaTitle": "Regenerative Medicine Charlotte NC | PRP Injections",
+    "metaDesc": "Platelet-Rich Plasma (PRP) therapies for joint, tendon, and ligament conditions at Amara Pain & Spine in Charlotte, NC.",
+    "overview": "Regenerative medicine procedures, including Platelet-Rich Plasma (PRP), use concentrated components from a patient's own blood. Blood is drawn in the clinic and processed in a centrifuge to isolate platelets containing growth factors. The solution is then injected under ultrasound guidance into injured tendons, ligaments, or joint capsules to support tissue repair.",
+    "benefits": [
+      "Uses a patient's own blood components (autologous preparation)",
+      "Performed as an in-office outpatient procedure",
+      "Utilized for chronic tendonitis, ligament sprains, and early joint arthritis",
+      "Administered under ultrasound guidance to verify injection location"
     ],
-    recovery: "PRP therapy is performed entirely in our clinic. We draw a small sample of your blood, spin it in a centrifuge to concentrate the platelets, and inject it under ultrasound guidance. Patients may experience a temporary increase in inflammation and soreness for a few days, which is a normal sign that the healing cascade has been activated. Gradual, long-term pain relief and functional improvement occur over the next 2 to 6 weeks.",
-    faqs: [
+    "recovery": "PRP therapy is performed in our office. A blood sample is drawn, concentrated in a centrifuge, and injected under ultrasound guidance. Patients may experience mild soreness and inflammation for a few days, followed by gradual symptom assessment over 2 to 6 weeks.",
+    "faqs": [
       {
-        q: "Is regenerative medicine covered by insurance?",
-        a: "Currently, most commercial insurance plans and Medicare view regenerative therapies as elective and do not fully cover them. We offer highly competitive, transparent pricing with no hidden fees to keep this advanced care affordable."
+        "q": "Is PRP covered by insurance?",
+        "a": "Most commercial insurance plans and Medicare classify PRP as elective and do not provide routine coverage. Our clinic provides transparent pricing so patients know costs in advance."
       },
       {
-        q: "How does PRP differ from a steroid injection?",
-        a: "Steroid injections are powerful anti-inflammatories that provide rapid, temporary relief by suppressing inflammation. PRP, on the other hand, temporarily increases inflammation to trigger a natural, long-term cellular healing response that repairs the actual tissue structure."
+        "q": "How does PRP differ from a steroid injection?",
+        "a": "Steroid injections deliver anti-inflammatory medication to quickly reduce swelling. PRP injections deliver concentrated growth factors from your own blood to support tissue repair over several weeks."
       }
     ]
   },
   "weight-loss": {
-    id: "weight-loss",
-    title: "Medical Weight Loss Programs",
-    icon: "Smile",
-    metaTitle: "Medical Weight Loss Programs Charlotte NC | Amara Pain",
-    metaDesc: "Reduce joint pain and improve your quality of life with our medically supervised weight loss programs. Personalized coaching in Charlotte, NC.",
-    overview: "At Amara Pain & Spine, we understand that chronic pain and body weight are deeply connected. Excess weight places massive mechanical stress on your weight-bearing joints (knees, hips, and lower back) and elevates systemic inflammation, worsening conditions like osteoarthritis. Our Medically Supervised Weight Loss Program is designed to help you shed pounds safely, reduce joint pain, and reclaim an active, energetic lifestyle through personalized nutrition plans, metabolic support, and clinical coaching.",
-    benefits: [
-      "Significantly reduces mechanical stress and pain in knees, hips, and lower back",
-      "Lowers systemic inflammatory markers, easing chronic joint pain",
-      "Medically supervised for absolute safety and long-term success",
-      "Personalized nutrition, lifestyle, and metabolic guidance",
-      "Boosts energy levels, improves cardiovascular health, and elevates mood"
+    "id": "weight-loss",
+    "title": "Medical Weight Loss Programs",
+    "icon": "Smile",
+    "metaTitle": "Medical Weight Loss Programs Charlotte NC | Amara Pain",
+    "metaDesc": "Medically supervised weight loss to help reduce joint stress and support mobility at Amara Pain & Spine in Charlotte, NC.",
+    "overview": "Body weight and joint strain are directly linked, particularly for weight-bearing joints like the knees, hips, and lumbar spine. Our medically supervised weight loss program provides clinical evaluations, nutritional guidance, and metabolic monitoring to help patients reduce joint load and manage symptoms associated with osteoarthritis.",
+    "benefits": [
+      "Reduces mechanical load on the knees, hips, and lower back",
+      "Helps lower systemic inflammatory markers associated with joint pain",
+      "Medically monitored by licensed healthcare clinicians",
+      "Nutritional and lifestyle guidance tailored to individual health history"
     ],
-    recovery: "Our weight loss program is a structured, ongoing clinical partnership. You will meet regularly with our care team for body composition analysis, metabolic tracking, and behavioral coaching. The program is tailored to progress at a healthy, sustainable pace, ensuring that the weight you lose stays off for good.",
-    faqs: [
+    "recovery": "Our weight management program involves periodic clinic visits for vital signs, metabolic assessments, and lifestyle reviews to help maintain steady, medically safe progress.",
+    "faqs": [
       {
-        q: "How does weight loss help my joint pain?",
-        a: "Every single pound of body weight translates to about 4 pounds of mechanical pressure on your knees when walking. Losing just 10 pounds can relieve 40 pounds of pressure from your knees, dramatically reducing wear-and-tear and pain."
+        "q": "How does weight reduction affect joint pain?",
+        "a": "During walking, force across the knee joint can equal several times body weight. Moderate weight reduction significantly decreases the mechanical forces placed on weight-bearing joints with each step."
       },
       {
-        q: "Do you use weight loss medications?",
-        a: "When clinically appropriate and safe, our medical team can prescribe modern, highly effective weight loss medications (such as GLP-1 agonists) as an adjunct to your personalized nutrition and exercise program."
+        "q": "Are medications included in the program?",
+        "a": "When clinically appropriate and safe based on medical history, our clinical team may prescribe medical therapies in conjunction with dietary and exercise recommendations."
       }
     ]
   }
@@ -576,126 +661,126 @@ export const treatments = {
 
 export const blogPosts = [
   {
-    id: "understanding-myofascial-pain",
-    title: "Understanding Myofascial Pain and Muscle Knots",
-    date: "June 15, 2026",
-    author: "Ashvin K. Amara, MD",
-    image: "/images/blog/myofascial_trigger_points.jpg",
-    excerpt: "Learn what causes painful muscle knots, how they refer pain to other parts of your body, and the most effective clinical therapies to find relief.",
-    category: "Patient Education",
-    content: "If you have ever felt a tender, painful 'knot' in your shoulder, neck, or upper back that makes your muscles feel constantly tight and restricted, you have likely experienced a trigger point. Myofascial pain syndrome is a common chronic pain disorder where pressure on these sensitive points in your muscles causes deep, aching pain in the muscle itself, and sometimes in seemingly unrelated parts of your body. This phenomenon is known as referred pain. For instance, a trigger point in your upper trapezius muscle can frequently refer pain upward, resulting in tension headaches.\n\nAt a biological level, these knots are areas of localized muscle spasm. They occur when a tiny bundle of muscle fibers remains locked in a state of continuous contraction. This constant contraction restricts local blood flow, cutting off oxygen and allowing metabolic waste products to build up, which in turn irritates local nerve endings and signals pain to the brain. Trigger points can develop due to sudden muscle trauma, repetitive strain from occupational movements, poor posture (such as slouching over a computer keyboard), or emotional stress that causes unconscious muscle clenching.\n\nWe understand how exhausting it is to live with muscles that never seem to relax, no matter how much you stretch or rest. Fortunately, you do not have to just 'live with it.' In our clinic, we offer Trigger Point Injections (TPI) to help break this painful cycle. During a TPI procedure, a physician uses a very fine needle to inject a small amount of local anesthetic directly into the trigger point. The physical insertion of the needle, combined with the numbing agent, works to mechanically disrupt the localized spasm, allowing the contracted muscle fibers to instantly release. This restores blood flow, flushes out accumulated toxins, and provides rapid pain relief, enabling you to participate in physical therapy and rebuild natural movement patterns without discomfort."
+    "id": "understanding-myofascial-pain",
+    "title": "Understanding Myofascial Pain and Muscle Knots",
+    "date": "June 15, 2026",
+    "author": "Ashvin K. Amara, MD",
+    "image": "/images/blog/myofascial_trigger_points.jpg",
+    "excerpt": "What causes muscle trigger points, how they refer pain, and when trigger point injections may help.",
+    "category": "Patient Education",
+    "content": "A myofascial trigger point is a hyperirritable spot within a taut band of skeletal muscle fibers. Commonly referred to as a muscle knot, pressure on this area can produce localized pain or referred pain to distant parts of the body. For example, a trigger point in the upper trapezius muscle frequently refers pain into the neck and temple, mimicking a tension headache.\n\nBiologically, trigger points occur when a localized group of muscle fibers remains in continuous contraction. This sustained tension can compress local capillaries, reducing microcirculation and leading to localized tissue ischemia. Over time, the accumulation of cellular metabolites sensitizes local nociceptive nerve fibers, sending pain signals to the central nervous system. Common triggers include repetitive occupational strain, postural stress, direct trauma, or prolonged muscular guarding following spinal injury.\n\nClinical evaluation includes palpation of the muscle to locate discrete taut bands and reproducible referral patterns. Treatment options include physical therapy, home stretching regimens, and trigger point injections (TPI). During an in-office injection, a fine needle delivers a small volume of local anesthetic directly into the trigger point to release the contracted fibers and facilitate improved range of motion."
   },
   {
-    id: "why-facility-fees-matter",
-    title: "Why Clinic Choice Matters: The Truth About Facility Fees",
-    date: "May 20, 2026",
-    author: "Amara Pain Administration",
-    image: "/images/blog/transparent_medical_billing.jpg",
-    excerpt: "Discover how independent clinics like Amara Pain & Spine save patients thousands of dollars by eliminating hidden hospital facility fees.",
-    category: "Billing & Insurance",
-    content: "Navigating medical billing can be incredibly stressful, especially when you are already dealing with the physical and emotional burden of chronic pain. One of the most common surprises patients encounter when receiving care is the sudden appearance of a 'facility fee' on their medical bill. This fee often duplicates the cost of the actual procedure and can add hundreds or even thousands of dollars to your out-of-pocket expenses. In this article, we want to demystify facility fees and explain why choosing an independent clinic for your care makes a massive financial difference.\n\nTo understand facility fees, it helps to understand how hospital-owned systems operate. When a hospital system buys a private medical practice, they transition the clinic's billing system to hospital billing. Consequently, when you visit that clinic, you receive two separate bills: one for the physician's professional services (the actual medical care), and a second bill—the facility fee—simply for walking through the door of a hospital-owned property. Even if the procedure is a minor, low-risk injection that takes ten minutes, you are charged for the overhead, maintenance, and administrative costs of the entire hospital network.\n\nAt Amara Pain & Spine Management, we believe that high-quality pain care should be accessible, transparent, and fair. Because we are a proud, independent, physician-owned practice, we do not have a hospital board or corporate parent company dictating our billing. We charge one flat, transparent fee for our services and absolutely zero facility fees. By keeping our care model independent, we save patients and their insurance networks up to 60% of the cost of identical procedures performed in hospital outpatient departments. We believe that you should only pay for the care you receive, and we are committed to keeping your treatment both effective and affordable."
+    "id": "why-facility-fees-matter",
+    "title": "Clinic Billing: Understanding Hospital Facility Fees",
+    "date": "May 20, 2026",
+    "author": "Amara Pain Administration",
+    "image": "/images/blog/transparent_medical_billing.jpg",
+    "excerpt": "How clinic billing structure affects patient expenses and what to know about hospital facility charges.",
+    "category": "Billing & Insurance",
+    "content": "Medical billing transparency is an important part of healthcare decision-making. When receiving outpatient care, patients often encounter two distinct billing models: independent office-based billing and hospital outpatient department (HOPD) billing.\n\nWhen an outpatient procedure is performed in a facility owned or operated by a hospital system, patients typically receive two separate bills: one from the physician for professional services, and a second 'facility fee' bill from the hospital. The facility fee is billed to cover hospital overhead and administrative costs, and it can add substantial out-of-pocket costs depending on the patient's deductible and coinsurance terms.\n\nAmara Pain & Spine Management operates as an independent, physician-owned clinic. All consultations and interventional procedures are performed in our private office setting. Consequently, care is billed as an in-office medical visit without hospital facility fee markups. We provide transparent billing explanations and verify insurance benefits in advance so patients understand their financial responsibility before receiving care."
   },
   {
-    id: "managing-arthritis-in-winter",
-    title: "Managing Joint Arthritis and Cold Weather Flares",
-    date: "April 10, 2026",
-    author: "Ashvin K. Amara, MD",
-    image: "/images/blog/winter_arthritis_care.jpg",
-    excerpt: "Does cold weather really make your joints hurt? We look at the scientific link between barometric pressure and arthritis, and offer tips to stay active.",
-    category: "Tips & Wellness",
-    content: "It is an observation shared by millions of individuals living with joint arthritis: 'I can feel a storm coming in my knees.' For generations, this was dismissed as an old wives' tale. However, modern medical research has confirmed a direct, physical link between changes in the weather and increased joint pain. If you find that cold, damp winter days make your arthritis flare up, you are not imagining it. There are clear biological reasons why your body reacts to the elements.\n\nThe primary culprit behind weather-related joint pain is barometric pressure—the weight of the atmosphere pressing down on the Earth. Before a cold front or rainstorm arrives, barometric pressure drops. This decrease in air pressure means the atmosphere exerts less pressure on your body, allowing the fluids and tissues surrounding your joints to expand. In a joint already inflamed by arthritis, even a microscopic expansion can put extra pressure on highly sensitive nerve endings, leading to stiffness and pain. Additionally, cold temperatures can increase the viscosity of synovial fluid (the joint's natural lubricant), making joint movements feel tighter and more resistant.\n\nWe know how discouraging it is when weather changes disrupt your plans and limit your mobility. To help protect your joints during colder months, we recommend dressing in layers to keep your joints warm, using supportive heat therapy (such as warm baths or heating pads) to soothe stiff muscles, and staying active with low-impact indoor exercises like swimming or stationary cycling to keep joint fluid circulating. If seasonal pain becomes unmanageable, we encourage you to schedule a consultation. From targeted joint injections to advanced anti-inflammatory blocks, we can help calm the underlying inflammation so you can stay active and comfortable all year round."
+    "id": "managing-arthritis-in-winter",
+    "title": "Joint Arthritis and Changes in Barometric Pressure",
+    "date": "April 10, 2026",
+    "author": "Ashvin K. Amara, MD",
+    "image": "/images/blog/winter_arthritis_care.jpg",
+    "excerpt": "The physiological link between weather changes and joint stiffness, and practical ways to manage symptoms.",
+    "category": "Tips & Wellness",
+    "content": "Many patients with joint osteoarthritis report increased pain and stiffness when the weather turns cold or damp. Clinical research suggests this observation is rooted in measurable physiological responses to atmospheric changes.\n\nBarometric pressure is the weight of the atmosphere pressing down on the Earth. Ahead of weather systems, barometric pressure often drops. A decrease in ambient air pressure allows tissues and fluids surrounding an already inflamed joint to expand microscopically, which can increase pressure on sensitive nerve endings within the joint capsule. Furthermore, cooler temperatures can increase the viscosity of synovial fluid—the natural lubricant within joints—leading to a feeling of stiffness upon movement.\n\nTo manage symptoms during colder months, consider the following clinical recommendations: dress in warm layers to maintain joint temperature, use gentle heat therapy (such as a heating pad or warm shower) before activity, and maintain low-impact joint motion such as stationary cycling or gentle walking. If pain continues to interfere with daily function, a clinical evaluation can determine whether anti-inflammatory injections or nerve blocks are appropriate."
   },
   {
-    id: "spinal-cord-stimulation-guide",
-    title: "Understanding Spinal Cord Stimulation for Chronic Back Pain",
-    date: "July 10, 2026",
-    author: "Ashvin K. Amara, MD",
-    image: "/images/blog/spinal_cord_stimulation.jpg",
-    excerpt: "A gentle guide on how advanced neuromodulation works to soothe persistent pain pathways and help you reclaim your comfort.",
-    category: "Tips & Wellness",
-    content: "Living with chronic back or leg pain can make even the simplest daily tasks feel like a mountain to climb. If you have tried medications, physical therapy, and traditional injections, and still find yourself struggling to get through the day, it is easy to feel like you have run out of options. We want you to know that there is still hope. Spinal Cord Stimulation (SCS) is an advanced, clinically proven neuromodulation therapy designed to help patients manage persistent nerve pain and reclaim their quality of life.\n\nHow does Spinal Cord Stimulation work? In simple terms, SCS acts like a pacemaker for your nervous system. When you experience pain, sensory nerves send electrical signals up your spinal cord to your brain, which interprets them as discomfort. An SCS system consists of a small, implantable generator that delivers mild, low-frequency electrical currents directly to the spinal cord. These gentle pulses work by interrupting the pain signals before they can reach the brain, effectively replacing the sensation of sharp, shooting pain with a soothing, subtle tingling feeling (known as paresthesia) or, in newer systems, complete silent relief.\n\nOne of the greatest benefits of Spinal Cord Stimulation is that it is the only pain treatment that includes a trial phase. Before committing to a permanent implant, you undergo a temporary trial lasting 5 to 7 days. During a quick, outpatient procedure, thin temporary leads are placed under live X-ray guidance next to the spinal cord, connected to a small external controller. You go home and test the system in your daily life. If you experience a significant reduction in pain (typically 50% or greater) and an increase in your ability to perform daily activities, you can proceed with confidence to the permanent implant. Our team is here to guide you through every step of this journey with care and precision."
+    "id": "spinal-cord-stimulation-guide",
+    "title": "Clinical Overview of Spinal Cord Stimulation",
+    "date": "July 10, 2026",
+    "author": "Ashvin K. Amara, MD",
+    "image": "/images/blog/spinal_cord_stimulation.jpg",
+    "excerpt": "How neuromodulation works for persistent neuropathic pain and what occurs during an SCS trial.",
+    "category": "Tips & Wellness",
+    "content": "Patients who experience persistent neuropathic pain following spinal surgery or who have not achieved adequate relief from conservative treatments may be evaluated for Spinal Cord Stimulation (SCS). SCS is an established, FDA-approved neuromodulation therapy used for chronic nerve pain conditions, including Failed Back Surgery Syndrome (FBSS) and complex regional pain syndrome.\n\nThe system works by delivering mild electrical pulses to the dorsal columns of the spinal cord via thin insulated wires (leads). These electrical currents modify pain signal transmission before those signals reach the brain, altering the sensation of pain into a gentle sensation or imperceptible relief.\n\nA key feature of SCS is the evaluation period: before any permanent system is placed, the patient undergoes a 5-to-7-day temporary trial. In an outpatient setting under fluoroscopic guidance, temporary leads are placed into the epidural space and connected to an external battery. The patient returns home to test the system during typical daily activities. If the trial demonstrates significant symptom reduction (typically 50% or greater pain relief and improved physical function), the patient and physician can discuss permanent implantation."
   },
   {
-    id: "role-of-nutrition-in-pain",
-    title: "Nourishing Your Body: How Nutrition Affects Chronic Inflammation",
-    date: "July 05, 2026",
-    author: "Amara Pain Administration",
-    image: "/images/blog/anti_inflammatory_nutrition.jpg",
-    excerpt: "Explore the powerful link between what we eat and how we feel, with simple, supportive dietary adjustments to help soothe joint pain.",
-    category: "Tips & Wellness",
-    content: "When we think about managing chronic joint or spine pain, our minds naturally go to clinical interventions like injections, blocks, and physical therapy. While these treatments are crucial, chronic pain management is most successful when we care for the entire body. One of the most powerful tools you have to support your recovery is sitting right in your kitchen. The foods you consume have a direct, measurable impact on systemic inflammation, which is a major driver of chronic pain.\n\nInflammation is your body's natural response to injury or illness. However, when the immune system remains activated over a long period, it can lead to chronic inflammation that damages healthy joint cartilage and irritates spinal nerves. Certain foods trigger the release of inflammatory markers in the body. Diets high in refined sugars, trans fats, processed meats, and refined grains keep inflammatory pathways active, amplifying your pain. Conversely, an anti-inflammatory diet rich in antioxidants, omega-3 fatty acids, and vitamins helps the body actively calm these inflammatory responses.\n\nTransitioning to an anti-inflammatory lifestyle does not have to be restrictive or stressful. We recommend focusing on simple, nourishing additions to your plate. Incorporate omega-3 rich foods like wild-caught salmon, walnuts, and chia seeds to lubricate joints. Eat a colorful variety of berries, leafy greens (like spinach and kale), and cruciferous vegetables to supply your body with powerful antioxidants. Use extra virgin olive oil as your primary healthy fat, and flavor meals with anti-inflammatory spices like turmeric and ginger. By nourishing your body from the inside out, you provide your tissues with the building blocks they need to heal, supporting your clinical treatments and helping you feel your best."
+    "id": "role-of-nutrition-in-pain",
+    "title": "Nutrition and Systemic Inflammation in Chronic Pain",
+    "date": "July 05, 2026",
+    "author": "Amara Pain Administration",
+    "image": "/images/blog/anti_inflammatory_nutrition.jpg",
+    "excerpt": "How dietary choices interact with inflammatory pathways and support overall pain management.",
+    "category": "Tips & Wellness",
+    "content": "While interventional treatments address specific anatomical pain sources, systemic factors can also influence pain sensitivity and joint health. Nutrition plays a documented role in modulating chronic low-grade inflammation throughout the body.\n\nDiets high in ultra-processed foods, refined carbohydrates, and saturated fats have been associated with elevated circulating inflammatory markers, such as C-reactive protein (CRP) and interleukin-6 (IL-6). These systemic markers can increase sensitivity in peripheral tissues and joint capsules already affected by osteoarthritis or nerve irritation.\n\nConversely, dietary patterns emphasizing whole foods, omega-3 fatty acids (found in cold-water fish, walnuts, and flaxseeds), leafy green vegetables, and dietary polyphenols can help support natural anti-inflammatory mechanisms. While nutritional changes do not replace clinical interventions for structural spine and joint pathology, balanced nutrition serves as a supportive lifestyle component within an overall pain management plan."
   },
   {
-    id: "what-is-radiofrequency-ablation",
-    title: "Radiofrequency Ablation: Long-Lasting Relief for Arthritis Pain",
-    date: "June 28, 2026",
-    author: "Ashvin K. Amara, MD",
-    image: "/images/blog/radiofrequency_ablation.jpg",
-    excerpt: "Learn how this minimally invasive, precise therapy gently quietens painful joint signals to restore your daily mobility.",
-    category: "Patient Education",
-    content: "If you suffer from chronic neck or lower back pain caused by facet joint arthritis, you know how exhausting it is when simple movements—like turning your head to check your blind spot or bending down to tie your shoes—cause a sharp, pinching ache. When conservative treatments like physical therapy and anti-inflammatory medications fail to provide lasting relief, Radiofrequency Ablation (RFA) offers a safe, minimally invasive outpatient alternative designed to stop the pain at its source.\n\nThe facet joints are small, bony connections that link your vertebrae and allow your spine to bend and twist. Like any joint in the body, they can develop wear-and-tear arthritis, leading to chronic inflammation and localized pain. RFA works by utilizing advanced thermal energy to temporarily disable the specific sensory nerves (called medial branch nerves) that carry pain signals from these arthritic joints to the brain. During the procedure, which is performed under local anesthesia and precise fluoroscopic (live X-ray) guidance, a specialized needle is placed adjacent to the target nerve, and controlled radiofrequency waves are applied to create a small, therapeutic heat lesion.\n\nBecause the sensory nerve is deactivated, the pain signals are blocked from reaching the brain, providing significant and long-lasting pain relief that typically lasts between 6 to 18 months. Because the structure of the nerve remains intact, it will slowly regenerate over time. However, this extended window of relief provides a critical opportunity for you to engage in physical rehabilitation, rebuild core and spinal stabilizer strength, and return to the active lifestyle you deserve without being held back by daily joint pain."
+    "id": "what-is-radiofrequency-ablation",
+    "title": "Radiofrequency Ablation for Facet Joint Arthritis",
+    "date": "June 28, 2026",
+    "author": "Ashvin K. Amara, MD",
+    "image": "/images/blog/radiofrequency_ablation.jpg",
+    "excerpt": "How thermal energy is used to interrupt sensory nerve signals from arthritic spinal joints.",
+    "category": "Patient Education",
+    "content": "Facet joint arthritis is a frequent cause of chronic lower back and neck pain. The facet joints are small, cartilage-lined joints that connect adjacent vertebrae and allow spinal motion. When these joints develop degenerative wear, movement—particularly spinal extension and rotation—can produce localized aching and stiffness.\n\nWhen conservative treatments like physical therapy and anti-inflammatory medications provide insufficient relief, Radiofrequency Ablation (RFA) can be considered. RFA uses thermal energy to temporarily disrupt the medial branch nerves that supply sensory innervation to the affected facet joints. The procedure is performed in an outpatient setting using local anesthesia and real-time fluoroscopic guidance.\n\nBecause the medial branch nerve is deactivated, pain signals from the arthritic joint are blocked from traveling to the brain. This can provide symptom relief typically lasting between 9 and 18 months. Over time, the sensory nerve slowly regenerates, at which point the procedure can be safely repeated if symptoms recur."
   },
   {
-    id: "coping-with-chronic-pain",
-    title: "Mind & Body: Supportive Coping Strategies for Chronic Pain",
-    date: "June 20, 2026",
-    author: "Amara Pain Clinical Staff",
-    image: "/images/blog/mind_body_pain_relief.jpg",
-    excerpt: "Practical, compassionate tools to help you manage the emotional weight of persistent pain and support your mental wellness.",
-    category: "Tips & Wellness",
-    content: "Living with persistent, chronic pain is a deeply challenging experience that extends far beyond physical discomfort. It affects your sleep, your energy levels, your work, and your relationships. It is entirely normal to feel overwhelmed, anxious, frustrated, or isolated. Our clinical team believes in treating the whole person, and that means validating the emotional weight of pain just as much as the physical symptoms. Understanding the connection between the mind and the body is a powerful step toward finding relief.\n\nThe brain and the nervous system operate in a continuous feedback loop. When you experience chronic pain, your body is in a state of constant stress. This stress triggers the 'fight or flight' response, which increases muscle tension, elevates heart rate, and makes your nervous system more sensitive to pain signals. When you are anxious or stressed, your brain actually amplifies the intensity of the pain you feel. By utilizing targeted mind-body strategies, you can learn to calm this sympathetic nervous system response, lowering the stress hormones that exacerbate pain.\n\nWe encourage you to incorporate small, gentle mindfulness practices into your routine. Diaphragmatic breathing—slow, deep belly breaths—works to immediately stimulate the vagus nerve, signaling your body to relax and lower muscle tension. Guided imagery, progressive muscle relaxation, and restorative sleep hygiene can also help soothe an overactive nervous system. Remember, seeking support for your mental and emotional well-being is not a sign of weakness; it is a vital, courageous component of your overall clinical recovery plan. Our team is here to walk alongside you, offering both medical expertise and compassionate support."
+    "id": "coping-with-chronic-pain",
+    "title": "Physical and Psychological Strategies for Managing Chronic Pain",
+    "date": "June 20, 2026",
+    "author": "Amara Pain Clinical Staff",
+    "image": "/images/blog/mind_body_pain_relief.jpg",
+    "excerpt": "How the nervous system responds to persistent pain and practical methods to support daily coping.",
+    "category": "Tips & Wellness",
+    "content": "Chronic pain involves both peripheral sensory inputs and central nervous system processing. Persistent pain can activate the sympathetic nervous system, leading to elevated muscle tension, shallow breathing patterns, and sleep disturbances, which in turn can amplify pain sensitivity.\n\nUnderstanding the physiological connection between stress and pain sensitivity helps patients develop practical daily habits. Methods such as diaphragmatic breathing, structured sleep hygiene, and paced physical activity help regulate autonomic nervous system tone.\n\nDiaphragmatic breathing stimulates vagal nerve activity, encouraging a shift toward parasympathetic relaxation and reducing muscular guarding around painful spine and joint areas. Incorporating these techniques alongside medical interventions provides a balanced approach to managing long-term pain conditions."
   },
   {
-    id: "understanding-sciatica",
-    title: "Understanding Sciatica: From Irritation to Gentle Recovery",
-    date: "June 02, 2026",
-    author: "Ashvin K. Amara, MD",
-    image: "/images/blog/sciatica_nerve_relief.jpg",
-    excerpt: "Demystifying the sharp, shooting leg pain known as sciatica and outlining non-surgical care paths to relieve the pressure.",
-    category: "Patient Education",
-    content: "Sciatica is a term that many people have heard, but it is often misunderstood. It is not a disease in itself, but rather a set of symptoms caused by the compression or irritation of the sciatic nerve—the longest and thickest nerve in the human body. When this nerve becomes pinched or inflamed, it can cause a sharp, electric, or burning pain that radiates from your lower back, down through your buttock, and straight down the back of your leg. For many, this shooting pain can make simple movements like sitting, walking, or standing feel almost impossible.\n\nSciatica most commonly develops when a lumbar disc bulges or herniates, pressing directly against the nerve roots that form the sciatic nerve. Other causes include spinal stenosis (a narrowing of the spinal canal) or a spasm of the piriformis muscle in the buttock. We know how frightening and debilitating this pain can be, and how it can make you feel restricted in your own home. The good news is that the vast majority of sciatica cases respond exceptionally well to conservative, non-surgical treatment options.\n\nOur clinical approach focuses on reducing nerve inflammation and relieving pressure on the sciatic pathway. In cases of severe or persistent pain, we can perform a targeted Epidural Steroid Injection (ESI). Under precise live X-ray guidance, we deliver a powerful anti-inflammatory medication directly into the epidural space surrounding the irritated nerve root. This works to rapidly reduce swelling and calm the nerve, providing a critical window of pain relief. With the pain managed, you can safely begin physical therapy and core stabilization exercises to support your spine, correct posture, and prevent future sciatic flares."
+    "id": "understanding-sciatica",
+    "title": "Understanding Sciatica: Causes and Treatment Options",
+    "date": "June 02, 2026",
+    "author": "Ashvin K. Amara, MD",
+    "image": "/images/blog/sciatica_nerve_relief.jpg",
+    "excerpt": "An overview of lumbar nerve root compression, typical symptoms, and non-surgical care pathways.",
+    "category": "Patient Education",
+    "content": "Sciatica refers to pain radiating along the course of the sciatic nerve, which branches from the lumbar spine (L4-S3 nerve roots) through the buttock and down each leg. It is typically characterized by sharp, burning, or electrical sensations down the back of the thigh, calf, or foot.\n\nThe most common cause is a herniated or bulging lumbar disc that mechanically impinges on or chemically irritates an adjacent nerve root. Other causes include lumbar spinal stenosis and piriformis syndrome. A clinical evaluation, including neurological testing and magnetic resonance imaging (MRI), helps confirm the level and severity of nerve irritation.\n\nInitial treatment often includes activity modification, physical therapy, and anti-inflammatory medications. In cases where radiating symptoms persist or cause functional limitation, a fluoroscopically guided lumbar epidural steroid injection may be recommended to deliver localized anti-inflammatory medication around the irritated nerve root, reducing swelling and facilitating rehabilitation."
   },
   {
-    id: "preparing-for-your-first-visit",
-    title: "What to Expect: Preparing for Your First Visit with Us",
-    date: "May 15, 2026",
-    author: "Amara Pain Clinical Staff",
-    image: "/images/blog/first_visit_preparation.jpg",
-    excerpt: "A warm, step-by-step guide to help you prepare for your initial consultation so you feel heard, supported, and comfortable.",
-    category: "Patient Education",
-    content: "We understand that scheduling an appointment at a pain management clinic can bring up a mixture of hope and anxiety. You may have visited multiple doctors in the past, only to feel rushed, dismissed, or left with unanswered questions. We want to reassure you that at Amara Pain & Spine Management, your experience will be different. We believe that the foundation of excellent medical care is listening. Your story, your concerns, and your goals are the most important pieces of information we have to help you heal.\n\nDuring your initial consultation, our goal is to build a complete, detailed picture of your health. We will sit down with you to review your medical history, discuss when and how your pain started, and explore how it impacts your daily activities. We will also review any previous imaging you have had, such as MRI, CT, or X-ray scans. It is highly beneficial to bring copies of these reports or the actual image discs to your visit. Next, we will perform a gentle, focused physical evaluation to identify specific areas of tenderness, muscle restriction, and nerve sensitivity.\n\nOnce we have identified the root cause of your pain, we will discuss our findings with you clearly, without confusing medical jargon. We will then collaborate to design a personalized treatment plan that aligns with your lifestyle, comfort levels, and recovery goals. Whether that involves conservative physical therapy, targeted injections, or advanced neuromodulation, you are an active partner in your care. We encourage you to print and complete our New Patient Intake Packet in advance of your visit, and to write down any questions you have so we can address them together."
+    "id": "preparing-for-your-first-visit",
+    "title": "What to Expect: Preparing for Your First Appointment",
+    "date": "May 15, 2026",
+    "author": "Amara Pain Clinical Staff",
+    "image": "/images/blog/first_visit_preparation.jpg",
+    "excerpt": "What to bring and what occurs during an initial interventional pain consultation.",
+    "category": "Patient Education",
+    "content": "Preparing for an initial consultation at Amara Pain & Spine Management helps ensure our clinical team has the necessary medical information to evaluate your symptoms. Here is what to expect during your first visit and how to prepare.\n\nDuring your appointment, our physician will review your medical history, discuss when your pain began, and ask how symptoms affect your daily mobility. The physician will also review prior imaging studies, such as MRI, CT, or X-ray scans. If you have imaging discs or written radiology reports, please bring them to your appointment.\n\nA physical examination will be performed to assess spinal range of motion, joint stability, and neurological reflexes. Based on these findings, your physician will discuss diagnostic conclusions and outline appropriate treatment options, ranging from conservative physical therapy recommendations to outpatient interventional procedures."
   },
   {
-    id: "joint-preservation-techniques",
-    title: "Joint Preservation: Beyond Major Surgery",
-    date: "May 01, 2026",
-    author: "Ashvin K. Amara, MD",
-    image: "/images/blog/joint_preservation.jpg",
-    excerpt: "Exploring advanced joint-preservation and nerve-calming therapies that help you delay or avoid joint replacement surgery.",
-    category: "Patient Education",
-    content: "When chronic joint pain in your knees, shoulders, or hips begins to limit your ability to walk, garden, or play with your grandchildren, it is easy to feel discouraged. Many patients believe that once arthritis becomes advanced, their only remaining option is a major, invasive joint replacement surgery. However, joint preservation is an excellent, highly effective clinical pathway that focuses on protecting your natural joints, reducing chronic inflammation, and restoring mobility without major surgery.\n\nJoint preservation utilizes a combination of advanced outpatient procedures and rehabilitation strategies. For patients suffering from moderate to severe knee arthritis, we can perform hyaluronic acid injections (also known as viscosupplementation). Hyaluronic acid is a natural substance found in healthy joint fluid. In an arthritic joint, this fluid becomes thin and depleted. By injecting a sterile, gel-like hyaluronic acid directly into the joint, we can restore natural lubrication, cushion the bones, and reduce painful friction during movement.\n\nFor joint pain that does not respond to lubrication, we can perform advanced nerve-blocking procedures, such as genicular nerve blocks for the knee or suprascapular nerve blocks for the shoulder. These procedures temporarily interrupt the sensory nerves that transmit pain signals from the joint capsule to the brain, providing profound relief. By combining these targeted therapies with structured physical therapy to rebuild supporting muscle strength, we can help preserve your natural joint function, manage your symptoms, and delay or entirely avoid the need for invasive surgical replacements."
+    "id": "joint-preservation-techniques",
+    "title": "Joint Preservation: Non-Surgical Options for Joint Pain",
+    "date": "May 01, 2026",
+    "author": "Ashvin K. Amara, MD",
+    "image": "/images/blog/joint_preservation.jpg",
+    "excerpt": "Non-surgical clinical approaches to managing knee, hip, and shoulder osteoarthritis.",
+    "category": "Patient Education",
+    "content": "Joint preservation focuses on non-surgical treatments to manage joint pain and maintain function. For many patients with mild-to-moderate osteoarthritis, interventional procedures can provide meaningful symptom relief before joint replacement surgery is considered.\n\nFor knee osteoarthritis, options include hyaluronic acid injections (viscosupplementation). Hyaluronic acid is a naturally occurring component of synovial joint fluid. In an arthritic joint, this fluid becomes depleted and less viscous. Injecting supplemental hyaluronic acid helps restore joint fluid lubrication and reduce mechanical friction during movement.\n\nIn addition, diagnostic genicular nerve blocks and radiofrequency ablation can be used to treat knee joint pain by temporarily interrupting the sensory nerves that innervate the joint capsule. Combined with physical therapy to strengthen supporting muscles, these interventional treatments provide options for patients seeking to manage chronic joint symptoms without major surgery."
   }
 ];
 
 export const faqs = [
   {
-    q: "Do I need a referral to book an appointment?",
-    a: "No! You do not need a physician's referral to schedule a consultation with our double-certified specialist. You can call us directly at +1 704-503-9338 or use our online Smart Booking Wizard to request an appointment."
+    "q": "Do I need a referral to schedule an appointment?",
+    "a": "Many patients can schedule directly without a physician referral. However, certain insurance plans (such as specific HMOs) may require a referral from your primary care provider. Please contact our office at 704-503-9338 to verify your plan requirements."
   },
   {
-    q: "What insurances do you accept?",
-    a: "We accept a wide range of insurances to keep care accessible, including Medicare, Medicaid, Blue Cross Blue Shield (BCBS), Medcost, United Healthcare, Cigna, Aetna, Multiplan, Humana, Choice-Health, Novant Employee Package, and Workers' Compensation. Please contact our office if you do not see your provider listed."
+    "q": "What insurance plans do you accept?",
+    "a": "We accept Medicare, North Carolina Medicaid, Blue Cross Blue Shield, MedCost, UnitedHealthcare, Cigna, Aetna, Humana, MultiPlan, and Workers' Compensation. Coverage varies by specific plan, so please contact our office to confirm your benefits prior to your visit."
   },
   {
-    q: "Are there any hidden fees or facility charges?",
-    a: "Absolutely not. Unlike hospital-affiliated pain centers, Amara Pain & Spine is a private, independent clinic. We charge one flat, affordable office visit fee and never charge facility fees, keeping your out-of-pocket costs exceptionally low."
+    "q": "Are there hospital facility fees at Amara Pain & Spine?",
+    "a": "No. Amara Pain & Spine is an independent, physician-owned practice. We perform consultations and procedures in our office setting, so you are not billed a hospital facility fee."
   },
   {
-    q: "What should I bring to my first appointment?",
-    a: "Please bring a valid government-issued ID, your insurance card, a list of your current medications, and any recent imaging reports or discs (such as MRI, CT, or X-ray scans) related to your pain condition. You can also print and fill out our New Patient Intake Packet in advance to save time."
+    "q": "What should I bring to my first appointment?",
+    "a": "Please bring a government-issued photo ID, your current insurance card, a list of current medications, and any recent imaging reports or discs (such as MRI, CT, or X-ray) related to your condition."
   },
   {
-    q: "How do you ensure treatments are safe and precise?",
-    a: "All of our interventional procedures, such as epidural injections and nerve blocks, are performed under high-definition fluoroscopy (real-time X-ray guidance) or ultrasound. This ensures the medication is delivered precisely to the exact millimeter needed for maximum safety and efficacy."
+    "q": "How are interventional procedures performed safely?",
+    "a": "Procedures such as epidural steroid injections and nerve blocks are performed using real-time fluoroscopy (X-ray guidance) or ultrasound to verify target anatomy and needle placement before medication is administered."
   }
 ];
