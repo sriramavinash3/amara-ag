@@ -61,7 +61,7 @@ export default function CmsLogin() {
   return (
     <main className="cms-login-root min-h-screen w-full bg-slate-100 flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
-        <Card variant="white" padding="lg" className="border-slate-200 shadow-2xl">
+        <Card variant="white" padding="lg" className="cms-card border-slate-200 shadow-2xl">
           <div className="flex items-center gap-3">
             <div className="h-11 w-11 rounded-xl bg-cyan-50 border border-cyan-200 flex items-center justify-center">
               <ShieldCheck className="h-6 w-6 text-cyan-700" />
@@ -109,7 +109,7 @@ export default function CmsLogin() {
               </div>
             )}
 
-            <Button type="submit" variant="primary" className="w-full" icon={LogIn} disabled={submitting}>
+            <Button type="submit" variant="primary" className="cms-primary-button w-full" icon={LogIn} disabled={submitting}>
               {submitting ? 'Signing in…' : 'Sign in securely'}
             </Button>
           </form>
