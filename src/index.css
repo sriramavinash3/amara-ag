@@ -160,3 +160,68 @@ html.lenis body {
   filter: blur(0);
 }
 
+
+/* CMS isolation: the publishing console uses a stable light UI independent of the public-site theme. */
+.cms-app-shell,
+.cms-app-shell * {
+  box-sizing: border-box;
+}
+
+.cms-app-shell {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #0f172a;
+}
+
+.cms-login-root,
+.cms-admin-root {
+  color: #0f172a;
+  font-family: var(--font-sans);
+}
+
+.cms-admin-root input,
+.cms-admin-root textarea,
+.cms-admin-root select,
+.cms-login-root input {
+  color: #0f172a;
+  background-color: #ffffff;
+  -webkit-text-fill-color: #0f172a;
+}
+
+.cms-admin-root input::placeholder,
+.cms-admin-root textarea::placeholder,
+.cms-login-root input::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.cms-admin-root input:disabled,
+.cms-admin-root textarea:disabled,
+.cms-admin-root select:disabled {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+.cms-admin-root button,
+.cms-login-root button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cms-admin-root h1,
+.cms-admin-root h2,
+.cms-admin-root h3,
+.cms-login-root h1 {
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 767px) {
+  .cms-admin-root {
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+
+  .cms-admin-root .grid {
+    min-width: 0;
+  }
+}
