@@ -44,11 +44,23 @@ export default function BlogAdmin() {
   }, [navigate]);
 
   useEffect(() => {
-    refresh().catch(() => {
-      setAuthenticated(false);
-      navigate('/cms/login', { replace: true });
-    }).finally(() => setLoading(false));
+    let active = true;
+    Promise.resolve()
+      .then(() => refresh())
+      .catch(() => {
+        if (active) {
+          setAuthenticated(false);
+          navigate('/cms/login', { replace: true });
+        }
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
   }, [refresh, navigate]);
+
 
   const setField = (name,value) => setForm((current) => ({ ...current, [name]: value }));
 

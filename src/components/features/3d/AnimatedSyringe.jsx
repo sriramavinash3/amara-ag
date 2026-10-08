@@ -15,14 +15,14 @@ export function AnimatedSyringe({ scrollYProgress }) {
 
       // 1. Scale Animation
       // Starts massive in the hero, shrinks for content, grows at the end.
-      let scale = 2.5;
+      let scale;
       if (p < 0.2) scale = 2.5 - (p / 0.2) * 1.5; // Shrink to 1.0
       else if (p > 0.8) scale = 1.0 + ((p - 0.8) / 0.2) * 1.5; // Grow to 2.5
       else scale = 1.0;
 
       // 2. Position Animation (Y-axis vertical movement and X-axis shifting)
-      let yPos = 0;
-      let xPos = 0;
+      let yPos;
+      let xPos;
       if (p < 0.3) {
         yPos = -(p / 0.3) * 2;
         xPos = (p / 0.3) * 3;

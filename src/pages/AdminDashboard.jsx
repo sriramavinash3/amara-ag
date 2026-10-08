@@ -1,114 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useAppointment } from '../context/AppointmentContext';
+import React, { useState } from 'react';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import { 
-  Users, UserCheck, Calendar, Phone, Activity, ArrowRight, CheckCircle2, 
-  Clock, Trash2, ShieldAlert, TrendingUp, HelpCircle, Eye 
+  Users, Calendar, Phone, Trash2, TrendingUp 
 } from 'lucide-react';
 import '../styles/skeuomorphic.css';
 
 export default function AdminDashboard() {
-  const [leads, setLeads] = useState([]);
-  const [selectedLead, setSelectedLead] = useState(null);
-
-  // Pre-populate mock leads if localStorage is empty to show a working dashboard immediately
-  const ensureMockLeads = () => {
-    const existing = localStorage.getItem('APS_LEADS');
-    if (!existing || JSON.parse(existing).length === 0) {
-      const mockInitialLeads = [
-        {
-          id: 'APS-834291',
-          type: 'appointment',
-          dateCreated: new Date(Date.now() - 3600000 * 2).toISOString(), // 2 hours ago
-          status: 'New',
-          condition: 'Sciatica Treatment',
-          treatment: 'Epidural Injections',
-          provider: 'Dr. Ashvin K. Amara, MD',
-          appointmentDate: '2026-06-29',
-          appointmentTime: '10:30 AM',
-          patient: {
-            firstName: 'Rebecca',
-            lastName: 'Miller',
-            email: 'rebecca.miller@example.com',
-            phone: '704-555-0144',
-            dob: '1982-08-14',
-            insurance: 'Blue Cross Blue Shield (BCBS)',
-            comments: 'Experiencing severe shooting pain down my left leg for 3 weeks. OTC pain relievers are not helping.'
-          }
-        },
-        {
-          id: 'APS-294018',
-          type: 'contact',
-          dateCreated: new Date(Date.now() - 3600000 * 24).toISOString(), // 1 day ago
-          status: 'Contacted',
-          condition: 'N/A',
-          treatment: 'N/A',
-          provider: 'N/A',
-          appointmentDate: 'N/A',
-          appointmentTime: 'N/A',
-          patient: {
-            firstName: 'David',
-            lastName: 'Chen',
-            email: 'david.chen@example.com',
-            phone: '704-555-0211',
-            dob: 'N/A',
-            insurance: 'N/A',
-            comments: '[Subject: Insurance & Billing Question] Do you accept Cigna Novant Employee Packages for trigger point injections?'
-          }
-        },
-        {
-          id: 'APS-924810',
-          type: 'appointment',
-          dateCreated: new Date(Date.now() - 3600000 * 48).toISOString(), // 2 days ago
-          status: 'Consultation Scheduled',
-          condition: 'Knee Pain & Leg Pain',
-          treatment: 'Regenerative Treatments',
-          provider: 'Dr. Ashvin K. Amara, MD',
-          appointmentDate: '2026-07-02',
-          appointmentTime: '01:30 PM',
-          patient: {
-            firstName: 'Marcus',
-            lastName: 'Johnson',
-            email: 'marcus.j@example.com',
-            phone: '704-555-0192',
-            dob: '1975-04-20',
-            insurance: 'Medicare Part B',
-            comments: 'Interested in PRP therapies for moderate knee osteoarthritis. I want to avoid knee replacement surgery.'
-          }
-        },
-        {
-          id: 'APS-104928',
-          type: 'appointment',
-          dateCreated: new Date(Date.now() - 3600000 * 120).toISOString(), // 5 days ago
-          status: 'Converted',
-          condition: 'Back Pain & Leg Pain',
-          treatment: 'Radiofrequency Ablation (RFA)',
-          provider: 'Dr. Ashvin K. Amara, MD',
-          appointmentDate: '2026-06-24',
-          appointmentTime: '09:00 AM',
-          patient: {
-            firstName: 'Eleanor',
-            lastName: 'Vance',
-            email: 'eleanor.v@example.com',
-            phone: '704-555-0187',
-            dob: '1959-11-03',
-            insurance: 'United Healthcare',
-            comments: 'Had diagnostic block done last week with 80% relief. Scheduling long-term RFA ablation.'
-          }
-        }
-      ];
-      localStorage.setItem('APS_LEADS', JSON.stringify(mockInitialLeads));
-      return mockInitialLeads;
+  const [leads, setLeads] = useState(() => {
+    if (typeof window === 'undefined') return [];
+    try {
+      const existing = localStorage.getItem('APS_LEADS');
+      return existing ? JSON.parse(existing) : [];
+    } catch {
+      return [];
     }
-    return JSON.parse(existing);
-  };
-
-  useEffect(() => {
-    const loadedLeads = ensureMockLeads();
-    setLeads(loadedLeads);
-  }, []);
+  });
+  const [selectedLead, setSelectedLead] = useState(null);
 
   const updateLeadStatus = (leadId, newStatus) => {
     const updated = leads.map(lead => {
@@ -143,18 +52,18 @@ export default function AdminDashboard() {
   const conversionRate = totalLeads > 0 ? Math.round((convertedLeads / totalLeads) * 100) : 0;
 
   return (
-    <div className="w-full relative py-16 px-4 md:px-8 max-w-7xl mx-auto space-y-8 text-left">
+    <div className="w-full relative py-10 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto space-y-6 text-left">
 
       {/* 1. HEADER */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-8 relative z-10">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#585454] pb-6 relative z-10">
         <div className="space-y-4">
-          <Badge variant="primary" className="bg-cyan-50 text-cyan-800 border border-cyan-200 font-bold uppercase tracking-widest">
+          <Badge variant="primary" className="bg-emerald-950/60 text-emerald-300 border border-emerald-800/60 font-bold uppercase tracking-widest">
             Clinical Administration
           </Badge>
-          <h1 className="text-4xl md:text-5xl font-black font-heading tracking-tight text-slate-900 leading-none">
+          <h1 className="text-[34px] md:text-[46px] font-black font-heading tracking-tight text-[#FFFFFF] leading-none">
             Lead Management Dashboard
           </h1>
-          <p className="text-lg text-slate-700 leading-relaxed max-w-3xl font-medium">
+          <p className="text-lg text-[#F0F0F0] leading-relaxed max-w-3xl font-medium">
             Track patient inquiries, consultations, and appointment requests. Drag, drop, or update lead status stages to streamline patient intake and follow-up pipelines.
           </p>
         </div>
@@ -163,43 +72,43 @@ export default function AdminDashboard() {
       {/* 2. CLINICAL METRICS CARD */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
         
-        <Card variant="white" padding="sm" className="border-slate-200/80 shadow-premium flex items-center gap-4">
-          <div className="p-3 bg-cyan-50 text-cyan-600 rounded-xl border border-cyan-100 shadow-inner">
+        <Card variant="white" padding="sm" className="border-[#585454] shadow-2xl flex items-center gap-4 p-5 rounded-2xl bg-[#454242]">
+          <div className="p-3 bg-[#363434] text-emerald-400 rounded-xl border border-[#585454] shadow-inner">
             <Users className="h-6 w-6" />
           </div>
           <div>
-            <span className="block text-slate-400 text-xs font-bold uppercase tracking-wider">Total Leads</span>
-            <span className="text-2xl font-black text-slate-900">{totalLeads}</span>
+            <span className="block text-[#D1D5DB] text-xs font-bold uppercase tracking-wider">Total Leads</span>
+            <span className="text-2xl font-black text-[#FFFFFF]">{totalLeads}</span>
           </div>
         </Card>
 
-        <Card variant="white" padding="sm" className="border-slate-200/80 shadow-premium flex items-center gap-4">
-          <div className="p-3 bg-cta-50 text-cta-600 rounded-xl border border-cta-100 shadow-inner">
+        <Card variant="white" padding="sm" className="border-[#585454] shadow-2xl flex items-center gap-4 p-5 rounded-2xl bg-[#454242]">
+          <div className="p-3 bg-[#363434] text-amber-400 rounded-xl border border-[#585454] shadow-inner">
             <Calendar className="h-6 w-6" />
           </div>
           <div>
-            <span className="block text-slate-400 text-xs font-bold uppercase tracking-wider">Appointments</span>
-            <span className="text-2xl font-black text-slate-900">{appointmentLeads}</span>
+            <span className="block text-[#D1D5DB] text-xs font-bold uppercase tracking-wider">Appointments</span>
+            <span className="text-2xl font-black text-[#FFFFFF]">{appointmentLeads}</span>
           </div>
         </Card>
 
-        <Card variant="white" padding="sm" className="border-slate-200/80 shadow-premium flex items-center gap-4">
-          <div className="p-3 bg-accent-50 text-accent-600 rounded-xl border border-accent-100 shadow-inner">
+        <Card variant="white" padding="sm" className="border-[#585454] shadow-2xl flex items-center gap-4 p-5 rounded-2xl bg-[#454242]">
+          <div className="p-3 bg-[#363434] text-emerald-400 rounded-xl border border-[#585454] shadow-inner">
             <Phone className="h-6 w-6" />
           </div>
           <div>
-            <span className="block text-slate-400 text-xs font-bold uppercase tracking-wider">General Contacts</span>
-            <span className="text-2xl font-black text-slate-900">{contactLeads}</span>
+            <span className="block text-[#D1D5DB] text-xs font-bold uppercase tracking-wider">General Contacts</span>
+            <span className="text-2xl font-black text-[#FFFFFF]">{contactLeads}</span>
           </div>
         </Card>
 
-        <Card variant="white" padding="sm" className="border-slate-200/80 shadow-premium flex items-center gap-4">
-          <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-100 shadow-inner">
+        <Card variant="white" padding="sm" className="border-[#585454] shadow-2xl flex items-center gap-4 p-5 rounded-2xl bg-[#454242]">
+          <div className="p-3 bg-[#363434] text-emerald-400 rounded-xl border border-[#585454] shadow-inner">
             <TrendingUp className="h-6 w-6" />
           </div>
           <div>
-            <span className="block text-slate-400 text-xs font-bold uppercase tracking-wider">Conversion Rate</span>
-            <span className="text-2xl font-black text-slate-900">{conversionRate}%</span>
+            <span className="block text-[#D1D5DB] text-xs font-bold uppercase tracking-wider">Conversion Rate</span>
+            <span className="text-2xl font-black text-[#FFFFFF]">{conversionRate}%</span>
           </div>
         </Card>
 
@@ -210,11 +119,11 @@ export default function AdminDashboard() {
         {stages.map((stage) => {
           const stageLeads = leads.filter(l => l.status === stage);
           return (
-            <div key={stage} className="bg-slate-100/50 border border-slate-200/80 rounded-2xl p-4 min-w-[220px] flex flex-col space-y-4 shadow-sm">
+            <div key={stage} className="bg-[#363434] border border-[#585454] rounded-2xl p-4 min-w-[220px] flex flex-col space-y-4 shadow-xl">
               {/* Column Header */}
-              <div className="flex items-center justify-between border-b border-slate-200 pb-2">
-                <span className="font-black text-xs text-slate-900 uppercase tracking-widest">{stage}</span>
-                <Badge variant="neutral" className="bg-slate-200 text-slate-755 border border-slate-250 font-bold px-2 py-0.5">{stageLeads.length}</Badge>
+              <div className="flex items-center justify-between border-b border-[#585454] pb-2">
+                <span className="font-extrabold text-xs text-[#FFFFFF] uppercase tracking-widest">{stage}</span>
+                <Badge variant="neutral" className="bg-[#323030] text-[#F0F0F0] border border-[#585454] font-bold px-2 py-0.5">{stageLeads.length}</Badge>
               </div>
 
               {/* Cards Container */}
@@ -224,32 +133,32 @@ export default function AdminDashboard() {
                     key={lead.id} 
                     variant="white" 
                     padding="sm" 
-                    className={`border-slate-200/80 shadow-premium hover:shadow-premium-hover cursor-pointer transition-all duration-200 ${
-                      selectedLead && selectedLead.id === lead.id ? 'ring-2 ring-medical-600 shadow-premium-hover' : ''
+                    className={`border-[#585454] shadow-xl hover:border-emerald-500/50 cursor-pointer transition-all duration-200 bg-[#454242] rounded-xl ${
+                      selectedLead && selectedLead.id === lead.id ? 'ring-2 ring-emerald-500' : ''
                     }`}
                     onClick={() => setSelectedLead(lead)}
                   >
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between text-[10px] text-slate-400 font-bold">
+                      <div className="flex items-center justify-between text-[10px] text-[#D1D5DB] font-bold">
                         <span>{lead.id}</span>
-                        <Badge variant={lead.type === 'appointment' ? 'secondary' : 'accent'} className={lead.type === 'appointment' ? "bg-medical-50 text-medical-805" : "bg-cyan-50 text-cyan-805"}>
+                        <Badge variant={lead.type === 'appointment' ? 'secondary' : 'accent'} className={lead.type === 'appointment' ? "bg-emerald-950/60 text-emerald-300 border border-emerald-800/60" : "bg-[#363434] text-[#F0F0F0] border border-[#585454]"}>
                           {lead.type === 'appointment' ? 'Booking' : 'Contact'}
                         </Badge>
                       </div>
-                      <h4 className="font-bold text-sm text-slate-900 leading-snug">
+                      <h4 className="font-bold text-[12px] text-[#FFFFFF] leading-snug">
                         {lead.patient.firstName} {lead.patient.lastName}
                       </h4>
                       {lead.type === 'appointment' && (
-                        <div className="text-[11px] text-slate-600 space-y-1 bg-slate-50 p-2 rounded-lg border border-slate-100">
-                          <p className="truncate"><strong>Condition:</strong> {lead.condition.split(' & ')[0]}</p>
-                          <p><strong>Date:</strong> {lead.appointmentDate}</p>
+                        <div className="text-[11px] text-[#F0F0F0] space-y-1 bg-[#323030] p-2 rounded-lg border border-[#585454] font-medium">
+                          <p className="truncate"><strong className="text-[#FFFFFF]">Condition:</strong> {lead.condition.split(' & ')[0]}</p>
+                          <p><strong className="text-[#FFFFFF]">Date:</strong> {lead.appointmentDate}</p>
                         </div>
                       )}
                     </div>
                   </Card>
                 ))}
                 {stageLeads.length === 0 && (
-                  <div className="h-full flex items-center justify-center py-10 text-xs text-slate-400 text-center border border-dashed border-slate-200 rounded-xl">
+                  <div className="h-full flex items-center justify-center py-10 text-xs text-[#D1D5DB] text-center border border-dashed border-[#585454] rounded-xl">
                     No leads at this stage
                   </div>
                 )}
@@ -261,26 +170,26 @@ export default function AdminDashboard() {
 
       {/* 4. DETAIL DRAWER / POPUP */}
       {selectedLead && (
-        <Card variant="white" padding="lg" className="border-slate-200/80 shadow-premium relative z-10 space-y-6 animate-fade-in">
-          <div className="flex justify-between items-start border-b border-slate-200 pb-4">
+        <Card variant="white" padding="lg" className="border-[#585454] shadow-2xl relative z-10 space-y-6 animate-fade-in bg-[#454242] p-8 rounded-3xl">
+          <div className="flex justify-between items-start border-b border-[#585454] pb-4">
             <div>
-              <h3 className="text-2xl font-bold font-heading text-slate-900">
+              <h3 className="text-[22px] font-bold font-heading text-[#FFFFFF]">
                 Lead Detail: {selectedLead.patient.firstName} {selectedLead.patient.lastName}
               </h3>
-              <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
+              <span className="text-xs text-[#D1D5DB] font-bold uppercase tracking-wider">
                 Received on: {new Date(selectedLead.dateCreated).toLocaleString()} &bull; ID: {selectedLead.id}
               </span>
             </div>
             <div className="flex items-center gap-2">
               <Button 
-                variant="ghost" 
-                className="text-slate-400 hover:text-rose-600 p-2 rounded-full cursor-pointer" 
+                variant="ghost-dark" 
                 onClick={() => deleteLead(selectedLead.id)}
                 title="Delete Lead"
+                className="text-[#D1D5DB] hover:text-rose-400"
               >
                 <Trash2 className="h-5 w-5" />
               </Button>
-              <Button variant="outline" size="sm" onClick={() => setSelectedLead(null)} className="text-slate-900 border-slate-350 hover:border-slate-400">
+              <Button variant="secondary" size="sm" onClick={() => setSelectedLead(null)}>
                 Close Detail
               </Button>
             </div>
@@ -290,32 +199,32 @@ export default function AdminDashboard() {
             
             {/* Patient Contacts */}
             <div className="space-y-4">
-              <h4 className="font-bold text-xs text-slate-900 uppercase tracking-widest border-b border-slate-100 pb-1">Patient Contacts</h4>
-              <ul className="space-y-2.5 text-slate-700">
-                <li><strong>Phone:</strong> <a href={`tel:${selectedLead.patient.phone}`} className="text-medical-600 font-semibold hover:underline">{selectedLead.patient.phone}</a></li>
-                <li><strong>Email:</strong> <a href={`mailto:${selectedLead.patient.email}`} className="text-medical-600 hover:underline">{selectedLead.patient.email}</a></li>
-                <li><strong>Date of Birth:</strong> {selectedLead.patient.dob}</li>
-                <li><strong>Insurance:</strong> {selectedLead.patient.insurance}</li>
+              <h4 className="font-extrabold text-[10px] text-[#FFFFFF] uppercase tracking-widest border-b border-[#585454] pb-1">Patient Contacts</h4>
+              <ul className="space-y-2.5 text-[#F0F0F0] font-medium">
+                <li><strong className="text-[#FFFFFF]">Phone:</strong> <a href={`tel:${selectedLead.patient.phone}`} className="text-emerald-400 font-bold hover:underline">{selectedLead.patient.phone}</a></li>
+                <li><strong className="text-[#FFFFFF]">Email:</strong> <a href={`mailto:${selectedLead.patient.email}`} className="text-emerald-400 font-medium hover:underline">{selectedLead.patient.email}</a></li>
+                <li><strong className="text-[#FFFFFF]">Date of Birth:</strong> {selectedLead.patient.dob}</li>
+                <li><strong className="text-[#FFFFFF]">Insurance:</strong> {selectedLead.patient.insurance}</li>
               </ul>
             </div>
 
             {/* Appointment Details */}
             {selectedLead.type === 'appointment' && (
               <div className="space-y-4">
-                <h4 className="font-bold text-xs text-slate-900 uppercase tracking-widest border-b border-slate-100 pb-1">Appointment Details</h4>
-                <ul className="space-y-2.5 text-slate-700">
-                  <li><strong>Condition:</strong> {selectedLead.condition}</li>
-                  <li><strong>Treatment:</strong> {selectedLead.treatment}</li>
-                  <li><strong>Provider:</strong> {selectedLead.provider}</li>
-                  <li><strong>Slot:</strong> {selectedLead.appointmentDate} at {selectedLead.appointmentTime}</li>
+                <h4 className="font-extrabold text-[10px] text-[#FFFFFF] uppercase tracking-widest border-b border-[#585454] pb-1">Appointment Details</h4>
+                <ul className="space-y-2.5 text-[#F0F0F0] font-medium">
+                  <li><strong className="text-[#FFFFFF]">Condition:</strong> {selectedLead.condition}</li>
+                  <li><strong className="text-[#FFFFFF]">Treatment:</strong> {selectedLead.treatment}</li>
+                  <li><strong className="text-[#FFFFFF]">Provider:</strong> {selectedLead.provider}</li>
+                  <li><strong className="text-[#FFFFFF]">Slot:</strong> {selectedLead.appointmentDate} at {selectedLead.appointmentTime}</li>
                 </ul>
               </div>
             )}
 
             {/* Comments & Message */}
             <div className="space-y-4 md:col-span-1">
-              <h4 className="font-bold text-xs text-slate-900 uppercase tracking-widest border-b border-slate-100 pb-1">Comments / Inquiries</h4>
-              <p className="text-slate-650 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs max-h-40 overflow-y-auto whitespace-pre-line shadow-inner">
+              <h4 className="font-extrabold text-[10px] text-[#FFFFFF] uppercase tracking-widest border-b border-[#585454] pb-1">Comments / Inquiries</h4>
+              <p className="text-[#F0F0F0] leading-relaxed bg-[#363434] p-4 rounded-xl border border-[#585454] text-xs max-h-40 overflow-y-auto whitespace-pre-line shadow-inner font-medium">
                 {selectedLead.patient.comments || "No comment provided."}
               </p>
             </div>
@@ -323,8 +232,8 @@ export default function AdminDashboard() {
           </div>
 
           {/* Action Stages Bar */}
-          <div className="pt-6 border-t border-slate-200 flex flex-wrap gap-3 items-center justify-between">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Update Lead Stage:</span>
+          <div className="pt-6 border-t border-[#585454] flex flex-wrap gap-3 items-center justify-between">
+            <span className="text-xs font-bold text-[#D1D5DB] uppercase tracking-wider">Update Lead Stage:</span>
             <div className="flex flex-wrap gap-2">
               {stages.map((stage) => (
                 <button
@@ -332,8 +241,8 @@ export default function AdminDashboard() {
                   onClick={() => updateLeadStatus(selectedLead.id, stage)}
                   className={`px-4 py-1.5 text-xs font-bold rounded-full transition-all duration-200 cursor-pointer ${
                     selectedLead.status === stage
-                      ? 'bg-medical-600 text-white shadow-sm'
-                      : 'bg-white hover:bg-slate-100 border border-slate-200 text-slate-800'
+                      ? 'bg-emerald-600 text-white shadow-sm border-none'
+                      : 'bg-[#363434] hover:bg-[#514E4E] border border-[#585454] text-[#F0F0F0]'
                   }`}
                 >
                   {stage}

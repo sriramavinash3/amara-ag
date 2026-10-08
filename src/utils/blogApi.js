@@ -4,9 +4,9 @@ const mapPost = (post) => ({
   ...post,
   slug: post.slug || post.id,
   date: post.date || (post.published_at ? new Date(post.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : ''),
-  featuredImageUrl: post.featuredImageUrl || post.featured_image_url || '',
-  seoTitle: post.seoTitle || post.seo_title || '',
-  seoDescription: post.seoDescription || post.seo_description || ''
+  featuredImageUrl: post.featuredImageUrl || post.featured_image_url || post.image || '',
+  seoTitle: post.seoTitle || post.seo_title || post.title || '',
+  seoDescription: post.seoDescription || post.seo_description || post.excerpt || post.shortDesc || ''
 });
 
 export async function getBlogPosts(category = '') {
@@ -18,7 +18,9 @@ export async function getBlogPosts(category = '') {
     const payload = await response.json();
     const live = (payload.posts || []).map(mapPost);
     const liveSlugs = new Set(live.map((post) => post.slug || post.id));
-    const legacyVisible = legacy.filter((post) => !liveSlugs.has(post.slug || post.id));
+    const legacyVisible = legacy.filter(
+      (post) => !liveSlugs.has(post.slug || post.id) && (!category || post.category === category)
+    );
     return [...live, ...legacyVisible];
   } catch {
     return category ? legacy.filter((post) => post.category === category) : legacy;

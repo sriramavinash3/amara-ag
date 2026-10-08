@@ -13,18 +13,18 @@ const pillars = [
 
 export default function WhyChoose() {
   return (
-    <section className="bg-mist px-6 py-28 md:px-16" id="why-amara">
-      <div className="mx-auto max-w-[1400px]">
-        <div className="mb-16 max-w-xl text-left">
+    <section className="bg-mist px-4 sm:px-6 md:px-8 py-16 md:py-20" id="why-amara">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10 max-w-xl text-left">
           <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em]" style={{ color: 'var(--color-blue)' }}>
             Why Choose Amara
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-text-dark leading-tight">
+          <h2 className="font-display text-[34px] md:text-[46px] font-bold text-text-dark leading-tight">
             Six reasons patients stay with us for years, not one visit.
           </h2>
         </div>
 
-        <div className="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 text-left">
+        <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 text-left">
           {pillars.map((p, i) => {
             const Icon = p.icon;
             return (
@@ -53,7 +53,7 @@ export default function WhyChoose() {
                 <motion.div whileHover={{ rotate: -10, scale: 1.15 }} transition={{ type: 'spring', stiffness: 300, damping: 12 }} className="inline-block">
                   <Icon size={22} style={{ color: 'var(--color-blue)' }} strokeWidth={1.8} />
                 </motion.div>
-                <h3 className="mt-4 font-display text-xl font-semibold text-text-dark">{p.title}</h3>
+                <h3 className="mt-4 font-display text-[18px] font-semibold text-text-dark">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-text-dark/70 font-light">{p.copy}</p>
               </motion.div>
             );

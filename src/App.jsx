@@ -22,6 +22,7 @@ import BlogAdmin from './pages/BlogAdmin';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Referrals from './pages/Referrals';
 import ProviderDetail from './pages/ProviderDetail';
+import NotFound from './pages/NotFound';
 import ExitIntentPopup from './components/layout/ExitIntentPopup';
 import { AppointmentProvider } from './context/AppointmentContext';
 import useScrollProgress from './hooks/useScrollProgress';
@@ -29,12 +30,31 @@ import './styles/skeuomorphic.css';
 
 function MainLayout() {
   const containerRef = useRef(null);
+  const location = useLocation();
   useScrollProgress(containerRef);
 
-  return (
-    <div ref={containerRef} className="flex flex-col min-h-screen skeuomorphic-console text-primary-800 selection:bg-medical-100 selection:text-medical-800 pb-[68px] lg:pb-0 relative">
-      {/* Removed Global Parallax Ambient Orbs to preserve dark mode integrity */}
+  // Dedicated full-screen portal layout for CMS Login
+  if (location.pathname === '/cms/login') {
+    return (
+      <Routes>
+        <Route path="/cms/login" element={<CmsLogin />} />
+      </Routes>
+    );
+  }
 
+  // Dedicated administration portal layout for Blog CMS Management
+  if (location.pathname === '/admin/blog') {
+    return (
+      <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-cyan-100 selection:text-cyan-900">
+        <Routes>
+          <Route path="/admin/blog" element={<BlogAdmin />} />
+        </Routes>
+      </div>
+    );
+  }
+
+  return (
+    <div ref={containerRef} className="flex flex-col min-h-screen bg-[#3A3838] text-[#F0F0F0] selection:bg-emerald-950 selection:text-emerald-300 pb-[68px] lg:pb-0 relative">
       {/* Main Navigation Header */}
       <Header />
 
@@ -67,8 +87,6 @@ function MainLayout() {
           
           {/* Administrative Lead dashboard */}
           <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/cms/login" element={<CmsLogin />} />
-          <Route path="/admin/blog" element={<BlogAdmin />} />
           
           {/* Compliance documents */}
           <Route path="/privacy" element={<PrivacyPolicy />} />
@@ -78,6 +96,9 @@ function MainLayout() {
 
           {/* Dynamic Provider Detail Pages */}
           <Route path="/providers/:id" element={<ProviderDetail />} />
+
+          {/* 404 Catch-All Route */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 

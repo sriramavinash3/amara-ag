@@ -12,22 +12,22 @@ const writtenReviews = [
   { 
     name: 'Faithful Watson', 
     rating: 5, 
-    text: "Dr. Amara is very knowledgeable and informative! From the new patient standpoint to now a regular patient, he's been nothing short of amazing. He takes the time to LISTEN to his patients." 
+    text: "Amara is very knowledgeable and informative! From the new patient standpoint to now a regular patient, he's been nothing short of amazing. He takes the time to LISTEN to his patients." 
   },
   { 
     name: 'Patricia Robinson', 
     rating: 5, 
-    text: "Dr. Amara has made my experience with him a very pleasant one. He listens to me and understands what I’m going through. His staff is very professional and supportive." 
+    text: "Amara has made my experience with him a very pleasant one. He listens to me and understands what I’m going through. His staff is very professional and supportive." 
   },
   { 
     name: 'Joseph Tillman', 
     rating: 5, 
-    text: "Dr. Amara is a good doctor who listens to all your concerns and understands them to the fullest. He's very professional and takes care of all his clients with his procedures." 
+    text: "Amara is a good doctor who listens to all your concerns and understands them to the fullest. He's very professional and takes care of all his clients with his procedures." 
   },
   { 
     name: 'Telphine Williams', 
     rating: 5, 
-    text: "The doctor is very informative and listens to the patients concerns. The staff is very professional and friendly at the same time. I would definitely refer Dr. Amara to anyone." 
+    text: "The doctor is very informative and listens to the patients concerns. The staff is very professional and friendly at the same time. I would definitely refer Amara to anyone." 
   }
 ];
 
@@ -37,13 +37,13 @@ export default function Testimonials() {
   const [modalVideoId, setModalVideoId] = useState(null);
 
   return (
-    <section className="bg-mist px-6 py-28 md:px-16" id="testimonials">
-      <div className="mx-auto max-w-[1400px]">
-        <div className="mb-14 max-w-xl text-left">
-          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em]" style={{ color: 'var(--color-blue)' }}>
+    <section className="bg-[#3A3838] py-12 md:py-16 m-0 border-t border-[#585454]" id="testimonials">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+        <div className="mb-8 max-w-xl text-left">
+          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-emerald-400 font-bold">
             Patient Success Stories
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-text-dark leading-tight">
+          <h2 className="font-display text-[32px] sm:text-[38px] md:text-[46px] font-bold text-[#FFFFFF] leading-tight">
             Real patients, real relief.
           </h2>
         </div>
@@ -58,10 +58,10 @@ export default function Testimonials() {
               }}
               initial={{ 
                 opacity: 0, 
-                x: i === 0 ? -120 : i === 2 ? 120 : 0, 
-                y: i === 1 ? 70 : 40,
-                rotate: i === 0 ? -4 : i === 2 ? 4 : 0,
-                scale: 0.88 
+                x: i === 0 ? -80 : i === 2 ? 80 : 0, 
+                y: i === 1 ? 50 : 30,
+                rotate: i === 0 ? -3 : i === 2 ? 3 : 0,
+                scale: 0.9 
               }}
               whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
               viewport={{ once: true, margin: '-80px' }}
@@ -73,30 +73,28 @@ export default function Testimonials() {
                 delay: i * 0.15 
               }}
               whileHover={{ scale: 1.03 }}
-              className="group relative aspect-[4/5] overflow-hidden rounded-2xl text-left cursor-pointer border-none shadow-md"
-              style={{ background: 'linear-gradient(155deg, var(--color-blue), var(--color-ink-2))' }}
+              className="group relative aspect-[4/5] overflow-hidden rounded-2xl text-left cursor-pointer border border-[#585454] shadow-lg bg-[#454242]"
             >
               <img
                 src={`https://img.youtube.com/vi/${s.embedId}/hqdefault.jpg`}
                 alt={s.name}
-                className="absolute inset-0 w-full h-full object-cover opacity-45 group-hover:opacity-65 transition-all duration-500"
+                className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-95 transition-all duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#323030]/95 via-[#323030]/40 to-transparent" />
               <motion.div
                 className="absolute inset-0"
-                initial={{ scale: 1 }}
                 whileHover={{ scale: 1.08 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                style={{ background: 'radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,0.08), transparent 70%)' }}
+                style={{ background: 'radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,0.05), transparent 70%)' }}
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 shadow-inner">
-                  <Play size={20} color="white" fill="white" />
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-600/90 text-white backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 shadow-lg">
+                  <Play size={20} className="fill-current" />
                 </span>
               </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-                <p className="font-display text-lg text-white font-bold">{s.name}</p>
-                <p className="text-xs text-white/70">{s.condition}</p>
+              <div className="absolute inset-x-0 bottom-0 p-5 z-20">
+                <p className="font-heading text-lg text-[#FFFFFF] font-extrabold">{s.name}</p>
+                <p className="text-xs text-[#D1D5DB] font-bold">{s.condition}</p>
               </div>
             </motion.button>
           ))}
@@ -110,32 +108,29 @@ export default function Testimonials() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4 }}
-            className="mx-auto mt-10 max-w-2xl text-center font-display text-2xl italic font-medium"
-            style={{ color: 'var(--color-text-dark)' }}
+            className="mx-auto mt-10 max-w-2xl text-center font-heading text-xl sm:text-2xl italic font-medium text-[#FFFFFF]"
           >
-            <Quote size={22} className="mx-auto mb-3 opacity-30" />
+            <Quote size={22} className="mx-auto mb-3 text-emerald-400 opacity-80" />
             "{videoStories[activeTab].quote}"
           </motion.blockquote>
         </AnimatePresence>
 
         {/* Written reviews carousel */}
-        <div className="mt-20 flex items-center justify-between">
-          <p className="font-mono text-[11px] uppercase tracking-[0.28em] font-bold text-left" style={{ color: 'var(--color-blue)' }}>
+        <div className="mt-12 flex items-center justify-between">
+          <p className="font-mono text-[11px] uppercase tracking-[0.28em] font-bold text-left text-emerald-400">
             Google Reviews · 4.9 Star average
           </p>
           <div className="flex gap-2">
             <button
               onClick={() => setReviewIndex((i) => (i - 1 + writtenReviews.length) % writtenReviews.length)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-black/5"
-              style={{ borderColor: 'rgba(10,93,155,0.25)' }}
+              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-[#514E4E] text-emerald-300 border-[#585454] bg-[#454242]"
               aria-label="Previous review"
             >
               <ChevronLeft size={16} />
             </button>
             <button
               onClick={() => setReviewIndex((i) => (i + 1) % writtenReviews.length)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-black/5"
-              style={{ borderColor: 'rgba(10,93,155,0.25)' }}
+              className="flex h-9 w-9 items-center justify-center rounded-full border cursor-pointer hover:bg-[#514E4E] text-emerald-300 border-[#585454] bg-[#454242]"
               aria-label="Next review"
             >
               <ChevronRight size={16} />
@@ -154,16 +149,16 @@ export default function Testimonials() {
             {writtenReviews.map((r) => (
               <div
                 key={r.name}
-                className="rounded-xl border bg-white/60 p-5 backdrop-blur shadow-sm shrink-0"
-                style={{ width: `${100 / writtenReviews.length}%`, borderColor: 'rgba(10,93,155,0.1)' }}
+                className="rounded-2xl border border-[#585454] bg-[#454242] p-6 shadow-lg hover:border-emerald-500/50 transition-all duration-300 shrink-0"
+                style={{ width: `${100 / writtenReviews.length}%` }}
               >
                 <div className="mb-2 flex gap-0.5">
                   {Array.from({ length: r.rating }).map((_, i) => (
-                    <Star key={i} size={13} fill="var(--color-coral)" color="var(--color-coral)" />
+                    <Star key={i} size={15} fill="#eab308" color="#eab308" />
                   ))}
                 </div>
-                <p className="text-sm font-light leading-relaxed" style={{ color: 'rgba(27,27,27,0.75)' }}>"{r.text}"</p>
-                <p className="mt-3 text-xs font-semibold" style={{ color: 'var(--color-text-dark)' }}>{r.name}</p>
+                <p className="text-sm font-normal leading-relaxed text-[#F0F0F0]">"{r.text}"</p>
+                <p className="mt-3 text-xs font-bold text-[#FFFFFF]">{r.name}</p>
               </div>
             ))}
           </motion.div>
@@ -177,17 +172,17 @@ export default function Testimonials() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#3A3838]/85 backdrop-blur-md p-4"
           >
             <motion.div 
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
-              className="relative w-full max-w-3xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+              className="relative w-full max-w-3xl aspect-video bg-[#323030] border border-[#585454] rounded-2xl overflow-hidden shadow-2xl"
             >
               <button 
                 onClick={() => setModalVideoId(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-black/40 hover:bg-black/80 text-white rounded-full transition-colors cursor-pointer border-none"
+                className="absolute top-4 right-4 z-10 p-2 bg-[#323030]/80 hover:bg-[#323030] text-[#FFFFFF] rounded-full transition-colors cursor-pointer border border-[#585454]"
               >
                 <X size={20} />
               </button>

@@ -9,69 +9,64 @@ const script = [
   { from: 'faq', text: 'At Amara Pain & Spine, we believe in complete financial transparency. We charge one flat office fee and zero hospital facility fees. We accept Medicare, Medicaid, Blue Cross Blue Shield, United, Cigna, and Aetna.' },
 ];
 
-function useTypedScript(active) {
+export default function AIAssistant() {
+  const [runKey, setRunKey] = useState(0);
   const [visible, setVisible] = useState(0);
+
   useEffect(() => {
-    if (!active) return;
-    setVisible(0);
+    if (runKey === 0) return;
     const id = setInterval(() => {
       setVisible((v) => (v < script.length ? v + 1 : v));
     }, 1500);
     return () => clearInterval(id);
-  }, [active]);
-  return visible;
-}
+  }, [runKey]);
 
-export default function AIAssistant() {
-  const [active, setActive] = useState(false);
-  const visible = useTypedScript(active);
+  const handleStart = () => {
+    setVisible(1);
+    setRunKey((k) => k + 1);
+  };
 
   return (
-    <section className="bg-mist px-6 py-28 md:px-16" id="faq-assistant">
-      <div className="mx-auto grid max-w-[1400px] gap-14 md:grid-cols-2 md:items-center">
+    <section className="bg-[#3A3838] py-12 md:py-16 m-0 border-t border-[#585454]" id="faq-assistant">
+      <div className="mx-auto grid max-w-7xl px-4 sm:px-6 md:px-8 gap-8 md:gap-10 md:grid-cols-2 md:items-center">
         <div className="text-left">
-          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em]" style={{ color: 'var(--color-blue)' }}>
+          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-emerald-400 font-bold">
             Interactive FAQ System
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-text-dark leading-tight">
-            Answers before your first appointment.
+          <h2 className="font-heading text-[32px] sm:text-[38px] md:text-[44px] font-bold text-[#FFFFFF] leading-tight">
+            Answers Before Your First Appointment
           </h2>
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-text-dark/70 font-light">
-            Our interactive FAQ system helps you understand what might be
-            going on, checks insurance coverage, and points you toward the
-            right specialist — available any time, day or night.
+          <p className="mt-5 max-w-md text-[17px] sm:text-[18px] leading-relaxed text-[#F0F0F0] font-normal">
+            Our interactive FAQ system helps you understand symptoms, check insurance coverage, and points you toward the right specialist details — available any time.
           </p>
 
-          <ul className="mt-6 space-y-2 text-sm text-text-dark/60">
+          <ul className="mt-6 space-y-2.5 text-sm text-[#D1D5DB] font-medium">
             <li>· Educational symptom matching guidelines</li>
             <li>· Insurance, clinic, and treatment FAQs</li>
             <li>· Appointment suggestions matched to your case</li>
           </ul>
 
           <button
-            onClick={() => setActive(true)}
-            className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white cursor-pointer hover:shadow-lg transition-shadow border-none"
-            style={{ background: 'var(--color-blue)' }}
+            onClick={handleStart}
+            className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white cursor-pointer hover:bg-emerald-500 transition-all border-none bg-emerald-600 shadow-md"
           >
             <HelpCircle size={16} />
-            {active ? 'Replay demo' : 'See it in action'}
+            {runKey > 0 ? 'Replay Demo' : 'See It in Action'}
           </button>
         </div>
 
         <div
-          className="rounded-2xl border p-5 shadow-xl text-left"
-          style={{ borderColor: 'rgba(10,93,155,0.12)', background: 'white' }}
+          className="rounded-2xl border border-[#585454] p-5 shadow-xl text-left bg-[#454242]"
         >
-          <div className="mb-4 flex items-center gap-2 border-b pb-4" style={{ borderColor: 'rgba(10,93,155,0.08)' }}>
+          <div className="mb-4 flex items-center gap-2 border-b border-[#585454] pb-4">
             <span
-              className="flex h-8 w-8 items-center justify-center rounded-full"
-              style={{ background: 'linear-gradient(135deg, var(--color-blue), var(--color-teal))' }}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600"
             >
               <HelpCircle size={15} color="white" />
             </span>
             <div>
-              <p className="text-sm font-semibold text-text-dark">Amara FAQ Guide</p>
-              <p className="text-[11px] text-emerald-600 font-semibold">Online</p>
+              <p className="text-sm font-bold text-[#FFFFFF]">Amara FAQ Assistant</p>
+              <p className="text-[11px] text-emerald-300 font-bold">Online &amp; Active</p>
             </div>
           </div>
 
@@ -83,19 +78,19 @@ export default function AIAssistant() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
-                  className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${m.from === 'user' ? 'self-end text-white' : 'self-start'}`}
+                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm ${m.from === 'user' ? 'self-end text-white' : 'self-start border border-[#585454]'}`}
                   style={{
-                    background: m.from === 'user' ? 'var(--color-blue)' : 'var(--color-mist)',
-                    color: m.from === 'user' ? 'white' : 'var(--color-text-dark)',
+                    background: m.from === 'user' ? '#059669' : '#363434',
+                    color: '#FFFFFF',
                   }}
                 >
                   {m.text}
                 </motion.div>
               ))}
             </AnimatePresence>
-            {!active && (
-              <div className="flex flex-1 items-center justify-center text-sm" style={{ color: 'rgba(27,27,27,0.35)' }}>
-                Click "See it in action" to preview a conversation
+            {runKey === 0 && (
+              <div className="flex flex-1 items-center justify-center text-sm text-[#D1D5DB] font-medium">
+                Click "See It in Action" to preview a conversation
               </div>
             )}
           </div>

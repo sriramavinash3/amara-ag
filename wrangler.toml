@@ -6,8 +6,7 @@ compatibility_date = "2026-07-30"
 # Specifies the directory containing the static assets to be deployed.
 pages_build_output_dir = "./dist"
 
-# --- Option 2: Cloudflare Workers with Assets (Alternative) ---
-# If you want to use the unified Workers Assets model, uncomment the section below
-# and comment out 'pages_build_output_dir' above.
-# [assets]
-# directory = "./dist"
+[[d1_databases]]
+binding = "BLOG_DB"
+database_name = "amara-blog"
+database_id = "ed854037-27f6-46de-9fad-8241e38a5abc"

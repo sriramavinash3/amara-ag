@@ -23,25 +23,38 @@ async function hmac(value, secret) {
 function parseCookies(request) {
   const raw = request.headers.get('Cookie') || '';
   return Object.fromEntries(
-    raw.split(';').map((part) => part.trim().split('=').map(decodeURIComponent)).filter(([k]) => k)
+    raw
+      .split(';')
+      .map((part) => {
+        const idx = part.indexOf('=');
+        return idx === -1
+          ? []
+          : [
+              part.slice(0, idx).trim(),
+              decodeURIComponent(part.slice(idx + 1).trim()),
+            ];
+      })
+      .filter(([key]) => key)
   );
 }
 
 export async function verifyUsername(username, env) {
   if (!env.ADMIN_USERNAME_SHA256) return false;
+  const target = env.ADMIN_USERNAME_SHA256.trim().toLowerCase();
   const actual = await digest(username);
-  if (actual.length !== env.ADMIN_USERNAME_SHA256.length) return false;
+  if (actual.length !== target.length) return false;
   let diff = 0;
-  for (let i = 0; i < actual.length; i += 1) diff |= actual.charCodeAt(i) ^ env.ADMIN_USERNAME_SHA256.charCodeAt(i);
+  for (let i = 0; i < actual.length; i += 1) diff |= actual.charCodeAt(i) ^ target.charCodeAt(i);
   return diff === 0;
 }
 
 export async function verifyPassword(password, env) {
   if (!env.ADMIN_PASSWORD_SHA256) return false;
+  const target = env.ADMIN_PASSWORD_SHA256.trim().toLowerCase();
   const actual = await digest(password);
-  if (actual.length !== env.ADMIN_PASSWORD_SHA256.length) return false;
+  if (actual.length !== target.length) return false;
   let diff = 0;
-  for (let i = 0; i < actual.length; i += 1) diff |= actual.charCodeAt(i) ^ env.ADMIN_PASSWORD_SHA256.charCodeAt(i);
+  for (let i = 0; i < actual.length; i += 1) diff |= actual.charCodeAt(i) ^ target.charCodeAt(i);
   return diff === 0;
 }
 

@@ -1,31 +1,45 @@
 export const colors = {
+  dark: {
+    bgPrimary: '#3A3838',
+    bgSecondary: '#323030',
+    bgSection: '#363434',
+    bgCard: '#454242',
+    bgElevated: '#514E4E',
+    border: '#585454',
+    borderSubtle: '#484444',
+  },
+  text: {
+    primary: '#FFFFFF',
+    secondary: '#F0F0F0',
+    muted: '#D1D5DB',
+  },
+  amara: {
+    green: '#059669',
+    greenHover: '#047857',
+    greenLight: '#10b981',
+    greenTint: 'rgba(5, 150, 105, 0.2)',
+  },
   primary: {
-    900: '#0f172a',
-    800: '#1e293b',
-    700: '#334155',
-    600: '#475569',
+    900: '#FFFFFF',
+    800: '#FFFFFF',
+    700: '#F0F0F0',
+    600: '#D1D5DB',
   },
   medical: {
-    700: '#0369a1',
-    600: '#0284c7',
-    500: '#0ea5e9',
-    100: '#e0f2fe',
-    50: '#f0f9ff',
-  },
-  accent: {
-    700: '#0f766e',
-    600: '#0d9488',
-    500: '#14b8a6',
-    100: '#ccfbf1',
-    50: '#f0fdfa',
+    700: '#047857',
+    600: '#059669',
+    500: '#10b981',
+    100: 'rgba(5, 150, 105, 0.2)',
+    50: 'rgba(5, 150, 105, 0.1)',
   },
   cta: {
-    700: '#c2410c',
-    600: '#ea580c',
-    500: '#f97316',
-    100: '#ffedd5',
+    700: '#047857',
+    600: '#059669',
+    500: '#10b981',
+    100: 'rgba(5, 150, 105, 0.2)',
   },
   bg: {
-    slate: '#f8fafc',
+    slate: '#3A3838',
   }
 };
+

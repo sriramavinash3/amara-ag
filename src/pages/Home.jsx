@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
-import SyringeJourney from '../components/home/SyringeJourney';
+import useSEO from '../hooks/useSEO';
 import Hero from '../components/home/Hero';
 import InsuranceMarquee from '../components/home/InsuranceMarquee';
-import Conditions from '../components/home/Conditions';
-import Treatments from '../components/home/Treatments';
-import WhyChoose from '../components/home/WhyChoose';
+import WhyChooseAndConditions from '../components/home/WhyChooseAndConditions';
 import Providers from '../components/home/Providers';
 import Testimonials from '../components/home/Testimonials';
 import AppointmentJourney from '../components/home/AppointmentJourney';
@@ -15,6 +13,13 @@ import Blog from '../components/home/Blog';
 import FinalCTA from '../components/home/FinalCTA';
 
 export default function Home() {
+  useSEO({
+    title: "Amara Pain | Advanced Interventional Pain Specialists",
+    description: "Charlotte's leading interventional specialists delivering advanced, evidence-based pain relief built around your body, your diagnostics, and your life outside of the clinic.",
+    url: "https://www.amarapain.com/",
+    image: "https://www.amarapain.com/images/og-image.png"
+  });
+
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
@@ -29,81 +34,17 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-ink">
-      <SyringeJourney>
-        {/* 1. Book App */}
-        <Hero />
-        <InsuranceMarquee />
-
-        {/* Transition Dark -> Light */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #0d1a2c 0%, #f5f7fa 100%)' }}
-        />
-
-        {/* 2. Testimonial */}
-        <div className="relative z-10">
-          <Testimonials />
-        </div>
-
-        {/* Transition Light -> Dark */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #f5f7fa 0%, #060d17 100%)' }}
-        />
-
-        {/* 3. 5 steps for your 1st Visit */}
-        <AppointmentJourney />
-
-        {/* Transition Dark -> Light */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #060d17 0%, #f5f7fa 100%)' }}
-        />
-
-        {/* 4. Ans for your [FAQs] */}
-        <div className="relative z-10">
-          <AIAssistant />
-        </div>
-
-        {/* Transition Light -> Dark */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #f5f7fa 0%, #0c1422 100%)' }}
-        />
-
-        {/* 5. Insurance */}
-        <InsuranceVerification />
-
-        {/* 6. Pain Conditions */}
-        <Conditions />
-
-        {/* Transition Dark -> Light */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #0a1120 0%, #f5f7fa 100%)' }}
-        />
-
-        {/* 7. 6 Reasons */}
-        <div className="relative z-10">
-          <WhyChoose />
-        </div>
-
-        {/* Transition Light -> Dark */}
-        <div
-          aria-hidden="true"
-          className="relative z-10"
-          style={{ height: '10rem', background: 'linear-gradient(180deg, #f5f7fa 0%, #0c1422 100%)' }}
-        />
-
-        {/* 8. Doctor */}
-        <Providers />
-      </SyringeJourney>
+    <main className="bg-[#3A3838] min-h-screen text-[#F0F0F0]">
+      <Hero />
+      <InsuranceMarquee />
+      <Testimonials />
+      <AppointmentJourney />
+      <AIAssistant />
+      <InsuranceVerification />
+      <WhyChooseAndConditions />
+      <Providers />
+      <Blog />
+      <FinalCTA />
     </main>
   );
 }

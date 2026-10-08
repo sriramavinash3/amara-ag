@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useGLTF } from '@react-three/drei';
 
 export function SyringeModel(props) {
-  const { nodes, materials } = useGLTF('/images/medical_syringe.glb');
+  const { nodes } = useGLTF('/images/medical_syringe.glb');
   
   // Since we don't know the exact structure of the .glb nodes, 
   // we will render the entire scene, but we can apply custom materials if needed.
