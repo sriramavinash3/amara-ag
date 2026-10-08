@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import {
@@ -15,9 +16,8 @@ describe('Blog CMS Production Hardening Suite', () => {
     const expectedUserHash = '7f453b7105e475e12cc0ebb06fc1e61bb81f88d19295c21543456dad9ef08170';
     const expectedPassHash = '78dd173fdd55f0434db11e47c80231e8535d92fff4a8f45d7c8b16c47ad804fe';
 
-    // Verify hash formats are valid 64-char hex strings
-    expect(expectedUserHash).toMatch(/^[a-f0-9]{64}$/);
-    expect(expectedPassHash).toMatch(/^[a-f0-9]{64}$/);
+    assert.match(expectedUserHash, /^[a-f0-9]{64}$/);
+    assert.match(expectedPassHash, /^[a-f0-9]{64}$/);
   });
 
   it('2. Verifies authentication functions timing-safe equality and secret handling', async () => {
@@ -32,49 +32,49 @@ describe('Blog CMS Production Hardening Suite', () => {
       ADMIN_SESSION_SECRET: 'super-secure-cryptographic-random-session-secret-64-bytes-long'
     };
 
-    expect(await verifyUsername(testUser, testEnv)).toBe(true);
-    expect(await verifyPassword(testPass, testEnv)).toBe(true);
+    assert.strictEqual(await verifyUsername(testUser, testEnv), true);
+    assert.strictEqual(await verifyPassword(testPass, testEnv), true);
 
-    expect(await verifyUsername(testUser, { ADMIN_USERNAME_SHA256: testUserHash.toUpperCase() })).toBe(true);
-    expect(await verifyPassword(testPass, { ADMIN_PASSWORD_SHA256: testPassHash.toUpperCase() })).toBe(true);
+    assert.strictEqual(await verifyUsername(testUser, { ADMIN_USERNAME_SHA256: testUserHash.toUpperCase() }), true);
+    assert.strictEqual(await verifyPassword(testPass, { ADMIN_PASSWORD_SHA256: testPassHash.toUpperCase() }), true);
 
-    expect(await verifyUsername('wronguser', testEnv)).toBe(false);
-    expect(await verifyPassword('wrongpass', testEnv)).toBe(false);
-    expect(await verifyUsername('', testEnv)).toBe(false);
-    expect(await verifyPassword('', testEnv)).toBe(false);
+    assert.strictEqual(await verifyUsername('wronguser', testEnv), false);
+    assert.strictEqual(await verifyPassword('wrongpass', testEnv), false);
+    assert.strictEqual(await verifyUsername('', testEnv), false);
+    assert.strictEqual(await verifyPassword('', testEnv), false);
 
-    expect(await verifyUsername(testUser, {})).toBe(false);
-    expect(await verifyPassword(testPass, {})).toBe(false);
+    assert.strictEqual(await verifyUsername(testUser, {}), false);
+    assert.strictEqual(await verifyPassword(testPass, {}), false);
 
     const session = await createSession(testEnv);
-    expect(session.value.includes('.')).toBe(true);
-    expect(session.maxAge).toBe(8 * 3600);
+    assert.ok(session.value.includes('.'));
+    assert.strictEqual(session.maxAge, 8 * 3600);
 
     const reqWithSession = {
       headers: new Headers({
         Cookie: `amara_admin_session=${encodeURIComponent(session.value)}; other=123`
       })
     };
-    expect(await isAuthenticated(reqWithSession, testEnv)).toBe(true);
+    assert.strictEqual(await isAuthenticated(reqWithSession, testEnv), true);
 
     const [payload, sig] = session.value.split('.');
     const tamperedSigReq = {
       headers: new Headers({ Cookie: `amara_admin_session=${payload}.0000000000` })
     };
-    expect(await isAuthenticated(tamperedSigReq, testEnv)).toBe(false);
+    assert.strictEqual(await isAuthenticated(tamperedSigReq, testEnv), false);
 
     const tamperedPayloadReq = {
       headers: new Headers({ Cookie: `amara_admin_session=eyJleHAiOjk5OTk5OTk5OTl9.${sig}` })
     };
-    expect(await isAuthenticated(tamperedPayloadReq, testEnv)).toBe(false);
+    assert.strictEqual(await isAuthenticated(tamperedPayloadReq, testEnv), false);
 
     const cookieStr = sessionCookie(session.value, session.maxAge);
-    expect(cookieStr).toContain('HttpOnly');
-    expect(cookieStr).toContain('Secure');
-    expect(cookieStr).toContain('SameSite=Strict');
+    assert.ok(cookieStr.includes('HttpOnly'));
+    assert.ok(cookieStr.includes('Secure'));
+    assert.ok(cookieStr.includes('SameSite=Strict'));
 
     const clearCookieStr = clearSessionCookie();
-    expect(clearCookieStr).toContain('Max-Age=0');
+    assert.ok(clearCookieStr.includes('Max-Age=0'));
   });
 
   it('3. Verifies slug generation and URL safety regex', () => {
@@ -90,14 +90,14 @@ describe('Blog CMS Production Hardening Suite', () => {
 
     const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
-    expect(slugify('Understanding Chronic Back Pain in 2026!')).toBe('understanding-chronic-back-pain-in-2026');
-    expect(slugify('  SPACES   AND   CAPS  ')).toBe('spaces-and-caps');
-    expect(slugify('Multiple---Dashes--Here')).toBe('multiple-dashes-here');
-    expect(slugRegex.test(slugify('Valid Slug 123'))).toBe(true);
-    expect(slugRegex.test('')).toBe(false);
-    expect(slugRegex.test('-leading-dash')).toBe(false);
-    expect(slugRegex.test('trailing-dash-')).toBe(false);
-    expect(slugRegex.test('invalid_underscore')).toBe(false);
+    assert.strictEqual(slugify('Understanding Chronic Back Pain in 2026!'), 'understanding-chronic-back-pain-in-2026');
+    assert.strictEqual(slugify('  SPACES   AND   CAPS  '), 'spaces-and-caps');
+    assert.strictEqual(slugify('Multiple---Dashes--Here'), 'multiple-dashes-here');
+    assert.strictEqual(slugRegex.test(slugify('Valid Slug 123')), true);
+    assert.strictEqual(slugRegex.test(''), false);
+    assert.strictEqual(slugRegex.test('-leading-dash'), false);
+    assert.strictEqual(slugRegex.test('trailing-dash-'), false);
+    assert.strictEqual(slugRegex.test('invalid_underscore'), false);
   });
 
   it('4. Verifies featured image URL validation and injection prevention', () => {
@@ -118,16 +118,16 @@ describe('Blog CMS Production Hardening Suite', () => {
       throw new Error('Featured image must be a valid HTTP/HTTPS URL or root-relative path.');
     }
 
-    expect(validateImageUrl('/images/blog/spine.jpg')).toBe('/images/blog/spine.jpg');
-    expect(validateImageUrl('https://example.com/photo.png')).toBe('https://example.com/photo.png');
-    expect(validateImageUrl('')).toBe('');
-    expect(() => validateImageUrl('javascript:alert(1)')).toThrow(/unsafe protocols/);
-    expect(() => validateImageUrl('data:image/svg+xml,...')).toThrow(/unsafe protocols/);
-    expect(() => validateImageUrl('not a url')).toThrow(/valid HTTP/);
+    assert.strictEqual(validateImageUrl('/images/blog/spine.jpg'), '/images/blog/spine.jpg');
+    assert.strictEqual(validateImageUrl('https://example.com/photo.png'), 'https://example.com/photo.png');
+    assert.strictEqual(validateImageUrl(''), '');
+    assert.throws(() => validateImageUrl('javascript:alert(1)'), /unsafe protocols/);
+    assert.throws(() => validateImageUrl('data:image/svg+xml,...'), /unsafe protocols/);
+    assert.throws(() => validateImageUrl('not a url'), /valid HTTP/);
   });
 
   it('5. Verifies public/_redirects contains SPA fallback', () => {
     const redirects = readFileSync('public/_redirects', 'utf8').trim();
-    expect(redirects).toContain('/* /index.html 200');
+    assert.ok(redirects.includes('/* /index.html 200'));
   });
 });

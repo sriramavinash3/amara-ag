@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert';
 import { createHash } from 'node:crypto';
 import { verifyPassword, isAuthenticated, createSession } from '../functions/lib/auth.js';
 
@@ -22,12 +23,12 @@ describe('Blog CMS Validation Suite', () => {
       );
     }
 
-    expect(parseCookiesMock('foo=bar')).toEqual({ foo: 'bar' });
-    expect(parseCookiesMock('session=abc=123==; other=xyz')).toEqual({ session: 'abc=123==', other: 'xyz' });
-    expect(parseCookiesMock('a=1; b=2; c=3')).toEqual({ a: '1', b: '2', c: '3' });
-    expect(parseCookiesMock('; ; a=1; =invalid; ;')).toEqual({ a: '1' });
-    expect(parseCookiesMock(null)).toEqual({});
-    expect(parseCookiesMock('')).toEqual({});
+    assert.deepStrictEqual(parseCookiesMock('foo=bar'), { foo: 'bar' });
+    assert.deepStrictEqual(parseCookiesMock('session=abc=123==; other=xyz'), { session: 'abc=123==', other: 'xyz' });
+    assert.deepStrictEqual(parseCookiesMock('a=1; b=2; c=3'), { a: '1', b: '2', c: '3' });
+    assert.deepStrictEqual(parseCookiesMock('; ; a=1; =invalid; ;'), { a: '1' });
+    assert.deepStrictEqual(parseCookiesMock(null), {});
+    assert.deepStrictEqual(parseCookiesMock(''), {});
   });
 
   it('2. Password verification & normalization tests', async () => {
@@ -36,12 +37,12 @@ describe('Blog CMS Validation Suite', () => {
     const sha256Upper = sha256Lower.toUpperCase();
     const sha256Padded = `  \n${sha256Lower}  \r\n`;
 
-    expect(await verifyPassword(plain, { ADMIN_PASSWORD_SHA256: sha256Lower })).toBe(true);
-    expect(await verifyPassword(plain, { ADMIN_PASSWORD_SHA256: sha256Upper })).toBe(true);
-    expect(await verifyPassword(plain, { ADMIN_PASSWORD_SHA256: sha256Padded })).toBe(true);
-    expect(await verifyPassword('WrongPassword', { ADMIN_PASSWORD_SHA256: sha256Lower })).toBe(false);
-    expect(await verifyPassword(plain, {})).toBe(false);
-    expect(await verifyPassword(plain, { ADMIN_PASSWORD_SHA256: '' })).toBe(false);
+    assert.strictEqual(await verifyPassword(plain, { ADMIN_PASSWORD_SHA256: sha256Lower }), true);
+    assert.strictEqual(await verifyPassword(plain, { ADMIN_PASSWORD_SHA256: sha256Upper }), true);
+    assert.strictEqual(await verifyPassword(plain, { ADMIN_PASSWORD_SHA256: sha256Padded }), true);
+    assert.strictEqual(await verifyPassword('WrongPassword', { ADMIN_PASSWORD_SHA256: sha256Lower }), false);
+    assert.strictEqual(await verifyPassword(plain, {}), false);
+    assert.strictEqual(await verifyPassword(plain, { ADMIN_PASSWORD_SHA256: '' }), false);
   });
 
   it('3. Session management & security tests', async () => {
@@ -50,13 +51,13 @@ describe('Blog CMS Validation Suite', () => {
     const validRequest = {
       headers: new Headers({ Cookie: `amara_admin_session=${encodeURIComponent(session.value)}` })
     };
-    expect(await isAuthenticated(validRequest, env)).toBe(true);
+    assert.strictEqual(await isAuthenticated(validRequest, env), true);
 
     const [payload, sig] = session.value.split('.');
     const tamperedSigRequest = {
       headers: new Headers({ Cookie: `amara_admin_session=${payload}.fake${sig.slice(4)}` })
     };
-    expect(await isAuthenticated(tamperedSigRequest, env)).toBe(false);
+    assert.strictEqual(await isAuthenticated(tamperedSigRequest, env), false);
   });
 
   it('4. Category filtering & duplicate suppression tests', () => {
@@ -81,11 +82,11 @@ describe('Blog CMS Validation Suite', () => {
     }
 
     const allMerged = mergePosts(mockLive, mockLegacy, '');
-    expect(allMerged.length).toBe(4);
-    expect(allMerged.find(p => p.slug === 'post-1').id).toBe('uuid-4');
+    assert.strictEqual(allMerged.length, 4);
+    assert.strictEqual(allMerged.find(p => p.slug === 'post-1').id, 'uuid-4');
 
     const tipsMerged = mergePosts(mockLive, mockLegacy, 'Tips & Wellness');
-    expect(tipsMerged.length).toBe(2);
-    expect(tipsMerged.every(p => p.category === 'Tips & Wellness')).toBe(true);
+    assert.strictEqual(tipsMerged.length, 2);
+    assert.strictEqual(tipsMerged.every(p => p.category === 'Tips & Wellness'), true);
   });
 });

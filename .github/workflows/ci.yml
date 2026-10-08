@@ -16,5 +16,5 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx eslint src/pages/BlogAdmin.jsx src/utils/blogApi.js functions
-      - run: npx vitest run tests/blog-cms-production.test.mjs tests/blog-cms-validation.test.mjs
+      - run: npm run test:cms
       - run: npm run build
