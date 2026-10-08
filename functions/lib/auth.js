@@ -27,6 +27,15 @@ function parseCookies(request) {
   );
 }
 
+export async function verifyUsername(username, env) {
+  if (!env.ADMIN_USERNAME_SHA256) return false;
+  const actual = await digest(username);
+  if (actual.length !== env.ADMIN_USERNAME_SHA256.length) return false;
+  let diff = 0;
+  for (let i = 0; i < actual.length; i += 1) diff |= actual.charCodeAt(i) ^ env.ADMIN_USERNAME_SHA256.charCodeAt(i);
+  return diff === 0;
+}
+
 export async function verifyPassword(password, env) {
   if (!env.ADMIN_PASSWORD_SHA256) return false;
   const actual = await digest(password);
