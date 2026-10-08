@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Eye, LogIn, LogOut, Plus, Save, Trash2, FileText, Globe2 } from 'lucide-react';
+import { Eye, LogOut, Plus, Save, Trash2, FileText, Globe2 } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import Card from '../components/ui/Card';
@@ -32,7 +32,7 @@ export default function BlogAdmin() {
   const [message,setMessage] = useState('');
   const [error,setError] = useState('');
 
-  const refresh = async () => {
+  const refresh = useCallback(async () => {
     const session = await requestJson('/api/admin/login');
     setAuthenticated(Boolean(session.authenticated));
     if (!session.authenticated) {
@@ -41,11 +41,14 @@ export default function BlogAdmin() {
     }
     const data = await requestJson('/api/admin/blog');
     setPosts(data.posts || []);
-  };
+  }, [navigate]);
 
   useEffect(() => {
-    Promise.resolve().then(() => refresh()).catch(() => setAuthenticated(false)).finally(() => setLoading(false));
-  }, []);
+    refresh().catch(() => {
+      setAuthenticated(false);
+      navigate('/cms/login', { replace: true });
+    }).finally(() => setLoading(false));
+  }, [refresh, navigate]);
 
   const setField = (name,value) => setForm((current) => ({ ...current, [name]: value }));
 
@@ -93,6 +96,16 @@ export default function BlogAdmin() {
       setError(err.message);
     } finally {
       setSaving(false);
+    }
+  };
+
+  const logout = async () => {
+    try {
+      await requestJson('/api/admin/login', { method:'POST', body:JSON.stringify({ action:'logout' }) });
+    } finally {
+      setAuthenticated(false);
+      setPosts([]);
+      navigate('/cms/login', { replace: true });
     }
   };
 
