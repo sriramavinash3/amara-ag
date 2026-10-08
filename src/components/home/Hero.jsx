@@ -118,28 +118,30 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="lg:w-1/2 relative w-full flex justify-center lg:justify-end"
         >
-          <div className="relative w-full max-w-[460px] lg:max-w-[480px] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-[#454242]">
-            <img 
-              src="/images/audience/hero_senior_mobility.jpg" 
-              alt="Active senior couple walking outdoors in a park enjoying restored mobility after pain care" 
-              className="w-full h-full object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-            
-            {/* Quick accepted tag */}
-            <div className="absolute top-4 right-4 bg-[#323030]/90 backdrop-blur-md px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl border border-[#585454] shadow-sm text-xs font-bold text-emerald-300">
-              BCBS &amp; Medicare Accepted
+          <div className="relative w-full max-w-[500px] sm:max-w-[540px] lg:max-w-[560px] xl:max-w-[600px]">
+            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-[#454242]">
+              <img 
+                src="/images/audience/hero_senior_mobility.jpg" 
+                alt="Active senior couple walking outdoors in a park enjoying restored mobility after pain care" 
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              
+              {/* Quick accepted tag */}
+              <div className="absolute top-4 right-4 bg-[#323030]/90 backdrop-blur-md px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl border border-[#585454] shadow-sm text-xs font-bold text-emerald-300">
+                BCBS &amp; Medicare Accepted
+              </div>
             </div>
-          </div>
 
-          {/* Clinical quality tag */}
-          <div className="absolute -bottom-4 left-4 sm:left-8 bg-[#363434] p-3 sm:p-3.5 rounded-2xl shadow-xl border border-[#585454] hidden sm:flex items-center gap-3">
-            <div className="p-2 bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 rounded-xl">
-              <Award className="h-5 w-5" />
-            </div>
-            <div className="text-left">
-              <span className="block text-[11px] font-bold text-[#D1D5DB] uppercase tracking-wider">Clinical Standards</span>
-              <span className="text-sm font-extrabold text-[#FFFFFF]">Interventional Specialists</span>
+            {/* Clinical quality tag */}
+            <div className="absolute -bottom-4 left-4 sm:left-6 bg-[#363434] p-3 sm:p-3.5 rounded-2xl shadow-xl border border-[#585454] hidden sm:flex items-center gap-3">
+              <div className="p-2 bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 rounded-xl">
+                <Award className="h-5 w-5" />
+              </div>
+              <div className="text-left">
+                <span className="block text-[11px] font-bold text-[#D1D5DB] uppercase tracking-wider">Clinical Standards</span>
+                <span className="text-sm font-extrabold text-[#FFFFFF]">Interventional Specialists</span>
+              </div>
             </div>
           </div>
         </motion.div>

@@ -99,7 +99,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 w-full z-50 bg-[#FAF9F7] shadow-xs border-b border-[#E8E5DF]">
       {/* 1. TOP SUBHEADER BAR */}
-      <div className="w-full bg-[#F5F3EF] text-[#4A4846] text-xs py-2 border-b border-[#E8E5DF] hidden md:block">
+      <div className="w-full bg-[#F5F3EF] text-[#4A4846] text-xs py-2 border-b border-[#E8E5DF] font-bold hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-3">
           {/* Clinic Details */}
           <div className="flex flex-wrap items-center gap-x-6 gap-y-1">
@@ -107,12 +107,12 @@ export default function Header() {
               href="https://maps.app.goo.gl/Cpc15Mb3JtU5n8Ho7"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[#4A4846] hover:text-[#047857] transition-colors font-medium"
+              className="flex items-center gap-1.5 text-[#4A4846] hover:text-[#047857] transition-colors font-bold"
             >
               <MapPin className="h-3.5 w-3.5 text-[#059669] shrink-0" />
               6429 Bannington Road, Suite B, Charlotte, NC 28226
             </a>
-            <span className="flex items-center gap-1.5 text-[#6B6864]">
+            <span className="flex items-center gap-1.5 text-[#6B6864] font-bold">
               <Clock className="h-3.5 w-3.5 text-[#059669] shrink-0" />
               Mon - Fri: 8:00 AM - 5:00 PM
             </span>
@@ -120,7 +120,14 @@ export default function Header() {
 
           {/* Action Contacts */}
           <div className="flex items-center gap-x-6">
-            <span className="text-[#6B6864] font-medium">Fax: 704-503-9339</span>
+            <a
+              href="tel:+17045039338"
+              className="flex items-center gap-1.5 text-[#4A4846] hover:text-[#047857] transition-colors font-bold"
+            >
+              <Phone className="h-3.5 w-3.5 text-[#059669] shrink-0" />
+              704-503-9338
+            </a>
+            <span className="text-[#6B6864] font-bold">Fax: 704-503-9339</span>
           </div>
         </div>
       </div>
