@@ -59,7 +59,7 @@ export default function CmsLogin() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-950 flex items-center justify-center px-4 py-12">
+    <main className="cms-login-root min-h-screen w-full bg-slate-100 flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
         <Card variant="white" padding="lg" className="border-slate-200 shadow-2xl">
           <div className="flex items-center gap-3">
