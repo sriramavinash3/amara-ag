@@ -136,16 +136,16 @@ export default function BlogAdmin() {
           <h1 className="mt-3 text-4xl font-black text-slate-900">Blog Publishing Dashboard</h1>
           <p className="mt-2 text-slate-600">Create once. Save as draft. Preview. Publish to the live blog.</p>
         </div>
-        <Button variant="outline" onClick={logout} icon={LogOut}>Sign out</Button>
+        <Button variant="outline" onClick={logout} className="cms-outline-button" icon={LogOut}>Sign out</Button>
       </header>
 
       {(message || error) && <div className={error ? 'rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700' : 'rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700'}>{error || message}</div>}
 
       <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_.75fr] gap-8 items-start">
-        <Card variant="white" padding="lg" className="border-slate-200 shadow-premium">
+        <Card variant="white" padding="lg" className="cms-card border-slate-200 shadow-premium">
           <div className="flex items-center justify-between mb-6">
             <div><p className="text-xs font-black uppercase tracking-widest text-slate-400">{editingId ? 'Edit article' : 'New article'}</p><h2 className="text-2xl font-black text-slate-900">{editingId ? 'Update publication' : 'Write an article'}</h2></div>
-            <Button variant="outline" size="sm" onClick={resetForm} icon={Plus}>New</Button>
+            <Button variant="outline" size="sm" onClick={resetForm} className="cms-outline-button" icon={Plus}>New</Button>
           </div>
 
           <div className="space-y-5">
@@ -163,9 +163,9 @@ export default function BlogAdmin() {
               <label className="block text-sm font-bold text-slate-800">SEO description<input value={form.seoDescription} onChange={(event)=>setField('seoDescription',event.target.value)} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3" /></label>
             </div>
             <div className="flex flex-wrap gap-3 pt-3 border-t border-slate-200">
-              <Button variant="outline" onClick={()=>save('draft')} disabled={saving} icon={Save}>{saving ? 'Saving…' : 'Save Draft'}</Button>
-              <Button variant="primary" onClick={()=>save('published')} disabled={saving} icon={Globe2}>{saving ? 'Publishing…' : 'Publish Live'}</Button>
-              {editingId && <Button variant="ghost" onClick={remove} disabled={saving} icon={Trash2} className="text-rose-600">Delete</Button>}
+              <Button variant="outline" onClick={()=>save('draft')} className="cms-outline-button" disabled={saving} icon={Save}>{saving ? 'Saving…' : 'Save Draft'}</Button>
+              <Button variant="primary" onClick={()=>save('published')} className="cms-primary-button" disabled={saving} icon={Globe2}>{saving ? 'Publishing…' : 'Publish Live'}</Button>
+              {editingId && <Button variant="ghost" onClick={remove} className="cms-danger-button" disabled={saving} icon={Trash2} className="text-rose-600">Delete</Button>}
             </div>
           </div>
         </Card>
@@ -178,7 +178,7 @@ export default function BlogAdmin() {
             <p className="mt-3 text-sm font-semibold text-slate-700">{form.excerpt || 'Your article excerpt will appear here.'}</p>
             <div className="mt-5 pt-5 border-t border-slate-100 whitespace-pre-line text-sm leading-7 text-slate-600 max-h-[420px] overflow-auto">{form.content || 'Your article content preview will appear here.'}</div>
           </Card>
-          <Card variant="slate" padding="md" className="border-slate-200">
+          <Card variant="slate" padding="md" className="cms-card cms-rules-card border-slate-200">
             <div className="flex items-center gap-2 mb-3"><FileText className="h-4 w-4 text-medical-600"/><span className="text-xs font-black uppercase tracking-widest">Publishing rules</span></div>
             <ul className="text-xs text-slate-600 space-y-2 list-disc pl-4"><li>Drafts never appear on the public blog.</li><li>Publish creates /blog/&lt;slug&gt;.</li><li>Preserve published slugs when possible.</li></ul>
           </Card>
