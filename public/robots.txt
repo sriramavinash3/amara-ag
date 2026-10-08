@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /campaigns
+Disallow: /campaigns/
 
 Sitemap: https://www.amarapain.com/sitemap.xml

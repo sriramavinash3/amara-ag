@@ -41,63 +41,65 @@ export default function Testimonials() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         <div className="mb-8 max-w-xl text-left">
           <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-emerald-400 font-bold">
-            Patient Success Stories
+            Real patients, real relief.
           </p>
           <h2 className="font-display text-[32px] sm:text-[38px] md:text-[46px] font-bold text-[#FFFFFF] leading-tight">
-            Real patients, real relief.
+            Patient Reviews &amp; Experiences
           </h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {videoStories.map((s, i) => (
-            <motion.button
-              key={s.name}
-              onClick={() => {
-                setActiveTab(i);
-                setModalVideoId(s.embedId);
-              }}
-              initial={{ 
-                opacity: 0, 
-                x: i === 0 ? -80 : i === 2 ? 80 : 0, 
-                y: i === 1 ? 50 : 30,
-                rotate: i === 0 ? -3 : i === 2 ? 3 : 0,
-                scale: 0.9 
-              }}
-              whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ 
-                type: 'spring', 
-                stiffness: 85, 
-                damping: 10.5, 
-                mass: 0.9,
-                delay: i * 0.15 
-              }}
-              whileHover={{ scale: 1.03 }}
-              className="group relative aspect-[4/5] overflow-hidden rounded-2xl text-left cursor-pointer border border-[#585454] shadow-lg bg-[#454242]"
-            >
-              <img
-                src={`https://img.youtube.com/vi/${s.embedId}/hqdefault.jpg`}
-                alt={s.name}
-                className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-95 transition-all duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#323030]/95 via-[#323030]/40 to-transparent" />
-              <motion.div
-                className="absolute inset-0"
-                whileHover={{ scale: 1.08 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                style={{ background: 'radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,0.05), transparent 70%)' }}
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-600/90 text-white backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 shadow-lg">
-                  <Play size={20} className="fill-current" />
-                </span>
-              </div>
-              <div className="absolute inset-x-0 bottom-0 p-5 z-20">
-                <p className="font-heading text-lg text-[#FFFFFF] font-extrabold">{s.name}</p>
-                <p className="text-xs text-[#D1D5DB] font-bold">{s.condition}</p>
-              </div>
-            </motion.button>
-          ))}
+        {/* Video Stories Grid — Constrained to max-w-5xl (~20% display reduction) with balanced whitespace */}
+        <div className="mx-auto max-w-5xl">
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+            {videoStories.map((s, i) => (
+              <motion.button
+                key={s.name}
+                onClick={() => {
+                  setActiveTab(i);
+                  setModalVideoId(s.embedId);
+                }}
+                initial={{ 
+                  opacity: 0, 
+                  x: i === 0 ? -40 : i === 2 ? 40 : 0, 
+                  y: 20,
+                  scale: 0.95 
+                }}
+                whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ 
+                  type: 'spring', 
+                  stiffness: 85, 
+                  damping: 11, 
+                  mass: 0.9,
+                  delay: i * 0.12 
+                }}
+                whileHover={{ scale: 1.02 }}
+                className="group relative aspect-[16/11] overflow-hidden rounded-2xl text-left cursor-pointer border border-[#585454] shadow-md bg-[#454242] w-full"
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${s.embedId}/hqdefault.jpg`}
+                  alt={s.name}
+                  className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-95 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#323030]/95 via-[#323030]/40 to-transparent" />
+                <motion.div
+                  className="absolute inset-0"
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ background: 'radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,0.05), transparent 70%)' }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600/90 text-white backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 shadow-md">
+                    <Play size={18} className="fill-current" />
+                  </span>
+                </div>
+                <div className="absolute inset-x-0 bottom-0 p-4 z-20">
+                  <p className="font-heading text-base sm:text-lg text-[#FFFFFF] font-extrabold leading-tight">{s.name}</p>
+                  <p className="text-xs text-[#D1D5DB] font-semibold mt-0.5">{s.condition}</p>
+                </div>
+              </motion.button>
+            ))}
+          </div>
         </div>
 
         {/* Selected Quote Indicator */}
@@ -108,9 +110,9 @@ export default function Testimonials() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4 }}
-            className="mx-auto mt-10 max-w-2xl text-center font-heading text-xl sm:text-2xl italic font-medium text-[#FFFFFF]"
+            className="mx-auto mt-9 max-w-2xl text-center font-heading text-lg sm:text-xl italic font-medium text-[#FFFFFF]"
           >
-            <Quote size={22} className="mx-auto mb-3 text-emerald-400 opacity-80" />
+            <Quote size={20} className="mx-auto mb-2.5 text-emerald-400 opacity-80" />
             "{videoStories[activeTab].quote}"
           </motion.blockquote>
         </AnimatePresence>
@@ -165,7 +167,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* Video Modal Overlay */}
+      {/* Video Modal Overlay — ~20% reduced display size from max-w-3xl to max-w-2xl */}
       <AnimatePresence>
         {modalVideoId && (
           <motion.div 
@@ -178,7 +180,7 @@ export default function Testimonials() {
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
-              className="relative w-full max-w-3xl aspect-video bg-[#323030] border border-[#585454] rounded-2xl overflow-hidden shadow-2xl"
+              className="relative w-full max-w-2xl aspect-video bg-[#323030] border border-[#585454] rounded-2xl overflow-hidden shadow-2xl"
             >
               <button 
                 onClick={() => setModalVideoId(null)}

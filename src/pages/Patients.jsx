@@ -48,10 +48,10 @@ export default function Patients() {
           Patient Resources
         </Badge>
         <h1 className="text-[34px] md:text-[54px] font-extrabold font-heading tracking-tight text-white leading-[1.1]">
-          Portal &amp; Resources Hub
+          Patient Resources &amp; Portal
         </h1>
         <p className="text-[18px] text-[#F0F0F0] font-normal leading-[1.75] max-w-[720px]">
-          Access your Patient Portal, pay medical bills, download clinical registration packets, and find answers to billing, insurance, and clinical procedures.
+          Access your patient portal, view medical billing, download registration packets, and find answers to insurance and procedural questions.
         </p>
       </div>
 
@@ -60,24 +60,24 @@ export default function Patients() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#363434] rounded-3xl p-6 md:p-8 border border-[#585454] shadow-xl">
           <div className="lg:col-span-7 space-y-4">
             <Badge variant="secondary" className="bg-[#323030] text-emerald-400 border border-[#585454] font-bold uppercase tracking-wider text-[11px]">
-              Easy Digital Access
+              Digital Portal
             </Badge>
             <h2 className="text-[24px] md:text-[36px] font-bold font-heading text-white leading-tight">
-              Manage Your Pain Care From the Comfort of Home
+              Patient Portal &amp; Clinical Records
             </h2>
             <p className="text-base text-[#F0F0F0] leading-relaxed font-normal">
-              Whether you are checking past visit summaries, requesting a prescription refill, or completing registration forms before your first visit, our secure Tebra portal is built for simple, barrier-free access on any device.
+              Our secure Tebra patient portal allows you to review visit summaries, request prescription refills, view billing statements, and access registration forms.
             </p>
             <div className="pt-2 flex flex-wrap gap-4 text-xs font-bold text-[#D1D5DB] uppercase tracking-wider">
               <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-emerald-400" /> HIPAA Compliant</span>
-              <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-emerald-400" /> Senior-Friendly Layout</span>
-              <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-emerald-400" /> Real-Time Records</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-emerald-400" /> Secure Login</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-emerald-400" /> Clinical Records</span>
             </div>
           </div>
           <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#585454] shadow-md bg-[#323030]">
             <img 
               src="/images/audience/senior_patient_portal.jpg" 
-              alt="Older adult patient comfortably reviewing her healthcare records on a digital tablet at home"
+              alt="Patient reviewing healthcare records on a digital tablet at home"
               className="w-full h-full object-cover object-center"
               loading="lazy"
             />
@@ -85,7 +85,7 @@ export default function Patients() {
         </div>
 
         <h2 className="text-[28px] md:text-[34px] font-extrabold font-heading leading-[1.2] text-white pt-4">
-          Direct Portal Actions
+          Patient Services &amp; Actions
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Card 1: Patient Portal */}

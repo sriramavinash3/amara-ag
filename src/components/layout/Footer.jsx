@@ -56,7 +56,7 @@ export default function Footer() {
               <img src="/images/AmaraPain_Logo_dark.png" alt="Amara Pain & Spine logo" className="h-11 sm:h-12 w-auto object-contain shrink-0" />
             </Link>
             <p className="text-sm leading-relaxed text-[#F0F0F0]">
-              Transforming pain care in Charlotte, NC. Led by double-certified specialists, we offer personalized, non-invasive treatments designed to restore your quality of life.
+              Based in Charlotte, NC, we provide medical evaluation and non-surgical treatment for back, neck, joint, and nerve pain.
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
@@ -81,7 +81,7 @@ export default function Footer() {
           {/* Column 2: Quick Links */}
           <div className="space-y-4 text-left">
             <h4 className="text-[12px] font-bold uppercase tracking-widest text-[#FFFFFF] border-l-2 border-emerald-500 pl-3">
-              Redesign Navigation
+              Quick Links
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
@@ -205,7 +205,7 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-[#585454] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#D1D5DB]">
-          <p>&copy; {currentYear} Amara Pain &amp; Spine Management. - Maintained by Freddie Business Solutions</p>
+          <p>&copy; {currentYear} Amara Pain &amp; Spine Management. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link to="/privacy" className="hover:text-emerald-300 transition-colors">Privacy Policy</Link>
             <span>&bull;</span>

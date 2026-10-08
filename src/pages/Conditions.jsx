@@ -53,7 +53,7 @@ export default function Conditions() {
             Pain Conditions We Treat
           </h1>
           <p className="text-[17px] sm:text-[18px] text-[#F0F0F0] font-normal leading-[1.75] max-w-[720px]">
-            Understanding your pain is the first step toward recovery. Explore our comprehensive, physician-reviewed guides on symptoms, causes, and non-surgical relief options.
+            Review symptoms, common causes, and non-surgical treatment options for chronic spine, nerve, and joint pain.
           </p>
         </div>
 
@@ -74,13 +74,13 @@ export default function Conditions() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#363434] rounded-3xl p-6 md:p-8 border border-[#585454] shadow-xl relative z-10 animate-reveal my-8">
         <div className="lg:col-span-7 space-y-4">
           <Badge variant="secondary" className="bg-[#302E2E] text-emerald-300 border border-[#585454] font-bold uppercase tracking-wider text-[11px]">
-            Comprehensive Diagnostic Approach
+            Clinical Diagnostic Evaluation
           </Badge>
           <h2 className="text-[24px] sm:text-[28px] md:text-[32px] font-bold font-heading text-[#FFFFFF] leading-tight">
             Accurate Diagnosis Precedes Every Treatment Plan
           </h2>
           <p className="text-base text-[#F0F0F0] leading-relaxed">
-            Chronic back, neck, and joint pain can arise from multiple overlapping pain generators. Our specialists take time to evaluate your posture, joint range, and spinal alignment using advanced imaging and physical evaluation before recommending therapy.
+            Chronic back, neck, and joint pain can arise from multiple overlapping pain sources. Our specialists evaluate symptoms, physical examination findings, and spinal imaging before recommending therapy.
           </p>
           <div className="pt-2 flex flex-wrap gap-4 text-xs font-bold text-[#D1D5DB] uppercase tracking-wider">
             <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-emerald-400" /> Anatomical Precision</span>
@@ -172,16 +172,16 @@ export default function Conditions() {
         <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl -z-10 animate-pulse" />
         <div className="space-y-4 max-w-2xl mx-auto">
           <h2 className="text-[22px] sm:text-[28px] md:text-[34px] font-extrabold font-heading leading-[1.2] text-[#FFFFFF]">
-            Ready to Find Long-Lasting Pain Relief?
+            Schedule a Clinical Evaluation
           </h2>
           <p className="text-sm sm:text-base text-[#F0F0F0] leading-relaxed">
-            You do not have to live with chronic, debilitating pain. Book a comprehensive, same-week consultation with our double-certified specialist today.
+            Schedule a consultation with our specialist to evaluate your symptoms and discuss non-surgical treatment options.
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-4 pt-2">
           <Link to="/book">
             <Button variant="primary" icon={Calendar} className="font-bold">
-              Book Appointment
+              Request an Appointment
             </Button>
           </Link>
           <a href="tel:+17045039338">

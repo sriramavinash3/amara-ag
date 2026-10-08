@@ -98,7 +98,7 @@ export function AppointmentProvider({ children }) {
         },
       });
       if (response.data && response.data.success) {
-        const { appointments = [], exceptions = [], duration = 30 } = response.data;
+        const { appointments = [], exceptions = [], availabilityRanges = [], duration = 30 } = response.data;
         const bookedTimes = new Set(
           appointments.map((a) => {
             const timeStr = a.start_time || '';
@@ -113,16 +113,50 @@ export function AppointmentProvider({ children }) {
             return `${parseInt(h, 10)}:${m}`;
           })
         );
+
+        // Determine day of the week in UTC from date string (YYYY-MM-DD)
+        const dateParts = date.split('-');
+        const dateObj = new Date(Date.UTC(parseInt(dateParts[0], 10), parseInt(dateParts[1], 10) - 1, parseInt(dateParts[2], 10), 12, 0));
+        const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        const dayName = dayNames[dateObj.getUTCDay()];
+
+        const dayRanges = availabilityRanges?.[0]?.days?.[dayName] || [];
         const slots = [];
-        for (let h = 8; h < 17; h++) {
-          if (h === 12) continue; // Lunch
-          for (let m = 0; m < 60; m += duration) {
-            const key = `${h}:${m < 10 ? '0' + m : m}`;
-            if (!bookedTimes.has(key) && !blockedTimes.has(key)) {
-              const displayHour = h > 12 ? h - 12 : h === 0 ? 12 : h;
-              const ampm = h >= 12 ? 'PM' : 'AM';
-              const formattedTime = `${displayHour < 10 ? '0' + displayHour : displayHour}:${m < 10 ? '0' + m : m} ${ampm}`;
-              slots.push(formattedTime);
+
+        if (dayRanges.length > 0) {
+          // Use Tebra's verified provider working ranges for this specific day
+          for (const range of dayRanges) {
+            const [startH, startM] = (range.start_time || '08:00:00').split(':').map(n => parseInt(n, 10));
+            const [endH, endM] = (range.end_time || '17:00:00').split(':').map(n => parseInt(n, 10));
+            const startMinutes = startH * 60 + startM;
+            const endMinutes = endH * 60 + endM;
+
+            for (let curr = startMinutes; curr + duration <= endMinutes; curr += duration) {
+              const h = Math.floor(curr / 60);
+              const m = curr % 60;
+              const key = `${h}:${m < 10 ? '0' + m : m}`;
+              if (!bookedTimes.has(key) && !blockedTimes.has(key)) {
+                const displayHour = h > 12 ? h - 12 : h === 0 ? 12 : h;
+                const ampm = h >= 12 ? 'PM' : 'AM';
+                const formattedTime = `${displayHour < 10 ? '0' + displayHour : displayHour}:${m < 10 ? '0' + m : m} ${ampm}`;
+                slots.push(formattedTime);
+              }
+            }
+          }
+        } else if (availabilityRanges.length === 0) {
+          // Fallback if ranges unavailable: Mon-Fri standard clinic hours
+          if (dayName !== 'saturday' && dayName !== 'sunday') {
+            for (let h = 8; h < 17; h++) {
+              if (h === 12) continue; // Lunch
+              for (let m = 0; m < 60; m += duration) {
+                const key = `${h}:${m < 10 ? '0' + m : m}`;
+                if (!bookedTimes.has(key) && !blockedTimes.has(key)) {
+                  const displayHour = h > 12 ? h - 12 : h === 0 ? 12 : h;
+                  const ampm = h >= 12 ? 'PM' : 'AM';
+                  const formattedTime = `${displayHour < 10 ? '0' + displayHour : displayHour}:${m < 10 ? '0' + m : m} ${ampm}`;
+                  slots.push(formattedTime);
+                }
+              }
             }
           }
         }
@@ -187,6 +221,23 @@ export function AppointmentProvider({ children }) {
     }
   };
 
+  // Generate fresh idempotency key
+  const generateNewIdempotencyKey = useCallback(() => {
+    const newKey = typeof crypto !== 'undefined' && crypto.randomUUID
+      ? crypto.randomUUID()
+      : `amara-idemp-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+    setIdempotencyKey(newKey);
+    return newKey;
+  }, []);
+
+  // Clear booking error and return status to idle
+  const clearBookingError = useCallback(() => {
+    setBookingError(null);
+    if (bookingStatus === 'booking_failed') {
+      setBookingStatus('idle');
+    }
+  }, [bookingStatus]);
+
   // Submit the booking to production Tebra API
   const submitAppointment = async () => {
     // Guard against duplicate in-flight submissions
@@ -197,15 +248,24 @@ export function AppointmentProvider({ children }) {
       return;
     }
 
+    // Refresh idempotency key if retrying after a failed submission
+    let activeKey = idempotencyKey;
+    if (bookingStatus === 'booking_failed' || !activeKey) {
+      activeKey = generateNewIdempotencyKey();
+    }
+
     setIsSubmitting(true);
     setBookingStatus('submitting');
     setBookingError(null);
     
     try {
-      // Parse selectedDate and selectedTime to ISO format in America/New_York timezone
-      const dateParts = selectedDate.split('-');
-      const timeParts = selectedTime.match(/(\d+):(\d+)\s*(AM|PM)?/i);
-      
+      // Parse selectedDate and selectedTime to ISO format specifically in America/New_York timezone
+      const dateParts = (selectedDate || '').split('-');
+      const year = parseInt(dateParts[0], 10) || new Date().getFullYear();
+      const month = parseInt(dateParts[1], 10) || (new Date().getMonth() + 1);
+      const day = parseInt(dateParts[2], 10) || new Date().getDate();
+
+      const timeParts = (selectedTime || '').match(/(\d+):(\d+)\s*(AM|PM)?/i);
       let hours = 9;
       let minutes = 0;
       if (timeParts) {
@@ -216,21 +276,27 @@ export function AppointmentProvider({ children }) {
         if (ampm === 'AM' && hours === 12) hours = 0;
       }
 
-      // Construct Date in local time, then output ISO string
-      const year = parseInt(dateParts[0], 10);
-      const month = parseInt(dateParts[1], 10) - 1;
-      const day = parseInt(dateParts[2], 10);
-      const startDateTime = new Date(year, month, day, hours, minutes);
+      // Compute UTC offset for America/New_York on this specific calendar date
+      const testUtc = new Date(Date.UTC(year, month - 1, day, 12, 0));
+      const nyParts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York',
+        hour: 'numeric',
+        hour12: false,
+      }).formatToParts(testUtc);
+      const nyHour = parseInt(nyParts.find(p => p.type === 'hour')?.value || '8', 10);
+      const offsetHours = 12 - nyHour; // 4 during EDT, 5 during EST
+
+      const startDateTime = new Date(Date.UTC(year, month - 1, day, hours + offsetHours, minutes));
       const endDateTime = new Date(startDateTime.getTime() + 30 * 60000);
 
       const payload = {
-        idempotencyKey,
+        idempotencyKey: activeKey,
         providerName: selectedProvider,
         patient: {
-          firstName: patientDetails.firstName.trim(),
-          lastName: patientDetails.lastName.trim(),
-          email: patientDetails.email.trim(),
-          phone: patientDetails.phone.trim(),
+          firstName: (patientDetails.firstName || '').trim(),
+          lastName: (patientDetails.lastName || '').trim(),
+          email: (patientDetails.email || '').trim(),
+          phone: (patientDetails.phone || '').trim(),
           dob: patientDetails.dob || '1990-01-01',
           insurance: patientDetails.insurance ? patientDetails.insurance.trim() : '',
           comments: patientDetails.comments ? patientDetails.comments.trim() : '',
@@ -245,10 +311,10 @@ export function AppointmentProvider({ children }) {
 
       const response = await axios.post('/api/v1/appointments/smart', payload, {
         headers: {
-          'X-Idempotency-Key': idempotencyKey,
+          'X-Idempotency-Key': activeKey,
           'Content-Type': 'application/json',
         },
-        timeout: 15000,
+        timeout: 18000,
       });
 
       if (response.data && response.data.success) {
@@ -282,7 +348,7 @@ export function AppointmentProvider({ children }) {
       if (isTimeout) {
         // Attempt an immediate idempotent verification probe to check if Tebra completed the booking
         try {
-          const verifyProbe = await axios.get(`/api/v1/appointments/smart?verifyKey=${encodeURIComponent(idempotencyKey)}`, {
+          const verifyProbe = await axios.get(`/api/v1/appointments/smart?verifyKey=${encodeURIComponent(activeKey)}`, {
             timeout: 5000,
           });
           if (verifyProbe.data && verifyProbe.data.success) {
@@ -311,14 +377,30 @@ export function AppointmentProvider({ children }) {
         return;
       }
 
-      let formattedError = {
+      const isSlotConflict =
+        statusCode === 409 ||
+        errorData?.isSlotUnavailable ||
+        errorData?.code === 'SLOT_UNAVAILABLE' ||
+        err.message?.toLowerCase().includes('slot') ||
+        errorData?.details?.toLowerCase().includes('slot') ||
+        errorData?.message?.toLowerCase().includes('slot') ||
+        errorData?.details?.toLowerCase().includes('conflict') ||
+        errorData?.details?.toLowerCase().includes('not available');
+
+      // Refresh slot availability immediately if slot is no longer available
+      if (isSlotConflict && selectedProvider && selectedDate) {
+        fetchAvailability(selectedProvider, selectedDate);
+      }
+
+      const formattedError = {
         code: errorData?.code || `HTTP_${statusCode || 'NETWORK_ERROR'}`,
         message: errorData?.message || (
-          statusCode === 409
+          isSlotConflict
             ? 'The selected appointment slot is no longer available. Please select another time.'
             : 'Unable to connect to the clinic scheduling system. Please call us directly at (704) 503-9338.'
         ),
-        isSlotUnavailable: statusCode === 409 || errorData?.code === 'SLOT_UNAVAILABLE',
+        isSlotUnavailable: isSlotConflict,
+        isValidationError: errorData?.code === 'VALIDATION_ERROR' || statusCode === 400,
         details: errorData?.details || err.message,
       };
 
@@ -381,14 +463,18 @@ export function AppointmentProvider({ children }) {
     setPatientDetails,
     isSubmitting,
     bookingStatus,
+    setBookingStatus,
     bookingSuccess,
     bookingError,
+    setBookingError,
+    clearBookingError,
     bookingResult,
     generatedBookingId,
     liveSlots,
     isLoadingSlots,
     availabilityError,
     fetchAvailability,
+    generateNewIdempotencyKey,
     nextStep,
     prevStep,
     resetWizard,

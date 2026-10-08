@@ -13,7 +13,7 @@ export default function About() {
 
   useSEO({
     title: "About Our Interventional Pain Specialists | Amara Pain Charlotte NC",
-    description: "Meet our double board-certified interventional pain specialists in Charlotte, NC. Evidence-based, non-surgical relief with $0 hospital facility fees.",
+    description: "Meet our interventional pain specialists in Charlotte, NC. Non-surgical pain management with zero hospital facility fees.",
     url: "/about"
   });
 
@@ -22,9 +22,9 @@ export default function About() {
       name: "Ashvin K. Amara, MD",
       role: "Founder & Medical Director",
       image: "/images/ashvin-amara.jpg",
-      credentials: "Board Certified in Anesthesiology & Pain Medicine",
+      credentials: "Anesthesiology & Pain Medicine",
       acceptingNewPatients: true,
-      bio: "Ashvin K. Amara, MD, is a highly trusted physician board-certified in both Anesthesiology and Interventional Pain Medicine. He completed his comprehensive fellowship training in pain management and has dedicated over 15 years to helping patients in Charlotte, NC, find relief from complex chronic and acute pain conditions.",
+      bio: "Ashvin K. Amara, MD, is a physician specializing in both Anesthesiology and Interventional Pain Medicine. He completed fellowship training in pain management and has dedicated over 15 years to diagnosing and treating complex chronic and acute pain conditions in Charlotte, NC.",
       education: [
         "Fellowship in Interventional Pain Management – John H. Stroger Hospital of Cook County, Chicago, IL",
         "Residency in Anesthesiology – Brookdale University Hospital Medical Center, Brooklyn, NY",
@@ -43,13 +43,13 @@ export default function About() {
       name: "Eunice Babalola, NP, MSN",
       role: "Nurse Practitioner",
       image: "/images/eunice-babalola.jpg",
-      credentials: "Board-Certified Family Nurse Practitioner",
+      credentials: "Family Nurse Practitioner",
       acceptingNewPatients: false,
-      bio: "Eunice Babalola, NP, MSN, is a board-certified Nurse Practitioner at Amara Pain & Spine Management. She is dedicated to walking alongside patients on their path to recovery, focusing on holistic, evidence-based pain management and customized care plans to promote long-term comfort and well-being.",
+      bio: "Eunice Babalola, NP, MSN, is a Family Nurse Practitioner at Amara Pain & Spine Management. She assists with clinical evaluations, patient follow-ups, and treatment plans.",
       education: [
         "Master of Science in Nursing (MSN-FNP) – University of North Carolina at Charlotte (UNCC)",
-        "Board Certified Family Nurse Practitioner (AANP)",
-        "Board Certified Medical-Surgical Nurse (ANCC)"
+        "Family Nurse Practitioner (AANP)",
+        "Medical-Surgical Nurse (ANCC)"
       ],
       memberships: [
         "American Nurses Association (ANA)",
@@ -58,11 +58,11 @@ export default function About() {
     },
     {
       name: "Alexander Carmenaty Rodriguez, MSN, FNP-C",
-      role: "Board-Certified Family Nurse Practitioner",
+      role: "Nurse Practitioner",
       image: "/images/alexander-carmenaty.jpg",
-      credentials: "Board-Certified Family Nurse Practitioner",
+      credentials: "Family Nurse Practitioner",
       acceptingNewPatients: false,
-      bio: "Alexander Carmenaty Rodriguez, MSN, FNP-C, is a board-certified Nurse Practitioner at Amara Pain & Spine Management. He possesses a diverse international background in healthcare, enabling him to identify patient needs and develop highly effective medical plans and treatments.",
+      bio: "Alexander Carmenaty Rodriguez, MSN, FNP-C, is a Family Nurse Practitioner at Amara Pain & Spine Management. He brings diverse clinical experience across primary care and rehabilitation.",
       education: [
         "Master of Science in Nursing (MSN-FNP) – South University, Savannah, GA",
         "Doctor of Medicine (MD Equivalent) / Family Physician Training – Cuba",
@@ -83,10 +83,10 @@ export default function About() {
           About Our Clinic
         </Badge>
         <h1 className="text-[34px] md:text-[54px] font-extrabold font-heading tracking-tight text-white leading-[1.1]">
-          Our Story &amp; Mission
+          Our Practice &amp; Mission
         </h1>
         <p className="text-[18px] text-[#F0F0F0] font-normal leading-[1.75] max-w-[720px]">
-          Amara Pain &amp; Spine Management is an independent, physician-owned practice dedicated to delivering high-quality, transparent, and patient-centered interventional pain care in Charlotte, NC.
+          Amara Pain &amp; Spine Management is an independent, physician-owned practice providing non-surgical interventional pain care with transparent clinic pricing in Charlotte, NC.
         </p>
       </div>
 
@@ -94,31 +94,31 @@ export default function About() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10 animate-reveal my-8">
         <div className="lg:col-span-7 space-y-6">
           <h2 className="text-[28px] md:text-[40px] font-extrabold font-heading leading-[1.2] text-white">
-            Dedicated to Safe, Evidence-Based Pain Relief
+            Clinical Evaluation &amp; Non-Surgical Pain Care
           </h2>
           <p className="text-[18px] text-[#F0F0F0] font-normal leading-[1.75] max-w-[720px]">
-            We believe that chronic pain management requires a comprehensive, customized approach. Pain is highly personal, and a cookie-cutter treatment plan is rarely effective. Our interventional pain specialists are dedicated to accurately diagnosing your specific pain generators using advanced diagnostic nerve blocks and imaging.
+            Chronic pain can have multiple contributing factors, from spinal disc degeneration to inflamed facet joints or irritated nerves. We evaluate your symptoms, medical history, and diagnostic imaging to identify the specific source of your discomfort and discuss targeted treatment options.
           </p>
           <p className="text-[18px] text-[#F0F0F0] font-normal leading-[1.75] max-w-[720px]">
-            We strive to relieve your pain utilizing the least invasive, non-surgical treatments first, such as epidural steroid injections, radiofrequency ablation, and regenerative therapies. By focusing on joint-preservation and nerve-calming procedures, we help you restore function and find quality, pain-free moments in your daily life.
+            We focus on non-surgical interventional treatments, including epidural steroid injections, joint injections, and radiofrequency ablation. Our goal is to reduce pain and improve your everyday mobility.
           </p>
 
           {/* Three core values grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
             <div className="p-6 bg-[#454242] border border-[#585454] rounded-2xl shadow-xl hover:border-emerald-500/40 transition-all duration-300 animate-reveal" style={{ animationDelay: '0.05s' }}>
               <Heart className="h-6 w-6 text-emerald-400 mb-2" />
-              <h4 className="font-bold text-[13px] text-white mb-1">Human Element</h4>
-              <p className="text-xs text-[#D1D5DB] leading-relaxed">We validate your pain and treat every patient with empathy.</p>
+              <h4 className="font-bold text-[13px] text-white mb-1">Clinical Listening</h4>
+              <p className="text-xs text-[#D1D5DB] leading-relaxed">We listen carefully to your symptoms and review prior diagnostics.</p>
             </div>
             <div className="p-6 bg-[#454242] border border-[#585454] rounded-2xl shadow-xl hover:border-emerald-500/40 transition-all duration-300 animate-reveal" style={{ animationDelay: '0.1s' }}>
               <Shield className="h-6 w-6 text-emerald-400 mb-2" />
               <h4 className="font-bold text-[13px] text-white mb-1">Affordable Care</h4>
-              <p className="text-xs text-[#D1D5DB] leading-relaxed">Flat office fee with absolutely zero facility fee markups.</p>
+              <p className="text-xs text-[#D1D5DB] leading-relaxed">Flat office fee with zero hospital facility charges.</p>
             </div>
             <div className="p-6 bg-[#454242] border border-[#585454] rounded-2xl shadow-xl hover:border-emerald-500/40 transition-all duration-300 animate-reveal" style={{ animationDelay: '0.15s' }}>
               <BookOpen className="h-6 w-6 text-emerald-400 mb-2" />
-              <h4 className="font-bold text-[13px] text-white mb-1">Evidence-Based</h4>
-              <p className="text-xs text-[#D1D5DB] leading-relaxed">FDA-approved interventional clinical techniques.</p>
+              <h4 className="font-bold text-[13px] text-white mb-1">Image-Guided Care</h4>
+              <p className="text-xs text-[#D1D5DB] leading-relaxed">Fluoroscopy and ultrasound for procedural precision.</p>
             </div>
           </div>
         </div>
@@ -128,39 +128,39 @@ export default function About() {
           <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-[#585454] bg-[#323030] group">
             <img 
               src="/images/audience/senior_consultation.jpg" 
-              alt="Older African American patient having a reassuring, personalized consultation with an interventional pain physician"
+              alt="Older adult patient during a consultation with an interventional pain physician"
               className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-500"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#3A3838]/90 via-[#3A3838]/25 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5 text-white">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-bold block">Patient-Centered Experience</span>
-              <p className="text-sm font-semibold mt-1 leading-snug text-white">Personalized, unhurried care where older adults and chronic pain patients are truly listened to.</p>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-bold block">Patient Consultation</span>
+              <p className="text-sm font-semibold mt-1 leading-snug text-white">Medical evaluation and unhurried consultations for patients experiencing chronic spine and joint pain.</p>
             </div>
           </div>
 
           <div className="border border-[#585454] rounded-2xl space-y-6 relative overflow-hidden bg-[#363434] p-8 shadow-xl">
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-emerald-950/20 rounded-full blur-2xl -z-10" />
             <h3 className="text-[18px] font-bold font-heading text-white">
-              How We Are Different
+              Practice Highlights
             </h3>
             <ul className="space-y-4 text-sm text-[#F0F0F0]">
               <li className="flex gap-3">
                 <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white">No Hidden Facility Fees:</strong> Unlike hospital-owned clinics, our independent practice saves you hundreds of dollars by charging a single, transparent office visit fee.
+                  <strong className="text-white">No Hospital Facility Fees:</strong> Unlike hospital-owned clinics, our independent practice bills as an office visit with zero hospital facility charge markups.
                 </div>
               </li>
               <li className="flex gap-3">
                 <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white">Double-Certified Specialist:</strong> Directed by a physician certified in both pain medicine and anesthesiology.
+                  <strong className="text-white">Physician-Led Practice:</strong> Directed by a physician with specialized training in both anesthesiology and pain medicine.
                 </div>
               </li>
               <li className="flex gap-3">
                 <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white">Personalized Care Plans:</strong> We spend the time to listen, locate the exact pain sources, and adapt plans to your physical recovery progress.
+                  <strong className="text-white">Targeted Treatment Plans:</strong> We review your diagnostic imaging and clinical history to develop a treatment plan focused on your specific symptoms.
                 </div>
               </li>
             </ul>

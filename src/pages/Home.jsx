@@ -14,8 +14,8 @@ import FinalCTA from '../components/home/FinalCTA';
 
 export default function Home() {
   useSEO({
-    title: "Amara Pain | Advanced Interventional Pain Specialists",
-    description: "Charlotte's leading interventional specialists delivering advanced, evidence-based pain relief built around your body, your diagnostics, and your life outside of the clinic.",
+    title: "Amara Pain & Spine | Interventional Pain Management Charlotte NC",
+    description: "Interventional pain management in Charlotte, NC. Non-surgical evaluation and targeted treatments for back, neck, joint, and nerve pain with zero hospital facility fees.",
     url: "https://www.amarapain.com/",
     image: "https://www.amarapain.com/images/og-image.png"
   });

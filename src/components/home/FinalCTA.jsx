@@ -22,10 +22,10 @@ export default function FinalCTA() {
           className="mx-auto max-w-2xl"
         >
         <h2 className="font-heading text-[30px] sm:text-[34px] md:text-[38px] text-[#FFFFFF] font-bold leading-tight">
-          Take the First Step Toward Living Pain-Free
+          Schedule a Consultation at Our Charlotte Clinic
         </h2>
         <p className="mt-4 text-[#F0F0F0] font-normal text-[16px] sm:text-[17px] md:text-[18px]">
-          Same-week appointments available. Most major insurances accepted.
+          Consultations available Monday through Friday. Major insurance plans accepted.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -33,7 +33,7 @@ export default function FinalCTA() {
             <button
               className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-white cursor-pointer shadow-lg transition-all hover:bg-emerald-500 bg-emerald-600 shadow-emerald-950/40"
             >
-              <CalendarCheck2 size={17} /> Book Appointment
+              <CalendarCheck2 size={17} /> Request an Appointment
             </button>
           </Link>
           <a href="tel:+17045039338">
