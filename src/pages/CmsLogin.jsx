@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
-import { LogIn, ShieldCheck } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { LogIn, ShieldCheck, AlertCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../components/ui/Button';
-import Card from '../components/ui/Card';
+import CmsButton from '../components/cms/CmsButton';
+import CmsCard from '../components/cms/CmsCard';
+import CmsInput from '../components/cms/CmsInput';
 
 async function requestJson(url, options) {
   const response = await fetch(url, {
@@ -27,13 +28,17 @@ export default function CmsLogin() {
     let active = true;
     requestJson('/api/admin/login')
       .then((data) => {
-        if (active && data.authenticated) navigate('/admin/blog', { replace: true });
+        if (active && data.authenticated) {
+          navigate('/admin/blog', { replace: true });
+        }
       })
       .catch(() => {})
       .finally(() => {
         if (active) setLoading(false);
       });
-    return () => { active = false; };
+    return () => {
+      active = false;
+    };
   }, [navigate]);
 
   const login = async (event) => {
@@ -55,66 +60,105 @@ export default function CmsLogin() {
   };
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center bg-slate-950 text-slate-300">Loading secure CMS…</div>;
+    return (
+      <div className="cms-login-viewport" style={{ backgroundColor: '#f5f7fa', color: '#0f172a' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <svg className="animate-spin h-5 w-5" style={{ color: '#075985' }} fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+          </svg>
+          <span style={{ fontSize: '15px', fontWeight: 600, color: '#334155' }}>Loading secure CMS…</span>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <main className="min-h-screen bg-slate-950 flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md">
-        <Card variant="white" padding="lg" className="border-slate-200 shadow-2xl">
-          <div className="flex items-center gap-3">
-            <div className="h-11 w-11 rounded-xl bg-cyan-50 border border-cyan-200 flex items-center justify-center">
-              <ShieldCheck className="h-6 w-6 text-cyan-700" />
+    <main className="cms-login-viewport">
+      <div style={{ width: '100%', maxWidth: '440px', padding: '0 8px' }}>
+        <CmsCard variant="login" padding="none">
+          {/* Header */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
+            <div
+              style={{
+                height: '46px',
+                width: '46px',
+                borderRadius: '12px',
+                backgroundColor: '#e0f2fe',
+                border: '1px solid #bae6fd',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0
+              }}
+            >
+              <ShieldCheck style={{ height: '26px', width: '26px', color: '#0369a1' }} />
             </div>
             <div>
-              <p className="text-xs font-black uppercase tracking-widest text-cyan-700">Amara Pain & Spine</p>
-              <h1 className="text-2xl font-black text-slate-900">CMS Login</h1>
+              <p style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#0369a1', margin: 0 }}>
+                Amara Pain & Spine
+              </p>
+              <h1 className="cms-heading cms-heading-xl" style={{ marginTop: '2px' }}>
+                CMS Login
+              </h1>
             </div>
           </div>
-          <p className="mt-5 text-sm leading-6 text-slate-600">
+
+          <p className="cms-body-sm" style={{ marginBottom: '24px' }}>
             Secure access for authorized content administrators.
           </p>
 
-          <form onSubmit={login} className="mt-7 space-y-5">
-            <label className="block text-sm font-bold text-slate-800">
-              Username
-              <input
-                name="username"
-                type="text"
-                autoComplete="username"
-                autoCapitalize="none"
-                spellCheck="false"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-                className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-cyan-600 focus:ring-2 focus:ring-cyan-100"
-                required
-              />
-            </label>
-            <label className="block text-sm font-bold text-slate-800">
-              Password
-              <input
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none focus:border-cyan-600 focus:ring-2 focus:ring-cyan-100"
-                required
-              />
-            </label>
+          <form onSubmit={login} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <CmsInput
+              label="Username"
+              id="cms-username"
+              name="username"
+              type="text"
+              autoComplete="username"
+              autoCapitalize="none"
+              spellCheck="false"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="admin username"
+              required
+            />
+
+            <CmsInput
+              label="Password"
+              id="cms-password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              required
+            />
 
             {error && (
-              <div role="alert" className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700">
-                {error}
+              <div role="alert" className="cms-alert cms-alert-error">
+                <AlertCircle style={{ height: '18px', width: '18px', flexShrink: 0, marginTop: '2px' }} />
+                <span>{error}</span>
               </div>
             )}
 
-            <Button type="submit" variant="primary" className="w-full" icon={LogIn} disabled={submitting}>
+            <CmsButton
+              type="submit"
+              variant="primary"
+              size="lg"
+              icon={LogIn}
+              loading={submitting}
+              disabled={submitting}
+              style={{ width: '100%', marginTop: '6px' }}
+            >
               {submitting ? 'Signing in…' : 'Sign in securely'}
-            </Button>
+            </CmsButton>
           </form>
-        </Card>
-        <p className="mt-5 text-center text-xs text-slate-400">Authorized access only.</p>
+        </CmsCard>
+
+        <p className="cms-muted" style={{ textAlign: 'center', marginTop: '20px' }}>
+          Authorized access only.
+        </p>
       </div>
     </main>
   );

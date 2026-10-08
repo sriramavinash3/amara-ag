@@ -1,19 +1,51 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { Eye, FileText, Globe2, LogOut, Plus, Save, Trash2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { Eye, LogOut, Plus, Save, Trash2, FileText, Globe2 } from 'lucide-react';
-import Button from '../components/ui/Button';
-import Badge from '../components/ui/Badge';
-import Card from '../components/ui/Card';
+import CmsButton from '../components/cms/CmsButton';
+import CmsCard from '../components/cms/CmsCard';
+import CmsBadge from '../components/cms/CmsBadge';
+import CmsInput from '../components/cms/CmsInput';
+import CmsTextarea from '../components/cms/CmsTextarea';
+import CmsSelect from '../components/cms/CmsSelect';
 
-const CATEGORIES = ['Patient Education', 'Billing & Insurance', 'Tips & Wellness'];
-const EMPTY = { title:'', slug:'', excerpt:'', content:'', category:CATEGORIES[0], author:'Dr. Ashvin K. Amara, MD', featuredImageUrl:'', seoTitle:'', seoDescription:'', status:'draft' };
+const CATEGORIES = [
+  'Interventional Pain',
+  'Back Pain',
+  'Neck & Spine',
+  'Joint Health',
+  'Wellness & Recovery',
+  'Patient Education'
+];
 
-const slugify = (value) => value.toLowerCase().trim().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+const INITIAL_FORM = {
+  title: '',
+  slug: '',
+  excerpt: '',
+  category: CATEGORIES[0],
+  author: 'Dr. Sudhir Rao',
+  readTime: '4 min read',
+  featuredImageUrl: '',
+  content: '',
+  seoTitle: '',
+  seoDescription: ''
+};
 
-async function requestJson(url, options) {
+function slugify(text) {
+  return (text || '')
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/--+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
+}
+
+async function requestJson(url, options = {}) {
   const response = await fetch(url, {
     credentials: 'same-origin',
-    headers: { 'Content-Type':'application/json', Accept:'application/json' },
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     ...options
   });
   const data = await response.json().catch(() => ({}));
@@ -22,53 +54,61 @@ async function requestJson(url, options) {
 }
 
 export default function BlogAdmin() {
-  const [authenticated,setAuthenticated] = useState(false);
   const navigate = useNavigate();
-  const [posts,setPosts] = useState([]);
-  const [form,setForm] = useState(EMPTY);
-  const [editingId,setEditingId] = useState(null);
-  const [loading,setLoading] = useState(true);
-  const [saving,setSaving] = useState(false);
-  const [message,setMessage] = useState('');
-  const [error,setError] = useState('');
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+  const [authenticated, setAuthenticated] = useState(false);
+  const [editingId, setEditingId] = useState(null);
+  const [form, setForm] = useState(INITIAL_FORM);
+
+  const resetForm = useCallback(() => {
+    setEditingId(null);
+    setForm(INITIAL_FORM);
+  }, []);
 
   const refresh = useCallback(async () => {
-    const session = await requestJson('/api/admin/login');
-    setAuthenticated(Boolean(session.authenticated));
-    if (!session.authenticated) {
-      navigate('/cms/login', { replace: true });
-      return;
+    try {
+      const data = await requestJson('/api/admin/blog');
+      setPosts(data.posts || []);
+    } catch (err) {
+      setError(err.message);
     }
-    const data = await requestJson('/api/admin/blog');
-    setPosts(data.posts || []);
-  }, [navigate]);
+  }, []);
 
   useEffect(() => {
     let active = true;
-    Promise.resolve()
-      .then(() => refresh())
-      .catch(() => {
-        if (active) {
-          setAuthenticated(false);
+    requestJson('/api/admin/login')
+      .then((data) => {
+        if (!active) return;
+        if (!data.authenticated) {
           navigate('/cms/login', { replace: true });
+          return;
         }
+        setAuthenticated(true);
+        refresh().finally(() => {
+          if (active) setLoading(false);
+        });
       })
-      .finally(() => {
-        if (active) setLoading(false);
+      .catch(() => {
+        if (active) navigate('/cms/login', { replace: true });
       });
+
     return () => {
       active = false;
     };
-  }, [refresh, navigate]);
+  }, [navigate, refresh]);
 
-
-  const setField = (name,value) => setForm((current) => ({ ...current, [name]: value }));
-
-  const resetForm = () => {
-    setEditingId(null);
-    setForm(EMPTY);
-    setMessage('');
-    setError('');
+  const setField = (key, value) => {
+    setForm((prev) => {
+      const next = { ...prev, [key]: value };
+      if (key === 'title' && !editingId) {
+        next.slug = slugify(value);
+      }
+      return next;
+    });
   };
 
   const edit = (post) => {
@@ -77,33 +117,46 @@ export default function BlogAdmin() {
       title: post.title || '',
       slug: post.slug || '',
       excerpt: post.excerpt || '',
-      content: post.content || '',
       category: post.category || CATEGORIES[0],
-      author: post.author || '',
-      featuredImageUrl: post.featured_image_url || '',
-      seoTitle: post.seo_title || '',
-      seoDescription: post.seo_description || '',
-      status: post.status === 'published' ? 'published' : 'draft'
+      author: post.author || 'Dr. Sudhir Rao',
+      readTime: post.readTime || '4 min read',
+      featuredImageUrl: post.featuredImageUrl || '',
+      content: post.content || '',
+      seoTitle: post.seoTitle || '',
+      seoDescription: post.seoDescription || ''
     });
-    setError('');
     setMessage('');
-    window.scrollTo({ top:0, behavior:'smooth' });
+    setError('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const save = async (status) => {
+  const save = async (targetStatus) => {
     setSaving(true);
-    setError('');
     setMessage('');
+    setError('');
+
+    const payload = {
+      ...form,
+      status: targetStatus,
+      slug: slugify(form.slug || form.title)
+    };
+
     try {
-      const payload = { ...form, status, slug:slugify(form.slug || form.title) };
       if (editingId) {
-        await requestJson('/api/admin/blog/' + editingId, { method:'PUT', body:JSON.stringify(payload) });
+        await requestJson(`/api/admin/blog/${editingId}`, {
+          method: 'PUT',
+          body: JSON.stringify(payload)
+        });
+        setMessage(`Article successfully ${targetStatus === 'published' ? 'published' : 'saved as draft'}.`);
       } else {
-        const created = await requestJson('/api/admin/blog', { method:'POST', body:JSON.stringify(payload) });
-        setEditingId(created.id);
+        const created = await requestJson('/api/admin/blog', {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+        setEditingId(created.post?.id || null);
+        setMessage(`Article created and ${targetStatus === 'published' ? 'published' : 'saved as draft'}.`);
       }
       await refresh();
-      setMessage(status === 'published' ? 'Article published successfully.' : 'Draft saved.');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -113,22 +166,26 @@ export default function BlogAdmin() {
 
   const logout = async () => {
     try {
-      await requestJson('/api/admin/login', { method:'POST', body:JSON.stringify({ action:'logout' }) });
+      await requestJson('/api/admin/login', {
+        method: 'POST',
+        body: JSON.stringify({ action: 'logout' })
+      });
     } finally {
-      setAuthenticated(false);
-      setPosts([]);
       navigate('/cms/login', { replace: true });
     }
   };
 
   const remove = async () => {
-    if (!editingId || !window.confirm('Delete this article permanently?')) return;
+    if (!editingId) return;
+    const confirmed = typeof window !== 'undefined' ? window.confirm('Delete this article permanently?') : true;
+    if (!confirmed) return;
+
     setSaving(true);
     try {
-      await requestJson('/api/admin/blog/' + editingId, { method:'DELETE' });
+      await requestJson(`/api/admin/blog/${editingId}`, { method: 'DELETE' });
       resetForm();
       await refresh();
-      setMessage('Article deleted.');
+      setMessage('Article deleted permanently.');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -136,74 +193,365 @@ export default function BlogAdmin() {
     }
   };
 
-  if (loading) return <div className="max-w-7xl mx-auto py-20 px-4 text-slate-600">Loading publishing console…</div>;
+  if (loading) {
+    return (
+      <div className="cms-page-wrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <svg className="animate-spin h-5 w-5" style={{ color: '#075985' }} fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+          </svg>
+          <span style={{ fontSize: '15px', fontWeight: 600, color: '#334155' }}>Loading publishing console…</span>
+        </div>
+      </div>
+    );
+  }
 
   if (!authenticated) return null;
 
   return (
-    <div className="w-full max-w-7xl mx-auto py-12 px-4 md:px-8 space-y-8">
-      <header className="flex flex-col md:flex-row md:items-end justify-between gap-5 border-b border-slate-200 pb-7">
-        <div>
-          <Badge variant="secondary" className="bg-cyan-50 text-cyan-800 border border-cyan-200">Content Operations</Badge>
-          <h1 className="mt-3 text-4xl font-black text-slate-900">Blog Publishing Dashboard</h1>
-          <p className="mt-2 text-slate-600">Create once. Save as draft. Preview. Publish to the live blog.</p>
+    <div className="cms-page-wrapper">
+      <div className="cms-dashboard-container">
+        {/* Top Header */}
+        <header className="cms-dashboard-header">
+          <div>
+            <CmsBadge variant="blue">Content Operations</CmsBadge>
+            <h1 className="cms-heading cms-heading-xl" style={{ marginTop: '8px' }}>
+              Blog Publishing Dashboard
+            </h1>
+            <p className="cms-body" style={{ marginTop: '4px' }}>
+              Create once. Save as draft. Preview. Publish to the live blog.
+            </p>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <CmsButton variant="secondary" onClick={logout} icon={LogOut}>
+              Sign out
+            </CmsButton>
+          </div>
+        </header>
+
+        {/* Global Feedback Alert */}
+        {message && (
+          <div role="status" className="cms-alert cms-alert-success" style={{ marginBottom: '24px' }}>
+            <CheckCircle2 style={{ height: '18px', width: '18px', flexShrink: 0, marginTop: '2px' }} />
+            <span>{message}</span>
+          </div>
+        )}
+
+        {error && (
+          <div role="alert" className="cms-alert cms-alert-error" style={{ marginBottom: '24px' }}>
+            <AlertCircle style={{ height: '18px', width: '18px', flexShrink: 0, marginTop: '2px' }} />
+            <span>{error}</span>
+          </div>
+        )}
+
+        {/* Main 2-Column Workspace */}
+        <div className="cms-grid-dashboard">
+          {/* LEFT: Article Editor */}
+          <CmsCard padding="lg">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+              <div>
+                <p style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#64748b', margin: 0 }}>
+                  {editingId ? 'Edit Article' : 'New Article'}
+                </p>
+                <h2 className="cms-heading cms-heading-lg" style={{ marginTop: '4px' }}>
+                  {editingId ? 'Update Publication' : 'Write an Article'}
+                </h2>
+              </div>
+              <CmsButton variant="secondary" size="sm" onClick={resetForm} icon={Plus}>
+                New
+              </CmsButton>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+              <CmsInput
+                label="Article Title"
+                id="article-title"
+                value={form.title}
+                onChange={(e) => setField('title', e.target.value)}
+                placeholder="e.g. Modern Interventional Approaches to Chronic Back Pain"
+                required
+              />
+
+              <CmsInput
+                label="URL Slug"
+                id="article-slug"
+                value={form.slug}
+                onChange={(e) => setField('slug', slugify(e.target.value))}
+                placeholder="modern-interventional-approaches-back-pain"
+                helperText="URL path: /blog/<slug>"
+                required
+              />
+
+              <CmsTextarea
+                label="Excerpt / Summary"
+                id="article-excerpt"
+                value={form.excerpt}
+                onChange={(e) => setField('excerpt', e.target.value)}
+                placeholder="A concise 2-3 sentence summary that will appear on card listings and social previews."
+                rows={3}
+                required
+              />
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+                <CmsSelect
+                  label="Category"
+                  id="article-category"
+                  value={form.category}
+                  onChange={(e) => setField('category', e.target.value)}
+                  options={CATEGORIES}
+                  required
+                />
+
+                <CmsInput
+                  label="Author"
+                  id="article-author"
+                  value={form.author}
+                  onChange={(e) => setField('author', e.target.value)}
+                  placeholder="Dr. Sudhir Rao"
+                  required
+                />
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+                <CmsInput
+                  label="Read Time"
+                  id="article-readtime"
+                  value={form.readTime}
+                  onChange={(e) => setField('readTime', e.target.value)}
+                  placeholder="4 min read"
+                />
+
+                <CmsInput
+                  label="Featured Image URL"
+                  id="article-image"
+                  value={form.featuredImageUrl}
+                  onChange={(e) => setField('featuredImageUrl', e.target.value)}
+                  placeholder="https://images.unsplash.com/..."
+                  helperText="Valid HTTPS URL (optional)"
+                />
+              </div>
+
+              <CmsTextarea
+                label="Article Content"
+                id="article-content"
+                value={form.content}
+                onChange={(e) => setField('content', e.target.value)}
+                placeholder="Write full article markdown or text..."
+                rows={16}
+                monospace
+                required
+              />
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+                <CmsInput
+                  label="SEO Meta Title"
+                  id="article-seotitle"
+                  value={form.seoTitle}
+                  onChange={(e) => setField('seoTitle', e.target.value)}
+                  placeholder="Defaults to article title"
+                />
+
+                <CmsInput
+                  label="SEO Meta Description"
+                  id="article-seodesc"
+                  value={form.seoDescription}
+                  onChange={(e) => setField('seoDescription', e.target.value)}
+                  placeholder="Defaults to article excerpt"
+                />
+              </div>
+
+              {/* Action Buttons Bar */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '12px',
+                  paddingTop: '20px',
+                  marginTop: '8px',
+                  borderTop: '1px solid #dbe2ea'
+                }}
+              >
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+                  <CmsButton
+                    variant="secondary"
+                    onClick={() => save('draft')}
+                    disabled={saving}
+                    loading={saving}
+                    icon={Save}
+                  >
+                    Save Draft
+                  </CmsButton>
+
+                  <CmsButton
+                    variant="primary"
+                    onClick={() => save('published')}
+                    disabled={saving}
+                    loading={saving}
+                    icon={Globe2}
+                  >
+                    Publish Live
+                  </CmsButton>
+                </div>
+
+                {editingId && (
+                  <CmsButton
+                    variant="ghost-danger"
+                    onClick={remove}
+                    disabled={saving}
+                    icon={Trash2}
+                  >
+                    Delete Article
+                  </CmsButton>
+                )}
+              </div>
+            </div>
+          </CmsCard>
+
+          {/* RIGHT: Live Preview & Publishing Guidelines */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <CmsCard padding="lg">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+                <Eye style={{ height: '20px', width: '20px', color: '#075985' }} />
+                <h2 className="cms-heading cms-heading-md">Live Preview</h2>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                <CmsBadge variant="blue">{form.category || 'Category'}</CmsBadge>
+                {form.readTime && <span className="cms-muted">{form.readTime}</span>}
+              </div>
+
+              <h3 className="cms-heading cms-heading-lg" style={{ marginBottom: '10px' }}>
+                {form.title || 'Your article title will appear here'}
+              </h3>
+
+              <p className="cms-body-sm" style={{ fontWeight: 500, color: '#334155', marginBottom: '16px' }}>
+                {form.excerpt || 'Your article excerpt summary will appear here.'}
+              </p>
+
+              {form.featuredImageUrl && (
+                <div style={{ marginBottom: '16px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
+                  <img
+                    src={form.featuredImageUrl}
+                    alt="Preview"
+                    style={{ width: '100%', height: '180px', objectFit: 'cover' }}
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                </div>
+              )}
+
+              <div
+                style={{
+                  paddingTop: '16px',
+                  borderTop: '1px solid #f1f5f9',
+                  whiteSpace: 'pre-line',
+                  fontSize: '14px',
+                  lineHeight: '1.7',
+                  color: '#475569',
+                  maxHeight: '360px',
+                  overflowY: 'auto'
+                }}
+              >
+                {form.content || 'Your article body content will render here.'}
+              </div>
+            </CmsCard>
+
+            <CmsCard padding="md" style={{ backgroundColor: '#f8fafc' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                <FileText style={{ height: '18px', width: '18px', color: '#075985' }} />
+                <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#0f172a' }}>
+                  Publishing Guidelines
+                </span>
+              </div>
+              <ul style={{ margin: 0, paddingLeft: '18px', fontSize: '13px', lineHeight: '1.6', color: '#475569', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <li><strong>Drafts</strong> stay strictly private in the database and never appear on the public site.</li>
+                <li><strong>Publish Live</strong> immediately makes the article accessible at <code>/blog/&lt;slug&gt;</code>.</li>
+                <li>Modifying a published article updates its content without changing the original published date.</li>
+                <li>URL slugs must be unique, lowercase, and hyphen-separated.</li>
+              </ul>
+            </CmsCard>
+          </div>
         </div>
-        <Button variant="outline" onClick={logout} icon={LogOut}>Sign out</Button>
-      </header>
 
-      {(message || error) && <div className={error ? 'rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700' : 'rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700'}>{error || message}</div>}
-
-      <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_.75fr] gap-8 items-start">
-        <Card variant="white" padding="lg" className="border-slate-200 shadow-premium">
-          <div className="flex items-center justify-between mb-6">
-            <div><p className="text-xs font-black uppercase tracking-widest text-slate-400">{editingId ? 'Edit article' : 'New article'}</p><h2 className="text-2xl font-black text-slate-900">{editingId ? 'Update publication' : 'Write an article'}</h2></div>
-            <Button variant="outline" size="sm" onClick={resetForm} icon={Plus}>New</Button>
-          </div>
-
-          <div className="space-y-5">
-            <label className="block text-sm font-bold text-slate-800">Title<input value={form.title} onChange={(event)=>setField('title',event.target.value)} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3" /></label>
-            <label className="block text-sm font-bold text-slate-800">URL slug<input value={form.slug} onChange={(event)=>setField('slug',slugify(event.target.value))} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3" /></label>
-            <label className="block text-sm font-bold text-slate-800">Excerpt<textarea value={form.excerpt} onChange={(event)=>setField('excerpt',event.target.value)} rows={3} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3" /></label>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <label className="block text-sm font-bold text-slate-800">Category<select value={form.category} onChange={(event)=>setField('category',event.target.value)} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 bg-white">{CATEGORIES.map((category)=><option key={category}>{category}</option>)}</select></label>
-              <label className="block text-sm font-bold text-slate-800">Author<input value={form.author} onChange={(event)=>setField('author',event.target.value)} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3" /></label>
+        {/* BOTTOM: Article Library */}
+        <div style={{ marginTop: '32px' }}>
+          <CmsCard padding="lg">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', paddingBottom: '16px', borderBottom: '1px solid #f1f5f9' }}>
+              <div>
+                <p style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#64748b', margin: 0 }}>
+                  Content Library
+                </p>
+                <h2 className="cms-heading cms-heading-lg" style={{ marginTop: '4px' }}>
+                  Published & Draft Articles
+                </h2>
+              </div>
+              <span className="cms-badge cms-badge-gray" style={{ fontWeight: 600 }}>
+                {posts.length} {posts.length === 1 ? 'article' : 'articles'}
+              </span>
             </div>
-            <label className="block text-sm font-bold text-slate-800">Featured image URL<input value={form.featuredImageUrl} onChange={(event)=>setField('featuredImageUrl',event.target.value)} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3" /></label>
-            <label className="block text-sm font-bold text-slate-800">Article content<textarea value={form.content} onChange={(event)=>setField('content',event.target.value)} rows={18} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 font-mono text-sm leading-relaxed" /></label>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <label className="block text-sm font-bold text-slate-800">SEO title<input value={form.seoTitle} onChange={(event)=>setField('seoTitle',event.target.value)} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3" /></label>
-              <label className="block text-sm font-bold text-slate-800">SEO description<input value={form.seoDescription} onChange={(event)=>setField('seoDescription',event.target.value)} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3" /></label>
-            </div>
-            <div className="flex flex-wrap gap-3 pt-3 border-t border-slate-200">
-              <Button variant="outline" onClick={()=>save('draft')} disabled={saving} icon={Save}>{saving ? 'Saving…' : 'Save Draft'}</Button>
-              <Button variant="primary" onClick={()=>save('published')} disabled={saving} icon={Globe2}>{saving ? 'Publishing…' : 'Publish Live'}</Button>
-              {editingId && <Button variant="ghost" onClick={remove} disabled={saving} icon={Trash2} className="text-rose-600">Delete</Button>}
-            </div>
-          </div>
-        </Card>
 
-        <div className="space-y-6 lg:sticky lg:top-24">
-          <Card variant="white" padding="lg" className="border-slate-200 shadow-premium">
-            <div className="flex items-center gap-2 mb-4"><Eye className="h-5 w-5 text-medical-600"/><h2 className="font-black text-slate-900">Live Preview</h2></div>
-            <Badge variant="accent" className="bg-cyan-50 text-cyan-800 border border-cyan-100">{form.category}</Badge>
-            <h3 className="mt-4 text-2xl font-black text-slate-900">{form.title || 'Your article title'}</h3>
-            <p className="mt-3 text-sm font-semibold text-slate-700">{form.excerpt || 'Your article excerpt will appear here.'}</p>
-            <div className="mt-5 pt-5 border-t border-slate-100 whitespace-pre-line text-sm leading-7 text-slate-600 max-h-[420px] overflow-auto">{form.content || 'Your article content preview will appear here.'}</div>
-          </Card>
-          <Card variant="slate" padding="md" className="border-slate-200">
-            <div className="flex items-center gap-2 mb-3"><FileText className="h-4 w-4 text-medical-600"/><span className="text-xs font-black uppercase tracking-widest">Publishing rules</span></div>
-            <ul className="text-xs text-slate-600 space-y-2 list-disc pl-4"><li>Drafts never appear on the public blog.</li><li>Publish creates /blog/&lt;slug&gt;.</li><li>Preserve published slugs when possible.</li></ul>
-          </Card>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {posts.map((post) => (
+                <button
+                  key={post.id}
+                  type="button"
+                  onClick={() => edit(post)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '16px',
+                    width: '100%',
+                    padding: '16px 18px',
+                    backgroundColor: editingId === post.id ? '#f0f9ff' : '#ffffff',
+                    border: `1px solid ${editingId === post.id ? '#bae6fd' : '#e2e8f0'}`,
+                    borderRadius: '12px',
+                    textAlign: 'left',
+                    cursor: 'pointer',
+                    transition: 'all 0.15s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (editingId !== post.id) e.currentTarget.style.backgroundColor = '#f8fafc';
+                  }}
+                  onMouseLeave={(e) => {
+                    if (editingId !== post.id) e.currentTarget.style.backgroundColor = '#ffffff';
+                  }}
+                >
+                  <div style={{ minWidth: 0, flex: 1 }}>
+                    <h3 style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      {post.title}
+                    </h3>
+                    <p className="cms-muted" style={{ marginTop: '4px', margin: 0 }}>
+                      <span style={{ fontWeight: 600, color: '#334155' }}>{post.category}</span>
+                      {' · '}
+                      <span>/blog/{post.slug}</span>
+                      {post.publishedAt && (
+                        <span> · Published {new Date(post.publishedAt).toLocaleDateString()}</span>
+                      )}
+                    </p>
+                  </div>
+                  <CmsBadge variant={post.status === 'published' ? 'green' : 'amber'}>
+                    {post.status === 'published' ? 'Published' : 'Draft'}
+                  </CmsBadge>
+                </button>
+              ))}
+
+              {!posts.length && (
+                <div style={{ padding: '36px 16px', textAlign: 'center' }}>
+                  <p className="cms-body" style={{ color: '#64748b' }}>
+                    No CMS articles yet in the database.
+                  </p>
+                  <p className="cms-muted" style={{ marginTop: '4px' }}>
+                    Click &ldquo;Write an Article&rdquo; above to create your first publication.
+                  </p>
+                </div>
+              )}
+            </div>
+          </CmsCard>
         </div>
       </div>
-
-      <Card variant="white" padding="lg" className="border-slate-200 shadow-premium">
-        <div className="flex items-center justify-between mb-5"><div><p className="text-xs font-black uppercase tracking-widest text-slate-400">Library</p><h2 className="text-2xl font-black text-slate-900">Articles</h2></div><span className="text-xs font-bold text-slate-500">{posts.length} total</span></div>
-        <div className="divide-y divide-slate-100">
-          {posts.map((post)=><button key={post.id} onClick={()=>edit(post)} className="w-full text-left py-4 flex items-center justify-between gap-4 hover:bg-slate-50 px-3 rounded-xl"><div className="min-w-0"><h3 className="font-bold text-slate-900 truncate">{post.title}</h3><p className="text-xs text-slate-500 mt-1">{post.category} · {post.status}</p></div><Badge variant={post.status==='published'?'success':'neutral'}>{post.status}</Badge></button>)}
-          {!posts.length && <p className="text-sm text-slate-500 py-5">No CMS articles yet. Existing static articles remain available during migration.</p>}
-        </div>
-      </Card>
     </div>
   );
 }
