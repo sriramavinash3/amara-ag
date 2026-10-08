@@ -100,7 +100,7 @@ const draftPayload = {
   excerpt: 'A test article created to verify CMS production hardening.',
   content: 'Comprehensive clinical insights for interventional pain management in Charlotte, NC.',
   category: 'Patient Education',
-  author: 'Dr. Ashvin K. Amara, MD',
+  author: 'Ashvin K. Amara, MD',
   featuredImageUrl: '/images/blog/anti_inflammatory_nutrition.jpg',
   seoTitle: 'Automated E2E Verification Article | Amara Pain',
   seoDescription: 'A test article created to verify CMS production hardening.',

@@ -22,7 +22,7 @@ const INITIAL_FORM = {
   slug: '',
   excerpt: '',
   category: CATEGORIES[0],
-  author: 'Dr. Sudhir Rao',
+  author: 'Ashvin K. Amara, MD',
   readTime: '4 min read',
   featuredImageUrl: '',
   content: '',
@@ -118,7 +118,7 @@ export default function BlogAdmin() {
       slug: post.slug || '',
       excerpt: post.excerpt || '',
       category: post.category || CATEGORIES[0],
-      author: post.author || 'Dr. Sudhir Rao',
+      author: post.author || 'Ashvin K. Amara, MD',
       readTime: post.readTime || '4 min read',
       featuredImageUrl: post.featuredImageUrl || '',
       content: post.content || '',
@@ -308,7 +308,7 @@ export default function BlogAdmin() {
                   id="article-author"
                   value={form.author}
                   onChange={(e) => setField('author', e.target.value)}
-                  placeholder="Dr. Sudhir Rao"
+                  placeholder="Ashvin K. Amara, MD"
                   required
                 />
               </div>
