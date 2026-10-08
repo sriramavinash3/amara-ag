@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Eye, LogIn, LogOut, Plus, Save, Trash2, FileText, Globe2 } from 'lucide-react';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
@@ -22,7 +23,7 @@ async function requestJson(url, options) {
 
 export default function BlogAdmin() {
   const [authenticated,setAuthenticated] = useState(false);
-  const [password,setPassword] = useState('');
+  const navigate = useNavigate();
   const [posts,setPosts] = useState([]);
   const [form,setForm] = useState(EMPTY);
   const [editingId,setEditingId] = useState(null);
@@ -34,10 +35,12 @@ export default function BlogAdmin() {
   const refresh = async () => {
     const session = await requestJson('/api/admin/login');
     setAuthenticated(Boolean(session.authenticated));
-    if (session.authenticated) {
-      const data = await requestJson('/api/admin/blog');
-      setPosts(data.posts || []);
+    if (!session.authenticated) {
+      navigate('/cms/login', { replace: true });
+      return;
     }
+    const data = await requestJson('/api/admin/blog');
+    setPosts(data.posts || []);
   };
 
   useEffect(() => {
@@ -108,48 +111,9 @@ export default function BlogAdmin() {
     }
   };
 
-  const login = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setError('');
-    try {
-      await requestJson('/api/admin/login', { method:'POST', body:JSON.stringify({ password }) });
-      setPassword('');
-      await refresh();
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const logout = async () => {
-    await requestJson('/api/admin/login', { method:'POST', body:JSON.stringify({ action:'logout' }) });
-    setAuthenticated(false);
-    setPosts([]);
-  };
-
   if (loading) return <div className="max-w-7xl mx-auto py-20 px-4 text-slate-600">Loading publishing console…</div>;
 
-  if (!authenticated) {
-    return (
-      <div className="min-h-[70vh] flex items-center justify-center px-4 py-20">
-        <Card variant="white" padding="lg" className="w-full max-w-md border-slate-200 shadow-premium">
-          <Badge variant="primary" className="bg-cyan-50 text-cyan-800 border border-cyan-200">Amara Content Admin</Badge>
-          <h1 className="mt-4 text-3xl font-black text-slate-900">Blog Publishing</h1>
-          <p className="mt-2 text-sm text-slate-600">Authorized staff only. Create, edit, preview, and publish patient education articles.</p>
-          <form onSubmit={login} className="mt-6 space-y-4">
-            <label className="block text-sm font-bold text-slate-800">
-              Admin password
-              <input type="password" autoComplete="current-password" value={password} onChange={(event)=>setPassword(event.target.value)} className="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3" required />
-            </label>
-            {error && <p className="text-sm font-semibold text-rose-600">{error}</p>}
-            <Button type="submit" variant="primary" className="w-full" icon={LogIn}>Sign in</Button>
-          </form>
-        </Card>
-      </div>
-    );
-  }
+  if (!authenticated) return null;
 
   return (
     <div className="w-full max-w-7xl mx-auto py-12 px-4 md:px-8 space-y-8">
