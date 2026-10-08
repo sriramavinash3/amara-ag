@@ -17,6 +17,7 @@ import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import BookAppointment from './pages/BookAppointment';
 import AdminDashboard from './pages/AdminDashboard';
+import BlogAdmin from './pages/BlogAdmin';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Referrals from './pages/Referrals';
 import ProviderDetail from './pages/ProviderDetail';
@@ -65,6 +66,7 @@ function MainLayout() {
           
           {/* Administrative Lead dashboard */}
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/blog" element={<BlogAdmin />} />
           
           {/* Compliance documents */}
           <Route path="/privacy" element={<PrivacyPolicy />} />
