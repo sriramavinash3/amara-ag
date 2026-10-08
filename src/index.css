@@ -161,67 +161,232 @@ html.lenis body {
 }
 
 
-/* CMS isolation: the publishing console uses a stable light UI independent of the public-site theme. */
-.cms-app-shell,
-.cms-app-shell * {
-  box-sizing: border-box;
-}
+
+/* =========================================================
+   CMS PROFESSIONAL UI
+   Intentionally isolated from the public-site visual theme.
+   Visibility and contrast take priority over decorative styling.
+   ========================================================= */
 
 .cms-app-shell {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.5;
-  color: #0f172a;
+  --cms-bg: #f4f7fb;
+  --cms-surface: #ffffff;
+  --cms-surface-soft: #f8fafc;
+  --cms-border: #d9e1ea;
+  --cms-border-strong: #c3cfdb;
+  --cms-text: #0f172a;
+  --cms-text-muted: #475569;
+  --cms-text-soft: #64748b;
+  --cms-primary: #075985;
+  --cms-primary-hover: #0c4a6e;
+  --cms-primary-soft: #e0f2fe;
+  --cms-success: #047857;
+  --cms-danger: #b91c1c;
+  background: var(--cms-bg) !important;
+  color: var(--cms-text) !important;
+  color-scheme: light !important;
 }
 
-.cms-login-root,
+.cms-app-shell,
+.cms-app-shell * {
+  color-scheme: light !important;
+}
+
+.cms-login-root {
+  background: var(--cms-bg) !important;
+  color: var(--cms-text) !important;
+}
+
 .cms-admin-root {
-  color: #0f172a;
-  font-family: var(--font-sans);
+  background: var(--cms-bg) !important;
+  color: var(--cms-text) !important;
+}
+
+.cms-card {
+  background: var(--cms-surface) !important;
+  color: var(--cms-text) !important;
+  border-color: var(--cms-border) !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07) !important;
+}
+
+.cms-card h1,
+.cms-card h2,
+.cms-card h3,
+.cms-admin-root h1,
+.cms-admin-root h2,
+.cms-admin-root h3,
+.cms-admin-root label {
+  color: var(--cms-text) !important;
+}
+
+.cms-admin-root p,
+.cms-admin-root li {
+  color: var(--cms-text-muted);
 }
 
 .cms-admin-root input,
 .cms-admin-root textarea,
 .cms-admin-root select,
 .cms-login-root input {
-  color: #0f172a;
-  background-color: #ffffff;
-  -webkit-text-fill-color: #0f172a;
+  appearance: auto !important;
+  background: #ffffff !important;
+  background-image: none !important;
+  color: var(--cms-text) !important;
+  -webkit-text-fill-color: var(--cms-text) !important;
+  border: 1px solid var(--cms-border-strong) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.cms-admin-root input:focus,
+.cms-admin-root textarea:focus,
+.cms-admin-root select:focus,
+.cms-login-root input:focus {
+  background: #ffffff !important;
+  color: var(--cms-text) !important;
+  border-color: #0284c7 !important;
+  outline: 3px solid rgba(2, 132, 199, 0.14) !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
 }
 
 .cms-admin-root input::placeholder,
 .cms-admin-root textarea::placeholder,
 .cms-login-root input::placeholder {
-  color: #64748b;
-  opacity: 1;
+  color: #94a3b8 !important;
+  -webkit-text-fill-color: #94a3b8 !important;
+  opacity: 1 !important;
 }
 
-.cms-admin-root input:disabled,
-.cms-admin-root textarea:disabled,
-.cms-admin-root select:disabled {
-  background-color: #f1f5f9;
-  color: #64748b;
+.cms-primary-button {
+  background: var(--cms-primary) !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid var(--cms-primary) !important;
+  box-shadow: 0 2px 5px rgba(7, 89, 133, 0.18) !important;
+  text-shadow: none !important;
 }
 
-.cms-admin-root button,
-.cms-login-root button {
-  -webkit-tap-highlight-color: transparent;
+.cms-primary-button:hover:not(:disabled) {
+  background: var(--cms-primary-hover) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
-.cms-admin-root h1,
-.cms-admin-root h2,
-.cms-admin-root h3,
-.cms-login-root h1 {
-  letter-spacing: -0.02em;
+.cms-outline-button {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: var(--cms-primary) !important;
+  -webkit-text-fill-color: var(--cms-primary) !important;
+  border: 1px solid var(--cms-border-strong) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.cms-outline-button:hover:not(:disabled) {
+  background: var(--cms-primary-soft) !important;
+  color: var(--cms-primary-hover) !important;
+  -webkit-text-fill-color: var(--cms-primary-hover) !important;
+  border-color: #7dd3fc !important;
+}
+
+.cms-danger-button {
+  background: transparent !important;
+  color: var(--cms-danger) !important;
+  -webkit-text-fill-color: var(--cms-danger) !important;
+  text-shadow: none !important;
+}
+
+.cms-rules-card {
+  background: #f8fafc !important;
+}
+
+.cms-rules-card li,
+.cms-rules-card span {
+  color: var(--cms-text-muted) !important;
+}
+
+.cms-admin-root .bg-white,
+.cms-login-root .bg-white {
+  background-color: #ffffff !important;
+}
+
+.cms-admin-root .bg-slate-50,
+.cms-login-root .bg-slate-50 {
+  background-color: #f8fafc !important;
+}
+
+.cms-admin-root .text-slate-900,
+.cms-login-root .text-slate-900 {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+.cms-admin-root .text-slate-800,
+.cms-login-root .text-slate-800 {
+  color: #1e293b !important;
+  -webkit-text-fill-color: #1e293b !important;
+}
+
+.cms-admin-root .text-slate-700,
+.cms-login-root .text-slate-700 {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+}
+
+.cms-admin-root .text-slate-600,
+.cms-login-root .text-slate-600 {
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+}
+
+.cms-admin-root .text-slate-500,
+.cms-login-root .text-slate-500 {
+  color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
+}
+
+.cms-admin-root .text-slate-400,
+.cms-login-root .text-slate-400 {
+  color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
+}
+
+.cms-admin-root .border-slate-100,
+.cms-admin-root .border-slate-200,
+.cms-admin-root .border-slate-300 {
+  border-color: var(--cms-border) !important;
+}
+
+.cms-admin-root .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--cms-border) !important;
+}
+
+.cms-admin-root .hover\:bg-slate-50:hover {
+  background-color: #f8fafc !important;
+}
+
+.cms-login-root .text-cyan-700,
+.cms-admin-root .text-cyan-800,
+.cms-admin-root .text-medical-600 {
+  color: var(--cms-primary) !important;
+  -webkit-text-fill-color: var(--cms-primary) !important;
+}
+
+.cms-login-root .bg-cyan-50,
+.cms-admin-root .bg-cyan-50 {
+  background-color: var(--cms-primary-soft) !important;
+}
+
+.cms-login-root .border-cyan-200,
+.cms-admin-root .border-cyan-200 {
+  border-color: #bae6fd !important;
 }
 
 @media (max-width: 767px) {
   .cms-admin-root {
     padding-top: 24px;
     padding-bottom: 40px;
-  }
-
-  .cms-admin-root .grid {
-    min-width: 0;
   }
 }
