@@ -562,3 +562,219 @@
     inset 1.5px 1.5px 0 rgba(255, 255, 255, 0.95);
 }
 
+
+
+/* =========================================================
+   CMS OVERRIDE — LIGHT PROFESSIONAL ADMIN CONSOLE
+   Must remain at the end of this file so public-site theme
+   rules cannot override CMS visibility/contrast.
+   ========================================================= */
+.cms-app-shell,
+.cms-app-shell * {
+  color-scheme: light !important;
+}
+
+.cms-app-shell {
+  background: #f4f7fb !important;
+  color: #0f172a !important;
+  font-family: "Inter", system-ui, -apple-system, sans-serif !important;
+}
+
+.cms-login-root,
+.cms-admin-root {
+  background: #f4f7fb !important;
+  color: #0f172a !important;
+}
+
+.cms-card {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #d9e1ea !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.07) !important;
+}
+
+.cms-card h1,
+.cms-card h2,
+.cms-card h3,
+.cms-admin-root h1,
+.cms-admin-root h2,
+.cms-admin-root h3,
+.cms-admin-root label {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+.cms-admin-root p,
+.cms-admin-root li {
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+}
+
+.cms-admin-root input,
+.cms-admin-root textarea,
+.cms-admin-root select,
+.cms-login-root input {
+  appearance: auto !important;
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border: 1px solid #c3cfdb !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.cms-admin-root input:focus,
+.cms-admin-root textarea:focus,
+.cms-admin-root select:focus,
+.cms-login-root input:focus {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  border-color: #0284c7 !important;
+  outline: 3px solid rgba(2, 132, 199, 0.14) !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+}
+
+.cms-admin-root input::placeholder,
+.cms-admin-root textarea::placeholder,
+.cms-login-root input::placeholder {
+  color: #94a3b8 !important;
+  -webkit-text-fill-color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+.cms-primary-button {
+  background: #075985 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid #075985 !important;
+  box-shadow: 0 2px 5px rgba(7, 89, 133, 0.18) !important;
+  text-shadow: none !important;
+}
+
+.cms-primary-button:hover:not(:disabled) {
+  background: #0c4a6e !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.cms-outline-button {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #075985 !important;
+  -webkit-text-fill-color: #075985 !important;
+  border: 1px solid #c3cfdb !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.cms-outline-button:hover:not(:disabled) {
+  background: #e0f2fe !important;
+  color: #0c4a6e !important;
+  -webkit-text-fill-color: #0c4a6e !important;
+  border-color: #7dd3fc !important;
+}
+
+.cms-danger-button {
+  background: transparent !important;
+  color: #b91c1c !important;
+  -webkit-text-fill-color: #b91c1c !important;
+  text-shadow: none !important;
+}
+
+.cms-rules-card {
+  background: #f8fafc !important;
+}
+
+.cms-rules-card li,
+.cms-rules-card span {
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+}
+
+.cms-admin-root .bg-white,
+.cms-login-root .bg-white {
+  background-color: #ffffff !important;
+}
+
+.cms-admin-root .bg-slate-50,
+.cms-login-root .bg-slate-50 {
+  background-color: #f8fafc !important;
+}
+
+.cms-admin-root .text-slate-900,
+.cms-login-root .text-slate-900 {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+.cms-admin-root .text-slate-800,
+.cms-login-root .text-slate-800 {
+  color: #1e293b !important;
+  -webkit-text-fill-color: #1e293b !important;
+}
+
+.cms-admin-root .text-slate-700,
+.cms-login-root .text-slate-700 {
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
+}
+
+.cms-admin-root .text-slate-600,
+.cms-login-root .text-slate-600 {
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+}
+
+.cms-admin-root .text-slate-500,
+.cms-login-root .text-slate-500 {
+  color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
+}
+
+.cms-admin-root .text-slate-400,
+.cms-login-root .text-slate-400 {
+  color: #64748b !important;
+  -webkit-text-fill-color: #64748b !important;
+}
+
+.cms-admin-root .border-slate-100,
+.cms-admin-root .border-slate-200,
+.cms-admin-root .border-slate-300 {
+  border-color: #d9e1ea !important;
+}
+
+.cms-admin-root .divide-slate-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #d9e1ea !important;
+}
+
+.cms-admin-root .hover\\:bg-slate-50:hover {
+  background-color: #f8fafc !important;
+}
+
+.cms-login-root .text-cyan-700,
+.cms-admin-root .text-cyan-800,
+.cms-admin-root .text-medical-600 {
+  color: #075985 !important;
+  -webkit-text-fill-color: #075985 !important;
+}
+
+.cms-login-root .bg-cyan-50,
+.cms-admin-root .bg-cyan-50 {
+  background-color: #e0f2fe !important;
+}
+
+.cms-login-root .border-cyan-200,
+.cms-admin-root .border-cyan-200 {
+  border-color: #bae6fd !important;
+}
+
+@media (max-width: 767px) {
+  .cms-admin-root {
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+}
