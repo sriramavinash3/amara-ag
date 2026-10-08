@@ -29,7 +29,19 @@ import './styles/skeuomorphic.css';
 
 function MainLayout() {
   const containerRef = useRef(null);
+  const location = useLocation();
   useScrollProgress(containerRef);
+
+  const isCmsRoute = location.pathname === '/cms/login' || location.pathname === '/admin/blog';
+
+  if (isCmsRoute) {
+    return (
+      <div className="cms-app-shell min-h-screen w-full bg-slate-100 text-slate-900">
+        <Routes>
+        </Routes>
+      </div>
+    );
+  }
 
   return (
     <div ref={containerRef} className="flex flex-col min-h-screen skeuomorphic-console text-primary-800 selection:bg-medical-100 selection:text-medical-800 pb-[68px] lg:pb-0 relative">
