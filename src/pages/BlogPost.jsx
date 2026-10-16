@@ -6,6 +6,7 @@ import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import useSEO from '../hooks/useSEO';
 import { getBlogPost } from '../utils/blogApi';
+import BlogContentRenderer from '../components/blog/BlogContentRenderer';
 import '../styles/skeuomorphic.css';
 
 export default function BlogPost() {
@@ -134,9 +135,7 @@ export default function BlogPost() {
         <p className="font-bold text-[#FFFFFF] text-[18px]">
           {post.excerpt}
         </p>
-        <div className="whitespace-pre-line text-[#F0F0F0] text-[18px] leading-[1.75] font-normal">
-          {post.content}
-        </div>
+        <BlogContentRenderer content={post.content} theme="dark" />
       </article>
 
       {/* 4. SHARE & BACK TO BLOG FOOTER */}

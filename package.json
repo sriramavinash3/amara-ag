@@ -8,7 +8,7 @@
     "build": "vite build && node scripts/prerender-pages.cjs",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:cms": "node --test tests/blog-cms-production.test.mjs tests/blog-cms-validation.test.mjs",
+    "test:cms": "node --test tests/blog-cms-production.test.mjs tests/blog-cms-validation.test.mjs tests/blog-crm-enhancements.test.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

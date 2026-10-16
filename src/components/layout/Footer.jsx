@@ -205,7 +205,7 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-[#585454] pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#D1D5DB]">
-          <p>&copy; {currentYear} Amara Pain &amp; Spine Management. All rights reserved.</p>
+          <p>&copy; {currentYear} Amara Pain &amp; Spine. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link to="/privacy" className="hover:text-emerald-300 transition-colors">Privacy Policy</Link>
             <span>&bull;</span>

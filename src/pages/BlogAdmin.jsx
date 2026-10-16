@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Eye, FileText, Globe2, LogOut, Plus, Save, Trash2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Eye, FileText, Globe2, LogOut, Plus, Save, Trash2, CheckCircle2, AlertCircle, Link as LinkIcon, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import CmsButton from '../components/cms/CmsButton';
 import CmsCard from '../components/cms/CmsCard';
@@ -7,6 +7,8 @@ import CmsBadge from '../components/cms/CmsBadge';
 import CmsInput from '../components/cms/CmsInput';
 import CmsTextarea from '../components/cms/CmsTextarea';
 import CmsSelect from '../components/cms/CmsSelect';
+import CmsImageUpload from '../components/cms/CmsImageUpload';
+import BlogContentRenderer from '../components/blog/BlogContentRenderer';
 
 const CATEGORIES = [
   'Interventional Pain',
@@ -63,10 +65,75 @@ export default function BlogAdmin() {
   const [authenticated, setAuthenticated] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [form, setForm] = useState(INITIAL_FORM);
+  const [linkModalOpen, setLinkModalOpen] = useState(false);
+  const [linkText, setLinkText] = useState('');
+  const [linkUrl, setLinkUrl] = useState('');
+  const [linkError, setLinkError] = useState('');
+
+  const handleOpenLinkModal = () => {
+    const textarea = document.getElementById('article-content');
+    let selected = '';
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      selected = form.content.substring(start, end).trim();
+    }
+    setLinkText(selected);
+    setLinkUrl('');
+    setLinkError('');
+    setLinkModalOpen(true);
+  };
+
+  const handleInsertLink = (e) => {
+    if (e) e.preventDefault();
+    const trimmedUrl = linkUrl.trim();
+    if (!trimmedUrl) {
+      setLinkError('Please enter a destination URL.');
+      return;
+    }
+    if (/^(javascript|data|vbscript|file):/i.test(trimmedUrl)) {
+      setLinkError('Unsafe protocol not permitted (e.g. javascript:).');
+      return;
+    }
+
+    const label = linkText.trim() || trimmedUrl;
+    const markdownLink = `[${label}](${trimmedUrl})`;
+
+    const textarea = document.getElementById('article-content');
+    if (textarea) {
+      const start = textarea.selectionStart ?? form.content.length;
+      const end = textarea.selectionEnd ?? form.content.length;
+      const before = form.content.substring(0, start);
+      const after = form.content.substring(end);
+      const newContent = `${before}${markdownLink}${after}`;
+      setField('content', newContent);
+      setLinkModalOpen(false);
+
+      setTimeout(() => {
+        textarea.focus();
+        const cursorPosition = start + markdownLink.length;
+        textarea.setSelectionRange(cursorPosition, cursorPosition);
+      }, 50);
+    } else {
+      setField('content', (form.content ? form.content + ' ' : '') + markdownLink);
+      setLinkModalOpen(false);
+    }
+  };
+
+  const handleContentKeyDown = (e) => {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
+      e.preventDefault();
+      handleOpenLinkModal();
+    }
+  };
 
   const resetForm = useCallback(() => {
     setEditingId(null);
     setForm(INITIAL_FORM);
+    setLinkModalOpen(false);
+    setLinkText('');
+    setLinkUrl('');
+    setLinkError('');
   }, []);
 
   const refresh = useCallback(async () => {
@@ -322,26 +389,131 @@ export default function BlogAdmin() {
                   placeholder="4 min read"
                 />
 
-                <CmsInput
-                  label="Featured Image URL"
-                  id="article-image"
+                <CmsImageUpload
+                  label="Featured Image"
                   value={form.featuredImageUrl}
-                  onChange={(e) => setField('featuredImageUrl', e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
-                  helperText="Valid HTTPS URL (optional)"
+                  onChange={(url) => setField('featuredImageUrl', url)}
+                  helperText="Upload image from device (JPEG, PNG, WebP, GIF up to 5MB)."
                 />
               </div>
 
-              <CmsTextarea
-                label="Article Content"
-                id="article-content"
-                value={form.content}
-                onChange={(e) => setField('content', e.target.value)}
-                placeholder="Write full article markdown or text..."
-                rows={16}
-                monospace
-                required
-              />
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+                  <label htmlFor="article-content" className="cms-label" style={{ margin: 0 }}>
+                    Article Content <span style={{ color: '#b91c1c' }}>*</span>
+                  </label>
+                  <button
+                    type="button"
+                    onClick={handleOpenLinkModal}
+                    className="cms-btn cms-btn-sm"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      padding: '4px 10px',
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #cbd5e1',
+                      borderRadius: '6px',
+                      color: '#075985',
+                      cursor: 'pointer'
+                    }}
+                    title="Insert clickable hyperlink (Ctrl+K)"
+                  >
+                    <LinkIcon style={{ height: '13px', width: '13px' }} />
+                    <span>Add Link</span>
+                    <span style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>(Ctrl+K)</span>
+                  </button>
+                </div>
+
+                {linkModalOpen && (
+                  <div
+                    style={{
+                      backgroundColor: '#f0f9ff',
+                      border: '1px solid #bae6fd',
+                      borderRadius: '8px',
+                      padding: '12px',
+                      marginBottom: '10px'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: '#0369a1', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <LinkIcon style={{ height: '13px', width: '13px' }} />
+                        Insert Hyperlink
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setLinkModalOpen(false)}
+                        style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748b', padding: '2px' }}
+                      >
+                        <X style={{ height: '14px', width: '14px' }} />
+                      </button>
+                    </div>
+
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
+                      <input
+                        type="text"
+                        value={linkText}
+                        onChange={(e) => setLinkText(e.target.value)}
+                        placeholder="Link Anchor Text"
+                        className="cms-input"
+                        style={{ flex: '1 1 180px', height: '36px', fontSize: '13px' }}
+                      />
+                      <input
+                        type="text"
+                        value={linkUrl}
+                        onChange={(e) => { setLinkUrl(e.target.value); setLinkError(''); }}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault();
+                            handleInsertLink();
+                          } else if (e.key === 'Escape') {
+                            setLinkModalOpen(false);
+                          }
+                        }}
+                        placeholder="URL (e.g. https://... or /treatments)"
+                        className="cms-input"
+                        style={{ flex: '1 1 220px', height: '36px', fontSize: '13px' }}
+                        autoFocus
+                      />
+                      <button
+                        type="button"
+                        onClick={handleInsertLink}
+                        className="cms-btn cms-btn-primary"
+                        style={{ height: '36px', padding: '0 14px', fontSize: '12px' }}
+                      >
+                        Insert
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setLinkModalOpen(false)}
+                        className="cms-btn cms-btn-secondary"
+                        style={{ height: '36px', padding: '0 10px', fontSize: '12px' }}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+
+                    {linkError && (
+                      <p style={{ color: '#b91c1c', fontSize: '12px', margin: '6px 0 0 0', fontWeight: 500 }}>
+                        {linkError}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                <CmsTextarea
+                  id="article-content"
+                  value={form.content}
+                  onChange={(e) => setField('content', e.target.value)}
+                  onKeyDown={handleContentKeyDown}
+                  placeholder="Write full article markdown or text. Highlight text and click 'Add Link' or type [Anchor Text](https://...)"
+                  rows={16}
+                  monospace
+                  required
+                />
+              </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                 <CmsInput
@@ -446,15 +618,17 @@ export default function BlogAdmin() {
                 style={{
                   paddingTop: '16px',
                   borderTop: '1px solid #f1f5f9',
-                  whiteSpace: 'pre-line',
-                  fontSize: '14px',
-                  lineHeight: '1.7',
-                  color: '#475569',
                   maxHeight: '360px',
                   overflowY: 'auto'
                 }}
               >
-                {form.content || 'Your article body content will render here.'}
+                {form.content ? (
+                  <BlogContentRenderer content={form.content} theme="light" />
+                ) : (
+                  <p className="cms-muted" style={{ fontStyle: 'italic', margin: 0, fontSize: '13px' }}>
+                    Your article body content will render here with clickable hyperlinks.
+                  </p>
+                )}
               </div>
             </CmsCard>
 
