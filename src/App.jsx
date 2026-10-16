@@ -31,7 +31,19 @@ import './styles/skeuomorphic.css';
 
 function PublicLayout() {
   const containerRef = useRef(null);
+  const location = useLocation();
   useScrollProgress(containerRef);
+
+  const isCmsRoute = location.pathname === '/cms/login' || location.pathname === '/admin/blog';
+
+  if (isCmsRoute) {
+    return (
+      <div className="cms-app-shell min-h-screen w-full bg-slate-100 text-slate-900">
+        <Routes>
+        </Routes>
+      </div>
+    );
+  }
 
   return (
     <div
