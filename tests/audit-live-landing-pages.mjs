@@ -114,6 +114,7 @@ async function runAudit() {
     results.push({
       slug,
       rawUrl,
+      slashUrl,
       directStatus,
       directLocation,
       finalStatus,
@@ -142,7 +143,7 @@ async function runAudit() {
     'HTTP Status': r.finalStatus,
     'Direct Redirect': `${r.directStatus} -> ${r.directLocation}`,
     Title: r.title ? 'OK' : 'MISSING',
-    Canonical: r.canonical === r.rawUrl ? 'MATCH' : (r.canonical ? 'MISMATCH/DIFF' : 'MISSING'),
+    Canonical: r.canonical === r.slashUrl ? 'MATCH (TRAILING /)' : (r.canonical ? 'DIFF' : 'MISSING'),
     'og:image': r.ogImgStatus === 200 ? '200 OK' : 'FAILED',
     Scripts: r.scriptStatuses.every(s => s.status === 200) ? 'ALL 200' : 'FAIL',
     'GTag/Ads': r.hasGtag || r.hasGoogleAds ? 'PRESENT' : 'NONE',
