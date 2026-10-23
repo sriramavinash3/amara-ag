@@ -15,18 +15,30 @@ import {
   ChevronDown
 } from 'lucide-react';
 
-const INSURER_LOGOS = [
-  { name: 'Blue Cross Blue Shield NC', src: '/images/insurers/BCBS NC.png' },
-  { name: 'UnitedHealthcare', src: '/images/insurers/United Healthcare Commercial.png' },
-  { name: 'Aetna', src: '/images/insurers/Aetna Commercial.png' },
-  { name: 'Cigna', src: '/images/insurers/Cigna-Logo.png' },
-  { name: 'Humana', src: '/images/insurers/Humana logo png.png' },
-  { name: 'NC Medicaid Direct', src: '/images/insurers/Medicaid NC Drect logo.png' },
-  { name: 'HealthyBlue', src: '/images/insurers/HealthyBlue-HB.png' },
-  { name: 'Carolina Complete Health', src: '/images/insurers/carolina-complete-health-logo.jpg' },
-  { name: 'AmeriHealth Caritas', src: '/images/insurers/amerihealth-consd-logo.jpg' },
-  { name: 'Wellcare', src: '/images/insurers/Wellcare logo png.png' }
+const INSURANCE_PROVIDERS = [
+  { name: 'Blue Cross Blue Shield NC', logo: '/images/insurers/BCBS NC.png', alt: 'Blue Cross Blue Shield NC', type: 'Commercial & Medicare' },
+  { name: 'BCBS Blue Advantage', logo: '/images/insurers/BCBS Blue Advantage.png', alt: 'BCBS Blue Advantage' },
+  { name: 'BCBS Blue Options', logo: '/images/insurers/BCBS Blue Options.png', alt: 'BCBS Blue Options' },
+  { name: 'NC State Health Plan', logo: '/images/insurers/BCBS NC State Health Plan Network.png', alt: 'NC State Health Plan' },
+  { name: 'Healthy Blue', logo: '/images/insurers/HealthyBlue-HB.png', alt: 'Healthy Blue NC', type: 'Medicaid' },
+  { name: 'Aetna Commercial', logo: '/images/insurers/Aetna Commercial.png', alt: 'Aetna Commercial' },
+  { name: 'Aetna Medicare', logo: '/images/insurers/Aetna Medicare.png', alt: 'Aetna Medicare Advantage' },
+  { name: 'UnitedHealthcare', logo: '/images/insurers/United Healthcare Commercial.png', alt: 'UnitedHealthcare', type: 'Choice Plus' },
+  { name: 'Cigna Healthcare', logo: '/images/insurers/Cigna-Logo.png', alt: 'Cigna Healthcare' },
+  { name: 'Humana', logo: '/images/insurers/Humana logo png.png', alt: 'Humana', type: 'Medicare Advantage' },
+  { name: 'NC Medicaid Direct', logo: '/images/insurers/Medicaid NC Drect logo.png', alt: 'NC Medicaid Direct' },
+  { name: 'Wellcare', logo: '/images/insurers/Wellcare logo png.png', alt: 'Wellcare' },
+  { name: 'AmeriHealth Caritas', logo: '/images/insurers/amerihealth-consd-logo.jpg', alt: 'AmeriHealth Caritas' },
+  { name: 'Carolina Complete Health', logo: '/images/insurers/carolina-complete-health-logo.jpg', alt: 'Carolina Complete Health' },
+  { name: 'Traditional Medicare', badge: 'CMS', type: 'Part B' },
+  { name: 'MedCost', badge: 'MED', type: 'Carolinas Network' },
+  { name: 'MultiPlan / PHCS', badge: 'PHCS' },
+  { name: 'Choice-Health', badge: 'CHC' },
+  { name: 'Novant Health Plan', badge: 'NOV' },
+  { name: "Workers' Compensation", badge: 'WORK', type: 'Occupational Claims' }
 ];
+
+const INSURER_LOGOS = INSURANCE_PROVIDERS.filter(p => p.logo).map(p => ({ name: p.name, src: p.logo }));
 
 const LANDING_PAGE_DATA = {
   'pain-management-charlotte': {
@@ -726,13 +738,13 @@ export default function LandingPage({ slug: propSlug }) {
         </div>
       </section>
 
-      {/* 3. CONTINUOUS AUTO-SCROLLING IN-NETWORK INSURANCE MARQUEE */}
-      <section className="bg-slate-100 border-b border-slate-200 py-6 overflow-hidden" aria-label="Insurance and Payer Networks">
+      {/* 3. CONTINUOUS AUTO-SCROLLING IN-NETWORK INSURANCE MARQUEE (October 6 Client Baseline) */}
+      <section className="insurance-marquee-section bg-slate-50 border-b border-slate-200 py-6 overflow-hidden" aria-label="Insurance and Payer Networks">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-center sm:text-left">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Insurance &amp; Payer Coverage</span>
-              <h2 className="text-lg font-black text-slate-900">In-Network With Major North Carolina Health Plans</h2>
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">In-Network Insurance &amp; Payers</span>
+              <h2 className="text-lg font-black text-slate-900">Accepted Insurance Providers &amp; Plans</h2>
             </div>
             <p className="text-xs text-slate-600 max-w-md">
               Medicare Part B, NC/SC Medicaid, and major commercial health plans accepted. Zero hospital facility fee markups.
@@ -740,23 +752,49 @@ export default function LandingPage({ slug: propSlug }) {
           </div>
         </div>
 
-        {/* Marquee Track */}
-        <div className="relative w-full overflow-hidden mask-gradient-x">
-          <div className="flex items-center gap-8 animate-marquee-horizontal whitespace-nowrap py-2">
-            {[...INSURER_LOGOS, ...INSURER_LOGOS].map((insurer, idx) => (
-              <div
-                key={idx}
-                className="inline-flex items-center justify-center h-14 px-5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs shrink-0"
-              >
-                <img
-                  src={insurer.src}
-                  alt={insurer.name}
-                  className="max-h-8 max-w-[120px] object-contain filter grayscale hover:grayscale-0 transition-all opacity-85 hover:opacity-100"
-                  loading="lazy"
-                />
-              </div>
-            ))}
+        {/* Marquee Track with Dual Groups for Seamless Continuous Loop */}
+        <div className="insurance-marquee">
+          <div className="insurance-marquee-track">
+            {/* Primary Group */}
+            <div className="insurance-group">
+              {INSURANCE_PROVIDERS.map((item, idx) => (
+                <div key={idx} className="insurance-marquee-item">
+                  {item.logo ? (
+                    <div className="insurance-marquee-logo-wrap">
+                      <img src={item.logo} alt={item.alt || item.name} className="insurance-marquee-logo" loading="lazy" />
+                    </div>
+                  ) : (
+                    <div className="insurance-marquee-badge">{item.badge}</div>
+                  )}
+                  <span className="insurance-marquee-name">{item.name}</span>
+                  {item.type && <span className="insurance-marquee-type">{item.type}</span>}
+                </div>
+              ))}
+            </div>
+
+            {/* Duplicate Group for Infinite Loop */}
+            <div className="insurance-group" aria-hidden="true">
+              {INSURANCE_PROVIDERS.map((item, idx) => (
+                <div key={`dup-${idx}`} className="insurance-marquee-item">
+                  {item.logo ? (
+                    <div className="insurance-marquee-logo-wrap">
+                      <img src={item.logo} alt={item.alt || item.name} className="insurance-marquee-logo" loading="lazy" />
+                    </div>
+                  ) : (
+                    <div className="insurance-marquee-badge">{item.badge}</div>
+                  )}
+                  <span className="insurance-marquee-name">{item.name}</span>
+                  {item.type && <span className="insurance-marquee-type">{item.type}</span>}
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-3 text-center sm:text-left">
+          <p className="text-[11px] text-slate-500 insurance-notice-text">
+            Insurance coverage and provider availability may vary by hospital and plan. We verify active benefits directly with your insurer prior to treatment.
+          </p>
         </div>
       </section>
 

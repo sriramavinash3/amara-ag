@@ -155,7 +155,7 @@ html.lenis body {
   transform: translateY(-2px);
 }
 
-/* Endless Horizontal Marquee */
+/* Endless Horizontal Marquee & October 6 Continuous Insurance Marquee */
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -173,6 +173,172 @@ html.lenis body {
 
 .animate-marquee-horizontal:hover {
   animation-play-state: paused;
+}
+
+/* ==========================================================================
+   CONTINUOUS HORIZONTAL AUTO-SCROLLING INSURANCE MARQUEE (October 6 Baseline)
+   ========================================================================== */
+.insurance-marquee-section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.insurance-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0.65rem 0;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.insurance-marquee:hover .insurance-marquee-track {
+  animation-play-state: paused;
+}
+
+.insurance-marquee-track {
+  display: flex;
+  width: max-content !important;
+  max-width: none !important;
+  min-width: max-content !important;
+  user-select: none;
+  animation: insurance-marquee-scroll 48s linear infinite;
+  will-change: transform;
+}
+
+@keyframes insurance-marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.insurance-group,
+.insurance-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding-right: 1.25rem;
+  width: max-content !important;
+  max-width: none !important;
+  min-width: max-content !important;
+  flex-shrink: 0;
+}
+
+.insurance-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  padding: 0.45rem 1.15rem 0.45rem 0.55rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.insurance-marquee-item:hover {
+  border-color: #059669;
+  box-shadow: 0 3px 10px rgba(5, 150, 105, 0.12);
+  transform: translateY(-1px);
+}
+
+.insurance-marquee-logo-wrap {
+  width: 48px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border-radius: 9999px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+  border: 1px solid #e2e8f0;
+}
+
+.insurance-marquee-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.insurance-marquee-badge {
+  width: 48px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ecfdf5;
+  color: #059669;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border: 1px solid rgba(5, 150, 105, 0.25);
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.insurance-marquee-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.insurance-marquee-type {
+  font-size: 0.725rem;
+  color: #64748b;
+  font-weight: 500;
+  margin-left: 0.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .insurance-marquee {
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow-x: auto;
+  }
+  .insurance-marquee-track {
+    animation: none !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    transform: none !important;
+  }
+  .insurance-group[aria-hidden="true"],
+  .insurance-marquee-group[aria-hidden="true"] {
+    display: none !important;
+  }
+  .insurance-group,
+  .insurance-marquee-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    padding-right: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
 }
 
 /* Micro-animations and reveals */

@@ -132,4 +132,55 @@ describe('Landing Pages Final Approved Restoration & Recovery Suite', () => {
     expect(fakeLead.preferredTime).toBeUndefined();
     expect(fakeLead.status).toBe('New');
   });
+
+  it('10. Continuous insurance marquee matches October 6 delivered baseline with 20 items and dual tracks', () => {
+    const landingFile = fs.readFileSync(path.resolve(__dirname, '../src/pages/LandingPage.jsx'), 'utf8');
+    const cssFile = fs.readFileSync(path.resolve(__dirname, '../src/index.css'), 'utf8');
+
+    // Structural elements
+    expect(landingFile).toContain('insurance-marquee-section');
+    expect(landingFile).toContain('insurance-marquee');
+    expect(landingFile).toContain('insurance-marquee-track');
+    expect(landingFile).toContain('insurance-group');
+    expect(landingFile).toContain('aria-hidden="true"');
+    expect(landingFile).toContain('insurance-marquee-item');
+    expect(landingFile).toContain('insurance-marquee-logo-wrap');
+    expect(landingFile).toContain('insurance-marquee-badge');
+    expect(landingFile).toContain('insurance-notice-text');
+    expect(landingFile).toContain('Insurance coverage and provider availability may vary by hospital and plan');
+
+    // All key provider names from October 6 deliverable
+    const expectedProviders = [
+      'Blue Cross Blue Shield NC',
+      'BCBS Blue Advantage',
+      'BCBS Blue Options',
+      'NC State Health Plan',
+      'Healthy Blue',
+      'Aetna Commercial',
+      'Aetna Medicare',
+      'UnitedHealthcare',
+      'Cigna Healthcare',
+      'Humana',
+      'NC Medicaid Direct',
+      'Wellcare',
+      'AmeriHealth Caritas',
+      'Carolina Complete Health',
+      'Traditional Medicare',
+      'MedCost',
+      'MultiPlan / PHCS',
+      'Choice-Health',
+      'Novant Health Plan',
+      "Workers' Compensation"
+    ];
+
+    for (const provider of expectedProviders) {
+      expect(landingFile).toContain(provider);
+    }
+
+    // CSS Keyframes & animation rules
+    expect(cssFile).toContain('@keyframes insurance-marquee-scroll');
+    expect(cssFile).toContain('insurance-marquee-scroll 48s linear infinite');
+    expect(cssFile).toContain('.insurance-group');
+  });
 });
+
