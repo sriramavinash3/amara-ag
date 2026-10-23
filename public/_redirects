@@ -1,18 +1,2 @@
-# Amara Pain & Spine Campaign Landing Page 301 Redirects
-/pain-management-charlotte    /treatments/              301
-/pain-management-charlotte/   /treatments/              301
-/back-pain-doctor-charlotte    /conditions/back-pain/    301
-/back-pain-doctor-charlotte/   /conditions/back-pain/    301
-/neck-pain-doctor-charlotte    /conditions/neck-pain/    301
-/neck-pain-doctor-charlotte/   /conditions/neck-pain/    301
-/sciatica-treatment-charlotte  /conditions/sciatica/     301
-/sciatica-treatment-charlotte/ /conditions/sciatica/     301
-/spine-pain-specialist-charlotte  /about/               301
-/spine-pain-specialist-charlotte/ /about/               301
-/interventional-pain-treatment    /treatments/          301
-/interventional-pain-treatment/   /treatments/          301
-/schedule-consultation         /book/                   301
-/schedule-consultation/        /book/                   301
-
 # Cloudflare Pages Single Page Application Fallback
 /* /index.html 200

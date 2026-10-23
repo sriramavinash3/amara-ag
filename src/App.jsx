@@ -22,6 +22,7 @@ import BlogAdmin from './pages/BlogAdmin';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Referrals from './pages/Referrals';
 import ProviderDetail from './pages/ProviderDetail';
+import LandingPage from './pages/LandingPage';
 import NotFound from './pages/NotFound';
 import ExitIntentPopup from './components/layout/ExitIntentPopup';
 import CmsLayout from './components/layout/CmsLayout';
@@ -90,6 +91,23 @@ export default function App() {
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/referrals" element={<Referrals />} />
             <Route path="/providers/:id" element={<ProviderDetail />} />
+
+            {/* Google Ads Campaign Landing Pages */}
+            <Route path="/pain-management-charlotte" element={<LandingPage slug="pain-management-charlotte" />} />
+            <Route path="/pain-management-charlotte/" element={<LandingPage slug="pain-management-charlotte" />} />
+            <Route path="/back-pain-doctor-charlotte" element={<LandingPage slug="back-pain-doctor-charlotte" />} />
+            <Route path="/back-pain-doctor-charlotte/" element={<LandingPage slug="back-pain-doctor-charlotte" />} />
+            <Route path="/neck-pain-doctor-charlotte" element={<LandingPage slug="neck-pain-doctor-charlotte" />} />
+            <Route path="/neck-pain-doctor-charlotte/" element={<LandingPage slug="neck-pain-doctor-charlotte" />} />
+            <Route path="/sciatica-treatment-charlotte" element={<LandingPage slug="sciatica-treatment-charlotte" />} />
+            <Route path="/sciatica-treatment-charlotte/" element={<LandingPage slug="sciatica-treatment-charlotte" />} />
+            <Route path="/spine-pain-specialist-charlotte" element={<LandingPage slug="spine-pain-specialist-charlotte" />} />
+            <Route path="/spine-pain-specialist-charlotte/" element={<LandingPage slug="spine-pain-specialist-charlotte" />} />
+            <Route path="/interventional-pain-treatment" element={<LandingPage slug="interventional-pain-treatment" />} />
+            <Route path="/interventional-pain-treatment/" element={<LandingPage slug="interventional-pain-treatment" />} />
+            <Route path="/schedule-consultation" element={<LandingPage slug="schedule-consultation" />} />
+            <Route path="/schedule-consultation/" element={<LandingPage slug="schedule-consultation" />} />
+
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

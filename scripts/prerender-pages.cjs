@@ -91,6 +91,42 @@ async function prerender() {
       path: '/providers/alexander-carmenaty',
       title: 'Alexander Carmenaty Rodriguez, MSN, FNP-C | Amara Pain Charlotte NC',
       desc: 'Alexander Carmenaty Rodriguez is a Family Nurse Practitioner providing clinical care and pain evaluations at Amara Pain & Spine.'
+    },
+    // Google Ads Campaign Landing Pages
+    {
+      path: '/pain-management-charlotte',
+      title: 'Pain Management Charlotte NC | Comprehensive Non-Surgical Relief | Amara Pain',
+      desc: "Charlotte's trusted physician-led pain management clinic. Dr. Ashvin K. Amara provides advanced interventional solutions, fluoroscopy-guided care, same-week appointments, and zero hospital facility fees."
+    },
+    {
+      path: '/back-pain-doctor-charlotte',
+      title: 'Back Pain Doctor Charlotte NC | Interventional Lumbar Spine Relief | Amara Pain',
+      desc: "Relieve lower back pain, herniated discs, and spinal stenosis without surgery. Consult Dr. Ashvin K. Amara in South Charlotte. Zero hospital facility fees."
+    },
+    {
+      path: '/neck-pain-doctor-charlotte',
+      title: 'Neck Pain Doctor Charlotte NC | Cervical Spine & Whiplash Relief | Amara Pain',
+      desc: "Target neck stiffness, cervical radiculopathy, and radiating shoulder pain with precision interventional care in Charlotte. Double-board certified pain physician."
+    },
+    {
+      path: '/sciatica-treatment-charlotte',
+      title: 'Sciatica Treatment Charlotte NC | Pinched Nerve & Leg Pain Relief | Amara Pain',
+      desc: "Fast, targeted sciatica relief in Charlotte, NC. Dr. Ashvin K. Amara provides precision fluoroscopy-guided epidural injections to calm inflamed sciatic nerves."
+    },
+    {
+      path: '/spine-pain-specialist-charlotte',
+      title: 'Spine Pain Specialist Charlotte NC | Double-Board Certified Spine Care | Amara Pain',
+      desc: "Seek expert spine diagnostics and second opinions with Dr. Ashvin K. Amara in Charlotte. Fellowship-trained interventional spine specialist offering non-surgical care."
+    },
+    {
+      path: '/interventional-pain-treatment',
+      title: 'Interventional Pain Treatment Charlotte NC | Outpatient Procedures | Amara Pain',
+      desc: "State-of-the-art outpatient interventional pain procedures in Charlotte. Epidural injections, radiofrequency ablation, nerve blocks with zero hospital facility fees."
+    },
+    {
+      path: '/schedule-consultation',
+      title: 'Schedule a Pain Consultation Charlotte NC | Fast-Track Intake | Amara Pain',
+      desc: "Schedule your pain consultation in Charlotte, NC. Fast-track appointment intake with Dr. Ashvin K. Amara. Same-week availability and in-network insurance coverage."
     }
   ];
 
