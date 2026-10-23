@@ -29,10 +29,10 @@ export default function TreatmentDetail() {
 
   if (!treat) {
     return (
-      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 md:px-8 text-center space-y-6 text-left">
-        <AlertCircle className="h-16 w-16 text-cta-600 mx-auto" />
-        <h1 className="text-[28px] font-extrabold font-heading text-slate-900">Procedure Not Found</h1>
-        <p className="text-[18px] text-slate-605 font-normal leading-[1.75]">We couldn't find the pain treatment procedure you were looking for.</p>
+      <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 md:px-8 text-center space-y-6">
+        <AlertCircle className="h-16 w-16 text-emerald-400 mx-auto" />
+        <h1 className="text-[28px] font-extrabold font-heading text-white">Procedure Not Found</h1>
+        <p className="text-[18px] text-[#F0F0F0] font-normal leading-[1.75]">We couldn't find the pain treatment procedure you were looking for.</p>
         <Button variant="primary" onClick={() => navigate('/treatments')}>
           Back to Treatments
         </Button>
@@ -53,14 +53,26 @@ export default function TreatmentDetail() {
           <span>Back to Treatments</span>
         </Link>
 
-        {/* Breadcrumbs */}
-        <div className="flex items-center gap-1.5 text-xs text-[#D1D5DB] font-bold">
-          <Link to="/" className="hover:text-white">Home</Link>
-          <ChevronRight className="h-3.5 w-3.5" />
-          <Link to="/treatments" className="hover:text-white">Pain Treatments</Link>
-          <ChevronRight className="h-3.5 w-3.5" />
-          <span className="text-white truncate">{treat.title}</span>
-        </div>
+        {/* Semantic Breadcrumbs */}
+        <nav aria-label="Breadcrumb">
+          <ol className="flex items-center gap-1.5 text-xs text-[#D1D5DB] font-bold list-none p-0 m-0">
+            <li>
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+            </li>
+            <li aria-hidden="true">
+              <ChevronRight className="h-3.5 w-3.5" />
+            </li>
+            <li>
+              <Link to="/treatments" className="hover:text-white transition-colors">Pain Treatments</Link>
+            </li>
+            <li aria-hidden="true">
+              <ChevronRight className="h-3.5 w-3.5" />
+            </li>
+            <li aria-current="page" className="text-white truncate">
+              {treat.title}
+            </li>
+          </ol>
+        </nav>
       </div>
 
       {/* 2. HEADER BLOCK */}

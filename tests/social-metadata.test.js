@@ -23,7 +23,7 @@ describe('Social Sharing Image & Open Graph Metadata Suite', () => {
   });
 
   it('2. Social Sharing Caption: Exact prompt description is configured', () => {
-    const exactCaption = "Charlotte's leading interventional specialists delivering advanced, evidence-based pain relief built around your body, your diagnostics, and your life outside of the clinic.";
+    const exactCaption = "Interventional pain management in Charlotte, NC. Non-surgical evaluation and targeted treatments for back, neck, joint, and nerve pain with zero hospital facility fees.";
     
     // og:description
     expect(indexHtml).toContain(`<meta property="og:description" content="${exactCaption}" />`);
@@ -34,10 +34,10 @@ describe('Social Sharing Image & Open Graph Metadata Suite', () => {
   });
 
   it('3. Open Graph Metadata: Exact og:title, og:url, og:type, og:site_name, and absolute HTTPS og:image', () => {
-    expect(indexHtml).toContain('<meta property="og:title" content="Amara Pain | Advanced Interventional Pain Specialists" />');
+    expect(indexHtml).toContain('<meta property="og:title" content="Amara Pain &amp; Spine | Interventional Pain Management Charlotte NC" />');
     expect(indexHtml).toContain('<meta property="og:url" content="https://www.amarapain.com/" />');
     expect(indexHtml).toContain('<meta property="og:type" content="website" />');
-    expect(indexHtml).toContain('<meta property="og:site_name" content="Amara Pain" />');
+    expect(indexHtml).toContain('<meta property="og:site_name" content="Amara Pain &amp; Spine" />');
     expect(indexHtml).toContain('<meta property="og:image" content="https://www.amarapain.com/images/og-image.png" />');
     expect(indexHtml).toContain('<meta property="og:image:width" content="1200" />');
     expect(indexHtml).toContain('<meta property="og:image:height" content="630" />');
@@ -47,13 +47,13 @@ describe('Social Sharing Image & Open Graph Metadata Suite', () => {
   it('4. Twitter / X Card: Configured as summary_large_image with matching title and image', () => {
     expect(indexHtml).toContain('<meta name="twitter:card" content="summary_large_image" />');
     expect(indexHtml).toContain('<meta name="twitter:url" content="https://www.amarapain.com/" />');
-    expect(indexHtml).toContain('<meta name="twitter:title" content="Amara Pain | Advanced Interventional Pain Specialists" />');
+    expect(indexHtml).toContain('<meta name="twitter:title" content="Amara Pain &amp; Spine | Interventional Pain Management Charlotte NC" />');
     expect(indexHtml).toContain('<meta name="twitter:image" content="https://www.amarapain.com/images/og-image.png" />');
   });
 
   it('5. SEO: Canonical URL is https://www.amarapain.com/ and Title is descriptive', () => {
     expect(indexHtml).toContain('<link rel="canonical" href="https://www.amarapain.com/" />');
-    expect(indexHtml).toContain('<title>Amara Pain | Advanced Interventional Pain Specialists</title>');
+    expect(indexHtml).toContain('<title>Amara Pain &amp; Spine | Interventional Pain Management Charlotte NC</title>');
   });
 
   it('6. Production Dist Build: Pre-rendered static pages contain proper OG metadata', () => {
@@ -62,7 +62,7 @@ describe('Social Sharing Image & Open Graph Metadata Suite', () => {
 
     const distContent = fs.readFileSync(distIndex, 'utf8');
     expect(distContent).toContain('https://www.amarapain.com/images/og-image.png');
-    expect(distContent).toContain("Charlotte's leading interventional specialists delivering advanced, evidence-based pain relief");
+    expect(distContent).toContain("Interventional pain management in Charlotte, NC");
 
     // Check pre-rendered condition page
     const backPainIndex = path.resolve(__dirname, '../dist/conditions/back-pain/index.html');
