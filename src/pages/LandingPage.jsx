@@ -11,25 +11,39 @@ import {
   Award,
   ChevronRight,
   Activity,
-  HeartPulse,
-  Sparkles
+  Sparkles,
+  ChevronDown
 } from 'lucide-react';
+
+const INSURER_LOGOS = [
+  { name: 'Blue Cross Blue Shield NC', src: '/images/insurers/BCBS NC.png' },
+  { name: 'UnitedHealthcare', src: '/images/insurers/United Healthcare Commercial.png' },
+  { name: 'Aetna', src: '/images/insurers/Aetna Commercial.png' },
+  { name: 'Cigna', src: '/images/insurers/Cigna-Logo.png' },
+  { name: 'Humana', src: '/images/insurers/Humana logo png.png' },
+  { name: 'NC Medicaid Direct', src: '/images/insurers/Medicaid NC Drect logo.png' },
+  { name: 'HealthyBlue', src: '/images/insurers/HealthyBlue-HB.png' },
+  { name: 'Carolina Complete Health', src: '/images/insurers/carolina-complete-health-logo.jpg' },
+  { name: 'AmeriHealth Caritas', src: '/images/insurers/amerihealth-consd-logo.jpg' },
+  { name: 'Wellcare', src: '/images/insurers/Wellcare logo png.png' }
+];
 
 const LANDING_PAGE_DATA = {
   'pain-management-charlotte': {
     slug: 'pain-management-charlotte',
     badge: 'Comprehensive Interventional Care',
     metaTitle: 'Pain Management Charlotte NC | Comprehensive Non-Surgical Relief | Amara Pain',
-    metaDesc: 'Charlotte\'s trusted physician-led pain management clinic. Dr. Ashvin K. Amara provides advanced interventional solutions, fluoroscopy-guided care, same-week appointments, and zero hospital facility fees.',
+    metaDesc: "Charlotte's trusted physician-led pain management clinic. Dr. Ashvin K. Amara provides advanced interventional solutions, fluoroscopy-guided care, same-week appointments, and zero hospital facility fees.",
     headline: 'Expert, Non-Surgical Pain Management in Charlotte, NC',
     subheadline: 'Restore your mobility and quality of life with double-board-certified interventional care. Personalized, image-guided treatments targeting the source of chronic pain—with same-week availability and zero hospital facility fees.',
     painType: 'Comprehensive Pain Evaluation',
+    formButtonText: 'Request a Consultation',
     heroPoints: [
+      'Quick Intake Response: Our Charlotte team reviews your details and coordinates your consultation slot.',
+      'Zero Hospital Facility Surcharges: Independent practice protects you from high hospital fees.',
+      'Major Insurances Accepted: Medicare Part B, NC/SC Medicaid, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana.',
       'Double-board-certified fellowship-trained physician (Dr. Ashvin K. Amara, MD)',
-      'Precision fluoroscopy-guided outpatient injections & nerve blocks',
-      'Zero hospital facility fees—significant out-of-pocket savings',
-      'In-network with Medicare, BCBS, UnitedHealthcare, Aetna & Cigna',
-      'Same-week consultations and prompt clinical follow-ups'
+      'Precision fluoroscopy-guided outpatient injections & nerve blocks'
     ],
     conditions: [
       { name: 'Lower Back & Lumbar Pain', desc: 'Herniated discs, sciatica, spinal stenosis, and degenerative disc disease.' },
@@ -58,15 +72,16 @@ const LANDING_PAGE_DATA = {
     badge: 'Lumbar Spine & Lower Back Specialists',
     metaTitle: 'Back Pain Doctor Charlotte NC | Interventional Lumbar Spine Relief | Amara Pain',
     metaDesc: 'Relieve lower back pain, herniated discs, and spinal stenosis without surgery. Consult Dr. Ashvin K. Amara in South Charlotte. Zero hospital facility fees.',
-    headline: 'Charlotte\'s Premier Back Pain Doctor: Lasting Relief Without Surgery',
+    headline: "Charlotte's Premier Back Pain Doctor: Lasting Relief Without Surgery",
     subheadline: 'Suffering from chronic lower back stiffness, herniated discs, or degenerative spine conditions? Get definitive diagnostic clarity and precision interventional therapy from fellowship-trained physician Dr. Ashvin K. Amara.',
     painType: 'Lower Back & Lumbar Spine',
+    formButtonText: 'Request a Back Pain Consultation',
     heroPoints: [
+      'Quick Intake Response: Our Charlotte team reviews your details and coordinates your consultation slot.',
+      'Zero Hospital Facility Surcharges: Independent practice protects you from high hospital fees.',
+      'Major Insurances Accepted: Medicare Part B, NC/SC Medicaid, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana.',
       'Targeted non-surgical treatments for herniated, bulging, or slipped discs',
-      'Precision image-guided epidural steroid injections & radiofrequency ablation',
-      'Independent clinic setting with zero hospital facility surcharges',
-      'Fellowship-trained, double-board-certified spine care specialist',
-      'Same-week appointments for acute lower back pain flare-ups'
+      'Precision image-guided epidural steroid injections & radiofrequency ablation'
     ],
     conditions: [
       { name: 'Lumbar Herniated Discs', desc: 'Disc material irritating adjacent spinal nerves causing intense lumbar and leg pain.' },
@@ -97,12 +112,13 @@ const LANDING_PAGE_DATA = {
     headline: 'Charlotte Neck Pain Doctor: Targeted Relief for Cervical Spine Pain',
     subheadline: 'Stop letting chronic neck stiffness, radiating shoulder tension, or cervical pinched nerves hold you back. Experience precision image-guided therapies in a comfortable outpatient setting.',
     painType: 'Neck & Cervical Spine',
+    formButtonText: 'Request a Neck Pain Consultation',
     heroPoints: [
+      'Quick Intake Response: Our Charlotte team reviews your details and coordinates your consultation slot.',
+      'Zero Hospital Facility Surcharges: Independent practice protects you from high hospital fees.',
+      'Major Insurances Accepted: Medicare Part B, NC/SC Medicaid, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana.',
       'Comprehensive care for cervical radiculopathy, whiplash, and facet arthritis',
-      'Fluoroscopy-guided cervical epidural injections and diagnostic blocks',
-      'Avoid surgery with fellowship-trained interventional spine techniques',
-      'Independent clinic setting with zero hospital facility fees',
-      'In-network with Medicare and major private health plans'
+      'Fluoroscopy-guided cervical epidural injections and diagnostic blocks'
     ],
     conditions: [
       { name: 'Cervical Radiculopathy', desc: 'Pinched nerves in the neck radiating sharp pain, tingling, or weakness into the arm and hand.' },
@@ -133,12 +149,13 @@ const LANDING_PAGE_DATA = {
     headline: 'Targeted Sciatica Treatment in Charlotte: Stop Burning Leg & Nerve Pain',
     subheadline: 'Radiating buttock pain, burning leg sensations, and numbness are signs of nerve compression. Our fellowship-trained interventional specialists deliver precision injections to rapidly reduce inflammation.',
     painType: 'Sciatica & Sciatic Nerve',
+    formButtonText: 'Request a Sciatica Consultation',
     heroPoints: [
+      'Quick Intake Response: Our Charlotte team reviews your details and coordinates your consultation slot.',
+      'Zero Hospital Facility Surcharges: Independent practice protects you from high hospital fees.',
+      'Major Insurances Accepted: Medicare Part B, NC/SC Medicaid, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana.',
       'Rapid relief for burning, shooting nerve pain traveling from hip to foot',
-      'Precision fluoroscopy-guided lumbar epidural steroid injections',
-      'Detailed diagnosis identifying disc herniations vs. spinal stenosis vs. piriformis syndrome',
-      'Zero hospital facility fees—affordable outpatient care',
-      'Same-week appointments for urgent sciatic nerve flare-ups'
+      'Precision fluoroscopy-guided lumbar epidural steroid injections'
     ],
     conditions: [
       { name: 'Acute Sciatica Flare-Ups', desc: 'Severe sudden pain shooting down the back of the thigh, calf, and foot.' },
@@ -169,12 +186,13 @@ const LANDING_PAGE_DATA = {
     headline: 'Charlotte Spine Pain Specialist: Comprehensive Non-Surgical Spine Solutions',
     subheadline: 'Facing persistent back or neck discomfort, failed back surgery, or considering an invasive operation? Get a definitive second opinion and diagnostic clarity from double-board-certified specialist Dr. Ashvin K. Amara.',
     painType: 'Spine Diagnostics & Second Opinion',
+    formButtonText: 'Request a Spine Consultation',
     heroPoints: [
+      'Quick Intake Response: Our Charlotte team reviews your details and coordinates your consultation slot.',
+      'Zero Hospital Facility Surcharges: Independent practice protects you from high hospital fees.',
+      'Major Insurances Accepted: Medicare Part B, NC/SC Medicaid, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana.',
       'Double-board-certified in Anesthesiology and Pain Medicine (Fellowship Trained)',
-      'Expert second opinions before committing to major spinal fusion or disc surgery',
-      'Advanced neuromodulation and spinal cord stimulation (SCS) trials',
-      'Modern in-office fluoroscopy suite with zero hospital facility surcharges',
-      'Independent clinical practice focused entirely on patient recovery'
+      'Expert second opinions before committing to major spinal fusion or disc surgery'
     ],
     conditions: [
       { name: 'Complex & Chronic Spine Pain', desc: 'Multi-level degenerative changes across cervical, thoracic, and lumbar regions.' },
@@ -193,7 +211,7 @@ const LANDING_PAGE_DATA = {
     faqs: [
       { q: 'Should I get a second opinion before spine surgery?', a: 'Yes. Major spine surgery is irreversible. A second opinion from an interventional spine specialist frequently reveals non-surgical treatments that provide equal or superior pain relief without surgical risks.' },
       { q: 'What is a Spinal Cord Stimulation trial?', a: 'An SCS trial is an outpatient procedure where temporary leads are placed under fluoroscopy. You test the system at home for 5-7 days to determine if it delivers at least 50% pain relief.' },
-      { q: 'What are Dr. Amara\'s qualifications?', a: 'Dr. Ashvin K. Amara, MD completed residency and ACGME-accredited fellowship training at premier academic institutions and is double-board-certified by the American Board of Medical Specialties (ABMS).' }
+      { q: 'What are Dr. Amara\'s qualifications?', a: "Dr. Ashvin K. Amara, MD completed residency and ACGME-accredited fellowship training at premier academic institutions and is double-board-certified by the American Board of Medical Specialties (ABMS)." }
     ]
   },
 
@@ -205,12 +223,13 @@ const LANDING_PAGE_DATA = {
     headline: 'Modern Interventional Pain Procedures in Charlotte, NC',
     subheadline: 'Move beyond pills and invasive surgery. Our dedicated outpatient fluoroscopy suite delivers targeted image-guided procedures with rapid recovery, high satisfaction, and no hospital facility fees.',
     painType: 'Interventional Procedures',
+    formButtonText: 'Request a Procedure Consultation',
     heroPoints: [
+      'Quick Intake Response: Our Charlotte team reviews your details and coordinates your consultation slot.',
+      'Zero Hospital Facility Surcharges: Independent practice protects you from high hospital fees.',
+      'Major Insurances Accepted: Medicare Part B, NC/SC Medicaid, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana.',
       'Image-guided precision utilizing high-definition C-arm fluoroscopy',
-      'Targeted treatments delivering medication directly to the pain source',
-      'Minimally invasive with rapid recovery—return home within 30 minutes',
-      'Zero hospital facility fees—transparent, affordable outpatient care',
-      'In-network with Medicare, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana'
+      'Targeted treatments delivering medication directly to the pain source'
     ],
     conditions: [
       { name: 'Cervical, Thoracic & Lumbar Radiculopathy', desc: 'Nerve root irritation across all spine levels causing radiating pain.' },
@@ -242,12 +261,13 @@ const LANDING_PAGE_DATA = {
     headline: 'Schedule Your Consultation: Fast-Track Pain Relief in Charlotte',
     subheadline: 'Take the first step toward lasting relief. Complete our 60-second consultation request form, and our clinical care coordinators will connect with you to confirm your same-week appointment.',
     painType: 'General Pain Consultation',
+    formButtonText: 'Submit Consultation Request',
     heroPoints: [
+      'Quick Intake Response: Our Charlotte team reviews your details and coordinates your consultation slot.',
+      'Zero Hospital Facility Surcharges: Independent practice protects you from high hospital fees.',
+      'Major Insurances Accepted: Medicare Part B, NC/SC Medicaid, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana.',
       'Direct contact from dedicated clinical care coordinators within 24 hours',
-      'Same-week appointment availability in South Charlotte',
-      'Comprehensive insurance coverage verification before your visit',
-      'Zero hospital facility fees—significant out-of-pocket savings',
-      'Consult with double-board-certified specialist Dr. Ashvin K. Amara, MD'
+      'Same-week appointment availability in South Charlotte'
     ],
     conditions: [
       { name: 'Chronic Lower Back Pain & Sciatica', desc: 'Herniated discs, spinal stenosis, facet joint arthritis, and nerve compression.' },
@@ -282,14 +302,13 @@ export default function LandingPage({ slug: propSlug }) {
     url: `/${pageData.slug}/`
   });
 
-  // Intake Form State
+  // Intake Form State - Strictly NO appointment timing options per approved final design
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     phone: '',
     email: '',
     condition: pageData.painType,
-    preferredTime: 'Morning',
     notes: ''
   });
 
@@ -297,6 +316,11 @@ export default function LandingPage({ slug: propSlug }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submittedLeadId, setSubmittedLeadId] = useState('');
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const toggleFaq = (idx) => {
+    setOpenFaq((prev) => (prev === idx ? null : idx));
+  };
 
   const validateForm = () => {
     const errors = {};
@@ -333,7 +357,7 @@ export default function LandingPage({ slug: propSlug }) {
     try {
       const leadId = `APS-${Date.now().toString(36).toUpperCase()}`;
 
-      // Build lead object adhering to the authoritative APS_LEADS schema
+      // Build lead object adhering to the authoritative APS_LEADS schema (NO appointment timing options)
       const newLead = {
         id: leadId,
         type: 'appointment',
@@ -347,7 +371,6 @@ export default function LandingPage({ slug: propSlug }) {
           email: formData.email.trim().toLowerCase()
         },
         condition: formData.condition || pageData.painType,
-        preferredTime: formData.preferredTime,
         notes: formData.notes.trim() || `Inquiry from Google Ads landing page: ${pageData.slug}`,
         appointmentDate: new Date().toLocaleDateString()
       };
@@ -437,13 +460,13 @@ export default function LandingPage({ slug: propSlug }) {
       </div>
 
       {/* 2. HERO SECTION WITH EMBEDDED INTAKE FORM */}
-      <section className="relative overflow-hidden bg-white border-b border-slate-200 pt-10 pb-16 lg:py-20">
+      <section className="relative overflow-hidden bg-white border-b border-slate-200 pt-8 pb-16 lg:py-16">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/40 via-transparent to-slate-100/50 pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            {/* Left Column: Targeted Medical Copy */}
+            {/* Left Column: Targeted Medical Copy & SLO Reassurance */}
             <div className="lg:col-span-7 space-y-6 text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
@@ -454,75 +477,112 @@ export default function LandingPage({ slug: propSlug }) {
                 {pageData.headline}
               </h1>
 
-              <p className="text-lg text-slate-600 leading-relaxed font-normal">
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
                 {pageData.subheadline}
               </p>
 
-              {/* Key Assurances List */}
+              {/* Exact Recovered SLO Checkpoints */}
               <div className="space-y-3 pt-2">
                 {pageData.heroPoints.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 mt-1 w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                      <CheckCircle2 className="w-4 h-4" />
-                    </div>
-                    <span className="text-sm sm:text-base font-semibold text-slate-800">
-                      {point}
-                    </span>
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span className="text-sm font-medium text-slate-700 leading-snug">{point}</span>
                   </div>
                 ))}
               </div>
 
-              {/* Emergency Call-Out & Direct Phone */}
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              {/* Recovered Audience Mobility Reassurance Badge */}
+              <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 border border-emerald-100 shadow-2xs mt-4">
+                <img
+                  src="/images/audience/hero_senior_mobility.jpg"
+                  alt="Dedicated to Restoring Daily Comfort & Mobility"
+                  className="w-14 h-14 rounded-xl object-cover shrink-0 border border-emerald-300"
+                  loading="lazy"
+                />
                 <div>
-                  <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Immediate Phone Assistance</div>
-                  <div className="text-lg font-black text-slate-900">Speak With Our Clinical Staff</div>
+                  <div className="text-xs font-bold text-slate-900">Dedicated to Restoring Daily Comfort &amp; Mobility</div>
+                  <div className="text-[11px] text-slate-600 leading-tight mt-0.5">
+                    Helping older adults and active seniors in South Charlotte return to everyday life without surgery.
+                  </div>
+                </div>
+              </div>
+
+              {/* Direct Telephone Intake Callout */}
+              <div className="p-4 rounded-xl bg-slate-900 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-wider text-slate-300 font-semibold">Prefer Immediate Telephone Intake?</div>
+                    <div className="text-lg font-black text-white">(704) 503-9338</div>
+                  </div>
                 </div>
                 <a
                   href="tel:+17045039338"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-sm transition-all"
+                  className="w-full sm:w-auto px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider text-center transition-colors"
                 >
-                  <Phone className="w-4 h-4" /> (704) 503-9338
+                  Call Clinic Directly
                 </a>
               </div>
             </div>
 
-            {/* Right Column: 60-Second Lead Intake Form */}
-            <div className="lg:col-span-5">
-              <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-8 text-left relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600"></div>
-
+            {/* Right Column: Fast-Track Consultation Intake Form (Strictly NO Appointment Timing Options) */}
+            <div className="lg:col-span-5" id="consultation-form">
+              <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-8 text-left relative">
+                
                 {submitSuccess ? (
-                  <div className="py-8 text-center space-y-4 animate-fade-in">
-                    <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                  <div className="py-8 text-center space-y-4">
+                    <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-10 h-10" />
                     </div>
-                    <h3 className="text-2xl font-black text-slate-900">Consultation Request Received!</h3>
-                    <p className="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
-                      Thank you for contacting Amara Pain & Spine. Our clinical coordinator will call you shortly to confirm your consultation time and verify your insurance coverage.
+                    <h3 className="text-2xl font-black text-slate-900">Consultation Request Received</h3>
+                    {submittedLeadId && (
+                      <div className="inline-block px-3 py-1 bg-slate-100 border border-slate-200 rounded-md text-xs font-mono text-slate-600">
+                        Reference ID: {submittedLeadId}
+                      </div>
+                    )}
+                    <p className="text-sm text-slate-600 leading-relaxed max-w-sm mx-auto">
+                      Thank you. Our Charlotte clinical intake team will review your symptom notes and insurance, then contact you promptly to coordinate your appointment.
                     </p>
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono text-slate-700">
-                      Confirmation ID: <strong className="text-slate-900">{submittedLeadId}</strong>
+                    
+                    <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left space-y-2 text-xs">
+                      <div className="font-bold text-slate-800">What happens next:</div>
+                      <div className="flex items-start gap-2 text-slate-600">
+                        <span className="font-bold text-emerald-600">1. Review:</span>
+                        <span>Clinical staff reviews your symptoms and coverage.</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-slate-600">
+                        <span className="font-bold text-emerald-600">2. Coordination:</span>
+                        <span>We call to confirm your consultation slot that fits your schedule.</span>
+                      </div>
+                      <div className="flex items-start gap-2 text-slate-600">
+                        <span className="font-bold text-emerald-600">3. Specialist Visit:</span>
+                        <span>In-depth examination and diagnostic review with Dr. Amara.</span>
+                      </div>
                     </div>
+
                     <div className="pt-2">
                       <a
                         href="tel:+17045039338"
-                        className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition-colors"
+                        className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition-colors"
                       >
-                        <Phone className="w-4 h-4" /> Call Clinic Directly: (704) 503-9338
+                        <Phone className="w-4 h-4 text-emerald-400" />
+                        Call Our Clinic: (704) 503-9338
                       </a>
                     </div>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <div className="text-xs font-bold uppercase tracking-wider text-emerald-700">Fast-Track Clinical Intake</div>
-                      <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Request Same-Week Visit</h3>
+                  <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                    <div className="border-b border-slate-100 pb-4">
+                      <span className="text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Direct Clinic Scheduling</span>
+                      <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-0.5">Request a Consultation</h2>
                       <p className="text-xs text-slate-500 mt-1">
-                        Fill out this brief form and our team will contact you to secure your preferred slot.
+                        Connect with our Charlotte clinical coordination team to schedule your diagnostic visit.
                       </p>
                     </div>
 
+                    {/* Patient Name Fields */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1">First Name *</label>
@@ -554,81 +614,71 @@ export default function LandingPage({ slug: propSlug }) {
                       </div>
                     </div>
 
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Phone Number *</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="(704) 555-0123"
-                        className={`w-full px-3 py-2 text-sm rounded-lg border ${
-                          formErrors.phone ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
-                        } focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 bg-white`}
-                      />
-                      {formErrors.phone && <p className="text-xs text-red-600 mt-0.5">{formErrors.phone}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="patient@example.com"
-                        className={`w-full px-3 py-2 text-sm rounded-lg border ${
-                          formErrors.email ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
-                        } focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 bg-white`}
-                      />
-                      {formErrors.email && <p className="text-xs text-red-600 mt-0.5">{formErrors.email}</p>}
-                    </div>
-
+                    {/* Contact Fields */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">Primary Area of Pain</label>
-                        <select
-                          name="condition"
-                          value={formData.condition}
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Phone Number *</label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
                           onChange={handleInputChange}
-                          className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 bg-white"
-                        >
-                          <option value="Lower Back & Lumbar Spine">Lower Back / Lumbar</option>
-                          <option value="Neck & Cervical Spine">Neck & Shoulder Tension</option>
-                          <option value="Sciatica & Leg Pain">Sciatica & Leg Pain</option>
-                          <option value="Joint & Arthritis Pain">Joint & Knee Arthritis</option>
-                          <option value="Spine Diagnostics & Second Opinion">Spine Second Opinion</option>
-                          <option value="Failed Back Surgery">Post-Surgical Pain</option>
-                          <option value="Comprehensive Pain Evaluation">Comprehensive Evaluation</option>
-                        </select>
+                          placeholder="(704) 555-0199"
+                          className={`w-full px-3 py-2 text-sm rounded-lg border ${
+                            formErrors.phone ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
+                          } focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 bg-white`}
+                        />
+                        {formErrors.phone && <p className="text-xs text-red-600 mt-0.5">{formErrors.phone}</p>}
                       </div>
                       <div>
-                        <label className="block text-xs font-bold text-slate-700 mb-1">Best Time to Contact</label>
-                        <select
-                          name="preferredTime"
-                          value={formData.preferredTime}
+                        <label className="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
                           onChange={handleInputChange}
-                          className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 bg-white"
-                        >
-                          <option value="Morning">Morning (8am - 12pm)</option>
-                          <option value="Afternoon">Afternoon (12pm - 5pm)</option>
-                          <option value="Anytime">Anytime Today</option>
-                        </select>
+                          placeholder="jane@example.com"
+                          className={`w-full px-3 py-2 text-sm rounded-lg border ${
+                            formErrors.email ? 'border-red-500 bg-red-50/50' : 'border-slate-300'
+                          } focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 bg-white`}
+                        />
+                        {formErrors.email && <p className="text-xs text-red-600 mt-0.5">{formErrors.email}</p>}
                       </div>
                     </div>
 
+                    {/* Primary Area of Concern */}
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Symptoms or Brief Notes (Optional)</label>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Primary Area of Concern</label>
+                      <select
+                        name="condition"
+                        value={formData.condition}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 bg-white"
+                      >
+                        <option value="Lower Back & Lumbar Spine">Lower Back &amp; Lumbar Spine</option>
+                        <option value="Neck & Cervical Spine">Neck &amp; Cervical Spine</option>
+                        <option value="Sciatica & Leg Pain">Sciatica &amp; Nerve Compression</option>
+                        <option value="Joint & Arthritis Pain">Joint &amp; Arthritis Pain (Knee, Hip, Shoulder)</option>
+                        <option value="Spine Diagnostics & Second Opinion">Spine Diagnostics &amp; Second Opinion</option>
+                        <option value="Failed Back Surgery">Persistent Post-Surgical Pain</option>
+                        <option value="Comprehensive Pain Evaluation">Comprehensive Pain Evaluation</option>
+                      </select>
+                    </div>
+
+                    {/* Symptoms or Brief Notes (Optional) */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">Brief Description of Symptoms (Optional)</label>
                       <textarea
                         name="notes"
                         rows="2"
                         value={formData.notes}
                         onChange={handleInputChange}
-                        placeholder="Briefly describe your pain, how long you've had it, or prior treatments..."
+                        placeholder="E.g., Lower back stiffness when standing, pain radiating down left hip..."
                         className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 bg-white"
                       ></textarea>
                     </div>
 
+                    {/* Submit Button with Condition-Specific CTA */}
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -641,23 +691,30 @@ export default function LandingPage({ slug: propSlug }) {
                         </>
                       ) : (
                         <>
-                          <span>Request Same-Week Consultation</span>
+                          <span>{pageData.formButtonText || 'Request a Consultation'}</span>
                           <ChevronRight className="w-4 h-4" />
                         </>
                       )}
                     </button>
 
-                    <div className="flex items-center justify-center gap-2 text-center text-xs text-slate-500 pt-1">
-                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>HIPAA Compliant. Your personal data is confidential and secure.</span>
+                    {/* Privacy & SLO Guarantees */}
+                    <div className="space-y-1.5 pt-1">
+                      <div className="flex items-start gap-2 text-center sm:text-left text-[11px] text-slate-500">
+                        <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                        <span>HIPAA-Conscious Intake: Contact details are collected solely for appointment coordination. No health data is shared with advertising platforms.</span>
+                      </div>
+                      <div className="text-center text-[11px] font-semibold text-emerald-800 bg-emerald-50 py-1.5 px-3 rounded-md border border-emerald-200">
+                        Quick Intake Guarantee: Direct contact from dedicated clinical care coordinators within 24 hours
+                      </div>
                     </div>
 
-                    <div className="text-center pt-1 border-t border-slate-100">
+                    {/* Alternative Online Booking Link */}
+                    <div className="text-center pt-2 border-t border-slate-100">
                       <Link
                         to="/book"
                         className="text-xs font-semibold text-emerald-700 hover:text-emerald-800 hover:underline inline-flex items-center gap-1"
                       >
-                        Prefer live online scheduling? Use our interactive Tebra booking calendar &rarr;
+                        Prefer live online calendar scheduling? Use interactive Tebra booking &rarr;
                       </Link>
                     </div>
                   </form>
@@ -669,26 +726,36 @@ export default function LandingPage({ slug: propSlug }) {
         </div>
       </section>
 
-      {/* 3. IN-NETWORK INSURANCE & ZERO FACILITY FEES GUARANTEE STRIP */}
-      <section className="bg-slate-100 border-b border-slate-200 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-left max-w-lg">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Insurance & Cost Transparency</span>
-              <h2 className="text-xl font-bold text-slate-900 mt-0.5">In-Network With Major Insurers & Zero Hospital Fees</h2>
-              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                As an independent practice, our procedures carry no hospital facility fee markups. You receive fellowship-quality care with minimal out-of-pocket costs.
-              </p>
+      {/* 3. CONTINUOUS AUTO-SCROLLING IN-NETWORK INSURANCE MARQUEE */}
+      <section className="bg-slate-100 border-b border-slate-200 py-6 overflow-hidden" aria-label="Insurance and Payer Networks">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-center sm:text-left">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Insurance &amp; Payer Coverage</span>
+              <h2 className="text-lg font-black text-slate-900">In-Network With Major North Carolina Health Plans</h2>
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-bold text-slate-700">
-              <span className="px-3 py-1.5 bg-white border border-slate-300 rounded-md shadow-2xs">Medicare</span>
-              <span className="px-3 py-1.5 bg-white border border-slate-300 rounded-md shadow-2xs">Blue Cross Blue Shield</span>
-              <span className="px-3 py-1.5 bg-white border border-slate-300 rounded-md shadow-2xs">UnitedHealthcare</span>
-              <span className="px-3 py-1.5 bg-white border border-slate-300 rounded-md shadow-2xs">Aetna</span>
-              <span className="px-3 py-1.5 bg-white border border-slate-300 rounded-md shadow-2xs">Cigna</span>
-              <span className="px-3 py-1.5 bg-white border border-slate-300 rounded-md shadow-2xs">Humana</span>
-              <span className="px-3 py-1.5 bg-white border border-slate-300 rounded-md shadow-2xs">Tricare</span>
-            </div>
+            <p className="text-xs text-slate-600 max-w-md">
+              Medicare Part B, NC/SC Medicaid, and major commercial health plans accepted. Zero hospital facility fee markups.
+            </p>
+          </div>
+        </div>
+
+        {/* Marquee Track */}
+        <div className="relative w-full overflow-hidden mask-gradient-x">
+          <div className="flex items-center gap-8 animate-marquee-horizontal whitespace-nowrap py-2">
+            {[...INSURER_LOGOS, ...INSURER_LOGOS].map((insurer, idx) => (
+              <div
+                key={idx}
+                className="inline-flex items-center justify-center h-14 px-5 py-2 rounded-xl bg-white border border-slate-200 shadow-2xs shrink-0"
+              >
+                <img
+                  src={insurer.src}
+                  alt={insurer.name}
+                  className="max-h-8 max-w-[120px] object-contain filter grayscale hover:grayscale-0 transition-all opacity-85 hover:opacity-100"
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -699,7 +766,7 @@ export default function LandingPage({ slug: propSlug }) {
           <div className="max-w-3xl mb-12">
             <div className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Clinical Focus Areas</div>
             <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">
-              Conditions We Treat with Targeted Interventions
+              Common Causes &amp; Conditions We Evaluate
             </h2>
             <p className="text-base text-slate-600 mt-2">
               We focus on identifying the precise anatomical source of pain rather than just prescribing painkillers.
@@ -723,56 +790,126 @@ export default function LandingPage({ slug: propSlug }) {
         </div>
       </section>
 
-      {/* 5. INTERVENTIONAL PROCEDURES HIGHLIGHT */}
+      {/* 5. SOUTH CHARLOTTE ADVANTAGE: ZERO FACILITY FEES & IN-OFFICE PROCEDURE SUITE */}
       <section className="py-16 bg-slate-50 border-b border-slate-200 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Fluoroscopy-Guided Outpatient Care</div>
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">
-              Advanced Non-Surgical Procedures
-            </h2>
-            <p className="text-base text-slate-600 mt-2">
-              Conducted in our sterile on-site procedure suite with real-time fluoroscopic imaging for maximum patient safety and therapeutic accuracy.
-            </p>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <div className="lg:col-span-6 space-y-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Cost Transparency</span>
+              <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+                Zero Hospital Facility Fees: Why Independent Practice Matters
+              </h2>
+              <p className="text-base text-slate-600 leading-relaxed">
+                Hospital-owned outpatient clinics frequently bill two separate fees for a single procedure: a physician professional fee plus a mandatory hospital facility fee that can add $750 to $3,000+ to your out-of-pocket costs.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed">
+                As an independent spine and pain clinic, Amara Pain &amp; Spine conducts all fluoroscopy-guided procedures in our sterile in-office suite with zero facility surcharges.
+              </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {pageData.procedures.map((proc, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-start gap-4"
-              >
-                <div className="w-10 h-10 rounded-xl bg-teal-50 border border-teal-200 text-teal-700 flex-shrink-0 flex items-center justify-center mt-1">
-                  <HeartPulse className="w-5 h-5" />
+              {/* Comparison Box */}
+              <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-3">
+                <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-100">
+                  <span className="font-bold text-slate-600">Amara Pain &amp; Spine (In-Office):</span>
+                  <span className="font-bold text-emerald-700">$0 Facility Surcharge</span>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-1">{proc.name}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{proc.desc}</p>
+                <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-100">
+                  <span className="font-bold text-slate-600">Hospital Outpatient Department (HOPD):</span>
+                  <span className="font-bold text-red-600">$750 – $3,000+ Facility Fee</span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-bold text-slate-600">Patient Check-in Experience:</span>
+                  <span className="font-bold text-emerald-700">Direct, Private &amp; Patient-Focused</span>
                 </div>
               </div>
-            ))}
+            </div>
+
+            <div className="lg:col-span-6">
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-white">
+                <img
+                  src="/images/audience/interventional_procedure_suite.jpg"
+                  alt="In-Office Interventional Fluoroscopy Procedure Suite - Amara Pain & Spine"
+                  className="w-full h-72 object-cover"
+                  loading="lazy"
+                />
+                <div className="p-4 bg-slate-900 text-white">
+                  <div className="text-sm font-bold text-emerald-400">On-Site Interventional Fluoroscopy Suite</div>
+                  <div className="text-xs text-slate-300 mt-0.5">High-definition C-arm X-ray guidance for maximum sub-millimeter precision and safety.</div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* 6. PHYSICIAN LEADERSHIP & CREDENTIALS */}
+      {/* 6. OUR 3-STEP CLINICAL METHODOLOGY */}
       <section className="py-16 bg-white border-b border-slate-200 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Methodical Care</span>
+            <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">
+              How We Evaluate &amp; Treat Pain
+            </h2>
+            <p className="text-base text-slate-600 mt-2">
+              We avoid one-size-fits-all treatments and never recommend procedures before conducting a comprehensive diagnostic examination.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <div className="text-2xl font-black text-emerald-600 mb-2">01</div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">In-Depth Diagnostic Review</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Dr. Amara personally evaluates your spine mobility, neurological reflexes, and past imaging (MRI, X-ray) to identify the true pain generator.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <div className="text-2xl font-black text-emerald-600 mb-2">02</div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Targeted Non-Surgical Plan</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                We develop a graduated care strategy that may include physical therapy coordination, conservative medications, or precision fluoroscopy-guided injections.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <div className="text-2xl font-black text-emerald-600 mb-2">03</div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">Functional Recovery Tracking</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Our goal is sustained functional independence—helping you return to walking, gardening, driving, working, and enjoying daily life with family.
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center mt-10">
+            <a
+              href="#consultation-form"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm transition-colors shadow-sm"
+            >
+              <span>Schedule Your Diagnostic Evaluation</span>
+              <ChevronRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. PHYSICIAN LEADERSHIP & PROVIDER SPOTLIGHT */}
+      <section className="py-16 bg-slate-50 border-b border-slate-200 text-left">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-100">
                 <img
-                  src="/images/ashvin-amara.jpg"
-                  alt="Dr. Ashvin K. Amara, MD - Interventional Pain Specialist Charlotte NC"
+                  src="/images/doctor_consultation.jpg"
+                  alt="Dr. Ashvin Kumar Amara, MD reviewing spine imaging with patient"
                   className="w-full h-auto object-cover"
                   loading="lazy"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
                 />
                 <div className="p-4 bg-slate-900 text-white">
-                  <div className="text-sm font-bold text-emerald-400">Ashvin K. Amara, MD</div>
-                  <div className="text-xs text-slate-300">Interventional Pain Specialist & Anesthesiologist</div>
+                  <div className="text-sm font-bold text-emerald-400">Ashvin Kumar Amara, MD</div>
+                  <div className="text-xs text-slate-300">Double-Board Certified · Anesthesiology &amp; Interventional Pain Medicine · NPI: 1356658389</div>
                 </div>
               </div>
             </div>
@@ -784,11 +921,11 @@ export default function LandingPage({ slug: propSlug }) {
               </div>
 
               <h2 className="text-3xl font-black text-slate-900 tracking-tight">
-                Meet Dr. Ashvin K. Amara, MD
+                Meet Dr. Ashvin Kumar Amara, MD
               </h2>
 
               <p className="text-base text-slate-600 leading-relaxed">
-                Dr. Ashvin K. Amara is double-board-certified in Anesthesiology and Interventional Pain Medicine. He completed rigorous residency and ACGME-accredited fellowship training at premier academic medical centers.
+                Dr. Ashvin Kumar Amara is double-board-certified in Anesthesiology and Interventional Pain Medicine. He completed rigorous residency and ACGME-accredited fellowship training at premier academic medical centers.
               </p>
 
               <p className="text-base text-slate-600 leading-relaxed">
@@ -796,156 +933,177 @@ export default function LandingPage({ slug: propSlug }) {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="p-4 rounded-xl bg-white border border-slate-200">
                   <div className="font-bold text-slate-900 text-sm">Double-Board Certified</div>
-                  <div className="text-xs text-slate-600 mt-0.5">American Board of Medical Specialties (ABMS)</div>
+                  <div className="text-xs text-slate-500 mt-0.5">American Board of Medical Specialties (ABMS) certified in Anesthesiology and Pain Medicine.</div>
                 </div>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="font-bold text-slate-900 text-sm">Fellowship Trained</div>
-                  <div className="text-xs text-slate-600 mt-0.5">ACGME-Accredited Interventional Pain Medicine</div>
-                </div>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="font-bold text-slate-900 text-sm">Zero Hospital Facility Fees</div>
-                  <div className="text-xs text-slate-600 mt-0.5">Independent clinic saving patients hundreds in costs</div>
-                </div>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="font-bold text-slate-900 text-sm">Same-Week Scheduling</div>
-                  <div className="text-xs text-slate-600 mt-0.5">Dedicated slots reserved for acute pain inquiries</div>
+                <div className="p-4 rounded-xl bg-white border border-slate-200">
+                  <div className="font-bold text-slate-900 text-sm">Fellowship-Trained Specialist</div>
+                  <div className="text-xs text-slate-500 mt-0.5">Sub-specialty trained in image-guided spine injections, radiofrequency ablation, and neuromodulation.</div>
                 </div>
               </div>
+
+              <div className="pt-2">
+                <a
+                  href="#consultation-form"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition-colors"
+                >
+                  <span>Schedule Consultation with Dr. Amara</span>
+                  <ChevronRight className="w-4 h-4 text-emerald-400" />
+                </a>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* 7. FREQUENTLY ASKED QUESTIONS */}
-      <section className="py-16 bg-slate-50 border-b border-slate-200 text-left">
+      {/* 8. CONDITION-SPECIFIC FAQS */}
+      <section className="py-16 bg-white border-b border-slate-200 text-left">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="text-xs font-bold text-emerald-700 uppercase tracking-wider">Patient Inquiries</div>
+          <div className="text-center mb-10">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Patient Clarity</span>
             <h2 className="text-3xl font-black text-slate-900 tracking-tight mt-1">
               Frequently Asked Questions
             </h2>
-            <p className="text-sm text-slate-600 mt-2">
-              Have questions about your consultation, procedures, or insurance coverage?
+            <p className="text-base text-slate-600 mt-2">
+              Transparent answers regarding our treatments, insurance coverage, and appointment process.
             </p>
           </div>
 
           <div className="space-y-4">
             {pageData.faqs.map((faq, idx) => (
-              <div key={idx} className="p-6 bg-white rounded-xl border border-slate-200 shadow-2xs">
-                <h3 className="text-base font-bold text-slate-900 mb-2 flex items-start gap-2">
-                  <span className="text-emerald-600 font-black">Q:</span>
-                  <span>{faq.q}</span>
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed pl-6">
-                  {faq.a}
-                </p>
+              <div
+                key={idx}
+                className="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 transition-colors"
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleFaq(idx)}
+                  className="w-full py-4 px-5 text-left font-bold text-slate-900 flex items-center justify-between gap-4 hover:bg-slate-100/80 transition-colors cursor-pointer"
+                  aria-expanded={openFaq === idx}
+                >
+                  <span className="text-base">{faq.q}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-slate-500 shrink-0 transition-transform duration-200 ${
+                      openFaq === idx ? 'rotate-180 text-emerald-600' : ''
+                    }`}
+                  />
+                </button>
+                {openFaq === idx && (
+                  <div className="p-5 pt-0 text-sm text-slate-600 leading-relaxed border-t border-slate-200/60 bg-white">
+                    {faq.a}
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 8. CLINIC LOCATION, HOURS & DIRECT CONTACT */}
-      <section className="py-16 bg-white text-left">
+      {/* 9. LOCATION & CLINIC ACCESS */}
+      <section className="py-16 bg-slate-50 border-b border-slate-200 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                <MapPin className="w-3.5 h-3.5 text-emerald-600" />
-                South Charlotte Location
-              </div>
-
-              <h2 className="text-3xl font-black text-slate-900 tracking-tight">
-                Visit Our Modern Charlotte Clinic
-              </h2>
-
-              <p className="text-base text-slate-600 leading-relaxed">
-                Conveniently located off South Boulevard and Highway 51 in South Charlotte, our independent outpatient center features comfortable consultation suites and on-site fluoroscopy facilities.
+          <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">South Charlotte Spine Clinic</span>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Visit Amara Pain &amp; Spine</h2>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Dedicated to patients throughout Charlotte, Ballantyne, Pineville, Matthews, Fort Mill, and Rock Hill.
               </p>
 
               <div className="space-y-3 pt-2 text-sm text-slate-700">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <MapPin className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900">Amara Pain & Spine</strong>
-                    <span>6429 Bannington Road, Suite B, Charlotte, NC 28226</span>
+                    <strong className="block text-slate-900 font-bold">Address:</strong>
+                    6429 Bannington Road, Suite B, Charlotte, NC 28226
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Clock className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900">Clinic Hours</strong>
-                    <span>Monday – Friday: 8:00 AM – 5:00 PM</span>
+                    <strong className="block text-slate-900 font-bold">Clinic Hours:</strong>
+                    Monday – Friday: 8:00 AM – 5:00 PM (Closed Saturday &amp; Sunday)
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <Phone className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-slate-900">Phone & Appointments</strong>
-                    <a href="tel:+17045039338" className="text-emerald-700 font-bold hover:underline">
-                      (704) 503-9338
-                    </a>
+                    <strong className="block text-slate-900 font-bold">Direct Inquiries:</strong>
+                    Phone: <a href="tel:+17045039338" className="text-emerald-700 font-bold hover:underline">(704) 503-9338</a> | Fax: (704) 503-9339
                   </div>
                 </div>
               </div>
-
-              <div className="pt-4 flex flex-wrap gap-4">
-                <a
-                  href="https://maps.google.com/?q=6429+Bannington+Road+Suite+B+Charlotte+NC+28226"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-sm transition-colors inline-flex items-center gap-2"
-                >
-                  <MapPin className="w-4 h-4" /> Open in Google Maps
-                </a>
-                <a
-                  href="tel:+17045039338"
-                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-sm transition-colors inline-flex items-center gap-2"
-                >
-                  <Phone className="w-4 h-4" /> Call (704) 503-9338
-                </a>
-              </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="p-8 rounded-2xl bg-slate-900 text-white shadow-xl space-y-6">
-                <div>
-                  <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Ready to Begin?</div>
-                  <h3 className="text-2xl font-black mt-1">Get Back to Living Pain-Free</h3>
-                  <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-                    Same-week consultations are available. We are in-network with Medicare and major private health plans.
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <a
-                    href="tel:+17045039338"
-                    className="w-full py-3.5 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm flex items-center justify-center gap-2 shadow-md transition-all"
-                  >
-                    <Phone className="w-4 h-4" /> Call to Book: (704) 503-9338
-                  </a>
-                  <Link
-                    to="/book"
-                    className="w-full py-3.5 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm flex items-center justify-center gap-2 border border-slate-700 transition-all"
-                  >
-                    <Calendar className="w-4 h-4 text-emerald-400" /> Book Online via Tebra EHR
-                  </Link>
-                </div>
-
-                <div className="pt-4 border-t border-slate-800 text-[11px] text-slate-400 text-center">
-                  Zero Hospital Facility Fees &bull; In-Network Specialists &bull; Charlotte, NC
-                </div>
-              </div>
+            <div className="p-6 rounded-xl bg-slate-50 border border-slate-200 text-left space-y-3">
+              <h3 className="text-base font-bold text-slate-900">Convenient South Charlotte Access</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Located right off Highway 51 (Pineville-Matthews Rd) and Johnston Road, minutes from Ballantyne and I-485. Free ground-level parking directly adjacent to the entrance.
+              </p>
+              <a
+                href="https://maps.google.com/?q=6429+Bannington+Road+Suite+B+Charlotte+NC+28226"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider transition-colors"
+              >
+                Open in Google Maps ↗
+              </a>
             </div>
-
           </div>
         </div>
       </section>
+
+      {/* 10. FINAL CTA BANNER */}
+      <section className="py-16 bg-slate-900 text-white text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Take the First Step</span>
+          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+            Ready to Regain Mobility and Lasting Comfort?
+          </h2>
+          <p className="text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Do not let chronic pain dictate what you can and cannot do. Connect with our Charlotte clinical coordination team to confirm your consultation.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <a
+              href="#consultation-form"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm uppercase tracking-wider transition-all shadow-lg"
+            >
+              Request a Consultation
+            </a>
+            <a
+              href="tel:+17045039338"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+            >
+              <Phone className="w-4 h-4 text-emerald-400" />
+              Call (704) 503-9338
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 11. MOBILE STICKY CTA BAR */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 py-2.5 px-4 lg:hidden shadow-lg">
+        <div className="flex items-center gap-3 max-w-md mx-auto">
+          <a
+            href="tel:+17045039338"
+            className="flex-1 py-2.5 px-3 rounded-xl bg-slate-900 text-white font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+          >
+            <Phone className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Call Clinic</span>
+          </a>
+          <a
+            href="#consultation-form"
+            className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform"
+          >
+            <Calendar className="w-3.5 h-3.5" />
+            <span>Request Visit</span>
+          </a>
+        </div>
+      </div>
 
     </div>
   );
