@@ -31,7 +31,11 @@ export default function useSEO({
     setMeta('name', 'description', description);
 
     // 3. Canonical Link
-    const fullUrl = url.startsWith('http') ? url : `${DOMAIN}${url.startsWith('/') ? url : `/${url}`}`;
+    let rawUrl = url.startsWith('http') ? url : `${DOMAIN}${url.startsWith('/') ? url : `/${url}`}`;
+    if (!rawUrl.endsWith('/') && !rawUrl.includes('?') && !rawUrl.includes('#') && !rawUrl.match(/\.[a-zA-Z0-9]+$/)) {
+      rawUrl += '/';
+    }
+    const fullUrl = rawUrl;
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');

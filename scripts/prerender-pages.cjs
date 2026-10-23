@@ -124,7 +124,8 @@ async function prerender() {
   let generatedCount = 0;
 
   for (const route of routes) {
-    const fullUrl = `${DOMAIN}${route.path}`;
+    const normalizedPath = route.path.endsWith('/') ? route.path : `${route.path}/`;
+    const fullUrl = `${DOMAIN}${normalizedPath}`;
     const cleanTitle = route.title.replace(/"/g, '&quot;');
     const cleanDesc = route.desc.replace(/"/g, '&quot;');
 

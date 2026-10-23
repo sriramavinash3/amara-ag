@@ -68,7 +68,7 @@ describe('Social Sharing Image & Open Graph Metadata Suite', () => {
     const backPainIndex = path.resolve(__dirname, '../dist/conditions/back-pain/index.html');
     expect(fs.existsSync(backPainIndex)).toBe(true);
     const backPainContent = fs.readFileSync(backPainIndex, 'utf8');
-    expect(backPainContent).toContain('<link rel="canonical" href="https://www.amarapain.com/conditions/back-pain" />');
+    expect(backPainContent).toContain('<link rel="canonical" href="https://www.amarapain.com/conditions/back-pain/" />');
     expect(backPainContent).toContain('<meta property="og:image" content="https://www.amarapain.com/images/og-image.png" />');
   });
 });

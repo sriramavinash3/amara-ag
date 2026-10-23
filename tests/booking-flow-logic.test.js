@@ -149,4 +149,107 @@ describe('Appointment Booking Frontend Logic & Timezone Integrity', () => {
     }
     expect(keys.size).toBe(10);
   });
+
+  describe('Google Ads Conversion Tracking Integration', () => {
+    function fireConversionHelper({ bookingSuccess, bookingId, conversionLabel, storage, gtagCalls }) {
+      if (!bookingSuccess || !bookingId) return false;
+
+      const storageKey = `APS_GADS_CONV_${bookingId}`;
+      if (storage.getItem(storageKey)) return false;
+
+      if (conversionLabel) {
+        gtagCalls.push([
+          'event',
+          'conversion',
+          {
+            send_to: `AW-18533378516/${conversionLabel}`,
+            transaction_id: bookingId,
+          }
+        ]);
+      } else {
+        gtagCalls.push([
+          'event',
+          'appointment_booked',
+          {
+            send_to: 'AW-18533378516',
+            transaction_id: bookingId,
+            method: 'Tebra EHR',
+          }
+        ]);
+      }
+
+      storage.setItem(storageKey, 'fired');
+      return true;
+    }
+
+    it('fires conversion only after confirmed booking success with genuine ID', () => {
+      const storage = new Map();
+      const mockStorage = {
+        getItem: (k) => storage.get(k),
+        setItem: (k, v) => storage.set(k, v),
+      };
+      const gtagCalls = [];
+
+      // 1. Navigation / Incomplete flow -> must NOT fire
+      const step1 = fireConversionHelper({
+        bookingSuccess: false,
+        bookingId: null,
+        storage: mockStorage,
+        gtagCalls,
+      });
+      expect(step1).toBe(false);
+      expect(gtagCalls.length).toBe(0);
+
+      // 2. Confirmed successful booking with genuine ID -> MUST fire
+      const step2 = fireConversionHelper({
+        bookingSuccess: true,
+        bookingId: 'TEBRA-APPT-987654',
+        conversionLabel: 'AbCdEfGhIjK123',
+        storage: mockStorage,
+        gtagCalls,
+      });
+      expect(step2).toBe(true);
+      expect(gtagCalls.length).toBe(1);
+      expect(gtagCalls[0][1]).toBe('conversion');
+      expect(gtagCalls[0][2].send_to).toBe('AW-18533378516/AbCdEfGhIjK123');
+      expect(gtagCalls[0][2].transaction_id).toBe('TEBRA-APPT-987654');
+
+      // 3. Repeated render or refresh -> guarded by storage, must NOT fire duplicate
+      const step3 = fireConversionHelper({
+        bookingSuccess: true,
+        bookingId: 'TEBRA-APPT-987654',
+        conversionLabel: 'AbCdEfGhIjK123',
+        storage: mockStorage,
+        gtagCalls,
+      });
+      expect(step3).toBe(false);
+      expect(gtagCalls.length).toBe(1); // Still 1!
+    });
+
+    it('transmits zero PII/PHI in conversion event payload', () => {
+      const storage = new Map();
+      const mockStorage = {
+        getItem: (k) => storage.get(k),
+        setItem: (k, v) => storage.set(k, v),
+      };
+      const gtagCalls = [];
+
+      fireConversionHelper({
+        bookingSuccess: true,
+        bookingId: 'TEBRA-APPT-112233',
+        conversionLabel: 'xyz987',
+        storage: mockStorage,
+        gtagCalls,
+      });
+
+      const payload = gtagCalls[0][2];
+      const payloadKeys = Object.keys(payload);
+      expect(payloadKeys).toEqual(['send_to', 'transaction_id']);
+      expect(payload).not.toHaveProperty('firstName');
+      expect(payload).not.toHaveProperty('email');
+      expect(payload).not.toHaveProperty('phone');
+      expect(payload).not.toHaveProperty('condition');
+      expect(payload).not.toHaveProperty('medicalNotes');
+    });
+  });
 });

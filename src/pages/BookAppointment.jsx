@@ -66,6 +66,52 @@ export default function BookAppointment() {
     }
   }, [location.state, setSelectedCondition, setSelectedTreatment, setStep]);
 
+  // Google Ads Booking Conversion Tracking
+  // Fires strictly after confirmed successful booking with genuine booking reference
+  // Zero PII/PHI transmitted; duplicate prevention across renders and refreshes
+  useEffect(() => {
+    if (!bookingSuccess || !generatedBookingId) return;
+
+    const storageKey = `APS_GADS_CONV_${generatedBookingId}`;
+    try {
+      if (sessionStorage.getItem(storageKey)) {
+        return; // Guard: already fired for this booking session
+      }
+    } catch (_err) {
+      // Storage access check
+    }
+
+    const conversionLabel = 
+      (typeof window !== 'undefined' && window.GOOGLE_ADS_CONVERSION_LABEL) || 
+      import.meta.env?.VITE_GOOGLE_ADS_CONVERSION_LABEL || 
+      null;
+
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      if (conversionLabel) {
+        window.gtag('event', 'conversion', {
+          send_to: `AW-18533378516/${conversionLabel}`,
+          transaction_id: generatedBookingId,
+        });
+        console.info(`[Google Ads] Conversion event successfully fired for transaction: ${generatedBookingId}`);
+      } else {
+        // Global tag AW-18533378516 is installed and active
+        // Record appointment_booked event without transmitting PII/PHI
+        window.gtag('event', 'appointment_booked', {
+          send_to: 'AW-18533378516',
+          transaction_id: generatedBookingId,
+          method: 'Tebra EHR',
+        });
+        console.info(`[Google Ads] Global tag active (AW-18533378516). Conversion event dispatched as 'appointment_booked' for ${generatedBookingId}. Specific Google Ads conversion label not yet provided.`);
+      }
+    }
+
+    try {
+      sessionStorage.setItem(storageKey, 'fired');
+    } catch (_err) {
+      // Ignore storage errors in restricted private browsing
+    }
+  }, [bookingSuccess, generatedBookingId]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setPatientDetails(prev => ({ ...prev, [name]: value }));

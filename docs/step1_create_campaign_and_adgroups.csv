@@ -1,0 +1,6 @@
+Action,Campaign,Campaign Daily Budget,Campaign Type,Networks,Bid Strategy Type,Bid Strategy Max CPC,Campaign Status,Ad Group,Ad Group Status
+Add,APS_Search_Core-Treatments_Charlotte_ExactPhrase,40,Search,Google search,Maximize Clicks,5.50,Enabled,,
+Add,APS_Search_Core-Treatments_Charlotte_ExactPhrase,,,,,,,AG1_Epidural_Injections_Sciatica,Enabled
+Add,APS_Search_Core-Treatments_Charlotte_ExactPhrase,,,,,,,AG2_RFA_Facet_Joint_NerveBlocks,Enabled
+Add,APS_Search_Core-Treatments_Charlotte_ExactPhrase,,,,,,,AG3_Spinal_Cord_Stimulation_FBSS,Enabled
+Add,APS_Search_Core-Treatments_Charlotte_ExactPhrase,,,,,,,AG4_JointPreservation_Arthritis_Injections,Enabled
