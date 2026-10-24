@@ -69,9 +69,14 @@ describe('Landing Pages Final Approved Restoration & Recovery Suite', () => {
     expect(landingFile).toContain('lead_form_submitted');
   });
 
-  it('6. Appointment timing options are strictly ABSENT from LandingPage.jsx', () => {
+  it('6. Primary Area of Concern, Brief Description of Symptoms, and Timing Options are strictly ABSENT from LandingPage.jsx', () => {
     const landingFile = fs.readFileSync(path.resolve(__dirname, '../src/pages/LandingPage.jsx'), 'utf8');
 
+    // Confirmed removed fields per final client-approved spec
+    expect(landingFile).not.toContain('Primary Area of Concern');
+    expect(landingFile).not.toContain('Brief Description of Symptoms');
+    expect(landingFile).not.toContain('name="condition"');
+    expect(landingFile).not.toContain('name="notes"');
     expect(landingFile).not.toContain('preferredTime');
     expect(landingFile).not.toContain('Preferred Contact Time');
     expect(landingFile).not.toContain('Are you a new patient');
@@ -106,50 +111,34 @@ describe('Landing Pages Final Approved Restoration & Recovery Suite', () => {
     }
   });
 
-  it('9. Lead generation saves valid payload without appointment timing options', () => {
-    const fakeLead = {
-      id: 'APS-TEST1234',
-      type: 'appointment',
-      status: 'New',
-      dateCreated: new Date().toISOString(),
-      source: 'pain-management-charlotte',
-      patient: {
-        firstName: 'Jane',
-        lastName: 'Doe',
-        phone: '7045550123',
-        email: 'jane.doe@example.com'
-      },
-      condition: 'Lower Back & Lumbar Spine',
-      notes: 'Test lead submission',
-      appointmentDate: new Date().toLocaleDateString()
-    };
+  it('9. Form submission connects to Google Sheets via /api/leads endpoint', () => {
+    const landingFile = fs.readFileSync(path.resolve(__dirname, '../src/pages/LandingPage.jsx'), 'utf8');
 
-    expect(fakeLead.type).toBe('appointment');
-    expect(fakeLead.patient.firstName).toBe('Jane');
-    expect(fakeLead.patient.lastName).toBe('Doe');
-    expect(fakeLead.patient.phone).toBe('7045550123');
-    expect(fakeLead.patient.email).toBe('jane.doe@example.com');
-    expect(fakeLead.preferredTime).toBeUndefined();
-    expect(fakeLead.status).toBe('New');
+    expect(landingFile).toContain("fetch('/api/leads'");
+    expect(landingFile).toContain("'X-Idempotency-Key'");
+    expect(landingFile).toContain('submitError');
+    expect(landingFile).toContain('submitSuccess');
   });
 
-  it('10. Continuous insurance marquee matches October 6 delivered baseline with 20 items and dual tracks', () => {
+  it('10. Insurance providers displayed in a static section (no marquee animation, stationary on all viewports)', () => {
     const landingFile = fs.readFileSync(path.resolve(__dirname, '../src/pages/LandingPage.jsx'), 'utf8');
     const cssFile = fs.readFileSync(path.resolve(__dirname, '../src/index.css'), 'utf8');
 
-    // Structural elements
-    expect(landingFile).toContain('insurance-marquee-section');
-    expect(landingFile).toContain('insurance-marquee');
-    expect(landingFile).toContain('insurance-marquee-track');
-    expect(landingFile).toContain('insurance-group');
-    expect(landingFile).toContain('aria-hidden="true"');
-    expect(landingFile).toContain('insurance-marquee-item');
-    expect(landingFile).toContain('insurance-marquee-logo-wrap');
-    expect(landingFile).toContain('insurance-marquee-badge');
+    // Structural elements: Static section and grid
+    expect(landingFile).toContain('insurance-static-section');
+    expect(landingFile).toContain('insurance-logos-grid');
+    expect(landingFile).toContain('insurance-logo-card');
+    expect(landingFile).toContain('insurance-logo-box');
+    expect(landingFile).toContain('insurance-card-badge');
     expect(landingFile).toContain('insurance-notice-text');
     expect(landingFile).toContain('Insurance coverage and provider availability may vary by hospital and plan');
 
-    // All key provider names from October 6 deliverable
+    // Marquee and animation are absent
+    expect(landingFile).not.toContain('insurance-marquee-track');
+    expect(landingFile).not.toContain('animate-marquee-horizontal');
+    expect(cssFile).not.toContain('insurance-marquee-scroll');
+
+    // All 20 approved provider names present
     const expectedProviders = [
       'Blue Cross Blue Shield NC',
       'BCBS Blue Advantage',
@@ -176,11 +165,18 @@ describe('Landing Pages Final Approved Restoration & Recovery Suite', () => {
     for (const provider of expectedProviders) {
       expect(landingFile).toContain(provider);
     }
+  });
 
-    // CSS Keyframes & animation rules
-    expect(cssFile).toContain('@keyframes insurance-marquee-scroll');
-    expect(cssFile).toContain('insurance-marquee-scroll 48s linear infinite');
-    expect(cssFile).toContain('.insurance-group');
+  it('11. functions/api/leads.js Cloudflare Pages Function handles Google Sheets lead append', () => {
+    const functionFile = fs.readFileSync(path.resolve(__dirname, '../functions/api/leads.js'), 'utf8');
+
+    expect(functionFile).toContain('appendLeadToGoogleSheet');
+    expect(functionFile).toContain('GOOGLE_SHEETS_SPREADSHEET_ID');
+    expect(functionFile).toContain('GOOGLE_SERVICE_ACCOUNT_EMAIL');
+    expect(functionFile).toContain('GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY');
+    expect(functionFile).toContain('sanitizeFormulaInjection');
+    expect(functionFile).toContain('normalizePhoneNumber');
   });
 });
+
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import useSEO from '../hooks/useSEO';
 import {
@@ -314,21 +314,21 @@ export default function LandingPage({ slug: propSlug }) {
     url: `/${pageData.slug}/`
   });
 
-  // Intake Form State - Strictly NO appointment timing options per approved final design
+  // Intake Form State - Strictly 4 Approved Fields (First Name, Last Name, Phone, Email)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     phone: '',
-    email: '',
-    condition: pageData.painType,
-    notes: ''
+    email: ''
   });
 
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [submittedLeadId, setSubmittedLeadId] = useState('');
   const [openFaq, setOpenFaq] = useState(null);
+  const formRenderTimeRef = useRef(Date.now());
 
   const toggleFaq = (idx) => {
     setOpenFaq((prev) => (prev === idx ? null : idx));
@@ -360,43 +360,76 @@ export default function LandingPage({ slug: propSlug }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitError('');
+
+    const leadId = `APS-${Date.now().toString(36).toUpperCase()}`;
 
     try {
-      const leadId = `APS-${Date.now().toString(36).toUpperCase()}`;
-
-      // Build lead object adhering to the authoritative APS_LEADS schema (NO appointment timing options)
-      const newLead = {
-        id: leadId,
-        type: 'appointment',
-        status: 'New',
-        dateCreated: new Date().toISOString(),
-        source: pageData.slug,
-        patient: {
-          firstName: formData.firstName.trim(),
-          lastName: formData.lastName.trim(),
-          phone: formData.phone.trim(),
-          email: formData.email.trim().toLowerCase()
-        },
-        condition: formData.condition || pageData.painType,
-        notes: formData.notes.trim() || `Inquiry from Google Ads landing page: ${pageData.slug}`,
-        appointmentDate: new Date().toLocaleDateString()
+      // 1. Submit lead to Google Sheets via Cloudflare Pages Function (/api/leads)
+      const submitPayload = {
+        idempotencyKey: leadId,
+        firstName: formData.firstName.trim(),
+        lastName: formData.lastName.trim(),
+        phone: formData.phone.trim(),
+        email: formData.email.trim().toLowerCase(),
+        landingPage: pageData.slug,
+        pageIntent: pageData.painType || 'comprehensive-pain',
+        pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+        pageTitle: pageData.metaTitle || '',
+        formName: 'consultation-form',
+        clientRenderTime: formRenderTimeRef.current
       };
 
-      // Persist to localStorage for AdminDashboard.jsx
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Idempotency-Key': leadId
+        },
+        body: JSON.stringify(submitPayload)
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || !result || !result.success) {
+        const errorMsg = (result && result.error && result.error.message)
+          ? result.error.message
+          : 'Unable to submit your consultation request at this time. Please call our Charlotte clinic directly at (704) 503-9338.';
+        setSubmitError(errorMsg);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // 2. Persist to localStorage for AdminDashboard.jsx
       try {
         const existing = JSON.parse(localStorage.getItem('APS_LEADS') || '[]');
+        const newLead = {
+          id: result.leadId || leadId,
+          type: 'appointment',
+          status: 'New',
+          dateCreated: new Date().toISOString(),
+          source: pageData.slug,
+          patient: {
+            firstName: formData.firstName.trim(),
+            lastName: formData.lastName.trim(),
+            phone: formData.phone.trim(),
+            email: formData.email.trim().toLowerCase()
+          },
+          condition: pageData.painType,
+          appointmentDate: new Date().toLocaleDateString()
+        };
         existing.unshift(newLead);
         localStorage.setItem('APS_LEADS', JSON.stringify(existing));
       } catch (storageErr) {
         console.warn('Could not save to localStorage:', storageErr);
       }
 
-      // Google Ads Conversion Event Trigger
+      // 3. Google Ads Conversion Event Trigger
       const storageKey = `APS_GOOGLE_ADS_CONVERSIONS_${leadId}`;
       let hasFired = false;
       try {
@@ -434,10 +467,11 @@ export default function LandingPage({ slug: propSlug }) {
         }
       }
 
-      setSubmittedLeadId(leadId);
+      setSubmittedLeadId(result.leadId || leadId);
       setSubmitSuccess(true);
     } catch (err) {
       console.error('Lead submission failed:', err);
+      setSubmitError('Unable to transmit request. Please call our clinic directly at (704) 503-9338.');
     } finally {
       setIsSubmitting(false);
     }
@@ -594,6 +628,22 @@ export default function LandingPage({ slug: propSlug }) {
                       </p>
                     </div>
 
+                    {/* Submission Error Alert */}
+                    {submitError && (
+                      <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-left space-y-1.5">
+                        <div className="text-xs font-bold text-red-800">Submission Notice</div>
+                        <p className="text-xs text-red-700 leading-relaxed">{submitError}</p>
+                        <div className="pt-0.5">
+                          <a
+                            href="tel:+17045039338"
+                            className="text-xs font-bold text-emerald-800 hover:underline inline-flex items-center gap-1"
+                          >
+                            <Phone className="w-3.5 h-3.5" /> Call Clinic Directly: (704) 503-9338
+                          </a>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Patient Name Fields */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div>
@@ -658,38 +708,6 @@ export default function LandingPage({ slug: propSlug }) {
                       </div>
                     </div>
 
-                    {/* Primary Area of Concern */}
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Primary Area of Concern</label>
-                      <select
-                        name="condition"
-                        value={formData.condition}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 bg-white"
-                      >
-                        <option value="Lower Back & Lumbar Spine">Lower Back &amp; Lumbar Spine</option>
-                        <option value="Neck & Cervical Spine">Neck &amp; Cervical Spine</option>
-                        <option value="Sciatica & Leg Pain">Sciatica &amp; Nerve Compression</option>
-                        <option value="Joint & Arthritis Pain">Joint &amp; Arthritis Pain (Knee, Hip, Shoulder)</option>
-                        <option value="Spine Diagnostics & Second Opinion">Spine Diagnostics &amp; Second Opinion</option>
-                        <option value="Failed Back Surgery">Persistent Post-Surgical Pain</option>
-                        <option value="Comprehensive Pain Evaluation">Comprehensive Pain Evaluation</option>
-                      </select>
-                    </div>
-
-                    {/* Symptoms or Brief Notes (Optional) */}
-                    <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">Brief Description of Symptoms (Optional)</label>
-                      <textarea
-                        name="notes"
-                        rows="2"
-                        value={formData.notes}
-                        onChange={handleInputChange}
-                        placeholder="E.g., Lower back stiffness when standing, pain radiating down left hip..."
-                        className="w-full px-3 py-2 text-sm rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 bg-white"
-                      ></textarea>
-                    </div>
-
                     {/* Submit Button with Condition-Specific CTA */}
                     <button
                       type="submit"
@@ -738,63 +756,43 @@ export default function LandingPage({ slug: propSlug }) {
         </div>
       </section>
 
-      {/* 3. CONTINUOUS AUTO-SCROLLING IN-NETWORK INSURANCE MARQUEE (October 6 Client Baseline) */}
-      <section className="insurance-marquee-section bg-slate-50 border-b border-slate-200 py-6 overflow-hidden" aria-label="Insurance and Payer Networks">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-center sm:text-left">
+      {/* 3. STATIC IN-NETWORK INSURANCE & PAYER PROVIDERS SECTION */}
+      <section className="insurance-static-section bg-slate-50 border-b border-slate-200 py-10" aria-label="Insurance and Payer Networks">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-center sm:text-left mb-6">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">In-Network Insurance &amp; Payers</span>
-              <h2 className="text-lg font-black text-slate-900">Accepted Insurance Providers &amp; Plans</h2>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 mt-0.5">Accepted Insurance Providers &amp; Plans</h2>
             </div>
             <p className="text-xs text-slate-600 max-w-md">
               Medicare Part B, NC/SC Medicaid, and major commercial health plans accepted. Zero hospital facility fee markups.
             </p>
           </div>
-        </div>
 
-        {/* Marquee Track with Dual Groups for Seamless Continuous Loop */}
-        <div className="insurance-marquee">
-          <div className="insurance-marquee-track">
-            {/* Primary Group */}
-            <div className="insurance-group">
-              {INSURANCE_PROVIDERS.map((item, idx) => (
-                <div key={idx} className="insurance-marquee-item">
-                  {item.logo ? (
-                    <div className="insurance-marquee-logo-wrap">
-                      <img src={item.logo} alt={item.alt || item.name} className="insurance-marquee-logo" loading="lazy" />
-                    </div>
-                  ) : (
-                    <div className="insurance-marquee-badge">{item.badge}</div>
-                  )}
-                  <span className="insurance-marquee-name">{item.name}</span>
-                  {item.type && <span className="insurance-marquee-type">{item.type}</span>}
+          {/* Static Responsive Grid (Stationary on Desktop, Tablet, and Mobile) */}
+          <div className="insurance-logos-grid">
+            {INSURANCE_PROVIDERS.map((item, idx) => (
+              <div key={idx} className="insurance-logo-card">
+                {item.logo ? (
+                  <div className="insurance-logo-box">
+                    <img src={item.logo} alt={item.alt || item.name} className="insurance-logo-img" loading="lazy" />
+                  </div>
+                ) : (
+                  <div className="insurance-card-badge">{item.badge}</div>
+                )}
+                <div className="insurance-card-info">
+                  <span className="insurance-card-name" title={item.name}>{item.name}</span>
+                  {item.type && <span className="insurance-card-type">{item.type}</span>}
                 </div>
-              ))}
-            </div>
-
-            {/* Duplicate Group for Infinite Loop */}
-            <div className="insurance-group" aria-hidden="true">
-              {INSURANCE_PROVIDERS.map((item, idx) => (
-                <div key={`dup-${idx}`} className="insurance-marquee-item">
-                  {item.logo ? (
-                    <div className="insurance-marquee-logo-wrap">
-                      <img src={item.logo} alt={item.alt || item.name} className="insurance-marquee-logo" loading="lazy" />
-                    </div>
-                  ) : (
-                    <div className="insurance-marquee-badge">{item.badge}</div>
-                  )}
-                  <span className="insurance-marquee-name">{item.name}</span>
-                  {item.type && <span className="insurance-marquee-type">{item.type}</span>}
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-3 text-center sm:text-left">
-          <p className="text-[11px] text-slate-500 insurance-notice-text">
-            Insurance coverage and provider availability may vary by hospital and plan. We verify active benefits directly with your insurer prior to treatment.
-          </p>
+          <div className="mt-5 text-center sm:text-left">
+            <p className="text-[11px] text-slate-500 insurance-notice-text">
+              Insurance coverage and provider availability may vary by hospital and plan. We verify active benefits directly with your insurer prior to treatment.
+            </p>
+          </div>
         </div>
       </section>
 
