@@ -203,6 +203,7 @@ export async function onRequestGet(context) {
       status: 'healthy',
       endpoint: '/api/leads',
       service: 'Amara Google Sheets Lead Capture Engine',
+      envKeys: Object.keys(env).filter(k => !k.includes('PRIVATE')),
       hasSpreadsheetId: !!env.GOOGLE_SHEETS_SPREADSHEET_ID,
       hasServiceAccount: !!env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
       timestamp: new Date().toISOString()
