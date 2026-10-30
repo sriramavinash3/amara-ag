@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import useSEO from '../hooks/useSEO';
 import {
@@ -328,7 +328,10 @@ export default function LandingPage({ slug: propSlug }) {
   const [submitError, setSubmitError] = useState('');
   const [submittedLeadId, setSubmittedLeadId] = useState('');
   const [openFaq, setOpenFaq] = useState(null);
-  const formRenderTimeRef = useRef(Date.now());
+  const formRenderTimeRef = useRef(0);
+  useEffect(() => {
+    formRenderTimeRef.current = Date.now();
+  }, []);
 
   const toggleFaq = (idx) => {
     setOpenFaq((prev) => (prev === idx ? null : idx));
@@ -446,13 +449,13 @@ export default function LandingPage({ slug: propSlug }) {
 
         if (conversionLabel) {
           window.gtag('event', 'conversion', {
-            send_to: `AW-18533378516/${conversionLabel}`,
+            send_to: `AW-18239109920/${conversionLabel}`,
             transaction_id: leadId
           });
           console.info(`[Google Ads] Conversion event fired for lead: ${leadId}`);
         } else {
           window.gtag('event', 'lead_form_submitted', {
-            send_to: 'AW-18533378516',
+            send_to: 'AW-18239109920',
             transaction_id: leadId,
             campaign_slug: pageData.slug,
             method: 'Landing Page Form'
@@ -842,22 +845,6 @@ export default function LandingPage({ slug: propSlug }) {
               <p className="text-base text-slate-600 leading-relaxed">
                 As an independent spine and pain clinic, Amara Pain &amp; Spine conducts all fluoroscopy-guided procedures in our sterile in-office suite with zero facility surcharges.
               </p>
-
-              {/* Comparison Box */}
-              <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-3">
-                <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-100">
-                  <span className="font-bold text-slate-600">Amara Pain &amp; Spine (In-Office):</span>
-                  <span className="font-bold text-emerald-700">$0 Facility Surcharge</span>
-                </div>
-                <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-100">
-                  <span className="font-bold text-slate-600">Hospital Outpatient Department (HOPD):</span>
-                  <span className="font-bold text-red-600">$750 – $3,000+ Facility Fee</span>
-                </div>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-slate-600">Patient Check-in Experience:</span>
-                  <span className="font-bold text-emerald-700">Direct, Private &amp; Patient-Focused</span>
-                </div>
-              </div>
             </div>
 
             <div className="lg:col-span-6">
@@ -938,9 +925,9 @@ export default function LandingPage({ slug: propSlug }) {
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-100">
                 <img
-                  src="/images/doctor_consultation.jpg"
-                  alt="Dr. Ashvin Kumar Amara, MD reviewing spine imaging with patient"
-                  className="w-full h-auto object-cover"
+                  src="/images/ashvin-amara.jpg"
+                  alt="Dr. Ashvin Kumar Amara, MD - Founder & Double-Board Certified Interventional Pain Specialist"
+                  className="w-full aspect-square sm:aspect-[4/3] lg:aspect-square object-cover object-top"
                   loading="lazy"
                 />
                 <div className="p-4 bg-slate-900 text-white">

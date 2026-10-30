@@ -89,19 +89,19 @@ export default function BookAppointment() {
     if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
       if (conversionLabel) {
         window.gtag('event', 'conversion', {
-          send_to: `AW-18533378516/${conversionLabel}`,
+          send_to: `AW-18239109920/${conversionLabel}`,
           transaction_id: generatedBookingId,
         });
         console.info(`[Google Ads] Conversion event successfully fired for transaction: ${generatedBookingId}`);
       } else {
-        // Global tag AW-18533378516 is installed and active
+        // Global tag AW-18239109920 is installed and active
         // Record appointment_booked event without transmitting PII/PHI
         window.gtag('event', 'appointment_booked', {
-          send_to: 'AW-18533378516',
+          send_to: 'AW-18239109920',
           transaction_id: generatedBookingId,
           method: 'Tebra EHR',
         });
-        console.info(`[Google Ads] Global tag active (AW-18533378516). Conversion event dispatched as 'appointment_booked' for ${generatedBookingId}. Specific Google Ads conversion label not yet provided.`);
+        console.info(`[Google Ads] Global tag active (AW-18239109920). Conversion event dispatched as 'appointment_booked' for ${generatedBookingId}. Specific Google Ads conversion label not yet provided.`);
       }
     }
 

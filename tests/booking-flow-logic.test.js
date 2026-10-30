@@ -162,7 +162,7 @@ describe('Appointment Booking Frontend Logic & Timezone Integrity', () => {
           'event',
           'conversion',
           {
-            send_to: `AW-18533378516/${conversionLabel}`,
+            send_to: `AW-18239109920/${conversionLabel}`,
             transaction_id: bookingId,
           }
         ]);
@@ -171,7 +171,7 @@ describe('Appointment Booking Frontend Logic & Timezone Integrity', () => {
           'event',
           'appointment_booked',
           {
-            send_to: 'AW-18533378516',
+            send_to: 'AW-18239109920',
             transaction_id: bookingId,
             method: 'Tebra EHR',
           }
@@ -211,7 +211,7 @@ describe('Appointment Booking Frontend Logic & Timezone Integrity', () => {
       expect(step2).toBe(true);
       expect(gtagCalls.length).toBe(1);
       expect(gtagCalls[0][1]).toBe('conversion');
-      expect(gtagCalls[0][2].send_to).toBe('AW-18533378516/AbCdEfGhIjK123');
+      expect(gtagCalls[0][2].send_to).toBe('AW-18239109920/AbCdEfGhIjK123');
       expect(gtagCalls[0][2].transaction_id).toBe('TEBRA-APPT-987654');
 
       // 3. Repeated render or refresh -> guarded by storage, must NOT fire duplicate

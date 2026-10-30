@@ -75,7 +75,7 @@ async function audit() {
       const canonicalMatch = html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']*)["']/i);
       const canonical = canonicalMatch ? canonicalMatch[1] : '';
 
-      const hasGoogleTag = html.includes('AW-18533378516');
+      const hasGoogleTag = html.includes('AW-18239109920');
 
       const is200 = statusManual === 200 || status === 200;
       const no301Workaround = statusManual !== 301;

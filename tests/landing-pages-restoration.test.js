@@ -64,8 +64,8 @@ describe('Landing Pages Final Approved Restoration & Recovery Suite', () => {
     // Verify localStorage key APS_LEADS integration
     expect(landingFile).toContain('APS_LEADS');
 
-    // Verify Google Ads Conversion tag AW-18533378516
-    expect(landingFile).toContain('AW-18533378516');
+    // Verify Google Ads Conversion tag AW-18239109920
+    expect(landingFile).toContain('AW-18239109920');
     expect(landingFile).toContain('lead_form_submitted');
   });
 
@@ -98,7 +98,7 @@ describe('Landing Pages Final Approved Restoration & Recovery Suite', () => {
     const requiredImages = [
       '/images/audience/hero_senior_mobility.jpg',
       '/images/audience/interventional_procedure_suite.jpg',
-      '/images/doctor_consultation.jpg',
+      '/images/ashvin-amara.jpg',
       '/images/insurers/BCBS NC.png',
       '/images/insurers/United Healthcare Commercial.png',
       '/images/insurers/Aetna Commercial.png'
