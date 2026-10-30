@@ -1,5 +1,4 @@
 const BASE_URL = process.env.BASE_URL || 'https://www.amarapain.com';
-const GOOGLE_ADS_ID = 'AW-18239109920';
 const GTM_CONTAINER_ID = 'GTM-KBRMNJMX';
 
 const pages = [
@@ -15,7 +14,7 @@ const pages = [
 
 async function verifyLiveTags() {
   console.log('================================================================');
-  console.log(`VERIFYING GOOGLE ADS TAG (${GOOGLE_ADS_ID}) & GTM (${GTM_CONTAINER_ID}) ON LIVE PRODUCTION`);
+  console.log(`VERIFYING OFFICIAL GOOGLE TAG MANAGER (${GTM_CONTAINER_ID}) ON PRODUCTION`);
   console.log('================================================================\n');
 
   let allOk = true;
@@ -26,19 +25,20 @@ async function verifyLiveTags() {
       const res = await fetch(url);
       const html = await res.text();
 
-      const hasGtagScript = html.includes(`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`);
-      const hasGtagConfig = html.includes(`gtag('config', '${GOOGLE_ADS_ID}')`);
-      const hasGtmScript = html.includes(`https://www.googletagmanager.com/gtm.js?id=${GTM_CONTAINER_ID}`);
+      const hasGtmScript = html.includes(`https://www.googletagmanager.com/gtm.js?id='+i+dl`) && html.includes(GTM_CONTAINER_ID);
       const hasGtmNoscript = html.includes(`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`);
+      const hasDataLayerInit = html.includes('window.dataLayer = window.dataLayer || [];');
+      const matches = html.match(new RegExp(GTM_CONTAINER_ID, 'g')) || [];
+      const hasNoDuplicates = matches.length === 2; // 1 in head, 1 in body noscript
 
       console.log(`URL: ${url}`);
       console.log(`  HTTP Status: ${res.status}`);
-      console.log(`  GTM script (${GTM_CONTAINER_ID}) present: ${hasGtmScript}`);
-      console.log(`  GTM noscript (${GTM_CONTAINER_ID}) present: ${hasGtmNoscript}`);
-      console.log(`  Google Ads gtag.js script (${GOOGLE_ADS_ID}) present: ${hasGtagScript}`);
-      console.log(`  Google Ads gtag config (${GOOGLE_ADS_ID}) present: ${hasGtagConfig}`);
+      console.log(`  GTM official loader in <head>: ${hasGtmScript}`);
+      console.log(`  GTM noscript in <body>: ${hasGtmNoscript}`);
+      console.log(`  dataLayer initialized: ${hasDataLayerInit}`);
+      console.log(`  No duplicate containers (count: ${matches.length}): ${hasNoDuplicates}`);
 
-      if (!hasGtagScript || !hasGtagConfig || !hasGtmScript) {
+      if (!hasGtmScript || !hasGtmNoscript || !hasDataLayerInit || !hasNoDuplicates) {
         allOk = false;
         console.error(`  ❌ FAILED on ${url}`);
       } else {
@@ -51,20 +51,13 @@ async function verifyLiveTags() {
     console.log('');
   }
 
-  // Also verify that both Google script endpoints are reachable
-  console.log('--- Checking external script reachability ---');
+  // Also verify that GTM CDN endpoint is reachable
+  console.log('--- Checking GTM CDN script reachability ---');
   try {
     const gtmScriptRes = await fetch(`https://www.googletagmanager.com/gtm.js?id=${GTM_CONTAINER_ID}`, { method: 'HEAD' });
     console.log(`Google Tag Manager GTM CDN HTTP Status: ${gtmScriptRes.status}`);
   } catch (err) {
     console.warn('Could not verify GTM CDN HEAD status:', err.message);
-  }
-
-  try {
-    const adsScriptRes = await fetch(`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`, { method: 'HEAD' });
-    console.log(`Google Ads gtag CDN HTTP Status: ${adsScriptRes.status}`);
-  } catch (err) {
-    console.warn('Could not verify Google Ads CDN HEAD status:', err.message);
   }
 
   console.log('\n================================================================');
