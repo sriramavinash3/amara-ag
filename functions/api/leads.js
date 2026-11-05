@@ -184,6 +184,58 @@ async function appendLeadToGoogleSheet(env, rowValues) {
 }
 
 /**
+ * Read telemetry / row data from Google Sheets for end-to-end verification
+ */
+async function readGoogleSheetTelemetry(env) {
+  const spreadsheetId = env.GOOGLE_SHEETS_SPREADSHEET_ID;
+  const sheetName = env.GOOGLE_SHEETS_SHEET_NAME || 'Leads';
+  const serviceEmail = env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+  const privateKey = env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY;
+
+  if (!spreadsheetId || !serviceEmail || !privateKey) {
+    return { connected: false, error: 'Credentials incomplete in environment' };
+  }
+
+  const accessToken = await getGoogleAccessTokenWebCrypto(serviceEmail, privateKey);
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(
+    spreadsheetId
+  )}/values/${encodeURIComponent(sheetName)}!A:U`;
+
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: { Authorization: `Bearer ${accessToken}` }
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    return { connected: false, error: err };
+  }
+
+  const data = await res.json();
+  const rows = data.values || [];
+  return {
+    connected: true,
+    sheetName,
+    spreadsheetIdMasked: spreadsheetId.substring(0, 6) + '...' + spreadsheetId.substring(spreadsheetId.length - 4),
+    totalRows: rows.length,
+    lastRowIndex: rows.length,
+    recentRows: rows.slice(-5).map((r, i) => ({
+      rowNumber: rows.length - (rows.slice(-5).length - 1 - i),
+      timestamp: r[0],
+      leadId: r[1],
+      name: r[2],
+      phone: r[3],
+      email: r[4] || '(none)',
+      landingPage: r[8],
+      pageIntent: r[9],
+      formName: r[12],
+      leadSource: r[13],
+      status: r[20]
+    }))
+  };
+}
+
+/**
  * OPTIONS: CORS Preflight
  */
 export async function onRequestOptions() {
@@ -194,10 +246,22 @@ export async function onRequestOptions() {
 }
 
 /**
- * GET: Healthcheck probe
+ * GET: Healthcheck probe & optional telemetry verification
  */
 export async function onRequestGet(context) {
   const env = context.env || {};
+  let verification = null;
+  const url = new URL(context.request.url);
+  const shouldVerify = url.searchParams.get('verify') === 'true' || url.searchParams.get('check') === '1';
+
+  if (shouldVerify && env.GOOGLE_SHEETS_SPREADSHEET_ID && env.GOOGLE_SERVICE_ACCOUNT_EMAIL && env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY) {
+    try {
+      verification = await readGoogleSheetTelemetry(env);
+    } catch (err) {
+      verification = { connected: false, error: err.message };
+    }
+  }
+
   return new Response(
     JSON.stringify({
       status: 'healthy',
@@ -205,6 +269,7 @@ export async function onRequestGet(context) {
       service: 'Amara Google Sheets Lead Capture Engine',
       hasSpreadsheetId: !!(env.GOOGLE_SHEETS_SPREADSHEET_ID && env.GOOGLE_SHEETS_SPREADSHEET_ID.trim()),
       hasServiceAccount: !!(env.GOOGLE_SERVICE_ACCOUNT_EMAIL && env.GOOGLE_SERVICE_ACCOUNT_EMAIL.trim()),
+      verification,
       timestamp: new Date().toISOString()
     }),
     { status: 200, headers: getCorsHeaders() }
@@ -222,7 +287,7 @@ export async function onRequestPost(context) {
     let payload;
     try {
       payload = await context.request.json();
-    } catch (e) {
+    } catch (_e) {
       return new Response(
         JSON.stringify({
           success: false,
@@ -277,18 +342,26 @@ export async function onRequestPost(context) {
       }
     }
 
-    // 4. Server-Side Validation: Only 4 Approved Fields
-    const firstName = (payload.firstName || payload.first_name || '').trim();
-    const lastName = (payload.lastName || payload.last_name || '').trim();
+    // 4. Server-Side Validation: Supports 2-Field Call Back Form & Legacy 4-Field Form
+    const rawFullName = (payload.fullName || payload.name || '').trim();
+    let firstName = (payload.firstName || payload.first_name || '').trim();
+    let lastName = (payload.lastName || payload.last_name || '').trim();
+
+    if (!firstName && rawFullName) {
+      const parts = rawFullName.split(/\s+/);
+      firstName = parts[0] || '';
+      lastName = parts.slice(1).join(' ') || 'Patient';
+    } else if (firstName && !lastName) {
+      lastName = 'Patient';
+    }
+
+    const fullName = rawFullName || `${firstName} ${lastName}`.trim();
     const phoneRaw = (payload.phone || '').trim();
     const email = (payload.email || '').trim().toLowerCase();
 
     const errors = [];
-    if (!firstName || firstName.length < 2) {
-      errors.push({ field: 'firstName', message: 'First name is required (min 2 characters).' });
-    }
-    if (!lastName || lastName.length < 2) {
-      errors.push({ field: 'lastName', message: 'Last name is required (min 2 characters).' });
+    if (!fullName || fullName.length < 2) {
+      errors.push({ field: 'fullName', message: 'Full name is required (min 2 characters).' });
     }
 
     const phoneDigits = phoneRaw.replace(/\D/g, '');
@@ -296,8 +369,9 @@ export async function onRequestPost(context) {
       errors.push({ field: 'phone', message: 'Valid 10-digit phone number is required.' });
     }
 
+    // Email is optional (omitted in 2-field call back requests), but validated if supplied
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
+    if (email && !emailRegex.test(email)) {
       errors.push({ field: 'email', message: 'Valid email address is required.' });
     }
 
@@ -318,7 +392,6 @@ export async function onRequestPost(context) {
     // 5. Lead Normalization & Field Sanitization
     const leadId = idempotencyKey || `amara-lead-${Date.now()}-${Math.random().toString(36).substring(2, 8)}`;
     const timestamp = new Date().toISOString();
-    const fullName = `${firstName} ${lastName}`.trim();
     const normalizedPhone = normalizePhoneNumber(phoneRaw);
 
     // Context metadata

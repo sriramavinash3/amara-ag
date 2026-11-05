@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet, useLocation } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import StickyActionBar from './components/layout/StickyActionBar';
@@ -33,6 +33,21 @@ import './styles/skeuomorphic.css';
 function PublicLayout() {
   const containerRef = useRef(null);
   useScrollProgress(containerRef);
+  const location = useLocation();
+
+  const isDedicatedLanding =
+    location.pathname === '/pain-management-charlotte' ||
+    location.pathname === '/pain-management-charlotte/';
+
+  if (isDedicatedLanding) {
+    return (
+      <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900 selection:bg-emerald-100 selection:text-emerald-900">
+        <main className="flex-grow w-full relative z-10">
+          <Outlet />
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div
