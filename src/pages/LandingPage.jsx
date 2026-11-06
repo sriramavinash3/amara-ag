@@ -490,30 +490,30 @@ function DedicatedPainManagementLandingPage({ pageData, formRenderTimeRef }) {
     <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-emerald-100 selection:text-emerald-900 font-sans antialiased">
       {/* SECTION 1 — MINIMAL HEADER */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg">
             <img
               src="/images/AmaraPain_Logo.png"
               alt="Amara Pain & Spine Management - Charlotte NC"
-              className="h-10 sm:h-12 w-auto object-contain"
+              className="h-9 sm:h-12 w-auto object-contain"
               width="180"
               height="48"
             />
           </a>
           <a
             href="tel:+17045039338"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm sm:text-base transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+            className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-base transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
             aria-label="Call Amara Pain clinic directly at (704) 503-9338"
           >
-            <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+            <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 shrink-0" />
             <span className="hidden sm:inline">Call Now:</span>
             <span className="font-extrabold text-emerald-300 sm:text-white">(704) 503-9338</span>
           </a>
         </div>
       </header>
 
-      {/* TOP PATIENT ASSURANCE BANNER */}
-      <div className="bg-slate-900 text-white text-xs sm:text-sm py-2 px-4 border-b border-slate-800">
+      {/* TOP PATIENT ASSURANCE BANNER (Desktop only to guarantee mobile form priority above fold) */}
+      <div className="hidden lg:block bg-slate-900 text-white text-xs sm:text-sm py-2 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-center sm:text-left">
           <div className="flex items-center gap-2 mx-auto sm:mx-0 font-medium">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -531,508 +531,580 @@ function DedicatedPainManagementLandingPage({ pageData, formRenderTimeRef }) {
         </div>
       </div>
 
-      {/* SECTION 2 — HERO SECTION */}
-      <section id="top" className="relative bg-gradient-to-b from-white via-slate-50 to-white py-8 sm:py-12 lg:py-16 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            
-            {/* Left Column: Compelling Patient Copy & Trust Checkpoints */}
-            <div className="lg:col-span-7 space-y-6 text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-bold tracking-wide">
-                <Sparkles className="w-4 h-4 text-emerald-600" />
-                South Charlotte Interventional Pain Care
+      {/* MAIN CONTENT WRAPPER WITH RESPONSIVE CSS ORDERING */}
+      <main className="flex flex-col">
+        {/* SECTION 2 (MOBILE ORDER 1): HERO SECTION / TOP LEAD FORM */}
+        <section id="top" className="order-1 lg:order-1 relative bg-gradient-to-b from-white via-slate-50 to-white pt-3 pb-6 sm:py-8 lg:py-16 border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              
+              {/* Desktop Left Column: Compelling Patient Copy & Trust Checkpoints (Hidden on mobile to prioritize form above fold) */}
+              <div className="hidden lg:block lg:col-span-7 space-y-6 text-left">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-bold tracking-wide">
+                  <Sparkles className="w-4 h-4 text-emerald-600" />
+                  South Charlotte Interventional Pain Care
+                </div>
+
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                  Live With Less Pain. <br className="hidden sm:inline" />
+                  <span className="text-emerald-700">Get Back to What Matters.</span>
+                </h1>
+
+                <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+                  Personalized pain management care designed to help you move comfortably and improve your quality of life.
+                </p>
+
+                {/* Exact Recovered SLO Checkpoints */}
+                <div className="space-y-3 pt-1">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span className="text-sm sm:text-base font-semibold text-slate-800">
+                      Double-board-certified fellowship-trained physician (Dr. Ashvin K. Amara, MD)
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span className="text-sm sm:text-base font-medium text-slate-700">
+                      Zero Hospital Facility Surcharges: Independent practice protects you from high hospital fees.
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span className="text-sm sm:text-base font-medium text-slate-700">
+                      Quick Intake Response: Our Charlotte team reviews your details and coordinates your consultation slot.
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span className="text-sm sm:text-base font-medium text-slate-700">
+                      Major Insurances Accepted: Medicare Part B, NC/SC Medicaid, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana.
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span className="text-sm sm:text-base font-medium text-slate-700">
+                      Precision fluoroscopy-guided outpatient injections &amp; nerve blocks
+                    </span>
+                  </div>
+                </div>
+
+                {/* Authentic Senior Photography: Restoring Mobility */}
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-emerald-100 shadow-sm mt-4">
+                  <picture className="shrink-0">
+                    <source srcSet="/images/audience/hero_senior_mobility.webp" type="image/webp" />
+                    <img
+                      src="/images/audience/hero_senior_mobility.jpg"
+                      alt="Approachable older adult enjoying restored comfort and mobility"
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border border-emerald-300"
+                      loading="eager"
+                      width="80"
+                      height="80"
+                    />
+                  </picture>
+                  <div>
+                    <div className="text-sm sm:text-base font-bold text-slate-900">
+                      Dedicated to Restoring Daily Comfort &amp; Mobility
+                    </div>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-snug mt-1">
+                      Helping older adults and active seniors in South Charlotte return to everyday life without surgery.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Immediate Telephone Intake Callout */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-xs uppercase tracking-wider text-slate-300 font-semibold">Prefer Immediate Telephone Intake?</div>
+                      <a href="tel:+17045039338" className="text-xl sm:text-2xl font-black text-white hover:text-emerald-300 transition-colors">
+                        (704) 503-9338
+                      </a>
+                    </div>
+                  </div>
+                  <a
+                    href="tel:+17045039338"
+                    className="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-wide text-center transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  >
+                    Call Clinic Directly
+                  </a>
+                </div>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-                Live With Less Pain. <br className="hidden sm:inline" />
-                <span className="text-emerald-700">Get Back to What Matters.</span>
-              </h1>
+              {/* Right Column (Mobile: FIRST MAIN CONTENT VISIBLE): SECTION 3 — SIMPLE LEAD FORM */}
+              <div className="lg:col-span-5 w-full" id="primary-lead-form">
+                <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-slate-200 p-4 sm:p-6 lg:p-8 text-left relative">
+                  
+                  {submitSuccess ? (
+                    <div className="py-6 sm:py-8 text-center space-y-4 sm:space-y-5" role="status" aria-live="polite">
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                        <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10" />
+                      </div>
+                      <div>
+                        <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Request Confirmed!</h2>
+                        <p className="text-sm font-semibold text-emerald-700 mt-1">We will call you shortly.</p>
+                      </div>
+                      {submittedLeadId && (
+                        <div className="inline-block px-3 py-1.5 bg-slate-100 border border-slate-200 rounded-lg text-xs font-mono text-slate-700">
+                          Confirmation ID: <span className="font-bold">{submittedLeadId}</span>
+                        </div>
+                      )}
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm mx-auto">
+                        Thank you, <strong className="text-slate-900">{formData.fullName}</strong>. Our Charlotte clinical intake team has received your call back request and will contact you at <strong className="text-slate-900">{formData.phone}</strong> within 24 hours to coordinate your visit.
+                      </p>
+                      <div className="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 sm:p-4 text-left space-y-2 text-xs text-slate-700">
+                        <div className="font-bold text-slate-900 text-xs sm:text-sm">Next Steps:</div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-emerald-600">1. Review:</span>
+                          <span>Clinical staff reviews your request.</span>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-emerald-600">2. Phone Call:</span>
+                          <span>We call to coordinate a consultation slot that fits your schedule.</span>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <span className="font-bold text-emerald-600">3. Specialist Visit:</span>
+                          <span>Comprehensive diagnostic examination with Dr. Amara.</span>
+                        </div>
+                      </div>
+                      <div className="pt-2">
+                        <a
+                          href="tel:+17045039338"
+                          className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-slate-900 text-white font-bold text-sm sm:text-base hover:bg-slate-800 transition-colors shadow-sm"
+                        >
+                          <Phone className="w-4 h-4 text-emerald-400" />
+                          Call Our Clinic: (704) 503-9338
+                        </a>
+                      </div>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5" noValidate>
+                      <div className="border-b border-slate-100 pb-3 sm:pb-4">
+                        <span className="text-[11px] sm:text-xs font-bold text-emerald-700 uppercase tracking-wider block">
+                          Simple Fast-Track Intake
+                        </span>
+                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 tracking-tight mt-0.5 sm:mt-1">
+                          Request a Call Back
+                        </h2>
+                        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                          Enter your name and phone number below. Our Charlotte clinical intake team will contact you promptly.
+                        </p>
+                      </div>
 
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-                Personalized pain management care designed to help you move comfortably and improve your quality of life.
+                      {/* Submission Error Alert */}
+                      {submitError && (
+                        <div className="p-3 sm:p-4 rounded-xl bg-red-50 border border-red-200 text-left space-y-1.5" role="alert">
+                          <div className="text-xs font-bold text-red-800">Submission Notice</div>
+                          <p className="text-xs text-red-700 leading-relaxed">{submitError}</p>
+                          <div className="pt-1">
+                            <a
+                              href="tel:+17045039338"
+                              className="text-xs font-bold text-emerald-800 hover:underline inline-flex items-center gap-1"
+                            >
+                              <Phone className="w-3.5 h-3.5" /> Call Clinic Directly: (704) 503-9338
+                            </a>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Field 1: Full Name */}
+                      <div>
+                        <label htmlFor="hero-fullName" className="block text-xs sm:text-sm font-bold text-slate-800 mb-1">
+                          Full Name *
+                        </label>
+                        <input
+                          id="hero-fullName"
+                          type="text"
+                          name="fullName"
+                          value={formData.fullName}
+                          onChange={handleInputChange}
+                          placeholder="e.g., Robert Smith"
+                          autoComplete="name"
+                          aria-required="true"
+                          aria-invalid={!!formErrors.fullName}
+                          aria-describedby={formErrors.fullName ? 'hero-fullName-error' : undefined}
+                          className={`w-full px-3.5 py-3 sm:py-3.5 text-base rounded-xl border ${
+                            formErrors.fullName ? 'border-red-500 bg-red-50/40 ring-1 ring-red-400' : 'border-slate-300'
+                          } focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-slate-900 bg-white placeholder-slate-400 transition-colors`}
+                        />
+                        {formErrors.fullName && (
+                          <p id="hero-fullName-error" className="text-xs font-semibold text-red-600 mt-1" role="alert">
+                            {formErrors.fullName}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Field 2: Phone Number */}
+                      <div>
+                        <label htmlFor="hero-phone" className="block text-xs sm:text-sm font-bold text-slate-800 mb-1">
+                          Phone Number *
+                        </label>
+                        <input
+                          id="hero-phone"
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          placeholder="(704) 555-0123"
+                          autoComplete="tel"
+                          aria-required="true"
+                          aria-invalid={!!formErrors.phone}
+                          aria-describedby={formErrors.phone ? 'hero-phone-error' : undefined}
+                          className={`w-full px-3.5 py-3 sm:py-3.5 text-base rounded-xl border ${
+                            formErrors.phone ? 'border-red-500 bg-red-50/40 ring-1 ring-red-400' : 'border-slate-300'
+                          } focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-slate-900 bg-white placeholder-slate-400 transition-colors`}
+                        />
+                        {formErrors.phone && (
+                          <p id="hero-phone-error" className="text-xs font-semibold text-red-600 mt-1" role="alert">
+                            {formErrors.phone}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* Submit Button */}
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full py-3.5 sm:py-4 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-black text-sm sm:text-base lg:text-lg tracking-wide shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                            <span>Connecting With Clinic...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>REQUEST A CALL BACK</span>
+                            <ChevronRight className="w-5 h-5" />
+                          </>
+                        )}
+                      </button>
+
+                      {/* Privacy Reassurance & Trust Statement */}
+                      <div className="space-y-2 pt-1">
+                        <div className="flex items-start gap-1.5 text-left text-[11px] sm:text-xs text-slate-500 leading-snug">
+                          <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                          <span>
+                            We respect your privacy. Contact details are collected solely for appointment coordination. No health data is shared with advertising platforms. Read our{' '}
+                            <Link to="/privacy" className="text-emerald-700 hover:underline font-semibold">
+                              Privacy Policy
+                            </Link>.
+                          </span>
+                        </div>
+                        <div className="text-center text-[11px] sm:text-xs font-bold text-emerald-900 bg-emerald-50 py-1.5 sm:py-2 px-3 rounded-lg border border-emerald-200">
+                          Direct contact from dedicated clinical care coordinators within 24 hours
+                        </div>
+                      </div>
+                    </form>
+                  )}
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 4 (MOBILE ORDER 2): IN-NETWORK INSURANCE PROVIDERS */}
+        <section className="order-2 lg:order-4 insurance-static-section bg-slate-50 border-b border-slate-200 py-10 sm:py-12 lg:py-16" aria-label="Insurance and Payer Networks">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-center sm:text-left mb-6 sm:mb-8">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Coverage &amp; Affordability</span>
+                <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Accepted Insurance Providers &amp; Plans</h2>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-600 max-w-md">
+                Medicare Part B, NC/SC Medicaid, and major commercial health plans accepted. Zero hospital facility fee markups.
               </p>
+            </div>
 
-              {/* Exact Recovered SLO Checkpoints */}
-              <div className="space-y-3 pt-1">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base font-semibold text-slate-800">
-                    Double-board-certified fellowship-trained physician (Dr. Ashvin K. Amara, MD)
-                  </span>
+            {/* Static Responsive Grid (Stationary on Desktop, Tablet, and Mobile) */}
+            <div className="insurance-logos-grid">
+              {INSURANCE_PROVIDERS.map((item, idx) => (
+                <div key={idx} className="insurance-logo-card">
+                  {item.logo ? (
+                    <div className="insurance-logo-box">
+                      <img src={item.logo} alt={item.alt || item.name} className="insurance-logo-img" loading="lazy" />
+                    </div>
+                  ) : (
+                    <div className="insurance-card-badge">{item.badge}</div>
+                  )}
+                  <div className="insurance-card-info">
+                    <span className="insurance-card-name" title={item.name}>{item.name}</span>
+                    {item.type && <span className="insurance-card-type">{item.type}</span>}
+                  </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base font-medium text-slate-700">
-                    Zero Hospital Facility Surcharges: Independent practice protects you from high hospital fees.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base font-medium text-slate-700">
-                    Quick Intake Response: Our Charlotte team reviews your details and coordinates your consultation slot.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base font-medium text-slate-700">
-                    Major Insurances Accepted: Medicare Part B, NC/SC Medicaid, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana.
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm sm:text-base font-medium text-slate-700">
-                    Precision fluoroscopy-guided outpatient injections &amp; nerve blocks
-                  </span>
+              ))}
+            </div>
+
+            <div className="mt-6 text-center sm:text-left">
+              <p className="text-xs text-slate-500 insurance-notice-text">
+                Insurance coverage and provider availability may vary by hospital and plan. We verify active benefits directly with your insurer prior to treatment.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 5 (MOBILE ORDER 3): SUPPORTING HEALTHCARE IMAGES & CLINICAL LEADERSHIP */}
+        <section className="order-3 lg:order-3 py-12 sm:py-16 bg-white border-b border-slate-200 text-left">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
+            
+            <div className="max-w-3xl">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Clinical Leadership &amp; Facility</span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight mt-1">
+                Compassionate Care &amp; Advanced Facilities
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
+                Experience focused, personalized medical attention in a modern outpatient practice designed for senior comfort and mobility.
+              </p>
+            </div>
+
+            {/* Physician Spotlight & Authentic Imagery */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden p-6 sm:p-8">
+              <div className="lg:col-span-5">
+                <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-slate-100 relative">
+                  <picture>
+                    <source srcSet="/images/ashvin-amara.webp" type="image/webp" />
+                    <img
+                      src="/images/ashvin-amara.jpg"
+                      alt="Dr. Ashvin Kumar Amara, MD - Double-Board Certified Interventional Pain Specialist"
+                      className="w-full aspect-[4/3] lg:aspect-square object-cover object-top"
+                      loading="lazy"
+                      width="500"
+                      height="500"
+                    />
+                  </picture>
+                  <div className="p-3.5 bg-slate-900 text-white">
+                    <div className="text-sm font-bold text-emerald-400">Ashvin Kumar Amara, MD</div>
+                    <div className="text-xs text-slate-300 mt-0.5">Double-Board Certified · Anesthesiology &amp; Interventional Pain Medicine · NPI: 1356658389</div>
+                  </div>
                 </div>
               </div>
 
-              {/* Authentic Senior Photography: Restoring Mobility */}
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-emerald-100 shadow-sm mt-4">
-                <picture className="shrink-0">
-                  <source srcSet="/images/audience/hero_senior_mobility.webp" type="image/webp" />
+              <div className="lg:col-span-7 space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+                  <Award className="w-3.5 h-3.5 text-emerald-700" />
+                  Double-Board Certified Physician Leadership
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                  Meet Dr. Ashvin Kumar Amara, MD
+                </h3>
+
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  Dr. Ashvin Kumar Amara is double-board-certified in Anesthesiology and Interventional Pain Medicine. He completed rigorous residency and ACGME-accredited fellowship training at premier academic medical centers.
+                </p>
+
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  Dedicated to non-opioid, non-surgical pain management, Dr. Amara leverages precision fluoroscopy guidance to diagnose and resolve complex chronic pain conditions while helping patients avoid invasive spine surgeries.
+                </p>
+
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={scrollToForm}
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition-colors shadow-sm cursor-pointer"
+                  >
+                    <span>Request a Call Back With Our Team</span>
+                    <ChevronRight className="w-4 h-4 text-emerald-400" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Supporting Clinical Images: Consultation & Outpatient Procedure Suite */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white">
+                <picture>
+                  <source srcSet="/images/audience/senior_consultation.webp" type="image/webp" />
                   <img
-                    src="/images/audience/hero_senior_mobility.jpg"
-                    alt="Approachable older adult enjoying restored comfort and mobility"
-                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border border-emerald-300"
-                    loading="eager"
-                    width="80"
-                    height="80"
+                    src="/images/audience/senior_consultation.jpg"
+                    alt="Senior patient consulting with physician regarding chronic pain relief"
+                    className="w-full h-56 sm:h-64 object-cover"
+                    loading="lazy"
+                    width="600"
+                    height="256"
                   />
                 </picture>
-                <div>
-                  <div className="text-sm sm:text-base font-bold text-slate-900">
-                    Dedicated to Restoring Daily Comfort &amp; Mobility
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-snug mt-1">
-                    Helping older adults and active seniors in South Charlotte return to everyday life without surgery.
+                <div className="p-5">
+                  <h4 className="font-bold text-slate-900 text-base">Compassionate, One-on-One Consultations</h4>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                    We take the time to listen, review past imaging, and understand how pain impacts your daily life.
                   </p>
                 </div>
               </div>
 
-              {/* Immediate Telephone Intake Callout */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-slate-300 font-semibold">Prefer Immediate Telephone Intake?</div>
-                    <a href="tel:+17045039338" className="text-xl sm:text-2xl font-black text-white hover:text-emerald-300 transition-colors">
-                      (704) 503-9338
-                    </a>
-                  </div>
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white">
+                <picture>
+                  <source srcSet="/images/audience/interventional_procedure_suite.webp" type="image/webp" />
+                  <img
+                    src="/images/audience/interventional_procedure_suite.jpg"
+                    alt="In-Office Interventional Fluoroscopy Procedure Suite - Amara Pain & Spine"
+                    className="w-full h-56 sm:h-64 object-cover"
+                    loading="lazy"
+                    width="600"
+                    height="256"
+                  />
+                </picture>
+                <div className="p-5">
+                  <h4 className="font-bold text-slate-900 text-base">Sterile In-Office Fluoroscopy Suite</h4>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                    All procedures performed on-site with live X-ray guidance and zero hospital facility surcharges.
+                  </p>
                 </div>
-                <a
-                  href="tel:+17045039338"
-                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-wide text-center transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                >
-                  Call Clinic Directly
+              </div>
+            </div>
+
+            {/* Mobile Supporting Mobility Photo Card */}
+            <div className="lg:hidden flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-emerald-200 shadow-sm">
+              <picture className="shrink-0">
+                <source srcSet="/images/audience/hero_senior_mobility.webp" type="image/webp" />
+                <img
+                  src="/images/audience/hero_senior_mobility.jpg"
+                  alt="Approachable older adult enjoying restored comfort and mobility"
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover border border-emerald-300"
+                  loading="lazy"
+                  width="80"
+                  height="80"
+                />
+              </picture>
+              <div>
+                <div className="text-sm sm:text-base font-bold text-slate-900">
+                  Dedicated to Restoring Daily Comfort &amp; Mobility
+                </div>
+                <p className="text-xs sm:text-sm text-slate-600 leading-snug mt-1">
+                  Helping older adults and active seniors in South Charlotte return to everyday life without surgery.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        {/* SECTION 6 (MOBILE ORDER 4): BRIEF TREATMENT BENEFITS & CLINICAL CONTENT */}
+        <section className="order-4 lg:order-2 py-12 sm:py-16 lg:py-20 bg-slate-50 lg:bg-white border-b border-slate-200 text-left">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
+            
+            {/* Header */}
+            <div className="max-w-3xl">
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Trust &amp; Clinical Excellence</span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight mt-1">
+                Experienced, Patient-Focused Pain Relief in Charlotte
+              </h2>
+              <p className="text-sm sm:text-base lg:text-lg text-slate-600 mt-2 leading-relaxed">
+                We specialize in targeted, non-surgical interventional care to diagnose and relieve the anatomical source of pain—helping you regain comfort, mobility, and independence.
+              </p>
+            </div>
+
+            {/* Mobile Summary of Core Value Propositions & SLO Checkpoints */}
+            <div className="lg:hidden bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+              <div className="text-sm font-bold text-slate-900">Why Patients Choose Amara Pain &amp; Spine:</div>
+              <div className="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Double-Board Certified:</strong> Dr. Ashvin K. Amara, MD provides specialized spine and joint expertise.</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Zero Hospital Surcharges:</strong> Independent outpatient clinic saves you hundreds in hospital facility fees.</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Quick Intake Response:</strong> Our Charlotte team reviews your details and coordinates your consultation slot.</span>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span><strong>Major Insurances Accepted:</strong> Medicare Part B, NC/SC Medicaid, BCBS, UnitedHealthcare, Aetna, Cigna, and Humana.</span>
+                </div>
+              </div>
+              <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs text-slate-500">Need immediate help?</span>
+                <a href="tel:+17045039338" className="text-xs font-bold text-emerald-700 hover:underline flex items-center gap-1">
+                  <Phone className="w-3.5 h-3.5" /> (704) 503-9338
                 </a>
               </div>
             </div>
 
-            {/* Right Column: SECTION 3 — SIMPLE LEAD FORM */}
-            <div className="lg:col-span-5 w-full" id="primary-lead-form">
-              <div className="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 sm:p-8 text-left relative">
-                
-                {submitSuccess ? (
-                  <div className="py-8 text-center space-y-5" role="status" aria-live="polite">
-                    <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
-                      <CheckCircle2 className="w-10 h-10" />
-                    </div>
-                    <div>
-                      <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Request Confirmed!</h2>
-                      <p className="text-sm font-semibold text-emerald-700 mt-1">We will call you shortly.</p>
-                    </div>
-                    {submittedLeadId && (
-                      <div className="inline-block px-3 py-1.5 bg-slate-100 border border-slate-200 rounded-lg text-xs font-mono text-slate-700">
-                        Confirmation ID: <span className="font-bold">{submittedLeadId}</span>
-                      </div>
-                    )}
-                    <p className="text-sm text-slate-600 leading-relaxed max-w-sm mx-auto">
-                      Thank you, <strong className="text-slate-900">{formData.fullName}</strong>. Our Charlotte clinical intake team has received your call back request and will contact you at <strong className="text-slate-900">{formData.phone}</strong> within 24 hours to coordinate your visit.
-                    </p>
-                    <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-left space-y-2 text-xs text-slate-700">
-                      <div className="font-bold text-slate-900 text-sm">Next Steps:</div>
-                      <div className="flex items-start gap-2">
-                        <span className="font-bold text-emerald-600">1. Review:</span>
-                        <span>Clinical staff reviews your request.</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="font-bold text-emerald-600">2. Phone Call:</span>
-                        <span>We call to coordinate a consultation slot that fits your schedule.</span>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <span className="font-bold text-emerald-600">3. Specialist Visit:</span>
-                        <span>Comprehensive diagnostic examination with Dr. Amara.</span>
-                      </div>
-                    </div>
-                    <div className="pt-2">
-                      <a
-                        href="tel:+17045039338"
-                        className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-xl bg-slate-900 text-white font-bold text-sm sm:text-base hover:bg-slate-800 transition-colors shadow-sm"
-                      >
-                        <Phone className="w-4 h-4 text-emerald-400" />
-                        Call Our Clinic: (704) 503-9338
-                      </a>
-                    </div>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                    <div className="border-b border-slate-100 pb-4">
-                      <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider block">
-                        Simple Fast-Track Intake
-                      </span>
-                      <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mt-1">
-                        Request a Call Back
-                      </h2>
-                      <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                        Enter your name and phone number below. Our Charlotte clinical intake team will contact you promptly.
-                      </p>
-                    </div>
+            {/* 4 Pillars of Care */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="p-6 rounded-2xl bg-white lg:bg-slate-50 border border-slate-200 space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                  <Award className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">Double-Board Certified</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Led by Dr. Ashvin Kumar Amara, MD, fellowship-trained in Anesthesiology and Interventional Pain Medicine.
+                </p>
+              </div>
 
-                    {/* Submission Error Alert */}
-                    {submitError && (
-                      <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-left space-y-1.5" role="alert">
-                        <div className="text-xs font-bold text-red-800">Submission Notice</div>
-                        <p className="text-xs text-red-700 leading-relaxed">{submitError}</p>
-                        <div className="pt-1">
-                          <a
-                            href="tel:+17045039338"
-                            className="text-xs font-bold text-emerald-800 hover:underline inline-flex items-center gap-1"
-                          >
-                            <Phone className="w-3.5 h-3.5" /> Call Clinic Directly: (704) 503-9338
-                          </a>
-                        </div>
-                      </div>
-                    )}
+              <div className="p-6 rounded-2xl bg-white lg:bg-slate-50 border border-slate-200 space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">Zero Hospital Facility Fees</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  As an independent clinic, we never charge expensive hospital facility surcharges, saving you hundreds out-of-pocket.
+                </p>
+              </div>
 
-                    {/* Field 1: Full Name */}
-                    <div>
-                      <label htmlFor="hero-fullName" className="block text-sm font-bold text-slate-800 mb-1.5">
-                        Full Name *
-                      </label>
-                      <input
-                        id="hero-fullName"
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleInputChange}
-                        placeholder="e.g., Robert Smith"
-                        autoComplete="name"
-                        aria-required="true"
-                        aria-invalid={!!formErrors.fullName}
-                        aria-describedby={formErrors.fullName ? 'hero-fullName-error' : undefined}
-                        className={`w-full px-4 py-3.5 text-base rounded-xl border ${
-                          formErrors.fullName ? 'border-red-500 bg-red-50/40 ring-1 ring-red-400' : 'border-slate-300'
-                        } focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-slate-900 bg-white placeholder-slate-400 transition-colors`}
-                      />
-                      {formErrors.fullName && (
-                        <p id="hero-fullName-error" className="text-xs font-semibold text-red-600 mt-1.5" role="alert">
-                          {formErrors.fullName}
-                        </p>
-                      )}
-                    </div>
+              <div className="p-6 rounded-2xl bg-white lg:bg-slate-50 border border-slate-200 space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                  <Activity className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">Image-Guided Precision</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Advanced fluoroscopy (live C-arm X-ray) guidance ensures accurate, sub-millimeter medication placement.
+                </p>
+              </div>
 
-                    {/* Field 2: Phone Number */}
-                    <div>
-                      <label htmlFor="hero-phone" className="block text-sm font-bold text-slate-800 mb-1.5">
-                        Phone Number *
-                      </label>
-                      <input
-                        id="hero-phone"
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="(704) 555-0123"
-                        autoComplete="tel"
-                        aria-required="true"
-                        aria-invalid={!!formErrors.phone}
-                        aria-describedby={formErrors.phone ? 'hero-phone-error' : undefined}
-                        className={`w-full px-4 py-3.5 text-base rounded-xl border ${
-                          formErrors.phone ? 'border-red-500 bg-red-50/40 ring-1 ring-red-400' : 'border-slate-300'
-                        } focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-slate-900 bg-white placeholder-slate-400 transition-colors`}
-                      />
-                      {formErrors.phone && (
-                        <p id="hero-phone-error" className="text-xs font-semibold text-red-600 mt-1.5" role="alert">
-                          {formErrors.phone}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Submit Button */}
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-black text-base sm:text-lg tracking-wide shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                          <span>Connecting With Clinic...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span>REQUEST A CALL BACK</span>
-                          <ChevronRight className="w-5 h-5" />
-                        </>
-                      )}
-                    </button>
-
-                    {/* Privacy & SLO Statements */}
-                    <div className="space-y-2 pt-1">
-                      <div className="flex items-start gap-2 text-left text-xs text-slate-500 leading-snug">
-                        <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                        <span>
-                          We respect your privacy. Contact details are collected solely for appointment coordination. No health data is shared with advertising platforms. Read our{' '}
-                          <Link to="/privacy" className="text-emerald-700 hover:underline font-semibold">
-                            Privacy Policy
-                          </Link>.
-                        </span>
-                      </div>
-                      <div className="text-center text-xs font-bold text-emerald-900 bg-emerald-50 py-2 px-3 rounded-lg border border-emerald-200">
-                        Quick Intake Guarantee: Direct contact from dedicated clinical care coordinators within 24 hours
-                      </div>
-                    </div>
-                  </form>
-                )}
-
+              <div className="p-6 rounded-2xl bg-white lg:bg-slate-50 border border-slate-200 space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                  <CheckCircle2 className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">Personalized Recovery</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Our treatments aim for lasting functional restoration so you can walk, bend, garden, and enjoy family activities.
+                </p>
               </div>
             </div>
 
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SECTION 4 — TRUST & EXPERIENCE */}
-      <section className="py-16 sm:py-20 bg-white border-b border-slate-200 text-left">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          
-          {/* Header */}
-          <div className="max-w-3xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Trust &amp; Clinical Excellence</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-1">
-              Experienced, Patient-Focused Pain Relief in Charlotte
+        {/* SECTION 7 (MOBILE ORDER 5): FINAL CONVERSION CTA */}
+        <section className="order-5 lg:order-5 py-14 sm:py-16 lg:py-20 bg-slate-900 text-white text-center">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Take the First Step</span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+              Ready to Take the Next Step Toward Relief?
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 mt-2 leading-relaxed">
-              We specialize in targeted, non-surgical interventional care to diagnose and relieve the anatomical source of pain—helping you regain comfort, mobility, and independence.
+            <p className="text-sm sm:text-base lg:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Do not let chronic pain dictate what you can and cannot do. Request a callback or call our Charlotte clinic directly today to schedule your evaluation.
             </p>
-          </div>
-
-          {/* 4 Pillars of Care */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                <Award className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900">Double-Board Certified</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Led by Dr. Ashvin Kumar Amara, MD, fellowship-trained in Anesthesiology and Interventional Pain Medicine.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900">Zero Hospital Facility Fees</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                As an independent clinic, we never charge expensive hospital facility surcharges, saving you hundreds out-of-pocket.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                <Activity className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900">Image-Guided Precision</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Advanced fluoroscopy (live C-arm X-ray) guidance ensures accurate, sub-millimeter medication placement.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-              <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                <CheckCircle2 className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900">Personalized Recovery</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Our treatments aim for lasting functional restoration so you can walk, bend, garden, and enjoy family activities.
-              </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 sm:pt-4">
+              <button
+                type="button"
+                onClick={scrollToForm}
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm sm:text-base uppercase tracking-wider transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              >
+                REQUEST A CALL BACK
+              </button>
+              <a
+                href="tel:+17045039338"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-black text-sm sm:text-base uppercase tracking-wider transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+              >
+                <Phone className="w-5 h-5 text-emerald-400" />
+                Call (704) 503-9338
+              </a>
             </div>
           </div>
+        </section>
+      </main>
 
-          {/* Physician Spotlight & Authentic Imagery */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pt-4">
-            <div className="lg:col-span-5">
-              <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-slate-100 relative">
-                <picture>
-                  <source srcSet="/images/ashvin-amara.webp" type="image/webp" />
-                  <img
-                    src="/images/ashvin-amara.jpg"
-                    alt="Dr. Ashvin Kumar Amara, MD - Double-Board Certified Interventional Pain Specialist"
-                    className="w-full aspect-square sm:aspect-[4/3] lg:aspect-square object-cover object-top"
-                    loading="lazy"
-                    width="500"
-                    height="500"
-                  />
-                </picture>
-                <div className="p-4 bg-slate-900 text-white">
-                  <div className="text-sm sm:text-base font-bold text-emerald-400">Ashvin Kumar Amara, MD</div>
-                  <div className="text-xs text-slate-300 mt-0.5">Double-Board Certified · Anesthesiology &amp; Interventional Pain Medicine · NPI: 1356658389</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                <Award className="w-3.5 h-3.5 text-emerald-600" />
-                Physician Leadership
-              </div>
-
-              <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                Meet Dr. Ashvin Kumar Amara, MD
-              </h3>
-
-              <p className="text-base text-slate-600 leading-relaxed">
-                Dr. Ashvin Kumar Amara is double-board-certified in Anesthesiology and Interventional Pain Medicine. He completed rigorous residency and ACGME-accredited fellowship training at premier academic medical centers.
-              </p>
-
-              <p className="text-base text-slate-600 leading-relaxed">
-                Dedicated to non-opioid, non-surgical pain management, Dr. Amara leverages precision fluoroscopy guidance to diagnose and resolve complex chronic pain conditions while helping patients avoid invasive spine surgeries.
-              </p>
-
-              <div className="pt-2">
-                <button
-                  type="button"
-                  onClick={scrollToForm}
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition-colors shadow-sm cursor-pointer"
-                >
-                  <span>Request a Call Back With Our Team</span>
-                  <ChevronRight className="w-4 h-4 text-emerald-400" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Supporting Clinical Images: Consultation & Outpatient Procedure Suite */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white">
-              <picture>
-                <source srcSet="/images/audience/senior_consultation.webp" type="image/webp" />
-                <img
-                  src="/images/audience/senior_consultation.jpg"
-                  alt="Senior patient consulting with physician regarding chronic pain relief"
-                  className="w-full h-64 object-cover"
-                  loading="lazy"
-                  width="600"
-                  height="256"
-                />
-              </picture>
-              <div className="p-5">
-                <h4 className="font-bold text-slate-900 text-base">Compassionate, One-on-One Consultations</h4>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                  We take the time to listen, review past imaging, and understand how pain impacts your daily life.
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-white">
-              <picture>
-                <source srcSet="/images/audience/interventional_procedure_suite.webp" type="image/webp" />
-                <img
-                  src="/images/audience/interventional_procedure_suite.jpg"
-                  alt="In-Office Interventional Fluoroscopy Procedure Suite - Amara Pain & Spine"
-                  className="w-full h-64 object-cover"
-                  loading="lazy"
-                  width="600"
-                  height="256"
-                />
-              </picture>
-              <div className="p-5">
-                <h4 className="font-bold text-slate-900 text-base">Sterile In-Office Fluoroscopy Suite</h4>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                  All procedures performed on-site with live X-ray guidance and zero hospital facility surcharges.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* SECTION 5 — IN-NETWORK INSURANCE PROVIDERS */}
-      <section className="insurance-static-section bg-slate-50 border-b border-slate-200 py-12 sm:py-16" aria-label="Insurance and Payer Networks">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-center sm:text-left mb-8">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 block">Coverage &amp; Affordability</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mt-1">Accepted Insurance Providers &amp; Plans</h2>
-            </div>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-md">
-              Medicare Part B, NC/SC Medicaid, and major commercial health plans accepted. Zero hospital facility fee markups.
-            </p>
-          </div>
-
-          {/* Static Responsive Grid (Stationary on Desktop, Tablet, and Mobile) */}
-          <div className="insurance-logos-grid">
-            {INSURANCE_PROVIDERS.map((item, idx) => (
-              <div key={idx} className="insurance-logo-card">
-                {item.logo ? (
-                  <div className="insurance-logo-box">
-                    <img src={item.logo} alt={item.alt || item.name} className="insurance-logo-img" loading="lazy" />
-                  </div>
-                ) : (
-                  <div className="insurance-card-badge">{item.badge}</div>
-                )}
-                <div className="insurance-card-info">
-                  <span className="insurance-card-name" title={item.name}>{item.name}</span>
-                  {item.type && <span className="insurance-card-type">{item.type}</span>}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 text-center sm:text-left">
-            <p className="text-xs text-slate-500 insurance-notice-text">
-              Insurance coverage and provider availability may vary by hospital and plan. We verify active benefits directly with your insurer prior to treatment.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 6 — FINAL CONVERSION CTA */}
-      <section className="py-16 sm:py-20 bg-slate-900 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Take the First Step</span>
-          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            Ready to Take the Next Step Toward Relief?
-          </h2>
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Do not let chronic pain dictate what you can and cannot do. Request a callback or call our Charlotte clinic directly today to schedule your evaluation.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <button
-              type="button"
-              onClick={scrollToForm}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-base uppercase tracking-wider transition-all shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-400"
-            >
-              REQUEST A CALL BACK
-            </button>
-            <a
-              href="tel:+17045039338"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-black text-base uppercase tracking-wider transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-            >
-              <Phone className="w-5 h-5 text-emerald-400" />
-              Call (704) 503-9338
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 7 — MINIMAL FOOTER */}
-      <footer className="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 text-xs sm:text-sm">
+      {/* SECTION 8 — MINIMAL FOOTER */}
+      <footer className="bg-slate-950 text-slate-400 py-12 pb-24 lg:pb-12 border-t border-slate-800 text-xs sm:text-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-800 text-center sm:text-left">
             <div className="space-y-1">
