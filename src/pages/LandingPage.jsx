@@ -314,6 +314,33 @@ const LANDING_PAGE_DATA = {
  * - Final Conversion CTA & Minimal Footer
  * - Mobile Sticky Call Now / Request Call Back Bar
  */
+
+/**
+ * Google Ads Lead Conversion Event Tracker for Pain Management Charlotte
+ * Target URL: https://amarapain.com/pain-management-charlotte/
+ * Conversion ID: AW-18239109920 | Conversion Label: Rb8WCPqP87MdEKD2ivlD
+ */
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+
+  const gtagFn = (typeof window !== 'undefined' && typeof window.gtag === 'function')
+    ? window.gtag
+    : null;
+
+  if (gtagFn) {
+    gtagFn('event', 'conversion', {
+      'send_to': 'AW-18239109920/Rb8WCPqP87MdEKD2ivlD',
+      'event_callback': callback
+    });
+  }
+
+  return false;
+}
+
 function DedicatedPainManagementLandingPage({ pageData, formRenderTimeRef }) {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -324,6 +351,18 @@ function DedicatedPainManagementLandingPage({ pageData, formRenderTimeRef }) {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [submittedLeadId, setSubmittedLeadId] = useState('');
+
+  // Register gtag_report_conversion in window scope exclusively on Pain Management Charlotte
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.gtag_report_conversion = gtag_report_conversion;
+    }
+    return () => {
+      if (typeof window !== 'undefined' && window.gtag_report_conversion === gtag_report_conversion) {
+        delete window.gtag_report_conversion;
+      }
+    };
+  }, []);
 
   const formatUSPhone = (val) => {
     const digits = val.replace(/\D/g, '').slice(0, 10);
@@ -431,7 +470,7 @@ function DedicatedPainManagementLandingPage({ pageData, formRenderTimeRef }) {
         console.warn('Could not save to localStorage:', storageErr);
       }
 
-      // Google Ads Conversion Event Trigger
+      // Google Ads Lead Conversion Event Trigger
       const storageKey = `APS_GOOGLE_ADS_CONVERSIONS_${leadId}`;
       let hasFired = false;
       try {
@@ -440,29 +479,12 @@ function DedicatedPainManagementLandingPage({ pageData, formRenderTimeRef }) {
         // Storage access check
       }
 
-      if (!hasFired && typeof window !== 'undefined' && typeof window.gtag === 'function') {
-        const conversionLabel =
-          (typeof window !== 'undefined' && window.GOOGLE_ADS_CONVERSION_LABEL) ||
-          import.meta.env?.VITE_GOOGLE_ADS_CONVERSION_LABEL ||
-          null;
-
-        if (conversionLabel) {
-          window.gtag('event', 'conversion', {
-            send_to: `AW-18239109920/${conversionLabel}`,
-            transaction_id: leadId
-          });
-        } else {
-          window.gtag('event', 'lead_form_submitted', {
-            send_to: 'AW-18239109920',
-            transaction_id: leadId,
-            campaign_slug: 'pain-management-charlotte',
-            method: 'Landing Page Callback Form'
-          });
-        }
+      if (!hasFired) {
         try {
+          gtag_report_conversion();
           sessionStorage.setItem(storageKey, 'fired');
-        } catch (_err) {
-          // Ignore
+        } catch (gtagErr) {
+          console.warn('Google Ads conversion tracking unavailable:', gtagErr);
         }
       }
 
